@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Languages</h4>
+    <h4 class="page-title">{{ __('Languages') }}</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Language Management</a>
+        <a href="#">{{ __('Language Management') }}</a>
       </li>
     </ul>
   </div>
@@ -22,8 +22,8 @@
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title d-inline-block">Languages</div>
-          <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Language</a>
+          <div class="card-title d-inline-block">{{ __('Languages') }}</div>
+          <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> {{ __('Add Language') }}</a>
         </div>
         <div class="card-body">
           <div class="row">

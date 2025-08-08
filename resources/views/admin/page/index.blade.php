@@ -22,7 +22,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Page Lists</h4>
+    <h4 class="page-title">{{ __('Page Lists') }}</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -33,19 +33,19 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Website Pages</a>
+        <a href="#">{{ __('Website Pages') }}</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Custom Pages</a>
+        <a href="#">{{ __('Custom Pages') }}</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Pages</a>
+        <a href="#">{{ __('Pages') }}</a>
       </li>
     </ul>
   </div>
@@ -56,12 +56,12 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card-title d-inline-block">Page Lists</div>
+                    <div class="card-title d-inline-block">{{ __('Page Lists') }}</div>
                 </div>
                 <div class="col-lg-3">
                     @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
-                            <option value="" selected disabled>Select a Language</option>
+                            <option value="" selected disabled>{{ __('Select a Language') }}</option>
                             @foreach ($langs as $lang)
                                 <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>{{$lang->name}}</option>
                             @endforeach
@@ -69,8 +69,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     @endif
                 </div>
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                    <a href="{{route('admin.page.create')}}" class="btn btn-primary float-lg-right float-left btn-sm"><i class="fas fa-plus"></i> Add Page</a>
-                    <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.page.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+                    <a href="{{route('admin.page.create')}}" class="btn btn-primary float-lg-right float-left btn-sm"><i class="fas fa-plus"></i> {{ __('Add Page') }}</a>
+                    <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.page.bulk.delete')}}"><i class="flaticon-interface-5"></i> {{ __('Delete') }}</button>
                 </div>
             </div>
         </div>

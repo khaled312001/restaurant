@@ -42,11 +42,26 @@ class AppServiceProvider extends ServiceProvider
                 $currentLang = Language::where('is_default', 1)->first();
             }
 
+            // If no default language is set or language not found, get the first available language
+            if (!$currentLang) {
+                $currentLang = Language::first();
+            }
+
+            // If still no language found, return early to prevent errors
+            if (!$currentLang) {
+                return;
+            }
+
             $bs = $currentLang->basic_setting;
             $be = $currentLang->basic_extended;
+            
+            // Add null checks for relationships
+            if (!$bs) {
+                return;
+            }
+            
             $activeTheme = $bs->theme;
             
-           
 
             $apopups = $currentLang->popups()->where('status', 1)->orderBy('serial_number', 'ASC')->get();
 

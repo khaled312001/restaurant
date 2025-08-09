@@ -22,7 +22,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Logo & Text</h4>
+    <h4 class="page-title">{{ __('Logo & Text') }}</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -33,19 +33,19 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Website Pages</a>
+        <a href="#">{{ __('Website Pages') }}</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Footer</a>
+        <a href="#">{{ __('Footer') }}</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Logo & Text</a>
+        <a href="#">{{ __('Logo & Text') }}</a>
       </li>
     </ul>
   </div>

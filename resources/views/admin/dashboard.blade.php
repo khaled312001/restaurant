@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="mt-2 mb-4">
-        <h2 class="text-white pb-2">Welcome back, {{ Auth::guard('admin')->user()->first_name }}
-            {{ Auth::guard('admin')->user()->last_name }}!</h2>
+        <h2 class="text-white pb-2">{{ __('Welcome back') }}, {{ Auth::guard('admin')->user()->first_name }}
+            {{ Auth::guard('admin')->user()->last_name }} !</h2>
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
@@ -266,24 +266,24 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <h4 class="card-title">Recent Reservation Requests</h4>
+                                <h4 class="card-title">{{ __('Recent Reservation Requests') }}</h4>
                             </div>
                             <p class="card-category">
-                                Top 10 latest table reservation requests</p>
+                                {{ __('Top 10 latest table reservation requests') }}</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     @if (count($table_books) == 0)
-                                        <h3 class="text-center">NO TABLE BOOKING REQUEST FOUND</h3>
+                                        <h3 class="text-center">{{ __('NO TABLE BOOKING REQUEST FOUND') }}</h3>
                                     @else
                                         <div class="table-responsive">
                                             <table class="table table-striped mt-3">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Details</th>
+                                                        <th scope="col">{{ __('Name') }}</th>
+                                                        <th scope="col">{{ __('Email') }}</th>
+                                                        <th scope="col">{{ __('Details') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -318,10 +318,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <h4 class="card-title">Recent Orders</h4>
+                                <h4 class="card-title">{{ __('Recent Orders') }}</h4>
                             </div>
                             <p class="card-category">
-                                Top 10 latest orders</p>
+                                {{ __('Top 10 latest orders') }}</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -331,11 +331,11 @@
                                             <table class="table table-striped mt-3">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Order Number</th>
-                                                        <th scope="col">Date</th>
-                                                        <th scope="col">Total</th>
-                                                        <th scope="col">Payment Status</th>
-                                                        <th scope="col">Details</th>
+                                                        <th scope="col">{{ __('Order Number') }}</th>
+                                                        <th scope="col">{{ __('Date') }}</th>
+                                                        <th scope="col">{{ __('Total') }}</th>
+                                                        <th scope="col">{{ __('Payment Status') }}</th>
+                                                        <th scope="col">{{ __('Details') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -369,7 +369,7 @@
                                             </table>
                                         </div>
                                     @else
-                                        <h2 class="text-center">NO ORDER FOUND</h2>
+                                        <h2 class="text-center">{{ __('NO ORDER FOUND') }}</h2>
                                     @endif
                                 </div>
                             </div>

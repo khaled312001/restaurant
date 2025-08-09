@@ -8,8 +8,9 @@ use Illuminate\Validation\Rule;
 use App\Table;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Validator;
-use Image;
+use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TableController extends Controller
 
@@ -51,7 +52,7 @@ class TableController extends Controller
 
         $fileName = uniqid();
 
-        \QrCode::size(250)->errorCorrection('H')
+        QrCode::size(250)->errorCorrection('H')
             ->color(0, 0, 0)
             ->format('png')
             ->style('square')
@@ -111,7 +112,7 @@ class TableController extends Controller
 
             $fileName = uniqid();
 
-            \QrCode::size(250)->errorCorrection('H')
+            QrCode::size(250)->errorCorrection('H')
                 ->color(0, 0, 0)
                 ->format('png')
                 ->style('square')
@@ -178,7 +179,10 @@ class TableController extends Controller
         $table = Table::findOrFail($request->table_id);
 
         // set default values for all params of qr image, if there is no value for a param
-        $color = hex2rgb($request->color);
+        $color = hex2rgb($request->color ?? '#000000');
+        if ($color === false) {
+            $color = ['red' => 0, 'green' => 0, 'blue' => 0]; // default to black
+        }
 
         $directory = public_path('assets/admin/img/tables/');
         @mkdir($directory, 0775, true);
@@ -189,7 +193,7 @@ class TableController extends Controller
         @unlink(public_path('assets/admin/img/tables/' . $table->qr_image));
 
         // generate new qr image
-        $qrcode = \QrCode::size($request->size)->errorCorrection('H')->margin($request->margin)
+        $qrcode = QrCode::size($request->size)->errorCorrection('H')->margin($request->margin)
             ->color($color['red'], $color['green'], $color['blue'])
             ->format('png')
             ->style($request->style)

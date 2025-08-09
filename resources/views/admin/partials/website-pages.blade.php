@@ -486,7 +486,7 @@
                     @elseif(request()->is('admin/member/*/edit')) active
                     @elseif(request()->path() == 'admin/member/create') active @endif">
                 <a href="{{ route('admin.member.index') . '?language=' . $default->code }}">
-                    <span class="sub-item">Team Members</span>
+                    <span class="sub-item">{{ __('Team Members') }}</span>
                 </a>
             </li>
             {{-- - Team Management --}}
@@ -497,14 +497,14 @@
                 @elseif(request()->path() == 'admin/gallery/create') selected
                 @elseif(request()->is('admin/gallery/*/edit')) selected @endif">
                 <a href="{{ route('admin.gallery.index') . '?language=' . $default->code }}">
-                    <span class="sub-item">Gallery</span>
+                    <span class="sub-item">{{ __('Gallery') }}</span>
                 </a>
             </li>
 
             {{-- FAQ --}}
             <li class="@if (request()->path() == 'admin/faqs') active @endif">
                 <a href="{{ route('admin.faq.index') . '?language=' . $default->code }}">
-                    <span class="sub-item">FAQs</span>
+                    <span class="sub-item">{{ __('FAQs') }}</span>
                 </a>
             </li>
 

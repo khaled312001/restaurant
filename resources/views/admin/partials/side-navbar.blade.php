@@ -25,7 +25,7 @@
                         <span>
                             {{ Auth::guard('admin')->user()->first_name }}
                             @if (empty(Auth::guard('admin')->user()->role))
-                                <span class="user-level">Owner</span>
+                                <span class="user-level">{{ __('Owner') }}</span>
                             @else
                                 <span class="user-level">{{ Auth::guard('admin')->user()->role->name }}</span>
                             @endif
@@ -161,7 +161,7 @@
                 @if (request()->path() == 'admin/product/orders') active
                 @elseif(request()->is('admin/product/orders/detais/*')) active @endif">
                                     <a href="{{ route('admin.product.orders') }}">
-                                        <span class="sub-item">Orders</span>
+                                        <span class="sub-item">{{ __('Orders') }}</span>
                                     </a>
                                 </li>
 
@@ -171,7 +171,7 @@
                                 <li class="
                         @if (request()->path() == 'admin/orders/sales-report') active @endif">
                                     <a href="{{ route('admin.sales.report') }}">
-                                        <span class="sub-item">Sales Reports</span>
+                                        <span class="sub-item">{{ __('Sales Reports') }}</span>
                                     </a>
                                 </li>
 
@@ -183,14 +183,14 @@
                                 <li class="
                 @if (request()->is('admin/product/order/serving-methods')) active @endif">
                                     <a href="{{ route('admin.product.servingMethods') }}">
-                                        <span class="sub-item">Serving Methods</span>
+                                        <span class="sub-item">{{ __('Serving Methods') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="
                 @if (request()->routeIs('admin.postalcode.index')) active @endif">
                                     <a href="{{ route('admin.postalcode.index') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Postal Codes</span>
+                                        <span class="sub-item">{{ __('Postal Codes') }}</span>
                                     </a>
                                 </li>
 
@@ -199,7 +199,7 @@
                 @if (request()->path() == 'admin/shipping') active
                 @elseif(request()->routeIs('admin.shipping.edit')) active @endif">
                                     <a href="{{ route('admin.shipping.index') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Shipping Charges</span>
+                                        <span class="sub-item">{{ __('Shipping Charges') }}</span>
                                     </a>
                                 </li>
 
@@ -208,14 +208,14 @@
                 @if (request()->path() == 'admin/coupon') active
                 @elseif(request()->routeIs('admin.coupon.edit')) active @endif">
                                     <a href="{{ route('admin.coupon.index') }}">
-                                        <span class="sub-item">Coupons</span>
+                                        <span class="sub-item">{{ __('Coupons') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="
                 @if (request()->path() == 'admin/ordertime') active @endif">
                                     <a href="{{ route('admin.ordertime') }}">
-                                        <span class="sub-item">Order Time Management</span>
+                                        <span class="sub-item">{{ __('Order Time Management') }}</span>
                                     </a>
                                 </li>
 
@@ -224,7 +224,7 @@
                 @if (request()->path() == 'admin/deliverytime') active
                 @elseif(request()->path() == 'admin/timeframes') active @endif">
                                     <a href="{{ route('admin.deliverytime') }}">
-                                        <span class="sub-item">Delivery Time Frames Management</span>
+                                        <span class="sub-item">{{ __('Delivery Time Frames Management') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -243,7 +243,7 @@
         @elseif(request()->routeIs('register.user.changePass')) active @endif">
                         <a data-toggle="collapse" href="#customers">
                             <i class="la flaticon-users"></i>
-                            <p>Customers</p>
+                            <p>{{ __('Customers') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -258,12 +258,12 @@
                 @elseif(request()->routeIs('register.user.view')) active
                 @elseif(request()->routeIs('register.user.changePass')) active @endif">
                                     <a href="{{ route('admin.register.user') }}">
-                                        <span class="sub-item">Registered Customers</span>
+                                        <span class="sub-item">{{ __('Registered Customers') }}</span>
                                     </a>
                                 </li>
                                 <li class="@if (request()->path() == 'admin/customers') active @endif">
                                     <a href="{{ route('admin.customer.index') }}">
-                                        <span class="sub-item">Customers</span>
+                                        <span class="sub-item">{{ __('Customers') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -285,7 +285,7 @@
                         @elseif(request()->is('admin/subcategory/*/edit')) active @endif">
                         <a data-toggle="collapse" href="#category">
                             <i class="fas fa-hamburger"></i>
-                            <p>Items Management</p>
+                            <p>{{ __('Items Management') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -303,13 +303,13 @@
                 @if (request()->path() == 'admin/category') active
                 @elseif(request()->is('admin/category/*/edit')) active @endif">
                                     <a href="{{ route('admin.category.index') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Category & Tax</span>
+                                        <span class="sub-item">{{ __('Category & Tax') }}</span>
                                     </a>
                                 </li>
                                 <li
                                     class=" @if (request()->path() == 'admin/subcategory') active  @elseif(request()->is('admin/subcategory/*/edit')) active @endif">
                                     <a href="{{ route('admin.subcategory.index') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Subcategories</span>
+                                        <span class="sub-item">{{ __('Subcategories') }}</span>
                                     </a>
                                 </li>
 
@@ -319,7 +319,7 @@
                 @elseif(request()->is('admin/product/*/edit')) active
                 @elseif(request()->path() == 'admin/product/create') active @endif">
                                     <a href="{{ route('admin.product.index') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Items</span>
+                                        <span class="sub-item">{{ __('Items') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -334,7 +334,7 @@
          @if (request()->path() == 'admin/qr-code') active @endif">
                         <a href="{{ route('admin.qrcode') }}">
                             <i class="fas fa-qrcode"></i>
-                            <p>QR Code Builder</p>
+                            <p>{{ __('QR Code Builder') }}</p>
                         </a>
                     </li>
                 @endif
@@ -348,7 +348,7 @@
         @elseif(request()->path() == 'admin/offline/gateways') active @endif">
                         <a data-toggle="collapse" href="#gateways">
                             <i class="la flaticon-paypal"></i>
-                            <p>Payment Gateways</p>
+                            <p>{{ __('Payment Gateways') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -358,12 +358,12 @@
                             <ul class="nav nav-collapse">
                                 <li class="@if (request()->path() == 'admin/gateways') active @endif">
                                     <a href="{{ route('admin.gateway.index') }}">
-                                        <span class="sub-item">Online Gateways</span>
+                                        <span class="sub-item">{{ __('Online Gateways') }}</span>
                                     </a>
                                 </li>
                                 <li class="@if (request()->path() == 'admin/offline/gateways') active @endif">
                                     <a href="{{ route('admin.gateway.offline') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Offline Gateways</span>
+                                        <span class="sub-item">{{ __('Offline Gateways') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -382,7 +382,7 @@
           @elseif(request()->path() == 'admin/table/section') active @endif">
                         <a data-toggle="collapse" href="#reservSet">
                             <i class="fas fa-utensils"></i>
-                            <p>Reservation Settings</p>
+                            <p>{{ __('Reservation Settings') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -423,7 +423,7 @@
                     <li class="nav-item  @if (request()->is('admin/table/resevations/*')) active @endif">
                         <a data-toggle="collapse" href="#table">
                             <i class="fas fa-utensils"></i>
-                            <p>Table Reservations</p>
+                            <p>{{ __('Table Reservations') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse  @if (request()->is('admin/table/resevations/*')) show @endif" id="table">
@@ -739,24 +739,24 @@
                                 </li>
                                 <li class="@if (request()->path() == 'admin/pwa') active @endif">
                                     <a href="{{ route('admin.pwa') }}">
-                                        <span class="sub-item">PWA Settings</span>
+                                        <span class="sub-item">{{ __('PWA Settings') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="@if (request()->path() == 'admin/script') active @endif">
                                     <a href="{{ route('admin.script') }}">
-                                        <span class="sub-item">Plugins</span>
+                                        <span class="sub-item">{{ __('Plugins') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="@if (request()->path() == 'admin/maintenance') active @endif">
                                     <a href="{{ route('admin.maintenance') }}">
-                                        <span class="sub-item">Maintenance Mode</span>
+                                        <span class="sub-item">{{ __('Maintenance Mode') }}</span>
                                     </a>
                                 </li>
                                 <li class="@if (request()->path() == 'admin/cookie-alert') active @endif">
                                     <a href="{{ route('admin.cookie.alert') . '?language=' . $default->code }}">
-                                        <span class="sub-item">Cookie Alert</span>
+                                        <span class="sub-item">{{ __('Cookie Alert') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -774,7 +774,7 @@
          @elseif(request()->is('admin/language/*/edit/keyword')) active @endif">
                         <a href="{{ route('admin.language.index') }}">
                             <i class="la flaticon-chat-8"></i>
-                            <p>Language Management</p>
+                            <p>{{ __('Language Management') }}</p>
                         </a>
                     </li>
                 @endif
@@ -791,7 +791,7 @@
           @elseif(request()->is('admin/user/*/edit')) active @endif">
                         <a data-toggle="collapse" href="#adminsManagement">
                             <i class="fas fa-users-cog"></i>
-                            <p>Admins Management</p>
+                            <p>{{ __('Admins Management') }}</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -806,7 +806,7 @@
                 @if (request()->path() == 'admin/roles') active
                 @elseif(request()->is('admin/role/*/permissions/manage')) active @endif">
                                     <a href="{{ route('admin.role.index') }}">
-                                        <span class="sub-item">Role Management</span>
+                                        <span class="sub-item">{{ __('Role Management') }}</span>
                                     </a>
                                 </li>
                                 <li
@@ -814,7 +814,7 @@
                 @if (request()->path() == 'admin/users') active
                 @elseif(request()->is('admin/user/*/edit')) active @endif">
                                     <a href="{{ route('admin.user.index') }}">
-                                        <span class="sub-item">Admins</span>
+                                        <span class="sub-item">{{ __('Admins') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -830,7 +830,7 @@
             @if (request()->path() == 'admin/sitemap') active @endif">
                         <a href="{{ route('admin.sitemap.index') . '?language=' . $default->code }}">
                             <i class="fa fa-sitemap"></i>
-                            <p>Sitemap</p>
+                            <p>{{ __('Sitemap') }}</p>
                         </a>
                     </li>
                 @endif
@@ -843,7 +843,7 @@
          @if (request()->path() == 'admin/backup') active @endif">
                         <a href="{{ route('admin.backup.index') }}">
                             <i class="la flaticon-down-arrow-3"></i>
-                            <p>Database Backup</p>
+                            <p>{{ __('Database Backup') }}</p>
                         </a>
                     </li>
                 @endif
@@ -853,7 +853,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.cache.clear') }}">
                         <i class="la flaticon-close"></i>
-                        <p>Clear Cache</p>
+                        <p>{{ __('Clear Cache') }}</p>
                     </a>
                 </li>
             </ul>

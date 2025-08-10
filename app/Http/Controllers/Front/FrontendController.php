@@ -10,7 +10,7 @@ use App\Models\BasicSetting as BS;
 use App\Models\Bcategory;
 use App\Models\Blog;
 use App\Models\Faq;
-use App\Models\Feature;
+
 use App\Models\Gallery;
 use App\Models\IntroPoint as Ifi;
 use App\Models\Jcategory;
@@ -62,7 +62,6 @@ class FrontendController extends Controller
         $be = $currentLang->basic_extended;
 
         $data['sliders'] = Slider::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
-        $data['features'] = Feature::where('language_id', $lang_id)->orderBy('serial_number','ASC')->get();
 
         $data['members'] = Member::where('language_id', $lang_id)->where('feature', 1)->get();
         $data['testimonials'] = Testimonial::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();

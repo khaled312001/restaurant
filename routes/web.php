@@ -8,6 +8,11 @@ Route::post('/demo/submit', function () {
     return 'demo';
 });
 
+// Test video functionality
+Route::get('/test-video', function () {
+    return view('test-video');
+});
+
 Route::post('/push','Front\PushController@store');
 Route::get('/offline','Front\FrontendController@offline');
 
@@ -460,15 +465,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         // Admin home page text routes
         Route::get('/home-page-text-section', 'Admin\HomePageTextController@index')->name('admin.home.page.text.index');
         Route::post('/home-page-text-section/{langid}/update', 'Admin\HomePageTextController@update')->name('admin.home.page.text.update'); 
-        // Admin Feature Routes
-        Route::get('/features', 'Admin\FeatureController@index')->name('admin.feature.index');
-        Route::post('/feature/store', 'Admin\FeatureController@store')->name('admin.feature.store');
-        Route::get('/feature/{id}/edit', 'Admin\FeatureController@edit')->name('admin.feature.edit');
-        Route::post('/feature/update', 'Admin\FeatureController@update')->name('admin.feature.update');
-        Route::post('/feature/delete', 'Admin\FeatureController@delete')->name('admin.feature.delete');
-        Route::post('/feature/remove/image', 'Admin\FeatureController@removeImage')->name('admin.feature.rmv.img');
-        Route::post('/feature-section/remove/image', 'Admin\FeatureController@featuresSectionRmvImg')->name('admin.featuresSection.rmvimg');
-        Route::post('/feature-section/title/{langid}/update', 'Admin\FeatureController@featureSection')->name('admin.featureSection.update');
+
 
         // Admin Intro Section Routes
         Route::get('/introsection', 'Admin\IntrosectionController@index')->name('admin.introsection.index');

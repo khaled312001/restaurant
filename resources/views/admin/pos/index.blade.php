@@ -17,7 +17,7 @@
                     <div class="col-12 px-0">
                         <form>
                             <div class="form-group pt-0">
-                                <input name="search" type="text" class="form-control" placeholder="Search by Item Name here...">
+                                <input name="search" type="text" class="form-control" placeholder="{{ __('Search by Item Name here...') }}">
                             </div>
                         </form>
                     </div>
@@ -36,20 +36,20 @@
                             @csrf
                             <div class="form-group p-0 pb-2">
                                 <div class="ui-widget">
-                                    <label for="">Customer Phone</label>
-                                    <input class="form-control" type="text" name="customer_phone" placeholder="Customer Phone Number" value="{{old('customer_phone')}}" onchange="loadCustomerName(this.value)">
-                                    <p class="text-warning mb-0">Use <strong>Country Code</strong> in phone number</p>
+                                    <label for="">{{ __('Customer Phone') }}</label>
+                                    <input class="form-control" type="text" name="customer_phone" placeholder="{{ __('Customer Phone Number') }}" value="{{old('customer_phone')}}" onchange="loadCustomerName(this.value)">
+                                    <p class="text-warning mb-0">{{ __('Use Country Code in phone number') }}</p>
                                 </div>
                             </div>
                             <div class="form-group p-0 pb-2">
                                 <div class="ui-widget">
-                                    <label for="">Customer Name</label>
-                                    <input class="form-control" name="customer_name" type="text" placeholder="Customer Name" value="{{old('customer_name')}}" disabled>
-                                    <small class="text-warning">Enter customer phone first.</small>
+                                    <label for="">{{ __('Customer Name') }}</label>
+                                    <input class="form-control" name="customer_name" type="text" placeholder="{{ __('Customer Name') }}" value="{{old('customer_name')}}" disabled>
+                                    <small class="text-warning">{{ __('Enter customer phone first.') }}</small>
                                 </div>
                             </div>
                             <div class="form-group p-0 pb-2">
-                                <label for="">Serving Method **</label>
+                                <label for="">{{ __('Serving Method') }} **</label>
                                 <select class="form-control" name="serving_method" required>
                                     @foreach ($smethods as $smethod)
                                         <option value="{{$smethod->value}}" {{$smethod->value == old('serving_method') ? 'selected' : ''}}>{{$smethod->name}}</option>
@@ -57,56 +57,56 @@
                                 </select>
                             </div>
                             <div class="form-group p-0 pb-2">
-                                <label for="">Payment Method </label>
+                                <label for="">{{ __('Payment Method') }} </label>
                                 <select class="form-control select2" name="payment_method">
-                                    <option value="" selected disabled>Select Payment Method</option>
+                                    <option value="" selected disabled>{{ __('Select Payment Method') }}</option>
                                     @foreach ($pmethods as $pmethod)
                                         <option value="{{$pmethod->name}}" {{$pmethod->name == old('payment_method') ? 'selected' : ''}}>{{$pmethod->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group p-0 pb-2">
-                                <label for="">Payment Status **</label>
+                                <label for="">{{ __('Payment Status') }} **</label>
                                 <select class="form-control" name="payment_status" required>
-                                    <option value="Pending" {{"Pending" == old('payment_status') ? 'selected' : ''}}>Pending</option>
-                                    <option value="Completed" {{"Completed" == old('payment_status') ? 'selected' : ''}}>Completed</option>
+                                    <option value="Pending" {{"Pending" == old('payment_status') ? 'selected' : ''}}>{{ __('Pending') }}</option>
+                                    <option value="Completed" {{"Completed" == old('payment_status') ? 'selected' : ''}}>{{ __('Completed') }}</option>
                                 </select>
                             </div>
                             <div id="on_table" class="d-none extra-fields">
                                 <div class="form-group p-0 pb-2">
-                                    <label for="">Table No</label>
+                                    <label for="">{{ __('Table No') }}</label>
                                     <select class="form-control select2" name="table_no">
-                                        <option value="" selected disabled>Select Table No</option>
+                                        <option value="" selected disabled>{{ __('Select Table No') }}</option>
                                         @foreach ($tables as $table)
-                                            <option value="{{$table->table_no}}" {{$table->table_no == old('table_no') ? 'selected' : ''}}>Table - {{$table->table_no}}</option>
+                                            <option value="{{$table->table_no}}" {{$table->table_no == old('table_no') ? 'selected' : ''}}>{{ __('Table') }} - {{$table->table_no}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div id="pick_up" class="d-none extra-fields">
                                 <div class="form-group p-0 pb-2">
-                                    <label for="">Pickup Date</label>
-                                    <input name="pick_up_date" type="text" class="form-control datepicker" placeholder="Pickup Date" autocomplete="off">
+                                    <label for="">{{ __('Pickup Date') }}</label>
+                                    <input name="pick_up_date" type="text" class="form-control datepicker" placeholder="{{ __('Pickup Date') }}" autocomplete="off">
                                 </div>
                                 <div class="form-group p-0 pb-2">
-                                    <label for="">Pickup Time</label>
-                                    <input name="pick_up_time" type="text" class="form-control timepicker" placeholder="Pickup Time" autocomplete="off">
+                                    <label for="">{{ __('Pickup Time') }}</label>
+                                    <input name="pick_up_time" type="text" class="form-control timepicker" placeholder="{{ __('Pickup Time') }}" autocomplete="off">
                                 </div>
                             </div>
 
                             <div id="home_delivery" class="d-none extra-fields">
                                 @if ($be->delivery_date_time_status == 1)
                                     <div class="form-group p-0 pb-2">
-                                        <label>Delivery Date</label>
+                                        <label>{{ __('Delivery Date') }}</label>
                                         <div class="field-input cross {{!empty(old('delivery_date')) ? 'cross-show' : ''}}">
                                             <input class="form-control delivery-datepicker" type="text" name="delivery_date" autocomplete="off" value="{{old('delivery_date')}}">
                                             <i class="far fa-times-circle"></i>
                                         </div>
                                     </div>
                                     <div class="form-group p-0 pb-2">
-                                        <label>Delivery Time</label>
+                                        <label>{{ __('Delivery Time') }}</label>
                                         <select id="deliveryTime" class="form-control" name="delivery_time" disabled>
-                                            <option value="" selected disabled>Select a time frame</option>
+                                            <option value="" selected disabled>{{ __('Select a time frame') }}</option>
                                         </select>
                                     </div>
                                 @endif
@@ -165,9 +165,9 @@
                     </div>
 
                     <div class="card-footer text-center">
-                        <button form="orderForm" class="btn btn-success" type="submit">Place Order</button>
+                        <button form="orderForm" class="btn btn-success" type="submit">{{ __('Place Order') }}</button>
                         @if ($onTable->pos == 1)
-                            <p class="mb-0 text-warning">Token No. print option (for '{{$onTable->name}}' orders) will be shown after placing order.</p>
+                            <p class="mb-0 text-warning">{{ __('Token No. print option (for \'on table\' orders) will be shown after placing order.') }}</p>
                         @endif
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <h4 class="text-white">Ordered Foods</h4>
+                                <h4 class="text-white">{{ __('Ordered Foods') }}</h4>
                             </div>
                         </div>
 
@@ -185,7 +185,7 @@
                         <div id="divRefresh">
                             @if (empty($cart))
                             <div class="text-center py-5 bg-dark mt-4">
-                                <h4>NO ITEMS ADDED</h4>
+                                <h4>{{ __('NO ITEMS ADDED') }}</h4>
                             </div>
                             @else
                             <div id="cartTable">
@@ -193,9 +193,9 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-white">Item</th>
-                                            <th scope="col" class="text-white">Qty</th>
-                                            <th scope="col" class="text-white">Price ({{$be->base_currency_symbol}})</th>
+                                            <th scope="col" class="text-white">{{ __('Item') }}</th>
+                                            <th scope="col" class="text-white">{{ __('Qty') }}</th>
+                                            <th scope="col" class="text-white">{{ __('Price') }} ({{$be->base_currency_symbol}})</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -262,7 +262,7 @@
                             </div>
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Subtotal
+                                    {{ __('Subtotal') }}
                                     <span>
                                         {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}
                                         <span id="subtotal">{{posCartSubTotal()}}</span>
@@ -270,7 +270,7 @@
                                     </span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Tax
+                                    {{ __('Tax') }}
                                     <span>
                                         +
                                         {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}
@@ -279,7 +279,7 @@
                                     </span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Shipping Charge
+                                    {{ __('Shipping Charge') }}
                                     <span>
                                         +
                                         {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}
@@ -288,7 +288,7 @@
                                     </span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center bg-primary text-white">
-                                    <strong>Total</strong>
+                                    <strong>{{ __('Total') }}</strong>
                                     <span>
                                         {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}
                                         <span class="grandTotal">{{posCartSubTotal() + posTax() + posShipping()}}</span>
@@ -304,15 +304,15 @@
                     <div class="card-footer text-center">
                         <div class="row no-gutters">
                             <div class="col-lg-4">
-                                <button id="calcModalBtn" type="button" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="bottom" title="Calculator">
-                                    <i class="fas fa-calculator"></i> Calculator
+                                <button id="calcModalBtn" type="button" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="bottom" title="Calculatrice">
+                                    <i class="fas fa-calculator"></i> Calculatrice
                                 </button>
                             </div>
                             <div class="col-lg-4">
-                                <button class="btn btn-success btn-block" id="printBtn">Print Receipt</button>
+                                <button class="btn btn-success btn-block" id="printBtn">Imprimer le reçu</button>
                             </div>
                             <div class="col-lg-4">
-                                <button class="btn btn-danger btn-block" id="clearCartBtn">Clear Cart</button>
+                                <button class="btn btn-danger btn-block" id="clearCartBtn">Vider le panier</button>
                             </div>
                         </div>
                     </div>
@@ -613,7 +613,7 @@ $(document).ready(function() {
     $(".field-input.cross i.fa-times-circle").on('click', function() {
         $(this).parents('.field-input').find('input').val('');
         $(this).parents('.field-input').removeClass('cross-show');
-        $("#deliveryTime").html(`<option value="" selected disabled>Select a Time Frame</option>`);
+        $("#deliveryTime").html(`<option value="" selected disabled>{{ __('Select a time frame') }}</option>`);
         $("#deliveryTime").attr('disabled', true);
     });
 

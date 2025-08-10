@@ -20,7 +20,7 @@
 
     <!--====== FREES PART START ======-->
 
-    <div class="fress-area" style="@if ($bs->feature_section == 0) padding-bottom: 0px; @endif">
+            <div class="fress-area" style="padding-bottom: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -41,22 +41,7 @@
                     </div>
                 </div>
             </div>
-            @if ($bs->feature_section == 1)
-                <div class="row fress-active {{ !empty($bottomImg) ? '' : 'pt-120' }}">
-                    @foreach ($features as $feature)
-                        <div class="col-lg-3">
-                            <div class="single-fress white-bg text-center">
-                                @if (!empty($feature->image))
-                                    <img class="lazy wow fadeIn"
-                                        data-src="{{ asset('assets/front/img/features/' . $feature->image) }}"
-                                        data-wow-delay="1s" data-wow-duration="1s" alt="feature">
-                                @endif
-                                <a href="javascript:;">{{ convertUtf8($feature->title) }}</a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
+
         </div>
         <div class="fress-shape">
             @if ($bs->home_version == 'slider')
@@ -124,7 +109,7 @@
                                         alt="experience">
                                 @endif
                                 <div class="experience-overlay">
-                                    <a class="video-popup" href="{{ $bs->intro_video_link }}"><i
+                                    <a class="video-popup" href="{{ getYouTubeEmbedUrl($bs->intro_video_link) }}"><i
                                             class="flaticon-arrow"></i></a>
                                 </div>
                             </div>
@@ -412,6 +397,44 @@
     @endif
     <!--====== FOOD MENU PART ENDS ======-->
 
+    <!--====== NOS MENUS SECTION START ======-->
+    <section class="nos-menus-area pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span>Nos menus
+                            <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}"
+                                alt=""></span>
+                        <h3 class="title">Découvrez les menus alimentaires</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($categories as $category)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                @if (!empty($category->image))
+                                    <img class="lazy wow fadeIn"
+                                        data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
+                                        data-wow-delay=".5s" alt="{{ convertUtf8($category->name) }}">
+                                @else
+                                    <i class="flaticon-burger"></i>
+                                @endif
+                            </div>
+                            <h4 class="category-name">{{ convertUtf8($category->name) }}</h4>
+                            <p class="meal-count">{{ $category->products()->where('status', 1)->count() }} plats disponibles</p>
+                            <a href="{{ route('front.items', ['category_id' => $category->id]) }}" class="view-btn">
+                                Voir tous les plats
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!--====== NOS MENUS SECTION ENDS ======-->
 
     <!--====== GOOD FOOD PART START ======-->
     @if ($bs->special_section == 1)

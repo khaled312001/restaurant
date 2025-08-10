@@ -25,11 +25,7 @@
     </div> --}}
 
 
-        <!---Start Feature  Section--->
-    @if ($bs->feature_section == 1)
-        @includeIf('front.medicine.featureSection')
-    @endif
-    <!---end Feature Section-->
+    
     <!---Start Intro Section--->
     @if ($bs->intro_section == 1)
         @includeIf('front.medicine.introSection')

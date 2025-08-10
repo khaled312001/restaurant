@@ -9,11 +9,7 @@
     @includeIf('front.pizza.heroSeaction')
     <!---===End Hero Section ==-->
 
-    <!---Start Feature  Section--->
-    @if ($bs->feature_section == 1)
-        @includeIf('front.pizza.featureSection')
-    @endif
-    <!---end Feature Section-->
+
 
     <!---Start Intro Section--->
     @if ($bs->intro_section == 1)

@@ -337,7 +337,121 @@
             removalDelay: 160,
             preloader: false,
             fixedContentPos: false,
+            iframe: {
+                patterns: {
+                    youtube: {
+                        index: 'youtube.com/',
+                        id: function(url) {
+                            var m = url.match(/[\\?&]v=([^&#]+)/);
+                            if (!m) {
+                                var m = url.match(/youtu\.be\/([^\/]+)/);
+                            }
+                            return m ? m[1] : null;
+                        },
+                        src: function(url) {
+                            var videoId = this.id(url);
+                            var origin = window.location.origin;
+                            return 'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1&origin=' + encodeURIComponent(origin);
+                        }
+                    }
+                }
+            },
+            callbacks: {
+                beforeOpen: function() {
+                    // Add loading indicator
+                    this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-loading');
+                },
+                open: function() {
+                    // Handle any post-open logic
+                },
+                close: function() {
+                    // Clean up any resources
+                }
+            }
         })
+    }
+
+    /*============================================
+        Smart video popup (handles both local and production)
+    ============================================*/
+    if ($(".smart-video-popup").length) {
+        $(".smart-video-popup").on("click", function(e) {
+            e.preventDefault();
+            var embedUrl = $(this).data('video-url');
+            var originalUrl = $(this).data('original-url');
+            
+            // Try to open with Magnific Popup first
+            try {
+                $.magnificPopup.open({
+                    items: {
+                        src: embedUrl
+                    },
+                    type: 'iframe',
+                    mainClass: 'mfp-fade',
+                    removalDelay: 160,
+                    preloader: false,
+                    fixedContentPos: false,
+                    callbacks: {
+                        open: function() {
+                            // Successfully opened with Magnific Popup
+                        },
+                        close: function() {
+                            // Clean up
+                        }
+                    }
+                });
+            } catch (error) {
+                // Fallback to custom modal if Magnific Popup fails
+                createCustomVideoModal(embedUrl, originalUrl);
+            }
+        });
+    }
+    
+    function createCustomVideoModal(embedUrl, originalUrl) {
+        // Create modal HTML
+        var modalHtml = '<div class="custom-video-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center;">' +
+            '<div class="modal-content" style="position: relative; max-width: 90%; max-height: 90%; text-align: center;">' +
+            '<button class="close-btn" style="position: absolute; top: -40px; right: 0; background: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 18px; cursor: pointer; z-index: 10000;">&times;</button>' +
+            '<div class="video-wrapper" style="position: relative;">' +
+            '<iframe src="' + embedUrl + '" width="800" height="450" frameborder="0" allowfullscreen style="max-width: 100%; height: auto;"></iframe>' +
+            '</div>' +
+            '<div class="fallback-links" style="margin-top: 20px; color: white;">' +
+            '<p>If the video doesn\'t load, you can:</p>' +
+            '<a href="' + originalUrl + '" target="_blank" style="color: #007bff; text-decoration: none; margin: 0 10px;">Open on YouTube</a>' +
+            '</div>' +
+            '</div></div>';
+        
+        // Add modal to body
+        $('body').append(modalHtml);
+        
+        // Close button functionality
+        $('.close-btn').on('click', function() {
+            $('.custom-video-modal').remove();
+        });
+        
+        // Close on background click
+        $('.custom-video-modal').on('click', function(e) {
+            if (e.target === this) {
+                $(this).remove();
+            }
+        });
+        
+        // Close on ESC key
+        $(document).on('keydown.customVideoModal', function(e) {
+            if (e.keyCode === 27) { // ESC key
+                $('.custom-video-modal').remove();
+                $(document).off('keydown.customVideoModal');
+            }
+        });
+        
+        // Handle iframe load errors
+        $('.custom-video-modal iframe').on('load', function() {
+            // Iframe loaded successfully
+        }).on('error', function() {
+            // Iframe failed to load, show fallback
+            $(this).hide();
+            $('.fallback-links').show();
+        });
     }
 
 

@@ -47,7 +47,7 @@
 
                         @if($bs->intro_video_link)
 
-                        <a href="{{ $bs->intro_video_link }}" class="video-btn video-btn-text video-btn-sm youtube-popup" target="_self" title="Show Video">
+                        <a href="{{ getYouTubeEmbedUrl($bs->intro_video_link) }}" class="video-btn video-btn-text video-btn-sm youtube-popup" target="_self" title="Show Video">
                             <i class="fas fa-play"></i>
                             <span>{{ $bs->intro_section_video_button_text }}</span>
                         </a>

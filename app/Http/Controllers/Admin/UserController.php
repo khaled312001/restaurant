@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use App\Models\Admin;
 use App\Models\Role;
-use Validator;
-use Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -116,7 +116,9 @@ class UserController extends Controller
 
       $user = Admin::findOrFail($request->user_id);
       if($user->image){
-        unlink(base_path('../assets/admin/img/propics/'.$user->image));
+        if(file_exists(public_path('/assets/admin/img/propics/'.$user->image))){
+          unlink(public_path('/assets/admin/img/propics/'.$user->image));
+        }
       }
       $user->delete();
 

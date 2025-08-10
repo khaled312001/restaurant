@@ -337,6 +337,21 @@
             removalDelay: 160,
             preloader: false,
             fixedContentPos: false,
+            iframe: {
+                patterns: {
+                    youtube: {
+                        index: 'youtube.com/',
+                        id: function(url) {
+                            var m = url.match(/[\\?&]v=([^&#]+)/);
+                            if (!m) {
+                                var m = url.match(/youtu\.be\/([^\/]+)/);
+                            }
+                            return m ? m[1] : null;
+                        },
+                        src: 'https://www.youtube.com/embed/%id%?rel=0&modestbranding=1'
+                    }
+                }
+            }
         })
     }
 

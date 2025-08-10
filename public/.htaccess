@@ -15,3 +15,14 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.php [L]
 </IfModule>
+
+# Set proper MIME types for JavaScript files
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/javascript .js
+</IfModule>
+
+# Force JavaScript files to be served with correct MIME type
+<FilesMatch "\.js$">
+  Header set Content-Type "application/javascript"
+</FilesMatch>

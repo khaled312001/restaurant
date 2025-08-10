@@ -849,13 +849,7 @@
                 @endif
 
 
-                {{-- Cache Clear --}}
-                <li class="nav-item">
-                    <a href="{{ route('admin.cache.clear') }}">
-                        <i class="la flaticon-close"></i>
-                        <p>{{ __('Clear Cache') }}</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>

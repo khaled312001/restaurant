@@ -13,11 +13,7 @@
     @endif
     <!---end Intro Section-->
 
-    <!---Start Feature  Section--->
-    @if ($bs->feature_section == 1)
-        @includeIf('front.bakery.featureSection')
-    @endif
-    <!---end Feature Section-->
+
 
     <!-- Start menu Section -->
     @if ($bs->menu_section == 1)

@@ -24,9 +24,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
-use Validator;
-use Str;
-use PDF;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PosController extends Controller
 {
@@ -86,11 +86,11 @@ class PosController extends Controller
 
         // validations
         if ($qty < 1) {
-            return response()->json(['error' => 'Quanty must be 1 or more than 1.']);
+            return response()->json(['error' => __('Quantity must be 1 or more than 1.')]);
         }
         $pvariant = json_decode($product->variations, true);
         if (!empty($pvariant) && empty($variant)) {
-            return response()->json(['error' => 'You must select a variant.']);
+            return response()->json(['error' => __('You must select a variant.')]);
         }
 
 

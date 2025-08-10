@@ -264,14 +264,7 @@
                                                 </li>
                                             @endif
 
-                                            @if ($activeTheme == 'bakery' || $activeTheme == 'beverage')
-                                                <li class="@if (request()->path() == 'admin/feature-section/background-image') active @endif">
-                                                    <a
-                                                        href="{{ route('admin.featureSection.backgroundImage', ['language' => $default->code, 'section' => 'feature_section_bg_image']) }}">
-                                                        <span class="sub-item">Feature Section Image</span>
-                                                    </a>
-                                                </li>
-                                            @endif
+
                                             @if ($activeTheme == 'bakery' || $activeTheme == 'pizza' || $activeTheme == 'medicine')
                                                 <li class="@if (request()->path() == 'admin/special-section/background-image') active @endif">
                                                     <a
@@ -366,15 +359,7 @@
                                                 </ul>
                                         </li>
 
-                                        <li
-                                            class="
-                   @if (request()->path() == 'admin/features') active
-                   @elseif(request()->is('admin/feature/*/edit')) active @endif">
-                                            <a
-                                                href="{{ route('admin.feature.index') . '?language=' . $default->code }}">
-                                                <span class="sub-item">Features</span>
-                                            </a>
-                                        </li>
+
 
 
                                         <li

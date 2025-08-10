@@ -178,7 +178,7 @@
                 fd.append('feature_id', {{ $feature->id }});
 
                 $.ajax({
-                    url: "{{ route('admin.feature.rmv.img') }}",
+                    url: "#",
                     data: fd,
                     type: 'POST',
                     contentType: false,

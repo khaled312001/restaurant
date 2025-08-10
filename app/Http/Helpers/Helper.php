@@ -329,3 +329,86 @@ if (!function_exists('posShipping')) {
         return round($shipping, 2);
     }
 }
+
+if (!function_exists('getYouTubeEmbedUrl')) {
+    /**
+     * Convert YouTube URL to embed format
+     * 
+     * @param string $url
+     * @return string
+     */
+    function getYouTubeEmbedUrl($url)
+    {
+        if (empty($url)) {
+            return '';
+        }
+
+        // Handle youtu.be URLs
+        if (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?rel=0&modestbranding=1&origin=' . urlencode(request()->getSchemeAndHttpHost());
+        }
+
+        // Handle youtube.com/watch URLs
+        if (preg_match('/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?rel=0&modestbranding=1&origin=' . urlencode(request()->getSchemeAndHttpHost());
+        }
+
+        // Handle youtube.com/embed URLs (already in correct format)
+        if (preg_match('/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
+            // Ensure HTTPS and add parameters if not present
+            $url = str_replace('http://', 'https://', $url);
+            if (strpos($url, '?') === false) {
+                $url .= '?rel=0&modestbranding=1&origin=' . urlencode(request()->getSchemeAndHttpHost());
+            } else {
+                $url .= '&origin=' . urlencode(request()->getSchemeAndHttpHost());
+            }
+            return $url;
+        }
+
+        // If it's already an embed URL, return as is but ensure HTTPS
+        if (strpos($url, 'youtube.com/embed') !== false) {
+            $url = str_replace('http://', 'https://', $url);
+            if (strpos($url, 'origin=') === false) {
+                $url .= (strpos($url, '?') === false ? '?' : '&') . 'origin=' . urlencode(request()->getSchemeAndHttpHost());
+            }
+            return $url;
+        }
+
+        // If no match found, return original URL
+        return $url;
+    }
+}
+
+if (!function_exists('isLocalEnvironment')) {
+    /**
+     * Check if the application is running in a local environment
+     * 
+     * @return bool
+     */
+    function isLocalEnvironment()
+    {
+        return in_array(request()->getHost(), ['127.0.0.1', 'localhost', '::1']) || 
+               strpos(request()->getHost(), '.local') !== false ||
+               strpos(request()->getHost(), '.test') !== false;
+    }
+}
+
+if (!function_exists('isYouTubeVideo')) {
+    /**
+     * Check if URL is a YouTube video
+     * 
+     * @param string $url
+     * @return string
+     */
+    function isYouTubeVideo($url)
+    {
+        if (empty($url)) {
+            return false;
+        }
+
+        return (
+            strpos($url, 'youtube.com') !== false || 
+            strpos($url, 'youtu.be') !== false
+        );
+    }
+}

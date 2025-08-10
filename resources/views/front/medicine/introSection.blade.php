@@ -77,7 +77,9 @@
 
                         @if ($bs->intro_video_link)
                             <div class="vr d-none d-sm-block"></div>
-                            <a href="{{ $bs->intro_video_link }}" class="btn-icon-text gap-15 youtube-popup"
+                            <a href="#" class="btn-icon-text gap-15 smart-video-popup"
+                                data-video-url="{{ getYouTubeEmbedUrl($bs->intro_video_link) }}"
+                                data-original-url="{{ $bs->intro_video_link }}"
                                 target="_self" title="Show Video">
                                 <i class="fas fa-play"></i>
                                 <div>

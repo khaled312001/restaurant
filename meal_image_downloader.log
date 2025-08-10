@@ -1,0 +1,724 @@
+[2025-08-10 01:48:31] [INFO] Created directory: C:\xampp\htdocs\King_Kebab/public/assets/front/img/product/backup/
+[2025-08-10 01:48:31] [ERROR] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'king_kebab'
+[2025-08-10 01:48:39] [ERROR] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'king_kebab'
+[2025-08-10 01:50:18] [ERROR] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'king_kebab'
+[2025-08-10 01:50:30] [ERROR] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'king_kebab'
+[2025-08-10 01:50:49] [INFO] Database connection established successfully
+[2025-08-10 01:50:49] [INFO] Starting simple meal image generation process...
+[2025-08-10 01:50:49] [INFO] Found 79 meals to process
+[2025-08-10 01:50:49] [INFO] Processing meal: CROUSTY GOURMAND BŒUF (ID: 69)
+[2025-08-10 01:50:49] [INFO] Image saved successfully: 1754783449_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 01:50:49] [INFO] Database updated for meal ID: 69
+[2025-08-10 01:50:49] [INFO] Successfully processed meal: CROUSTY GOURMAND BŒUF
+[2025-08-10 01:50:49] [INFO] Processing meal: CROUSTY GOURMAND CHICKEN (ID: 70)
+[2025-08-10 01:50:49] [INFO] Image saved successfully: 1754783449_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 01:50:49] [INFO] Database updated for meal ID: 70
+[2025-08-10 01:50:49] [INFO] Successfully processed meal: CROUSTY GOURMAND CHICKEN
+[2025-08-10 01:50:49] [INFO] Processing meal: DOUBLE CHEEZ BURGER (ID: 71)
+[2025-08-10 01:50:49] [INFO] Image saved successfully: 1754783449_DOUBLE_CHEEZ_BURGER.png
+[2025-08-10 01:50:49] [INFO] Database updated for meal ID: 71
+[2025-08-10 01:50:49] [INFO] Successfully processed meal: DOUBLE CHEEZ BURGER
+[2025-08-10 01:50:49] [INFO] Processing meal: Cheese Burger (ID: 72)
+[2025-08-10 01:50:49] [INFO] Image saved successfully: 1754783449_Cheese_Burger.png
+[2025-08-10 01:50:49] [INFO] Database updated for meal ID: 72
+[2025-08-10 01:50:49] [INFO] Successfully processed meal: Cheese Burger
+[2025-08-10 01:50:49] [INFO] Processing meal: Maxi Galette Kebab (ID: 73)
+[2025-08-10 01:50:49] [INFO] Image saved successfully: 1754783449_Maxi_Galette_Kebab.png
+[2025-08-10 01:50:49] [INFO] Database updated for meal ID: 73
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Maxi Galette Kebab
+[2025-08-10 01:50:50] [INFO] Processing meal: Chicken Burger (ID: 74)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Chicken_Burger.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 74
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Chicken Burger
+[2025-08-10 01:50:50] [INFO] Processing meal: Galette Kebab (ID: 75)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Galette_Kebab.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 75
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Galette Kebab
+[2025-08-10 01:50:50] [INFO] Processing meal: Maxi Cheese Burger (ID: 76)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Maxi_Cheese_Burger.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 76
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Maxi Cheese Burger
+[2025-08-10 01:50:50] [INFO] Processing meal: Maxi Tacos 999g (ID: 77)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Maxi_Tacos_999g.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 77
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Maxi Tacos 999g
+[2025-08-10 01:50:50] [INFO] Processing meal: Sandwich Américain (ID: 78)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Sandwich_Am__ricain.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 78
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Sandwich Américain
+[2025-08-10 01:50:50] [INFO] Processing meal: Sandwich KEBAB (ID: 79)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Sandwich_KEBAB.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 79
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Sandwich KEBAB
+[2025-08-10 01:50:50] [INFO] Processing meal: Sandwich Kofte (ID: 80)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Sandwich_Kofte.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 80
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Sandwich Kofte
+[2025-08-10 01:50:50] [INFO] Processing meal: Sandwich Maxi Kebab (ID: 81)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Sandwich_Maxi_Kebab.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 81
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Sandwich Maxi Kebab
+[2025-08-10 01:50:50] [INFO] Processing meal: Sandwich Paninis (ID: 82)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Sandwich_Paninis.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 82
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Sandwich Paninis
+[2025-08-10 01:50:50] [INFO] Processing meal: Tacos (ID: 83)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Tacos.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 83
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Tacos
+[2025-08-10 01:50:50] [INFO] Processing meal: Tacos Mixte (ID: 84)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_Tacos_Mixte.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 84
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: Tacos Mixte
+[2025-08-10 01:50:50] [INFO] Processing meal: MENU CROUSTY GOURMAND BŒUF (ID: 85)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 85
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: MENU CROUSTY GOURMAND BŒUF
+[2025-08-10 01:50:50] [INFO] Processing meal: MENU CROUSTY GOURMAND CHICKEN (ID: 86)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 86
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: MENU CROUSTY GOURMAND CHICKEN
+[2025-08-10 01:50:50] [INFO] Processing meal: MENU Double CHEEZ (ID: 87)
+[2025-08-10 01:50:50] [INFO] Image saved successfully: 1754783450_MENU_Double_CHEEZ.png
+[2025-08-10 01:50:50] [INFO] Database updated for meal ID: 87
+[2025-08-10 01:50:50] [INFO] Successfully processed meal: MENU Double CHEEZ
+[2025-08-10 01:50:50] [INFO] Processing meal: Menu Américain (ID: 88)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Am__ricain.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 88
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Américain
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Cheese Burger (ID: 89)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Cheese_Burger.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 89
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Cheese Burger
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Chicken Burger (ID: 90)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Chicken_Burger.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 90
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Chicken Burger
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Galette Kebab (ID: 91)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Galette_Kebab.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 91
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Galette Kebab
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Kebab (ID: 92)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Kebab.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 92
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Kebab
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Kofte (ID: 93)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Kofte.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 93
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Kofte
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Maxi Cheese Burger (ID: 94)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Maxi_Cheese_Burger.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 94
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Maxi Cheese Burger
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Maxi Galette Kebab (ID: 95)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Maxi_Galette_Kebab.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 95
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Maxi Galette Kebab
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Maxi Kebab (ID: 96)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Maxi_Kebab.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 96
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Maxi Kebab
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Maxi Tacos 999g (ID: 97)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Maxi_Tacos_999g.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 97
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Maxi Tacos 999g
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Paninis (ID: 98)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Paninis.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 98
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Paninis
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Tacos (ID: 99)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Tacos.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 99
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Tacos
+[2025-08-10 01:50:51] [INFO] Processing meal: Menu Tacos Mixte (ID: 100)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Menu_Tacos_Mixte.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 100
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Menu Tacos Mixte
+[2025-08-10 01:50:51] [INFO] Processing meal: Assiette KOBANE (kebab kofte tenders) (ID: 101)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 101
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Assiette KOBANE (kebab kofte tenders)
+[2025-08-10 01:50:51] [INFO] Processing meal: Assiette Kebab (ID: 102)
+[2025-08-10 01:50:51] [INFO] Image saved successfully: 1754783451_Assiette_Kebab.png
+[2025-08-10 01:50:51] [INFO] Database updated for meal ID: 102
+[2025-08-10 01:50:51] [INFO] Successfully processed meal: Assiette Kebab
+[2025-08-10 01:50:51] [INFO] Processing meal: Assiette Kofte (ID: 103)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_Assiette_Kofte.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 103
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: Assiette Kofte
+[2025-08-10 01:50:52] [INFO] Processing meal: Assiette Poulet Crème (ID: 104)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_Assiette_Poulet_Cr__me.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 104
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: Assiette Poulet Crème
+[2025-08-10 01:50:52] [INFO] Processing meal: Assiette Saumon (ID: 105)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_Assiette_Saumon.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 105
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: Assiette Saumon
+[2025-08-10 01:50:52] [INFO] Processing meal: Assiette Steak (ID: 106)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_Assiette_Steak.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 106
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: Assiette Steak
+[2025-08-10 01:50:52] [INFO] Processing meal: Menu Enfant (ID: 107)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_Menu_Enfant.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 107
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: Menu Enfant
+[2025-08-10 01:50:52] [INFO] Processing meal: KEBAB (ID: 108)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_KEBAB.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 108
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: KEBAB
+[2025-08-10 01:50:52] [INFO] Processing meal: POULET (ID: 109)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_POULET.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 109
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: POULET
+[2025-08-10 01:50:52] [INFO] Processing meal: SAUMON (ID: 110)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_SAUMON.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 110
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: SAUMON
+[2025-08-10 01:50:52] [INFO] Processing meal: KOFTE (ID: 111)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_KOFTE.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 111
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: KOFTE
+[2025-08-10 01:50:52] [INFO] Processing meal: STEAK (ID: 112)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_STEAK.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 112
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: STEAK
+[2025-08-10 01:50:52] [INFO] Processing meal: KING (ID: 113)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_KING.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 113
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: KING
+[2025-08-10 01:50:52] [INFO] Processing meal: FALAFEL (ID: 114)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_FALAFEL.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 114
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: FALAFEL
+[2025-08-10 01:50:52] [INFO] Processing meal: FETA (ID: 115)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_FETA.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 115
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: FETA
+[2025-08-10 01:50:52] [INFO] Processing meal: THON (ID: 116)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_THON.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 116
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: THON
+[2025-08-10 01:50:52] [INFO] Processing meal: TENDERS (ID: 117)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_TENDERS.png
+[2025-08-10 01:50:52] [INFO] Database updated for meal ID: 117
+[2025-08-10 01:50:52] [INFO] Successfully processed meal: TENDERS
+[2025-08-10 01:50:52] [INFO] Processing meal: FROMAGE (ID: 118)
+[2025-08-10 01:50:52] [INFO] Image saved successfully: 1754783452_FROMAGE.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 118
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: FROMAGE
+[2025-08-10 01:50:53] [INFO] Processing meal: FALAFEL (ID: 119)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_FALAFEL.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 119
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: FALAFEL
+[2025-08-10 01:50:53] [INFO] Processing meal: TACOS SOFT (ID: 120)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_TACOS_SOFT.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 120
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: TACOS SOFT
+[2025-08-10 01:50:53] [INFO] Processing meal: BELGE (ID: 121)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_BELGE.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 121
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: BELGE
+[2025-08-10 01:50:53] [INFO] Processing meal: TACOS FALAFEL (ID: 122)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_TACOS_FALAFEL.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 122
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: TACOS FALAFEL
+[2025-08-10 01:50:53] [INFO] Processing meal: COMPOTE + CAPRISUN + JOUET (ID: 123)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 123
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: COMPOTE + CAPRISUN + JOUET
+[2025-08-10 01:50:53] [INFO] Processing meal: BURGER + FRITES (ID: 124)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_BURGER___FRITES.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 124
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: BURGER + FRITES
+[2025-08-10 01:50:53] [INFO] Processing meal: NUGGETS + FRITES (ID: 125)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_NUGGETS___FRITES.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 125
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: NUGGETS + FRITES
+[2025-08-10 01:50:53] [INFO] Processing meal: VIANDE KEBAB + FRITES (ID: 126)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_VIANDE_KEBAB___FRITES.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 126
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: VIANDE KEBAB + FRITES
+[2025-08-10 01:50:53] [INFO] Processing meal: KEBAB (ID: 127)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_KEBAB.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 127
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: KEBAB
+[2025-08-10 01:50:53] [INFO] Processing meal: MAXI KEBAB (ID: 128)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_MAXI_KEBAB.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 128
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: MAXI KEBAB
+[2025-08-10 01:50:53] [INFO] Processing meal: GALETTE (VIANDE AU CHOIX) (ID: 129)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 129
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: GALETTE (VIANDE AU CHOIX)
+[2025-08-10 01:50:53] [INFO] Processing meal: MAXI GALETTE (VIANDE AU CHOIX) (ID: 130)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 130
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: MAXI GALETTE (VIANDE AU CHOIX)
+[2025-08-10 01:50:53] [INFO] Processing meal: AMERICAIN (ID: 131)
+[2025-08-10 01:50:53] [INFO] Image saved successfully: 1754783453_AMERICAIN.png
+[2025-08-10 01:50:53] [INFO] Database updated for meal ID: 131
+[2025-08-10 01:50:53] [INFO] Successfully processed meal: AMERICAIN
+[2025-08-10 01:50:53] [INFO] Processing meal: KOFTE (ID: 132)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_KOFTE.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 132
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: KOFTE
+[2025-08-10 01:50:54] [INFO] Processing meal: PANINI (VIANDE AU CHOIX) (ID: 133)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 133
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: PANINI (VIANDE AU CHOIX)
+[2025-08-10 01:50:54] [INFO] Processing meal: PETITE FRITE (ID: 134)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_PETITE_FRITE.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 134
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: PETITE FRITE
+[2025-08-10 01:50:54] [INFO] Processing meal: GRANDE FRITE (ID: 135)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_GRANDE_FRITE.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 135
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: GRANDE FRITE
+[2025-08-10 01:50:54] [INFO] Processing meal: PETITE VIANDE (ID: 136)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_PETITE_VIANDE.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 136
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: PETITE VIANDE
+[2025-08-10 01:50:54] [INFO] Processing meal: GRANDE VIANDE (ID: 137)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_GRANDE_VIANDE.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 137
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: GRANDE VIANDE
+[2025-08-10 01:50:54] [INFO] Processing meal: TACOS (1 VIANDE AU CHOIX) (ID: 138)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 138
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: TACOS (1 VIANDE AU CHOIX)
+[2025-08-10 01:50:54] [INFO] Processing meal: TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 139)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 139
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-10 01:50:54] [INFO] Processing meal: MEGA TACOS (1 VIANDE AU CHOIX) (ID: 140)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 140
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: MEGA TACOS (1 VIANDE AU CHOIX)
+[2025-08-10 01:50:54] [INFO] Processing meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 141)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 141
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-10 01:50:54] [INFO] Processing meal: CHEESE BURGER (ID: 142)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_CHEESE_BURGER.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 142
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: CHEESE BURGER
+[2025-08-10 01:50:54] [INFO] Processing meal: DOUBLE CHEESE BURGER (ID: 143)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_DOUBLE_CHEESE_BURGER.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 143
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: DOUBLE CHEESE BURGER
+[2025-08-10 01:50:54] [INFO] Processing meal: CHICKEN (ID: 144)
+[2025-08-10 01:50:54] [INFO] Image saved successfully: 1754783454_CHICKEN.png
+[2025-08-10 01:50:54] [INFO] Database updated for meal ID: 144
+[2025-08-10 01:50:54] [INFO] Successfully processed meal: CHICKEN
+[2025-08-10 01:50:54] [INFO] Processing meal: CROUSTY GOURMAND (POULET OU BŒUF) (ID: 145)
+[2025-08-10 01:50:55] [INFO] Image saved successfully: 1754783455_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-10 01:50:55] [INFO] Database updated for meal ID: 145
+[2025-08-10 01:50:55] [INFO] Successfully processed meal: CROUSTY GOURMAND (POULET OU BŒUF)
+[2025-08-10 01:50:55] [INFO] Processing meal: VEGGIE BURGER (ID: 146)
+[2025-08-10 01:50:55] [INFO] Image saved successfully: 1754783455_VEGGIE_BURGER.png
+[2025-08-10 01:50:55] [INFO] Database updated for meal ID: 146
+[2025-08-10 01:50:55] [INFO] Successfully processed meal: VEGGIE BURGER
+[2025-08-10 01:50:55] [INFO] Processing meal: LE BIG CHÈVRE (POULET OU BŒUF) (ID: 147)
+[2025-08-10 01:50:55] [INFO] Image saved successfully: 1754783455_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-10 01:50:55] [INFO] Database updated for meal ID: 147
+[2025-08-10 01:50:55] [INFO] Successfully processed meal: LE BIG CHÈVRE (POULET OU BŒUF)
+[2025-08-10 01:50:55] [INFO] Process completed. Success: 79, Errors: 0
+[2025-08-10 02:05:23] [INFO] Database connection established successfully
+[2025-08-10 02:05:23] [INFO] Starting simple meal image generation process...
+[2025-08-10 02:05:23] [INFO] Found 79 meals to process
+[2025-08-10 02:05:23] [INFO] Processing meal: CROUSTY GOURMAND BŒUF (ID: 69)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783449_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 69
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: CROUSTY GOURMAND BŒUF
+[2025-08-10 02:05:23] [INFO] Processing meal: CROUSTY GOURMAND CHICKEN (ID: 70)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783449_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 70
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: CROUSTY GOURMAND CHICKEN
+[2025-08-10 02:05:23] [INFO] Processing meal: DOUBLE CHEEZ BURGER (ID: 71)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783449_DOUBLE_CHEEZ_BURGER.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_DOUBLE_CHEEZ_BURGER.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 71
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: DOUBLE CHEEZ BURGER
+[2025-08-10 02:05:23] [INFO] Processing meal: Cheese Burger (ID: 72)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783449_Cheese_Burger.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Cheese_Burger.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 72
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Cheese Burger
+[2025-08-10 02:05:23] [INFO] Processing meal: Maxi Galette Kebab (ID: 73)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783449_Maxi_Galette_Kebab.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Maxi_Galette_Kebab.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 73
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Maxi Galette Kebab
+[2025-08-10 02:05:23] [INFO] Processing meal: Chicken Burger (ID: 74)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Chicken_Burger.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Chicken_Burger.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 74
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Chicken Burger
+[2025-08-10 02:05:23] [INFO] Processing meal: Galette Kebab (ID: 75)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Galette_Kebab.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Galette_Kebab.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 75
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Galette Kebab
+[2025-08-10 02:05:23] [INFO] Processing meal: Maxi Cheese Burger (ID: 76)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Maxi_Cheese_Burger.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Maxi_Cheese_Burger.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 76
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Maxi Cheese Burger
+[2025-08-10 02:05:23] [INFO] Processing meal: Maxi Tacos 999g (ID: 77)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Maxi_Tacos_999g.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Maxi_Tacos_999g.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 77
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Maxi Tacos 999g
+[2025-08-10 02:05:23] [INFO] Processing meal: Sandwich Américain (ID: 78)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Sandwich_Am__ricain.png
+[2025-08-10 02:05:23] [INFO] Image saved successfully: 1754784323_Sandwich_Am__ricain.png
+[2025-08-10 02:05:23] [INFO] Database updated for meal ID: 78
+[2025-08-10 02:05:23] [INFO] Successfully processed meal: Sandwich Américain
+[2025-08-10 02:05:23] [INFO] Processing meal: Sandwich KEBAB (ID: 79)
+[2025-08-10 02:05:23] [INFO] Backup created for: 1754783450_Sandwich_KEBAB.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Sandwich_KEBAB.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 79
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Sandwich KEBAB
+[2025-08-10 02:05:24] [INFO] Processing meal: Sandwich Kofte (ID: 80)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_Sandwich_Kofte.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Sandwich_Kofte.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 80
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Sandwich Kofte
+[2025-08-10 02:05:24] [INFO] Processing meal: Sandwich Maxi Kebab (ID: 81)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_Sandwich_Maxi_Kebab.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Sandwich_Maxi_Kebab.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 81
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Sandwich Maxi Kebab
+[2025-08-10 02:05:24] [INFO] Processing meal: Sandwich Paninis (ID: 82)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_Sandwich_Paninis.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Sandwich_Paninis.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 82
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Sandwich Paninis
+[2025-08-10 02:05:24] [INFO] Processing meal: Tacos (ID: 83)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_Tacos.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Tacos.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 83
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Tacos
+[2025-08-10 02:05:24] [INFO] Processing meal: Tacos Mixte (ID: 84)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_Tacos_Mixte.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Tacos_Mixte.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 84
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Tacos Mixte
+[2025-08-10 02:05:24] [INFO] Processing meal: MENU CROUSTY GOURMAND BŒUF (ID: 85)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 85
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: MENU CROUSTY GOURMAND BŒUF
+[2025-08-10 02:05:24] [INFO] Processing meal: MENU CROUSTY GOURMAND CHICKEN (ID: 86)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 86
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: MENU CROUSTY GOURMAND CHICKEN
+[2025-08-10 02:05:24] [INFO] Processing meal: MENU Double CHEEZ (ID: 87)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783450_MENU_Double_CHEEZ.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_MENU_Double_CHEEZ.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 87
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: MENU Double CHEEZ
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Américain (ID: 88)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Am__ricain.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Am__ricain.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 88
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Américain
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Cheese Burger (ID: 89)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Cheese_Burger.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Cheese_Burger.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 89
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Cheese Burger
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Chicken Burger (ID: 90)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Chicken_Burger.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Chicken_Burger.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 90
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Chicken Burger
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Galette Kebab (ID: 91)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Galette_Kebab.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Galette_Kebab.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 91
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Galette Kebab
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Kebab (ID: 92)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Kebab.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Kebab.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 92
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Kebab
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Kofte (ID: 93)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Kofte.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Kofte.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 93
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Kofte
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Maxi Cheese Burger (ID: 94)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Maxi_Cheese_Burger.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Maxi_Cheese_Burger.png
+[2025-08-10 02:05:24] [INFO] Database updated for meal ID: 94
+[2025-08-10 02:05:24] [INFO] Successfully processed meal: Menu Maxi Cheese Burger
+[2025-08-10 02:05:24] [INFO] Processing meal: Menu Maxi Galette Kebab (ID: 95)
+[2025-08-10 02:05:24] [INFO] Backup created for: 1754783451_Menu_Maxi_Galette_Kebab.png
+[2025-08-10 02:05:24] [INFO] Image saved successfully: 1754784324_Menu_Maxi_Galette_Kebab.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 95
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Maxi Galette Kebab
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Maxi Kebab (ID: 96)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Menu_Maxi_Kebab.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Maxi_Kebab.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 96
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Maxi Kebab
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Maxi Tacos 999g (ID: 97)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Menu_Maxi_Tacos_999g.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Maxi_Tacos_999g.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 97
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Maxi Tacos 999g
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Paninis (ID: 98)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Menu_Paninis.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Paninis.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 98
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Paninis
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Tacos (ID: 99)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Menu_Tacos.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Tacos.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 99
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Tacos
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Tacos Mixte (ID: 100)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Menu_Tacos_Mixte.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Tacos_Mixte.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 100
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Tacos Mixte
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette KOBANE (kebab kofte tenders) (ID: 101)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 101
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette KOBANE (kebab kofte tenders)
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette Kebab (ID: 102)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783451_Assiette_Kebab.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_Kebab.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 102
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette Kebab
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette Kofte (ID: 103)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783452_Assiette_Kofte.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_Kofte.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 103
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette Kofte
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette Poulet Crème (ID: 104)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783452_Assiette_Poulet_Cr__me.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_Poulet_Cr__me.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 104
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette Poulet Crème
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette Saumon (ID: 105)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783452_Assiette_Saumon.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_Saumon.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 105
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette Saumon
+[2025-08-10 02:05:25] [INFO] Processing meal: Assiette Steak (ID: 106)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783452_Assiette_Steak.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Assiette_Steak.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 106
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Assiette Steak
+[2025-08-10 02:05:25] [INFO] Processing meal: Menu Enfant (ID: 107)
+[2025-08-10 02:05:25] [INFO] Backup created for: 1754783452_Menu_Enfant.png
+[2025-08-10 02:05:25] [INFO] Image saved successfully: 1754784325_Menu_Enfant.png
+[2025-08-10 02:05:25] [INFO] Database updated for meal ID: 107
+[2025-08-10 02:05:25] [INFO] Successfully processed meal: Menu Enfant
+[2025-08-10 02:05:25] [INFO] Processing meal: KEBAB (ID: 108)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_KEBAB.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_KEBAB.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 108
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: KEBAB
+[2025-08-10 02:05:26] [INFO] Processing meal: POULET (ID: 109)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_POULET.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_POULET.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 109
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: POULET
+[2025-08-10 02:05:26] [INFO] Processing meal: SAUMON (ID: 110)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_SAUMON.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_SAUMON.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 110
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: SAUMON
+[2025-08-10 02:05:26] [INFO] Processing meal: KOFTE (ID: 111)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_KOFTE.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_KOFTE.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 111
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: KOFTE
+[2025-08-10 02:05:26] [INFO] Processing meal: STEAK (ID: 112)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_STEAK.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_STEAK.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 112
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: STEAK
+[2025-08-10 02:05:26] [INFO] Processing meal: KING (ID: 113)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_KING.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_KING.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 113
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: KING
+[2025-08-10 02:05:26] [INFO] Processing meal: FALAFEL (ID: 114)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 114
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: FALAFEL
+[2025-08-10 02:05:26] [INFO] Processing meal: FETA (ID: 115)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_FETA.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_FETA.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 115
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: FETA
+[2025-08-10 02:05:26] [INFO] Processing meal: THON (ID: 116)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_THON.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_THON.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 116
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: THON
+[2025-08-10 02:05:26] [INFO] Processing meal: TENDERS (ID: 117)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_TENDERS.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_TENDERS.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 117
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: TENDERS
+[2025-08-10 02:05:26] [INFO] Processing meal: FROMAGE (ID: 118)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783452_FROMAGE.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_FROMAGE.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 118
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: FROMAGE
+[2025-08-10 02:05:26] [INFO] Processing meal: FALAFEL (ID: 119)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783453_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 119
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: FALAFEL
+[2025-08-10 02:05:26] [INFO] Processing meal: TACOS SOFT (ID: 120)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783453_TACOS_SOFT.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_TACOS_SOFT.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 120
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: TACOS SOFT
+[2025-08-10 02:05:26] [INFO] Processing meal: BELGE (ID: 121)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783453_BELGE.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_BELGE.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 121
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: BELGE
+[2025-08-10 02:05:26] [INFO] Processing meal: TACOS FALAFEL (ID: 122)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783453_TACOS_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Image saved successfully: 1754784326_TACOS_FALAFEL.png
+[2025-08-10 02:05:26] [INFO] Database updated for meal ID: 122
+[2025-08-10 02:05:26] [INFO] Successfully processed meal: TACOS FALAFEL
+[2025-08-10 02:05:26] [INFO] Processing meal: COMPOTE + CAPRISUN + JOUET (ID: 123)
+[2025-08-10 02:05:26] [INFO] Backup created for: 1754783453_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 123
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: COMPOTE + CAPRISUN + JOUET
+[2025-08-10 02:05:27] [INFO] Processing meal: BURGER + FRITES (ID: 124)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_BURGER___FRITES.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_BURGER___FRITES.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 124
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: BURGER + FRITES
+[2025-08-10 02:05:27] [INFO] Processing meal: NUGGETS + FRITES (ID: 125)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_NUGGETS___FRITES.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_NUGGETS___FRITES.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 125
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: NUGGETS + FRITES
+[2025-08-10 02:05:27] [INFO] Processing meal: VIANDE KEBAB + FRITES (ID: 126)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_VIANDE_KEBAB___FRITES.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_VIANDE_KEBAB___FRITES.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 126
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: VIANDE KEBAB + FRITES
+[2025-08-10 02:05:27] [INFO] Processing meal: KEBAB (ID: 127)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_KEBAB.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_KEBAB.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 127
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: KEBAB
+[2025-08-10 02:05:27] [INFO] Processing meal: MAXI KEBAB (ID: 128)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_MAXI_KEBAB.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_MAXI_KEBAB.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 128
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: MAXI KEBAB
+[2025-08-10 02:05:27] [INFO] Processing meal: GALETTE (VIANDE AU CHOIX) (ID: 129)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 129
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: GALETTE (VIANDE AU CHOIX)
+[2025-08-10 02:05:27] [INFO] Processing meal: MAXI GALETTE (VIANDE AU CHOIX) (ID: 130)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 130
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: MAXI GALETTE (VIANDE AU CHOIX)
+[2025-08-10 02:05:27] [INFO] Processing meal: AMERICAIN (ID: 131)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783453_AMERICAIN.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_AMERICAIN.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 131
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: AMERICAIN
+[2025-08-10 02:05:27] [INFO] Processing meal: KOFTE (ID: 132)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_KOFTE.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_KOFTE.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 132
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: KOFTE
+[2025-08-10 02:05:27] [INFO] Processing meal: PANINI (VIANDE AU CHOIX) (ID: 133)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 133
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: PANINI (VIANDE AU CHOIX)
+[2025-08-10 02:05:27] [INFO] Processing meal: PETITE FRITE (ID: 134)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_PETITE_FRITE.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_PETITE_FRITE.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 134
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: PETITE FRITE
+[2025-08-10 02:05:27] [INFO] Processing meal: GRANDE FRITE (ID: 135)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_GRANDE_FRITE.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_GRANDE_FRITE.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 135
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: GRANDE FRITE
+[2025-08-10 02:05:27] [INFO] Processing meal: PETITE VIANDE (ID: 136)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_PETITE_VIANDE.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_PETITE_VIANDE.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 136
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: PETITE VIANDE
+[2025-08-10 02:05:27] [INFO] Processing meal: GRANDE VIANDE (ID: 137)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_GRANDE_VIANDE.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_GRANDE_VIANDE.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 137
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: GRANDE VIANDE
+[2025-08-10 02:05:27] [INFO] Processing meal: TACOS (1 VIANDE AU CHOIX) (ID: 138)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Image saved successfully: 1754784327_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:27] [INFO] Database updated for meal ID: 138
+[2025-08-10 02:05:27] [INFO] Successfully processed meal: TACOS (1 VIANDE AU CHOIX)
+[2025-08-10 02:05:27] [INFO] Processing meal: TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 139)
+[2025-08-10 02:05:27] [INFO] Backup created for: 1754783454_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 139
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-10 02:05:28] [INFO] Processing meal: MEGA TACOS (1 VIANDE AU CHOIX) (ID: 140)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783454_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 140
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: MEGA TACOS (1 VIANDE AU CHOIX)
+[2025-08-10 02:05:28] [INFO] Processing meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 141)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783454_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 141
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-10 02:05:28] [INFO] Processing meal: CHEESE BURGER (ID: 142)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783454_CHEESE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_CHEESE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 142
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: CHEESE BURGER
+[2025-08-10 02:05:28] [INFO] Processing meal: DOUBLE CHEESE BURGER (ID: 143)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783454_DOUBLE_CHEESE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_DOUBLE_CHEESE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 143
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: DOUBLE CHEESE BURGER
+[2025-08-10 02:05:28] [INFO] Processing meal: CHICKEN (ID: 144)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783454_CHICKEN.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_CHICKEN.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 144
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: CHICKEN
+[2025-08-10 02:05:28] [INFO] Processing meal: CROUSTY GOURMAND (POULET OU BŒUF) (ID: 145)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783455_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 145
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: CROUSTY GOURMAND (POULET OU BŒUF)
+[2025-08-10 02:05:28] [INFO] Processing meal: VEGGIE BURGER (ID: 146)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783455_VEGGIE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_VEGGIE_BURGER.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 146
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: VEGGIE BURGER
+[2025-08-10 02:05:28] [INFO] Processing meal: LE BIG CHÈVRE (POULET OU BŒUF) (ID: 147)
+[2025-08-10 02:05:28] [INFO] Backup created for: 1754783455_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-10 02:05:28] [INFO] Image saved successfully: 1754784328_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-10 02:05:28] [INFO] Database updated for meal ID: 147
+[2025-08-10 02:05:28] [INFO] Successfully processed meal: LE BIG CHÈVRE (POULET OU BŒUF)
+[2025-08-10 02:05:28] [INFO] Process completed. Success: 79, Errors: 0

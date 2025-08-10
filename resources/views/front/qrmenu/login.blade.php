@@ -68,7 +68,7 @@
                         <div class="input-btn">
                             <button type="submit" class="main-btn">{{__('LOG IN')}}</button>
                             {{-- <div class="mt-2 d-flex justify-content-between">
-                                <a href="{{route('user-register')}}" class="mr-3">{{__("Don't have an account")}}?</a>
+                                <a href="{{route('user-register')}}" class="mr-3">{{__("Je n'ai pas de compte")}}?</a>
                                 <a href="{{route('user-forgot')}}">{{__('Lost your password')}}?</a>
                             </div> --}}
                         </div>

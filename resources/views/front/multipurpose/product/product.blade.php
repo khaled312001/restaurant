@@ -43,7 +43,9 @@
                             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
                                 @foreach ($categories as $keys => $category)
                                 <li class="nav-item">
-                                    <a class="nav-link {{$keys == 0 ? 'active' : ''}}" id="{{convertUtf8($category->slug)}}-tab" data-toggle="pill" href="#{{convertUtf8($category->slug)}}" role="tab" aria-controls="{{convertUtf8($category->slug)}}" aria-selected="true">
+                                    <a class="nav-link {{$keys == 0 ? 'active' : ''}}" 
+                                       href="{{ route('front.items', ['search' => '', 'minprice' => '0', 'maxprice' => '16.00', 'category_id' => $category->id, 'subcategory_id' => '', 'type' => 'new', 'review' => '']) }}"
+                                       style="cursor: pointer; text-decoration: none;">
                                         @if (!empty($category->image))
                                             <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/category/'.$category->image)}}" alt="menu" data-wow-delay=".5s">
                                         @endif
@@ -68,67 +70,10 @@
                                     @endforeach
                                 </div>
                                 
-
-                                <div class="row justify-content-center">
-
-                                    {{-- Loader --}}
-                                    <div class="food-items-loader">
-                                        <img src="{{ asset('assets/admin/img/loader.gif') }}" alt="">
-                                    </div>
-                                    {{-- Loader --}}  
-
-                                    @if($category->products()->where('status', 1)->count() > 0)
-                                    @foreach ($category->products()->where('status', 1)->get() as $product)
-                                    <div class="col-lg-6">
-                                        <div class="food-menu-items">
-
-                                            <div class="single-menu-item mt-30 sub{{$product->subcategory_id}}">
-                                                <div class="item-details">
-                                                    <div class="menu-thumb">
-                                                        <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}" alt="menu" data-wow-delay=".5s">
-                                                        <div class="thumb-overlay">
-                                                            <a href="{{route('front.product.details',[$product->slug,$product->id])}}"><i class="flaticon-add"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="menu-content ml-30">
-                                                        <a class="title" href="{{route('front.product.details',[$product->slug,$product->id])}}">{{convertUtf8($product->title)}}</a>
-                                                        <p>{{convertUtf8(strlen($product->summary)) > 70 ? substr(convertUtf8($product->summary), 0, 70) . '...' : convertUtf8($product->summary)}} </p>
-                                                    </div>
-                                                </div>
-                                                <div class="menu-price-btn">
-                                                    <a class="cart-link d-md-none d-block btn mobile"
-                                                    data-product="{{ $product }}"
-                                                    data-href="{{ route('add.cart', $product->id) }}">+</a>
-                                                    <a class="cart-link d-none d-md-block"
-                                                        data-product="{{ $product }}"
-                                                        data-href="{{ route('add.cart', $product->id) }}">{{ __('Add to Cart') }}</a>
-
-                                                    <span>{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{convertUtf8($product->current_price)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
-                                                    </span>
-                                                    @if(convertUtf8($product->previous_price))
-                                                    <del>  {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{convertUtf8($product->previous_price)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}</del>
-                                                    @endif
-                                                </div>
-                                                @if ($product->is_special == 1)
-                                                    <div class="flag flag-2"><span>{{__('Special')}}</span></div>
-                                                @endif
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                    @else
-                                    <div class="col-lg-12 bg-light py-5 mt-4">
-                                        <h4 class="text-center">{{__('Product Not Found')}}</h4>
-                                    </div>
-                                    @endif
-                                </div>
+                                <!-- Category content area - Products removed, showing only category info -->
+                              
                             </div>
                             @endforeach
-
-
-
                         </div>
                     </div>
                 </div>
@@ -158,7 +103,9 @@
                             <ul class="nav nav-pills d-flex justify-content-center" id="pills-tab" role="tablist">
                                 @foreach ($categories as $keys => $category)
                                 <li class="nav-item">
-                                    <a class="nav-link {{$keys == 0 ? 'active' : ''}}" id="{{convertUtf8($category->slug)}}-tab" data-toggle="pill" href="#{{convertUtf8($category->slug)}}" role="tab" aria-controls="{{convertUtf8($category->slug)}}" aria-selected="true">
+                                    <a class="nav-link {{$keys == 0 ? 'active' : ''}}" 
+                                       href="{{ route('front.items', ['search' => '', 'minprice' => '0', 'maxprice' => '16.00', 'category_id' => $category->id, 'subcategory_id' => '', 'type' => 'new', 'review' => '']) }}"
+                                       style="cursor: pointer; text-decoration: none;">
                                         @if (!empty($category->image))
                                             <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/category/'.$category->image)}}" alt="menu" data-wow-delay=".5s">
                                         @endif
@@ -182,65 +129,28 @@
                                         <button class="button" data-filter=".sub{{$subcat->id}}">{{$subcat->name}}</button>
                                     @endforeach
                                 </div>
-                                <div class="food-menu-items menu-2">
-
-                                    {{-- Loader --}}
-                                    <div class="food-items-loader">
-                                        <img src="{{ asset('assets/admin/img/loader.gif') }}" alt="">
-                                    </div>
-                                    {{-- Loader --}}  
-                                    
-                                    @if($category->products()->where('status', 1)->count() > 0)
-                                    @foreach ($category->products()->where('status', 1)->get() as $product)
-                                    <div class="single-menu-item mt-30 sub{{$product->subcategory_id}}">
-                                        <div class="menu-thumb">
-                                            <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}" alt="menu" data-wow-delay=".5s">
-                                            <div class="thumb-overlay">
-                                                <a href="{{route('front.product.details',[$product->slug,$product->id])}}"><i class="flaticon-add"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="menu-content ml-30">
-                                            <a class="title" href="{{route('front.product.details',[$product->slug,$product->id])}}">{{convertUtf8($product->title)}}</a>
-                                            <p>{{convertUtf8(strlen($product->summary)) > 180 ? convertUtf8(substr($product->summary, 0, 180)) . '...' : convertUtf8($product->summary)}} </p>
-                                        </div>
-                                        <div class="menu-price-btn menu-2">
-                                            <span>{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{convertUtf8($product->current_price)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
-                                            </span>
-                                            @if(convertUtf8($product->previous_price))
-                                                <del>  {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{convertUtf8($product->previous_price)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}</del>
+                                
+                                <!-- Category content area - Products removed, showing only category info -->
+                                <div class="row justify-content-center mt-4">
+                                    <div class="col-lg-8">
+                                        <div class="category-info text-center">
+                                            <h4>{{convertUtf8($category->name)}}</h4>
+                                            <p>{{__('This category contains')}} {{$category->products->count()}} {{__('items')}}</p>
+                                            @if($category->subcategories->count() > 0)
+                                                <p>{{__('Subcategories')}}: {{$category->subcategories->count()}}</p>
                                             @endif
-                                            <a class="cart-link d-md-none d-block btn mobile"
-                                            data-product="{{ $product }}"
-                                            data-href="{{ route('add.cart', $product->id) }}">+</a>
-                                            <a class="cart-link d-none d-md-block"
-                                                data-product="{{ $product }}"
-                                                data-href="{{ route('add.cart', $product->id) }}">{{ __('Add to Cart') }}</a>
                                         </div>
-                                        @if ($product->is_special == 1)
-                                            <div class="flag flag-2"><span>{{__('Special')}}</span></div>
-                                        @endif
                                     </div>
-                                    @endforeach
-                                    @else
-                                        <div class="col-lg-12 bg-light py-5 mt-4">
-                                            <h4 class="text-center">{{__('Product Not Found')}}</h4>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
     @endif
 
     <!--====== FOOD MENU PART ENDS ======-->
 
-
-    {{-- Variation Modal Starts --}}
-    @include('front.partials.variation-modal')
-    {{-- Variation Modal Ends --}}
 @endsection

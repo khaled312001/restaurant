@@ -41,7 +41,7 @@
 
                                     @guest
                                         <ul class="login">
-                                            <li><a href="{{ route('user.login') }}">{{ __('Login') }}</a></li>
+                                            <li><a href="{{ route('user.login') }}">{{ __('Se connecter') }}</a></li>
                                         </ul>
                                     @endguest
                                     @auth

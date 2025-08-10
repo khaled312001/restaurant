@@ -618,7 +618,7 @@
           @elseif(request()->path() == 'admin/mail-from-admin') active
           @elseif(request()->path() == 'admin/mail-to-admin') active
           @elseif(request()->path() == 'admin/email-templates') active
-          @elseif(request()->path() == 'admin/themes') active
+          {{-- @elseif(request()->path() == 'admin/themes') active --}}
           @elseif(request()->routeIs('admin.product.tags')) active
           @elseif(request()->routeIs('admin.email.editTemplate')) active @endif">
                         <a data-toggle="collapse" href="#basic">
@@ -628,7 +628,7 @@
                         </a>
                         <div class="collapse
             @if (request()->path() == 'admin/favicon') show
-            @elseif(request()->path() == 'admin/themes') show
+            {{-- @elseif(request()->path() == 'admin/themes') show --}}
             @elseif(request()->path() == 'admin/logo') show
             @elseif(request()->path() == 'admin/preloader') show
             @elseif(request()->path() == 'admin/basicinfo') show
@@ -652,11 +652,11 @@
                             <ul class="nav nav-collapse">
 
                                 {{-- -Themes- --}}
-                                <li class="@if (request()->path() == 'admin/themes') active @endif">
+                                {{-- <li class="@if (request()->path() == 'admin/themes') active @endif">
                                     <a href="{{ route('admin.themes') . '?language=' . $default->code }}">
                                         <span class="sub-item">Themes</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 {{-- -Themes- --}}
 
                                 <li class="@if (request()->path() == 'admin/favicon') active @endif">

@@ -31,7 +31,11 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/gallery', 'Front\FrontendController@gallery')->name('front.gallery');
     Route::get('/checkout/payment/{slug1}/{slug2}', 'Front\FrontendController@loadpayment')->name('front.load.payment');
 
-
+    // Nouvelles routes pour les catégories spécifiques
+    Route::get('/menu/sandwichs', 'Front\ProductController@sandwichesMenus')->name('front.sandwiches');
+    Route::get('/menu/menus', 'Front\ProductController@sandwichesMenus')->name('front.menus');
+    Route::get('/menu/tacos', 'Front\ProductController@tacos')->name('front.tacos');
+    Route::get('/menu/kebab-galette', 'Front\ProductController@kebabGalette')->name('front.kebabGalette');
 
     Route::get('/team', 'Front\FrontendController@team')->name('front.team');
     Route::get('/career', 'Front\FrontendController@career')->name('front.career');

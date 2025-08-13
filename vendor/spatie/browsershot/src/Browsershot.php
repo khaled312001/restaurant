@@ -30,6 +30,7 @@ class Browsershot
     protected $scale = null;
     protected $screenshotType = 'png';
     protected $screenshotQuality = null;
+    protected $taggedPdf = false;
     protected $temporaryHtmlDirectory;
     protected $timeout = 60;
     protected $transparentBackground = false;
@@ -41,33 +42,28 @@ class Browsershot
     protected $writeOptionsToFile = false;
     protected $chromiumArguments = [];
 
+    /**
+     * @var ChromiumResult|null
+     */
+    protected ChromiumResult|null $chromiumResult = null;
+
     /** @var \Spatie\Image\Manipulations */
     protected $imageManipulations;
 
     public const POLLING_REQUEST_ANIMATION_FRAME = 'raf';
     public const POLLING_MUTATION = 'mutation';
 
-    /**
-     * @param string $url
-     *
-     * @return static
-     */
-    public static function url(string $url)
+    public static function url(string $url): static
     {
         return (new static())->setUrl($url);
     }
 
-    /**
-     * @param string $html
-     *
-     * @return static
-     */
-    public static function html(string $html)
+    public static function html(string $html): static
     {
         return (new static())->setHtml($html);
     }
 
-    public static function htmlFromFilePath(string $filePath): self
+    public static function htmlFromFilePath(string $filePath): static
     {
         return (new static())->setHtmlFromFilePath($filePath);
     }
@@ -241,6 +237,17 @@ class Browsershot
         return $this->setOption('function', $function);
     }
 
+    public function waitForSelector(string $selector, array $options = [])
+    {
+        $this->setOption('waitForSelector', $selector);
+
+        if (! empty($options)) {
+            $this->setOption('waitForSelectorOptions', $options);
+        }
+
+        return $this;
+    }
+
     public function setUrl(string $url)
     {
         if (Helpers::stringStartsWith(strtolower($url), 'file://')) {
@@ -368,6 +375,13 @@ class Browsershot
     public function transparentBackground()
     {
         $this->transparentBackground = true;
+
+        return $this;
+    }
+
+    public function taggedPdf()
+    {
+        $this->taggedPdf = true;
 
         return $this;
     }
@@ -590,23 +604,31 @@ class Browsershot
     public function bodyHtml(): string
     {
         $command = $this->createBodyHtmlCommand();
+        $html = $this->callBrowser($command);
 
-        return $this->callBrowser($command);
+        $this->cleanupTemporaryHtmlFile();
+
+        return $html;
     }
 
     public function base64Screenshot(): string
     {
         $command = $this->createScreenshotCommand();
+        $encodedImage = $this->callBrowser($command);
 
-        return $this->callBrowser($command);
+        $this->cleanupTemporaryHtmlFile();
+
+        return $encodedImage;
     }
 
     public function screenshot(): string
     {
         if ($this->imageManipulations->isEmpty()) {
-            $command = $this->createScreenshotCommand();
 
+            $command = $this->createScreenshotCommand();
             $encodedImage = $this->callBrowser($command);
+
+            $this->cleanupTemporaryHtmlFile();
 
             return base64_decode($encodedImage);
         }
@@ -625,18 +647,16 @@ class Browsershot
     public function pdf(): string
     {
         $command = $this->createPdfCommand();
-
-        $encoded_pdf = $this->callBrowser($command);
+        $encodedPdf = $this->callBrowser($command);
 
         $this->cleanupTemporaryHtmlFile();
 
-        return base64_decode($encoded_pdf);
+        return base64_decode($encodedPdf);
     }
 
     public function savePdf(string $targetPath)
     {
         $command = $this->createPdfCommand($targetPath);
-
         $output = $this->callBrowser($command);
 
         $this->cleanupTemporaryHtmlFile();
@@ -649,39 +669,118 @@ class Browsershot
     public function base64pdf(): string
     {
         $command = $this->createPdfCommand();
+        $encodedPdf = $this->callBrowser($command);
 
-        return $this->callBrowser($command);
+        $this->cleanupTemporaryHtmlFile();
+
+        return $encodedPdf;
     }
 
     public function evaluate(string $pageFunction): string
     {
         $command = $this->createEvaluateCommand($pageFunction);
+        $evaluation = $this->callBrowser($command);
 
-        return $this->callBrowser($command);
-    }
+        $this->cleanupTemporaryHtmlFile();
 
-    public function triggeredRequests(): array
-    {
-        $command = $this->createTriggeredRequestsListCommand();
-
-        return json_decode($this->callBrowser($command), true);
+        return $evaluation;
     }
 
     /**
-     * @return array{type: string, message: string, location:array}
+     * @return null|array{url: string}
      */
-    public function consoleMessages(): array
+    public function triggeredRequests(): array|null
     {
-        $command = $this->createConsoleMessagesCommand();
+        $requests = $this->chromiumResult?->getRequestsList();
 
-        return json_decode($this->callBrowser($command), true);
+        if ($requests) {
+            return $requests;
+        }
+
+        $command = $this->createTriggeredRequestsListCommand();
+        $this->callBrowser($command);
+
+        $this->cleanupTemporaryHtmlFile();
+
+        return $this->chromiumResult?->getRequestsList();
     }
 
-    public function failedRequests(): array
+    /**
+     * @return null|array{url: string, status: int, statusText: string, headers: array}
+     */
+    public function redirectHistory(): array|null
     {
+        $redirectHistory = $this->chromiumResult?->getredirectHistory();
+
+        if ($redirectHistory) {
+            return $redirectHistory;
+        }
+
+        $command = $this->createRedirectHistoryCommand();
+
+        $this->callBrowser($command);
+
+        return $this->chromiumResult?->getredirectHistory();
+    }
+
+    /**
+     * @return null|array{type: string, message: string, location:array}
+     */
+    public function consoleMessages(): array|null
+    {
+        $messages = $this->chromiumResult?->getConsoleMessages();
+
+        if ($messages) {
+            return $messages;
+        }
+
+        $command = $this->createConsoleMessagesCommand();
+
+        $this->callBrowser($command);
+
+        $this->cleanupTemporaryHtmlFile();
+
+        return $this->chromiumResult?->getConsoleMessages();
+    }
+
+    /**
+     * @return null|array{status: int, url: string}
+     */
+    public function failedRequests(): array|null
+    {
+        $requests = $this->chromiumResult?->getFailedRequests();
+
+        if ($requests) {
+            return $requests;
+        }
+
         $command = $this->createFailedRequestsCommand();
 
-        return json_decode($this->callBrowser($command), true);
+        $this->callBrowser($command);
+
+        $this->cleanupTemporaryHtmlFile();
+
+        return $this->chromiumResult?->getFailedRequests();
+    }
+
+    /**
+     * @return null|array{name: string, message: string}
+     */
+    public function pageErrors(): array|null
+    {
+        $pageErrors = $this->chromiumResult?->getPageErrors();
+
+        if ($pageErrors) {
+            return $pageErrors;
+        }
+
+        $command = $this->createPageErrorsCommand();
+
+        $this->callBrowser($command);
+
+        $this->cleanupTemporaryHtmlFile();
+
+        return $this->chromiumResult?->getPageErrors();
     }
 
     public function applyManipulations(string $imagePath)
@@ -742,6 +841,10 @@ class Browsershot
             $command['options']['omitBackground'] = true;
         }
 
+        if ($this->taggedPdf) {
+            $command['options']['tagged'] = true;
+        }
+
         if ($this->scale) {
             $command['options']['scale'] = $this->scale;
         }
@@ -769,6 +872,15 @@ class Browsershot
         return $this->createCommand($url, 'requestsList');
     }
 
+    public function createRedirectHistoryCommand(): array
+    {
+        $url = $this->html
+            ? $this->createTemporaryHtmlFile()
+            : $this->url;
+
+        return $this->createCommand($url, 'redirectHistory');
+    }
+
     public function createConsoleMessagesCommand(): array
     {
         $url = $this->html
@@ -785,6 +897,15 @@ class Browsershot
             : $this->url;
 
         return $this->createCommand($url, 'failedRequests');
+    }
+
+    public function createPageErrorsCommand(): array
+    {
+        $url = $this->html
+            ? $this->createTemporaryHtmlFile()
+            : $this->url;
+
+        return $this->createCommand($url, 'pageErrors');
     }
 
     public function setRemoteInstance(string $ip = '127.0.0.1', int $port = 9222): self
@@ -891,20 +1012,30 @@ class Browsershot
     {
         $fullCommand = $this->getFullCommand($command);
 
-        $process = Process::fromShellCommandline($fullCommand)->setTimeout($this->timeout);
+        $process = $this->isWindows() ? new Process($fullCommand) : Process::fromShellCommandline($fullCommand);
+
+        $process->setTimeout($this->timeout);
+
+        // clear additional output data fetched on last browser request
+        $this->chromiumResult = null;
 
         $process->run();
 
+        $rawOutput = rtrim($process->getOutput());
+
+        $this->chromiumResult = new ChromiumResult(json_decode($rawOutput, true));
+
         if ($process->isSuccessful()) {
-            return rtrim($process->getOutput());
+            return $this->chromiumResult?->getResult();
         }
 
         $this->cleanupTemporaryOptionsFile();
         $process->clearOutput();
         $exitCode = $process->getExitCode();
+        $errorOutput = $process->getErrorOutput();
 
         if ($exitCode === 3) {
-            throw new UnsuccessfulResponse($this->url, $process->getErrorOutput());
+            throw new UnsuccessfulResponse($this->url, $errorOutput ?? '');
         }
 
         if ($exitCode === 2) {
@@ -918,19 +1049,18 @@ class Browsershot
     {
         $nodeBinary = $this->nodeBinary ?: 'node';
 
-        $binPath = $this->binPath ?: __DIR__.'/../bin/browser.js';
+        $binPath = $this->binPath ?: __DIR__.'/../bin/browser.cjs';
 
         $optionsCommand = $this->getOptionsCommand(json_encode($command));
 
         if ($this->isWindows()) {
-            $fullCommand =
-                $nodeBinary.' '
-                .escapeshellarg($binPath).' '
-                .'"'
-                .$optionsCommand
-                .'"';
-
-            return escapeshellcmd($fullCommand);
+            // on Windows we will let Symfony/process handle the command escaping
+            // by passing an array to the process instance
+            return [
+                $nodeBinary,
+                $binPath,
+                $optionsCommand,
+            ];
         }
 
         $setIncludePathCommand = "PATH={$this->includePath}";
@@ -965,7 +1095,7 @@ class Browsershot
         }
 
         if ($this->isWindows()) {
-            return str_replace('"', '\"', $command);
+            return $command;
         }
 
         return escapeshellarg($command);
@@ -1004,6 +1134,11 @@ class Browsershot
             ->pages($initialPage.'-');
     }
 
+    public function getOutput(): ChromiumResult|null
+    {
+        return $this->chromiumResult;
+    }
+
     private function isWindows()
     {
         return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
@@ -1014,5 +1149,10 @@ class Browsershot
         $url = $this->html ? $this->createTemporaryHtmlFile() : $this->url;
 
         return $url;
+    }
+
+    public function newHeadless(): self
+    {
+        return $this->setOption('newHeadless', true);
     }
 }

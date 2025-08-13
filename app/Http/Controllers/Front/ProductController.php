@@ -41,11 +41,60 @@ class ProductController extends Controller
 
         $lang_id = $currentLang->id;
 
-        $data['categories'] = Pcategory::where('status', 1)->where('language_id', $currentLang->id)->get();
+        // Filtrer uniquement les 6 catégories spécifiques du menu
+        $data['categories'] = Pcategory::where('status', 1)
+            ->where('language_id', $currentLang->id)
+            ->whereIn('name', ['Assiettes', 'Sandwichs', 'Menus', 'Salade', 'Menus Enfant', 'Nos Box'])
+            ->orderBy('id')
+            ->get();
 
         $data['products'] = Product::where('language_id', $lang_id)->where('status', 1)->paginate(10);
 
         return view('front.multipurpose.product.product', $data);
+    }
+
+
+
+    public function sandwichesMenus(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.sandwiches_menus', $data);
+    }
+
+    public function tacos(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.tacos', $data);
+    }
+
+    public function kebabGalette(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.kebab_galette', $data);
     }
 
     public function productDetails($slug, $id)

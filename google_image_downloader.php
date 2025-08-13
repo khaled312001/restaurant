@@ -55,8 +55,10 @@ $config = [
     ],
     'search_settings' => [
         'max_retries' => 3,
-        'timeout' => 30,
-        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'timeout' => 60,
+        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'delay_between_requests' => 1.0, // seconds
+        'max_concurrent_requests' => 1
     ]
 ];
 
@@ -70,6 +72,12 @@ class GoogleImageDownloader {
     public function __construct($config) {
         $this->config = $config;
         $this->log_file = $config['directories']['logs'] . 'google_image_downloader.log';
+        
+        // Check if cURL is available
+        if (!function_exists('curl_init')) {
+            throw new Exception("cURL extension is required but not available");
+        }
+        
         $this->setupDirectories();
         $this->connectDatabase();
     }
@@ -176,8 +184,8 @@ class GoogleImageDownloader {
     /**
      * Search for images using multiple sources
      */
-    private function searchForImage($query) {
-        $this->log("Searching for image: {$query}");
+    private function searchForImage($query, $retry_count = 0) {
+        $this->log("Searching for image: {$query}" . ($retry_count > 0 ? " (retry {$retry_count})" : ""));
         
         // Try Unsplash first (free, no API key required for basic usage)
         $image_url = $this->searchUnsplash($query);
@@ -203,7 +211,30 @@ class GoogleImageDownloader {
             return $image_url;
         }
         
+        // Retry with modified query if we haven't exceeded max retries
+        if ($retry_count < $this->config['search_settings']['max_retries']) {
+            $this->log("Retrying with simplified query...", 'INFO');
+            $simplified_query = $this->simplifyQuery($query);
+            if ($simplified_query !== $query) {
+                return $this->searchForImage($simplified_query, $retry_count + 1);
+            }
+        }
+        
         return null;
+    }
+    
+    /**
+     * Simplify search query for better results
+     */
+    private function simplifyQuery($query) {
+        // Remove common food terms that might be too generic
+        $generic_terms = ['food', 'meal', 'dish', 'cuisine'];
+        $words = explode(' ', $query);
+        $filtered_words = array_filter($words, function($word) use ($generic_terms) {
+            return !in_array(strtolower($word), $generic_terms);
+        });
+        
+        return implode(' ', $filtered_words);
     }
     
     /**
@@ -214,23 +245,46 @@ class GoogleImageDownloader {
             $url = str_replace('{query}', urlencode($query), $this->config['image_sources']['unsplash']['base_url']);
             $url .= $this->config['image_sources']['unsplash']['query_params'];
             
-            $context = stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'header' => [
-                        'User-Agent: ' . $this->config['search_settings']['user_agent'],
-                        'Accept: application/json'
-                    ],
-                    'timeout' => $this->config['search_settings']['timeout']
-                ]
+            $ch = curl_init();
+            curl_setopt_array($ch, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => $this->config['search_settings']['timeout'],
+                CURLOPT_USERAGENT => $this->config['search_settings']['user_agent'],
+                CURLOPT_HTTPHEADER => [
+                    'Accept: application/json',
+                    'Accept-Language: en-US,en;q=0.9,fr;q=0.8'
+                ],
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false
             ]);
             
-            $response = file_get_contents($url, false, $context);
-            if ($response === false) {
+            $response = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error = curl_error($ch);
+            curl_close($ch);
+            
+            if ($error) {
+                $this->log("Unsplash cURL error: {$error}", 'WARNING');
+                return null;
+            }
+            
+            if ($http_code !== 200) {
+                $this->log("Unsplash HTTP error: {$http_code}", 'WARNING');
+                return null;
+            }
+            
+            if (empty($response)) {
+                $this->log("Empty response from Unsplash", 'WARNING');
                 return null;
             }
             
             $data = json_decode($response, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->log("JSON decode error: " . json_last_error_msg(), 'WARNING');
+                return null;
+            }
+            
             if (isset($data['results'][0]['urls']['regular'])) {
                 return $data['results'][0]['urls']['regular'];
             }
@@ -250,23 +304,46 @@ class GoogleImageDownloader {
             $url = str_replace('{query}', urlencode($query), $this->config['image_sources']['pexels']['base_url']);
             $url .= $this->config['image_sources']['pexels']['query_params'];
             
-            $context = stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'header' => [
-                        'User-Agent: ' . $this->config['search_settings']['user_agent'],
-                        'Accept: application/json'
-                    ],
-                    'timeout' => $this->config['search_settings']['timeout']
-                ]
+            $ch = curl_init();
+            curl_setopt_array($ch, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => $this->config['search_settings']['timeout'],
+                CURLOPT_USERAGENT => $this->config['search_settings']['user_agent'],
+                CURLOPT_HTTPHEADER => [
+                    'Accept: application/json',
+                    'Accept-Language: en-US,en;q=0.9,fr;q=0.8'
+                ],
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false
             ]);
             
-            $response = file_get_contents($url, false, $context);
-            if ($response === false) {
+            $response = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error = curl_error($ch);
+            curl_close($ch);
+            
+            if ($error) {
+                $this->log("Pexels cURL error: {$error}", 'WARNING');
+                return null;
+            }
+            
+            if ($http_code !== 200) {
+                $this->log("Pexels HTTP error: {$http_code}", 'WARNING');
+                return null;
+            }
+            
+            if (empty($response)) {
+                $this->log("Empty response from Pexels", 'WARNING');
                 return null;
             }
             
             $data = json_decode($response, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->log("JSON decode error: " . json_last_error_msg(), 'WARNING');
+                return null;
+            }
+            
             if (isset($data['photos'][0]['src']['large'])) {
                 return $data['photos'][0]['src']['large'];
             }
@@ -286,23 +363,46 @@ class GoogleImageDownloader {
             $url = str_replace('{query}', urlencode($query), $this->config['image_sources']['pixabay']['base_url']);
             $url .= $this->config['image_sources']['pixabay']['query_params'];
             
-            $context = stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'header' => [
-                        'User-Agent: ' . $this->config['search_settings']['user_agent'],
-                        'Accept: application/json'
-                    ],
-                    'timeout' => $this->config['search_settings']['timeout']
-                ]
+            $ch = curl_init();
+            curl_setopt_array($ch, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => $this->config['search_settings']['timeout'],
+                CURLOPT_USERAGENT => $this->config['search_settings']['user_agent'],
+                CURLOPT_HTTPHEADER => [
+                    'Accept: application/json',
+                    'Accept-Language: en-US,en;q=0.9,fr;q=0.8'
+                ],
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false
             ]);
             
-            $response = file_get_contents($url, false, $context);
-            if ($response === false) {
+            $response = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error = curl_error($ch);
+            curl_close($ch);
+            
+            if ($error) {
+                $this->log("Pixabay cURL error: {$error}", 'WARNING');
+                return null;
+            }
+            
+            if ($http_code !== 200) {
+                $this->log("Pixabay HTTP error: {$http_code}", 'WARNING');
+                return null;
+            }
+            
+            if (empty($response)) {
+                $this->log("Empty response from Pixabay", 'WARNING');
                 return null;
             }
             
             $data = json_decode($response, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->log("JSON decode error: " . json_last_error_msg(), 'WARNING');
+                return null;
+            }
+            
             if (isset($data['hits'][0]['webformatURL'])) {
                 return $data['hits'][0]['webformatURL'];
             }
@@ -330,19 +430,48 @@ class GoogleImageDownloader {
         try {
             $this->log("Downloading image from: {$image_url}");
             
-            $context = stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'header' => [
-                        'User-Agent: ' . $this->config['search_settings']['user_agent']
-                    ],
-                    'timeout' => $this->config['search_settings']['timeout']
+            // Use cURL for more reliable downloads
+            $ch = curl_init();
+            curl_setopt_array($ch, [
+                CURLOPT_URL => $image_url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_MAXREDIRS => 5,
+                CURLOPT_TIMEOUT => $this->config['search_settings']['timeout'],
+                CURLOPT_USERAGENT => $this->config['search_settings']['user_agent'],
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false,
+                CURLOPT_HTTPHEADER => [
+                    'Accept: image/*',
+                    'Accept-Language: en-US,en;q=0.9,fr;q=0.8',
+                    'Cache-Control: no-cache'
                 ]
             ]);
             
-            $image_data = file_get_contents($image_url, false, $context);
-            if ($image_data === false) {
-                throw new Exception("Failed to download image");
+            $image_data = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error = curl_error($ch);
+            curl_close($ch);
+            
+            if ($error) {
+                throw new Exception("cURL error: {$error}");
+            }
+            
+            if ($http_code !== 200) {
+                throw new Exception("HTTP error: {$http_code}");
+            }
+            
+            if (empty($image_data)) {
+                throw new Exception("Empty image data received");
+            }
+            
+            // Verify it's actually an image
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime_type = finfo_buffer($finfo, $image_data);
+            finfo_close($finfo);
+            
+            if (!str_starts_with($mime_type, 'image/')) {
+                throw new Exception("Invalid image type: {$mime_type}");
             }
             
             // Generate filename
@@ -432,11 +561,15 @@ class GoogleImageDownloader {
                 }
                 
                 // Small delay to be respectful to image services
-                usleep(500000); // 0.5 seconds
+                $delay = $this->config['search_settings']['delay_between_requests'] * 1000000; // Convert to microseconds
+                usleep($delay);
                 
             } catch (Exception $e) {
                 $this->log("Error processing meal {$meal['title']}: " . $e->getMessage(), 'ERROR');
                 $this->error_count++;
+                
+                // Add extra delay on error to avoid overwhelming the service
+                sleep(2);
             }
         }
         

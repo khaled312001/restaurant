@@ -477,3 +477,1991 @@
 [2025-08-10 02:00:43] [ERROR] Image download error: Failed to download image
 [2025-08-10 02:00:43] [ERROR] Failed to download image for: LE BIG CHÈVRE (POULET OU BŒUF)
 [2025-08-10 02:00:43] [INFO] Process completed. Success: 0, Errors: 79
+[2025-08-12 22:54:41] [INFO] Database connection established successfully
+[2025-08-12 22:54:41] [INFO] Starting image download process for all meals...
+[2025-08-12 22:54:41] [INFO] Found 79 meals to process
+[2025-08-12 22:54:41] [INFO] Processing meal: CROUSTY GOURMAND BŒUF (ID: 69)
+[2025-08-12 22:54:41] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 22:54:41] [INFO] Searching for image: CROUSTY GOURMAND B  UF Sandwichs food meal dish cuisine
+[2025-08-12 22:54:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:54:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+B++UF+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:54:47] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:54:47] [ERROR] Failed to download image for: CROUSTY GOURMAND BŒUF
+[2025-08-12 22:54:47] [INFO] Processing meal: CROUSTY GOURMAND CHICKEN (ID: 70)
+[2025-08-12 22:54:47] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 22:54:47] [INFO] Searching for image: CROUSTY GOURMAND CHICKEN Sandwichs food meal dish cuisine
+[2025-08-12 22:54:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:54:52] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+CHICKEN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:54:53] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:54:53] [ERROR] Failed to download image for: CROUSTY GOURMAND CHICKEN
+[2025-08-12 22:54:53] [INFO] Processing meal: DOUBLE CHEEZ BURGER (ID: 71)
+[2025-08-12 22:54:53] [INFO] Backed up existing image: 1754784323_DOUBLE_CHEEZ_BURGER.png
+[2025-08-12 22:54:53] [INFO] Searching for image: DOUBLE CHEEZ BURGER Sandwichs food meal dish cuisine
+[2025-08-12 22:54:54] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:54:57] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEEZ+BURGER+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:54:58] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:54:58] [ERROR] Failed to download image for: DOUBLE CHEEZ BURGER
+[2025-08-12 22:54:58] [INFO] Processing meal: Cheese Burger (ID: 72)
+[2025-08-12 22:54:58] [INFO] Backed up existing image: 1754784323_Cheese_Burger.png
+[2025-08-12 22:54:58] [INFO] Searching for image: Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 22:54:59] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:03] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:09] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:09] [ERROR] Failed to download image for: Cheese Burger
+[2025-08-12 22:55:09] [INFO] Processing meal: Maxi Galette Kebab (ID: 73)
+[2025-08-12 22:55:09] [INFO] Backed up existing image: 1754784323_Maxi_Galette_Kebab.png
+[2025-08-12 22:55:09] [INFO] Searching for image: Maxi Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 22:55:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:14] [ERROR] Failed to download image for: Maxi Galette Kebab
+[2025-08-12 22:55:14] [INFO] Processing meal: Chicken Burger (ID: 74)
+[2025-08-12 22:55:14] [INFO] Backed up existing image: 1754784323_Chicken_Burger.png
+[2025-08-12 22:55:14] [INFO] Searching for image: Chicken Burger Sandwichs food meal dish cuisine
+[2025-08-12 22:55:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Chicken+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:20] [ERROR] Failed to download image for: Chicken Burger
+[2025-08-12 22:55:20] [INFO] Processing meal: Galette Kebab (ID: 75)
+[2025-08-12 22:55:20] [INFO] Backed up existing image: 1754784323_Galette_Kebab.png
+[2025-08-12 22:55:21] [INFO] Searching for image: Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 22:55:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:25] [ERROR] Failed to download image for: Galette Kebab
+[2025-08-12 22:55:25] [INFO] Processing meal: Maxi Cheese Burger (ID: 76)
+[2025-08-12 22:55:25] [INFO] Backed up existing image: 1754784323_Maxi_Cheese_Burger.png
+[2025-08-12 22:55:25] [INFO] Searching for image: Maxi Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 22:55:26] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:29] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:30] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:30] [ERROR] Failed to download image for: Maxi Cheese Burger
+[2025-08-12 22:55:30] [INFO] Processing meal: Maxi Tacos 999g (ID: 77)
+[2025-08-12 22:55:30] [INFO] Backed up existing image: 1754784323_Maxi_Tacos_999g.png
+[2025-08-12 22:55:30] [INFO] Searching for image: Maxi Tacos 999g Sandwichs food meal dish cuisine
+[2025-08-12 22:55:31] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:34] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Tacos+999g+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:35] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:35] [ERROR] Failed to download image for: Maxi Tacos 999g
+[2025-08-12 22:55:35] [INFO] Processing meal: Sandwich Américain (ID: 78)
+[2025-08-12 22:55:35] [INFO] Backed up existing image: 1754784323_Sandwich_Am__ricain.png
+[2025-08-12 22:55:35] [INFO] Searching for image: Sandwich Am  ricain Sandwichs food meal dish cuisine
+[2025-08-12 22:55:36] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:39] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Am++ricain+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:40] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:40] [ERROR] Failed to download image for: Sandwich Américain
+[2025-08-12 22:55:40] [INFO] Processing meal: Sandwich KEBAB (ID: 79)
+[2025-08-12 22:55:40] [INFO] Backed up existing image: 1754784324_Sandwich_KEBAB.png
+[2025-08-12 22:55:40] [INFO] Searching for image: Sandwich KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 22:55:41] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:45] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:45] [ERROR] Failed to download image for: Sandwich KEBAB
+[2025-08-12 22:55:45] [INFO] Processing meal: Sandwich Kofte (ID: 80)
+[2025-08-12 22:55:45] [INFO] Backed up existing image: 1754784324_Sandwich_Kofte.png
+[2025-08-12 22:55:45] [INFO] Searching for image: Sandwich Kofte Sandwichs food meal dish cuisine
+[2025-08-12 22:55:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:49] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Kofte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:50] [ERROR] Failed to download image for: Sandwich Kofte
+[2025-08-12 22:55:50] [INFO] Processing meal: Sandwich Maxi Kebab (ID: 81)
+[2025-08-12 22:55:50] [INFO] Backed up existing image: 1754784324_Sandwich_Maxi_Kebab.png
+[2025-08-12 22:55:50] [INFO] Searching for image: Sandwich Maxi Kebab Sandwichs food meal dish cuisine
+[2025-08-12 22:55:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:55:55] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Maxi+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:55:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:55:56] [ERROR] Failed to download image for: Sandwich Maxi Kebab
+[2025-08-12 22:55:56] [INFO] Processing meal: Sandwich Paninis (ID: 82)
+[2025-08-12 22:55:56] [INFO] Backed up existing image: 1754784324_Sandwich_Paninis.png
+[2025-08-12 22:55:56] [INFO] Searching for image: Sandwich Paninis Sandwichs food meal dish cuisine
+[2025-08-12 22:55:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:02] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Paninis+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:56:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:02] [ERROR] Failed to download image for: Sandwich Paninis
+[2025-08-12 22:56:02] [INFO] Processing meal: Tacos (ID: 83)
+[2025-08-12 22:56:02] [INFO] Backed up existing image: 1754784324_Tacos.png
+[2025-08-12 22:56:02] [INFO] Searching for image: Tacos Sandwichs food meal dish cuisine
+[2025-08-12 22:56:03] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:06] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:56:07] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:07] [ERROR] Failed to download image for: Tacos
+[2025-08-12 22:56:07] [INFO] Processing meal: Tacos Mixte (ID: 84)
+[2025-08-12 22:56:07] [INFO] Backed up existing image: 1754784324_Tacos_Mixte.png
+[2025-08-12 22:56:07] [INFO] Searching for image: Tacos Mixte Sandwichs food meal dish cuisine
+[2025-08-12 22:56:08] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Mixte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 22:56:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:14] [ERROR] Failed to download image for: Tacos Mixte
+[2025-08-12 22:56:14] [INFO] Processing meal: MENU CROUSTY GOURMAND BŒUF (ID: 85)
+[2025-08-12 22:56:14] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 22:56:14] [INFO] Searching for image: MENU CROUSTY GOURMAND B  UF Menus food meal dish cuisine
+[2025-08-12 22:56:14] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:19] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+B++UF+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:20] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND BŒUF
+[2025-08-12 22:56:20] [INFO] Processing meal: MENU CROUSTY GOURMAND CHICKEN (ID: 86)
+[2025-08-12 22:56:20] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 22:56:20] [INFO] Searching for image: MENU CROUSTY GOURMAND CHICKEN Menus food meal dish cuisine
+[2025-08-12 22:56:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:25] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+CHICKEN+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:26] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:26] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND CHICKEN
+[2025-08-12 22:56:26] [INFO] Processing meal: MENU Double CHEEZ (ID: 87)
+[2025-08-12 22:56:26] [INFO] Backed up existing image: 1754784324_MENU_Double_CHEEZ.png
+[2025-08-12 22:56:26] [INFO] Searching for image: MENU Double CHEEZ Menus food meal dish cuisine
+[2025-08-12 22:56:27] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:31] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+Double+CHEEZ+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:31] [ERROR] Failed to download image for: MENU Double CHEEZ
+[2025-08-12 22:56:31] [INFO] Processing meal: Menu Américain (ID: 88)
+[2025-08-12 22:56:31] [INFO] Backed up existing image: 1754784324_Menu_Am__ricain.png
+[2025-08-12 22:56:31] [INFO] Searching for image: Menu Am  ricain Menus food meal dish cuisine
+[2025-08-12 22:56:33] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:36] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Am++ricain+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:37] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:37] [ERROR] Failed to download image for: Menu Américain
+[2025-08-12 22:56:37] [INFO] Processing meal: Menu Cheese Burger (ID: 89)
+[2025-08-12 22:56:37] [INFO] Backed up existing image: 1754784324_Menu_Cheese_Burger.png
+[2025-08-12 22:56:37] [INFO] Searching for image: Menu Cheese Burger Menus food meal dish cuisine
+[2025-08-12 22:56:40] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:44] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:44] [ERROR] Failed to download image for: Menu Cheese Burger
+[2025-08-12 22:56:44] [INFO] Processing meal: Menu Chicken Burger (ID: 90)
+[2025-08-12 22:56:45] [INFO] Backed up existing image: 1754784324_Menu_Chicken_Burger.png
+[2025-08-12 22:56:45] [INFO] Searching for image: Menu Chicken Burger Menus food meal dish cuisine
+[2025-08-12 22:56:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:49] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Chicken+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:50] [ERROR] Failed to download image for: Menu Chicken Burger
+[2025-08-12 22:56:50] [INFO] Processing meal: Menu Galette Kebab (ID: 91)
+[2025-08-12 22:56:50] [INFO] Backed up existing image: 1754784324_Menu_Galette_Kebab.png
+[2025-08-12 22:56:50] [INFO] Searching for image: Menu Galette Kebab Menus food meal dish cuisine
+[2025-08-12 22:56:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:56:55] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 22:56:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:56:56] [ERROR] Failed to download image for: Menu Galette Kebab
+[2025-08-12 22:56:56] [INFO] Processing meal: Menu Kebab (ID: 92)
+[2025-08-12 22:56:56] [INFO] Backed up existing image: 1754784324_Menu_Kebab.png
+[2025-08-12 22:56:56] [INFO] Searching for image: Menu Kebab Menus food meal dish cuisine
+[2025-08-12 22:56:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:01] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:02] [ERROR] Failed to download image for: Menu Kebab
+[2025-08-12 22:57:02] [INFO] Processing meal: Menu Kofte (ID: 93)
+[2025-08-12 22:57:02] [INFO] Backed up existing image: 1754784324_Menu_Kofte.png
+[2025-08-12 22:57:02] [INFO] Searching for image: Menu Kofte Menus food meal dish cuisine
+[2025-08-12 22:57:03] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:07] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kofte+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:08] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:08] [ERROR] Failed to download image for: Menu Kofte
+[2025-08-12 22:57:08] [INFO] Processing meal: Menu Maxi Cheese Burger (ID: 94)
+[2025-08-12 22:57:08] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Cheese_Burger.png
+[2025-08-12 22:57:08] [INFO] Searching for image: Menu Maxi Cheese Burger Menus food meal dish cuisine
+[2025-08-12 22:57:09] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:14] [ERROR] Failed to download image for: Menu Maxi Cheese Burger
+[2025-08-12 22:57:14] [INFO] Processing meal: Menu Maxi Galette Kebab (ID: 95)
+[2025-08-12 22:57:14] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Galette_Kebab.png
+[2025-08-12 22:57:14] [INFO] Searching for image: Menu Maxi Galette Kebab Menus food meal dish cuisine
+[2025-08-12 22:57:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:21] [ERROR] Failed to download image for: Menu Maxi Galette Kebab
+[2025-08-12 22:57:21] [INFO] Processing meal: Menu Maxi Kebab (ID: 96)
+[2025-08-12 22:57:21] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Kebab.png
+[2025-08-12 22:57:21] [INFO] Searching for image: Menu Maxi Kebab Menus food meal dish cuisine
+[2025-08-12 22:57:22] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:30] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:31] [ERROR] Failed to download image for: Menu Maxi Kebab
+[2025-08-12 22:57:31] [INFO] Processing meal: Menu Maxi Tacos 999g (ID: 97)
+[2025-08-12 22:57:31] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Tacos_999g.png
+[2025-08-12 22:57:31] [INFO] Searching for image: Menu Maxi Tacos 999g Menus food meal dish cuisine
+[2025-08-12 22:57:32] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:36] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Tacos+999g+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:36] [ERROR] Failed to download image for: Menu Maxi Tacos 999g
+[2025-08-12 22:57:36] [INFO] Processing meal: Menu Paninis (ID: 98)
+[2025-08-12 22:57:36] [INFO] Backed up existing image: 1754784325_Menu_Paninis.png
+[2025-08-12 22:57:37] [INFO] Searching for image: Menu Paninis Menus food meal dish cuisine
+[2025-08-12 22:57:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Paninis+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:42] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:42] [ERROR] Failed to download image for: Menu Paninis
+[2025-08-12 22:57:42] [INFO] Processing meal: Menu Tacos (ID: 99)
+[2025-08-12 22:57:42] [INFO] Backed up existing image: 1754784325_Menu_Tacos.png
+[2025-08-12 22:57:42] [INFO] Searching for image: Menu Tacos Menus food meal dish cuisine
+[2025-08-12 22:57:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:47] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:47] [ERROR] Failed to download image for: Menu Tacos
+[2025-08-12 22:57:47] [INFO] Processing meal: Menu Tacos Mixte (ID: 100)
+[2025-08-12 22:57:47] [INFO] Backed up existing image: 1754784325_Menu_Tacos_Mixte.png
+[2025-08-12 22:57:47] [INFO] Searching for image: Menu Tacos Mixte Menus food meal dish cuisine
+[2025-08-12 22:57:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Mixte+Menus+food+meal+dish+cuisine
+[2025-08-12 22:57:52] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:52] [ERROR] Failed to download image for: Menu Tacos Mixte
+[2025-08-12 22:57:52] [INFO] Processing meal: Assiette KOBANE (kebab kofte tenders) (ID: 101)
+[2025-08-12 22:57:52] [INFO] Backed up existing image: 1754784325_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-12 22:57:52] [INFO] Searching for image: Assiette KOBANE  kebab kofte tenders Assiettes food meal dish cuisine
+[2025-08-12 22:57:53] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:57:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+KOBANE++kebab+kofte+tenders+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:57:57] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:57:57] [ERROR] Failed to download image for: Assiette KOBANE (kebab kofte tenders)
+[2025-08-12 22:57:57] [INFO] Processing meal: Assiette Kebab (ID: 102)
+[2025-08-12 22:57:57] [INFO] Backed up existing image: 1754784325_Assiette_Kebab.png
+[2025-08-12 22:57:57] [INFO] Searching for image: Assiette Kebab Assiettes food meal dish cuisine
+[2025-08-12 22:57:58] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:01] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kebab+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:03] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:03] [ERROR] Failed to download image for: Assiette Kebab
+[2025-08-12 22:58:03] [INFO] Processing meal: Assiette Kofte (ID: 103)
+[2025-08-12 22:58:03] [INFO] Backed up existing image: 1754784325_Assiette_Kofte.png
+[2025-08-12 22:58:03] [INFO] Searching for image: Assiette Kofte Assiettes food meal dish cuisine
+[2025-08-12 22:58:04] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:09] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kofte+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:09] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:09] [ERROR] Failed to download image for: Assiette Kofte
+[2025-08-12 22:58:09] [INFO] Processing meal: Assiette Poulet Crème (ID: 104)
+[2025-08-12 22:58:09] [INFO] Backed up existing image: 1754784325_Assiette_Poulet_Cr__me.png
+[2025-08-12 22:58:09] [INFO] Searching for image: Assiette Poulet Cr  me Assiettes food meal dish cuisine
+[2025-08-12 22:58:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Poulet+Cr++me+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:15] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:15] [ERROR] Failed to download image for: Assiette Poulet Crème
+[2025-08-12 22:58:15] [INFO] Processing meal: Assiette Saumon (ID: 105)
+[2025-08-12 22:58:15] [INFO] Backed up existing image: 1754784325_Assiette_Saumon.png
+[2025-08-12 22:58:15] [INFO] Searching for image: Assiette Saumon Assiettes food meal dish cuisine
+[2025-08-12 22:58:16] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:21] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Saumon+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:21] [ERROR] Failed to download image for: Assiette Saumon
+[2025-08-12 22:58:21] [INFO] Processing meal: Assiette Steak (ID: 106)
+[2025-08-12 22:58:22] [INFO] Backed up existing image: 1754784325_Assiette_Steak.png
+[2025-08-12 22:58:22] [INFO] Searching for image: Assiette Steak Assiettes food meal dish cuisine
+[2025-08-12 22:58:22] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:26] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Steak+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:27] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:27] [ERROR] Failed to download image for: Assiette Steak
+[2025-08-12 22:58:27] [INFO] Processing meal: Menu Enfant (ID: 107)
+[2025-08-12 22:58:27] [INFO] Backed up existing image: 1754784325_Menu_Enfant.png
+[2025-08-12 22:58:27] [INFO] Searching for image: Menu Enfant Menus Enfant food meal dish cuisine
+[2025-08-12 22:58:28] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:32] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Enfant+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 22:58:33] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:33] [ERROR] Failed to download image for: Menu Enfant
+[2025-08-12 22:58:33] [INFO] Processing meal: KEBAB (ID: 108)
+[2025-08-12 22:58:33] [INFO] Backed up existing image: 1754784326_KEBAB.png
+[2025-08-12 22:58:33] [INFO] Searching for image: KEBAB Assiettes food meal dish cuisine
+[2025-08-12 22:58:34] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:39] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:41] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:41] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 22:58:41] [INFO] Processing meal: POULET (ID: 109)
+[2025-08-12 22:58:41] [INFO] Backed up existing image: 1754784326_POULET.png
+[2025-08-12 22:58:41] [INFO] Searching for image: POULET Assiettes food meal dish cuisine
+[2025-08-12 22:58:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?POULET+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:48] [ERROR] Failed to download image for: POULET
+[2025-08-12 22:58:48] [INFO] Processing meal: SAUMON (ID: 110)
+[2025-08-12 22:58:48] [INFO] Backed up existing image: 1754784326_SAUMON.png
+[2025-08-12 22:58:48] [INFO] Searching for image: SAUMON Assiettes food meal dish cuisine
+[2025-08-12 22:58:49] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:53] [INFO] Downloading image from: https://source.unsplash.com/800x600/?SAUMON+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:54] [ERROR] Failed to download image for: SAUMON
+[2025-08-12 22:58:54] [INFO] Processing meal: KOFTE (ID: 111)
+[2025-08-12 22:58:54] [INFO] Backed up existing image: 1754784326_KOFTE.png
+[2025-08-12 22:58:54] [INFO] Searching for image: KOFTE Assiettes food meal dish cuisine
+[2025-08-12 22:58:55] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:58:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:58:59] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:58:59] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 22:58:59] [INFO] Processing meal: STEAK (ID: 112)
+[2025-08-12 22:58:59] [INFO] Backed up existing image: 1754784326_STEAK.png
+[2025-08-12 22:58:59] [INFO] Searching for image: STEAK Assiettes food meal dish cuisine
+[2025-08-12 22:59:00] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:04] [INFO] Downloading image from: https://source.unsplash.com/800x600/?STEAK+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:59:04] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:04] [ERROR] Failed to download image for: STEAK
+[2025-08-12 22:59:04] [INFO] Processing meal: KING (ID: 113)
+[2025-08-12 22:59:04] [INFO] Backed up existing image: 1754784326_KING.png
+[2025-08-12 22:59:04] [INFO] Searching for image: KING Assiettes food meal dish cuisine
+[2025-08-12 22:59:05] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:09] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KING+Assiettes+food+meal+dish+cuisine
+[2025-08-12 22:59:10] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:10] [ERROR] Failed to download image for: KING
+[2025-08-12 22:59:10] [INFO] Processing meal: FALAFEL (ID: 114)
+[2025-08-12 22:59:10] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 22:59:10] [INFO] Searching for image: FALAFEL Salade food meal dish cuisine
+[2025-08-12 22:59:11] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:15] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Salade+food+meal+dish+cuisine
+[2025-08-12 22:59:16] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:16] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 22:59:16] [INFO] Processing meal: FETA (ID: 115)
+[2025-08-12 22:59:16] [INFO] Backed up existing image: 1754784326_FETA.png
+[2025-08-12 22:59:16] [INFO] Searching for image: FETA Salade food meal dish cuisine
+[2025-08-12 22:59:17] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:21] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FETA+Salade+food+meal+dish+cuisine
+[2025-08-12 22:59:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:21] [ERROR] Failed to download image for: FETA
+[2025-08-12 22:59:21] [INFO] Processing meal: THON (ID: 116)
+[2025-08-12 22:59:22] [INFO] Backed up existing image: 1754784326_THON.png
+[2025-08-12 22:59:22] [INFO] Searching for image: THON Salade food meal dish cuisine
+[2025-08-12 22:59:22] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:26] [INFO] Downloading image from: https://source.unsplash.com/800x600/?THON+Salade+food+meal+dish+cuisine
+[2025-08-12 22:59:26] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:26] [ERROR] Failed to download image for: THON
+[2025-08-12 22:59:26] [INFO] Processing meal: TENDERS (ID: 117)
+[2025-08-12 22:59:26] [INFO] Backed up existing image: 1754784326_TENDERS.png
+[2025-08-12 22:59:27] [INFO] Searching for image: TENDERS Salade food meal dish cuisine
+[2025-08-12 22:59:27] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:31] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TENDERS+Salade+food+meal+dish+cuisine
+[2025-08-12 22:59:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:31] [ERROR] Failed to download image for: TENDERS
+[2025-08-12 22:59:31] [INFO] Processing meal: FROMAGE (ID: 118)
+[2025-08-12 22:59:32] [INFO] Backed up existing image: 1754784326_FROMAGE.png
+[2025-08-12 22:59:32] [INFO] Searching for image: FROMAGE Tacos food meal dish cuisine
+[2025-08-12 22:59:32] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:35] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FROMAGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 22:59:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:36] [ERROR] Failed to download image for: FROMAGE
+[2025-08-12 22:59:36] [INFO] Processing meal: FALAFEL (ID: 119)
+[2025-08-12 22:59:36] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 22:59:36] [INFO] Searching for image: FALAFEL Tacos food meal dish cuisine
+[2025-08-12 22:59:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 22:59:42] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:42] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 22:59:42] [INFO] Processing meal: TACOS SOFT (ID: 120)
+[2025-08-12 22:59:42] [INFO] Backed up existing image: 1754784326_TACOS_SOFT.png
+[2025-08-12 22:59:42] [INFO] Searching for image: TACOS SOFT Tacos food meal dish cuisine
+[2025-08-12 22:59:43] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:47] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+SOFT+Tacos+food+meal+dish+cuisine
+[2025-08-12 22:59:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:48] [ERROR] Failed to download image for: TACOS SOFT
+[2025-08-12 22:59:48] [INFO] Processing meal: BELGE (ID: 121)
+[2025-08-12 22:59:48] [INFO] Backed up existing image: 1754784326_BELGE.png
+[2025-08-12 22:59:48] [INFO] Searching for image: BELGE Tacos food meal dish cuisine
+[2025-08-12 22:59:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 22:59:54] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BELGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 22:59:55] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 22:59:55] [ERROR] Failed to download image for: BELGE
+[2025-08-12 22:59:55] [INFO] Processing meal: TACOS FALAFEL (ID: 122)
+[2025-08-12 22:59:55] [INFO] Backed up existing image: 1754784326_TACOS_FALAFEL.png
+[2025-08-12 22:59:55] [INFO] Searching for image: TACOS FALAFEL Tacos food meal dish cuisine
+[2025-08-12 22:59:56] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:02] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:00:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:02] [ERROR] Failed to download image for: TACOS FALAFEL
+[2025-08-12 23:00:02] [INFO] Processing meal: COMPOTE + CAPRISUN + JOUET (ID: 123)
+[2025-08-12 23:00:02] [INFO] Backed up existing image: 1754784327_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-12 23:00:02] [INFO] Searching for image: COMPOTE   CAPRISUN   JOUET Menus Enfant food meal dish cuisine
+[2025-08-12 23:00:03] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:07] [INFO] Downloading image from: https://source.unsplash.com/800x600/?COMPOTE+++CAPRISUN+++JOUET+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:00:08] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:08] [ERROR] Failed to download image for: COMPOTE + CAPRISUN + JOUET
+[2025-08-12 23:00:08] [INFO] Processing meal: BURGER + FRITES (ID: 124)
+[2025-08-12 23:00:08] [INFO] Backed up existing image: 1754784327_BURGER___FRITES.png
+[2025-08-12 23:00:08] [INFO] Searching for image: BURGER   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:00:09] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BURGER+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:00:13] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:13] [ERROR] Failed to download image for: BURGER + FRITES
+[2025-08-12 23:00:14] [INFO] Processing meal: NUGGETS + FRITES (ID: 125)
+[2025-08-12 23:00:14] [INFO] Backed up existing image: 1754784327_NUGGETS___FRITES.png
+[2025-08-12 23:00:14] [INFO] Searching for image: NUGGETS   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:00:14] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?NUGGETS+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:00:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:20] [ERROR] Failed to download image for: NUGGETS + FRITES
+[2025-08-12 23:00:20] [INFO] Processing meal: VIANDE KEBAB + FRITES (ID: 126)
+[2025-08-12 23:00:21] [INFO] Backed up existing image: 1754784327_VIANDE_KEBAB___FRITES.png
+[2025-08-12 23:00:21] [INFO] Searching for image: VIANDE KEBAB   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:00:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:25] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VIANDE+KEBAB+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:00:26] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:26] [ERROR] Failed to download image for: VIANDE KEBAB + FRITES
+[2025-08-12 23:00:26] [INFO] Processing meal: KEBAB (ID: 127)
+[2025-08-12 23:00:26] [INFO] Backed up existing image: 1754784327_KEBAB.png
+[2025-08-12 23:00:26] [INFO] Searching for image: KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:00:27] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:30] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:00:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:31] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 23:00:31] [INFO] Processing meal: MAXI KEBAB (ID: 128)
+[2025-08-12 23:00:31] [INFO] Backed up existing image: 1754784327_MAXI_KEBAB.png
+[2025-08-12 23:00:31] [INFO] Searching for image: MAXI KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:00:31] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:35] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:00:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:36] [ERROR] Failed to download image for: MAXI KEBAB
+[2025-08-12 23:00:36] [INFO] Processing meal: GALETTE (VIANDE AU CHOIX) (ID: 129)
+[2025-08-12 23:00:36] [INFO] Backed up existing image: 1754784327_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:00:36] [INFO] Searching for image: GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:00:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:40] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:00:41] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:41] [ERROR] Failed to download image for: GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:00:41] [INFO] Processing meal: MAXI GALETTE (VIANDE AU CHOIX) (ID: 130)
+[2025-08-12 23:00:41] [INFO] Backed up existing image: 1754784327_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:00:42] [INFO] Searching for image: MAXI GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:00:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:00:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:48] [ERROR] Failed to download image for: MAXI GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:00:48] [INFO] Processing meal: AMERICAIN (ID: 131)
+[2025-08-12 23:00:48] [INFO] Backed up existing image: 1754784327_AMERICAIN.png
+[2025-08-12 23:00:48] [INFO] Searching for image: AMERICAIN Sandwichs food meal dish cuisine
+[2025-08-12 23:00:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:00:52] [INFO] Downloading image from: https://source.unsplash.com/800x600/?AMERICAIN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:00:53] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:00:53] [ERROR] Failed to download image for: AMERICAIN
+[2025-08-12 23:00:53] [INFO] Processing meal: KOFTE (ID: 132)
+[2025-08-12 23:00:53] [INFO] Backed up existing image: 1754784327_KOFTE.png
+[2025-08-12 23:00:53] [INFO] Searching for image: KOFTE Sandwichs food meal dish cuisine
+[2025-08-12 23:00:56] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:00] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:01:00] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:00] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 23:01:00] [INFO] Processing meal: PANINI (VIANDE AU CHOIX) (ID: 133)
+[2025-08-12 23:01:01] [INFO] Backed up existing image: 1754784327_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:01:01] [INFO] Searching for image: PANINI  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:01:01] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:06] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PANINI++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:01:06] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:06] [ERROR] Failed to download image for: PANINI (VIANDE AU CHOIX)
+[2025-08-12 23:01:06] [INFO] Processing meal: PETITE FRITE (ID: 134)
+[2025-08-12 23:01:06] [INFO] Backed up existing image: 1754784327_PETITE_FRITE.png
+[2025-08-12 23:01:07] [INFO] Searching for image: PETITE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:01:07] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:12] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:01:13] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:13] [ERROR] Failed to download image for: PETITE FRITE
+[2025-08-12 23:01:13] [INFO] Processing meal: GRANDE FRITE (ID: 135)
+[2025-08-12 23:01:13] [INFO] Backed up existing image: 1754784327_GRANDE_FRITE.png
+[2025-08-12 23:01:13] [INFO] Searching for image: GRANDE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:01:14] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:19] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:01:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:25] [ERROR] Failed to download image for: GRANDE FRITE
+[2025-08-12 23:01:25] [INFO] Processing meal: PETITE VIANDE (ID: 136)
+[2025-08-12 23:01:26] [INFO] Backed up existing image: 1754784327_PETITE_VIANDE.png
+[2025-08-12 23:01:26] [INFO] Searching for image: PETITE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:01:29] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:01:38] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:38] [ERROR] Failed to download image for: PETITE VIANDE
+[2025-08-12 23:01:38] [INFO] Processing meal: GRANDE VIANDE (ID: 137)
+[2025-08-12 23:01:39] [INFO] Backed up existing image: 1754784327_GRANDE_VIANDE.png
+[2025-08-12 23:01:39] [INFO] Searching for image: GRANDE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:01:39] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:43] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:01:43] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:43] [ERROR] Failed to download image for: GRANDE VIANDE
+[2025-08-12 23:01:43] [INFO] Processing meal: TACOS (1 VIANDE AU CHOIX) (ID: 138)
+[2025-08-12 23:01:43] [INFO] Backed up existing image: 1754784327_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:01:44] [INFO] Searching for image: TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:01:47] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:01:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:01:58] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:01:58] [ERROR] Failed to download image for: TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:01:58] [INFO] Processing meal: TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 139)
+[2025-08-12 23:01:58] [INFO] Backed up existing image: 1754784328_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:01:58] [INFO] Searching for image: TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:02:14] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:02:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:20] [ERROR] Failed to download image for: TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:02:20] [INFO] Processing meal: MEGA TACOS (1 VIANDE AU CHOIX) (ID: 140)
+[2025-08-12 23:02:21] [INFO] Backed up existing image: 1754784328_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:02:21] [INFO] Searching for image: MEGA TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:02:24] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:32] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:02:34] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:34] [ERROR] Failed to download image for: MEGA TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:02:34] [INFO] Processing meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 141)
+[2025-08-12 23:02:34] [INFO] Backed up existing image: 1754784328_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:02:34] [INFO] Searching for image: MEGA TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:02:35] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:39] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:02:40] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:40] [ERROR] Failed to download image for: MEGA TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:02:40] [INFO] Processing meal: CHEESE BURGER (ID: 142)
+[2025-08-12 23:02:40] [INFO] Backed up existing image: 1754784328_CHEESE_BURGER.png
+[2025-08-12 23:02:40] [INFO] Searching for image: CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:02:40] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:02:45] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:45] [ERROR] Failed to download image for: CHEESE BURGER
+[2025-08-12 23:02:45] [INFO] Processing meal: DOUBLE CHEESE BURGER (ID: 143)
+[2025-08-12 23:02:45] [INFO] Backed up existing image: 1754784328_DOUBLE_CHEESE_BURGER.png
+[2025-08-12 23:02:45] [INFO] Searching for image: DOUBLE CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:02:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:50] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:02:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:50] [ERROR] Failed to download image for: DOUBLE CHEESE BURGER
+[2025-08-12 23:02:50] [INFO] Processing meal: CHICKEN (ID: 144)
+[2025-08-12 23:02:51] [INFO] Backed up existing image: 1754784328_CHICKEN.png
+[2025-08-12 23:02:51] [INFO] Searching for image: CHICKEN Burger food meal dish cuisine
+[2025-08-12 23:02:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:02:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHICKEN+Burger+food+meal+dish+cuisine
+[2025-08-12 23:02:57] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:02:57] [ERROR] Failed to download image for: CHICKEN
+[2025-08-12 23:02:57] [INFO] Processing meal: CROUSTY GOURMAND (POULET OU BŒUF) (ID: 145)
+[2025-08-12 23:02:57] [INFO] Backed up existing image: 1754784328_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-12 23:02:58] [INFO] Searching for image: CROUSTY GOURMAND  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:03:08] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:04:12] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:04:15] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:04:15] [ERROR] Failed to download image for: CROUSTY GOURMAND (POULET OU BŒUF)
+[2025-08-12 23:04:15] [INFO] Processing meal: VEGGIE BURGER (ID: 146)
+[2025-08-12 23:04:15] [INFO] Backed up existing image: 1754784328_VEGGIE_BURGER.png
+[2025-08-12 23:04:15] [INFO] Searching for image: VEGGIE BURGER Burger food meal dish cuisine
+[2025-08-12 23:04:16] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:04:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VEGGIE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:04:23] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:04:23] [ERROR] Failed to download image for: VEGGIE BURGER
+[2025-08-12 23:04:23] [INFO] Processing meal: LE BIG CHÈVRE (POULET OU BŒUF) (ID: 147)
+[2025-08-12 23:04:23] [INFO] Backed up existing image: 1754784328_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-12 23:04:23] [INFO] Searching for image: LE BIG CH  VRE  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:04:25] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:04:29] [INFO] Downloading image from: https://source.unsplash.com/800x600/?LE+BIG+CH++VRE++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:04:30] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:04:30] [ERROR] Failed to download image for: LE BIG CHÈVRE (POULET OU BŒUF)
+[2025-08-12 23:04:30] [INFO] Process completed. Success: 0, Errors: 79
+[2025-08-12 23:04:30] [INFO] Database connection established successfully
+[2025-08-12 23:06:37] [INFO] Database connection established successfully
+[2025-08-12 23:06:37] [INFO] Starting image download process for all meals...
+[2025-08-12 23:06:37] [INFO] Found 79 meals to process
+[2025-08-12 23:06:37] [INFO] Processing meal: CROUSTY GOURMAND BŒUF (ID: 69)
+[2025-08-12 23:06:37] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 23:06:37] [INFO] Searching for image: CROUSTY GOURMAND B  UF Sandwichs food meal dish cuisine
+[2025-08-12 23:06:38] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:38] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:39] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:39] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+B++UF+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:40] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:40] [ERROR] Failed to download image for: CROUSTY GOURMAND BŒUF
+[2025-08-12 23:06:40] [INFO] Processing meal: CROUSTY GOURMAND CHICKEN (ID: 70)
+[2025-08-12 23:06:40] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 23:06:40] [INFO] Searching for image: CROUSTY GOURMAND CHICKEN Sandwichs food meal dish cuisine
+[2025-08-12 23:06:41] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:41] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:42] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:42] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+CHICKEN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:43] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:43] [ERROR] Failed to download image for: CROUSTY GOURMAND CHICKEN
+[2025-08-12 23:06:43] [INFO] Processing meal: DOUBLE CHEEZ BURGER (ID: 71)
+[2025-08-12 23:06:43] [INFO] Backed up existing image: 1754784323_DOUBLE_CHEEZ_BURGER.png
+[2025-08-12 23:06:43] [INFO] Searching for image: DOUBLE CHEEZ BURGER Sandwichs food meal dish cuisine
+[2025-08-12 23:06:43] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:44] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:44] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEEZ+BURGER+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:46] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:46] [ERROR] Failed to download image for: DOUBLE CHEEZ BURGER
+[2025-08-12 23:06:46] [INFO] Processing meal: Cheese Burger (ID: 72)
+[2025-08-12 23:06:46] [INFO] Backed up existing image: 1754784323_Cheese_Burger.png
+[2025-08-12 23:06:46] [INFO] Searching for image: Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:06:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:47] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:48] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:48] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:49] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:49] [ERROR] Failed to download image for: Cheese Burger
+[2025-08-12 23:06:49] [INFO] Processing meal: Maxi Galette Kebab (ID: 73)
+[2025-08-12 23:06:49] [INFO] Backed up existing image: 1754784323_Maxi_Galette_Kebab.png
+[2025-08-12 23:06:49] [INFO] Searching for image: Maxi Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:06:50] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:51] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:51] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:52] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:52] [ERROR] Failed to download image for: Maxi Galette Kebab
+[2025-08-12 23:06:52] [INFO] Processing meal: Chicken Burger (ID: 74)
+[2025-08-12 23:06:52] [INFO] Backed up existing image: 1754784323_Chicken_Burger.png
+[2025-08-12 23:06:52] [INFO] Searching for image: Chicken Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:06:52] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:53] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:53] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:53] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Chicken+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:54] [ERROR] Failed to download image for: Chicken Burger
+[2025-08-12 23:06:54] [INFO] Processing meal: Galette Kebab (ID: 75)
+[2025-08-12 23:06:54] [INFO] Backed up existing image: 1754784323_Galette_Kebab.png
+[2025-08-12 23:06:54] [INFO] Searching for image: Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:06:55] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:55] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:56] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:56] [ERROR] Failed to download image for: Galette Kebab
+[2025-08-12 23:06:56] [INFO] Processing meal: Maxi Cheese Burger (ID: 76)
+[2025-08-12 23:06:56] [INFO] Backed up existing image: 1754784323_Maxi_Cheese_Burger.png
+[2025-08-12 23:06:56] [INFO] Searching for image: Maxi Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:06:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:06:57] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:06:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:06:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:06:59] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:06:59] [ERROR] Failed to download image for: Maxi Cheese Burger
+[2025-08-12 23:06:59] [INFO] Processing meal: Maxi Tacos 999g (ID: 77)
+[2025-08-12 23:06:59] [INFO] Backed up existing image: 1754784323_Maxi_Tacos_999g.png
+[2025-08-12 23:06:59] [INFO] Searching for image: Maxi Tacos 999g Sandwichs food meal dish cuisine
+[2025-08-12 23:06:59] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:00] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:00] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:00] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Tacos+999g+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:01] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:01] [ERROR] Failed to download image for: Maxi Tacos 999g
+[2025-08-12 23:07:01] [INFO] Processing meal: Sandwich Américain (ID: 78)
+[2025-08-12 23:07:01] [INFO] Backed up existing image: 1754784323_Sandwich_Am__ricain.png
+[2025-08-12 23:07:01] [INFO] Searching for image: Sandwich Am  ricain Sandwichs food meal dish cuisine
+[2025-08-12 23:07:02] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:02] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:03] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:03] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Am++ricain+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:03] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:03] [ERROR] Failed to download image for: Sandwich Américain
+[2025-08-12 23:07:03] [INFO] Processing meal: Sandwich KEBAB (ID: 79)
+[2025-08-12 23:07:03] [INFO] Backed up existing image: 1754784324_Sandwich_KEBAB.png
+[2025-08-12 23:07:04] [INFO] Searching for image: Sandwich KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:07:04] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:05] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:05] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:05] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:06] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:06] [ERROR] Failed to download image for: Sandwich KEBAB
+[2025-08-12 23:07:06] [INFO] Processing meal: Sandwich Kofte (ID: 80)
+[2025-08-12 23:07:06] [INFO] Backed up existing image: 1754784324_Sandwich_Kofte.png
+[2025-08-12 23:07:06] [INFO] Searching for image: Sandwich Kofte Sandwichs food meal dish cuisine
+[2025-08-12 23:07:07] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:07] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:09] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:09] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Kofte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:09] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:09] [ERROR] Failed to download image for: Sandwich Kofte
+[2025-08-12 23:07:09] [INFO] Processing meal: Sandwich Maxi Kebab (ID: 81)
+[2025-08-12 23:07:09] [INFO] Backed up existing image: 1754784324_Sandwich_Maxi_Kebab.png
+[2025-08-12 23:07:09] [INFO] Searching for image: Sandwich Maxi Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:07:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:11] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:11] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:11] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Maxi+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:12] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:12] [ERROR] Failed to download image for: Sandwich Maxi Kebab
+[2025-08-12 23:07:12] [INFO] Processing meal: Sandwich Paninis (ID: 82)
+[2025-08-12 23:07:12] [INFO] Backed up existing image: 1754784324_Sandwich_Paninis.png
+[2025-08-12 23:07:12] [INFO] Searching for image: Sandwich Paninis Sandwichs food meal dish cuisine
+[2025-08-12 23:07:13] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:13] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:14] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:14] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Paninis+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:15] [ERROR] Failed to download image for: Sandwich Paninis
+[2025-08-12 23:07:15] [INFO] Processing meal: Tacos (ID: 83)
+[2025-08-12 23:07:15] [INFO] Backed up existing image: 1754784324_Tacos.png
+[2025-08-12 23:07:15] [INFO] Searching for image: Tacos Sandwichs food meal dish cuisine
+[2025-08-12 23:07:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:16] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:16] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:16] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:17] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:17] [ERROR] Failed to download image for: Tacos
+[2025-08-12 23:07:17] [INFO] Processing meal: Tacos Mixte (ID: 84)
+[2025-08-12 23:07:17] [INFO] Backed up existing image: 1754784324_Tacos_Mixte.png
+[2025-08-12 23:07:17] [INFO] Searching for image: Tacos Mixte Sandwichs food meal dish cuisine
+[2025-08-12 23:07:17] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:18] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:18] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:18] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Mixte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:07:19] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:19] [ERROR] Failed to download image for: Tacos Mixte
+[2025-08-12 23:07:19] [INFO] Processing meal: MENU CROUSTY GOURMAND BŒUF (ID: 85)
+[2025-08-12 23:07:19] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 23:07:19] [INFO] Searching for image: MENU CROUSTY GOURMAND B  UF Menus food meal dish cuisine
+[2025-08-12 23:07:20] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:20] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:21] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:21] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+B++UF+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:21] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND BŒUF
+[2025-08-12 23:07:21] [INFO] Processing meal: MENU CROUSTY GOURMAND CHICKEN (ID: 86)
+[2025-08-12 23:07:21] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 23:07:22] [INFO] Searching for image: MENU CROUSTY GOURMAND CHICKEN Menus food meal dish cuisine
+[2025-08-12 23:07:22] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:26] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:26] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:26] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+CHICKEN+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:28] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:28] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND CHICKEN
+[2025-08-12 23:07:28] [INFO] Processing meal: MENU Double CHEEZ (ID: 87)
+[2025-08-12 23:07:28] [INFO] Backed up existing image: 1754784324_MENU_Double_CHEEZ.png
+[2025-08-12 23:07:28] [INFO] Searching for image: MENU Double CHEEZ Menus food meal dish cuisine
+[2025-08-12 23:07:28] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:29] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:29] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:29] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+Double+CHEEZ+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:33] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:33] [ERROR] Failed to download image for: MENU Double CHEEZ
+[2025-08-12 23:07:33] [INFO] Processing meal: Menu Américain (ID: 88)
+[2025-08-12 23:07:33] [INFO] Backed up existing image: 1754784324_Menu_Am__ricain.png
+[2025-08-12 23:07:33] [INFO] Searching for image: Menu Am  ricain Menus food meal dish cuisine
+[2025-08-12 23:07:34] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:35] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:35] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:35] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Am++ricain+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:36] [ERROR] Failed to download image for: Menu Américain
+[2025-08-12 23:07:36] [INFO] Processing meal: Menu Cheese Burger (ID: 89)
+[2025-08-12 23:07:36] [INFO] Backed up existing image: 1754784324_Menu_Cheese_Burger.png
+[2025-08-12 23:07:36] [INFO] Searching for image: Menu Cheese Burger Menus food meal dish cuisine
+[2025-08-12 23:07:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:37] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:38] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:38] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:38] [ERROR] Failed to download image for: Menu Cheese Burger
+[2025-08-12 23:07:38] [INFO] Processing meal: Menu Chicken Burger (ID: 90)
+[2025-08-12 23:07:38] [INFO] Backed up existing image: 1754784324_Menu_Chicken_Burger.png
+[2025-08-12 23:07:38] [INFO] Searching for image: Menu Chicken Burger Menus food meal dish cuisine
+[2025-08-12 23:07:39] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:39] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:40] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:40] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Chicken+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:40] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:40] [ERROR] Failed to download image for: Menu Chicken Burger
+[2025-08-12 23:07:40] [INFO] Processing meal: Menu Galette Kebab (ID: 91)
+[2025-08-12 23:07:40] [INFO] Backed up existing image: 1754784324_Menu_Galette_Kebab.png
+[2025-08-12 23:07:40] [INFO] Searching for image: Menu Galette Kebab Menus food meal dish cuisine
+[2025-08-12 23:07:41] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:42] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:42] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:42] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:43] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:43] [ERROR] Failed to download image for: Menu Galette Kebab
+[2025-08-12 23:07:43] [INFO] Processing meal: Menu Kebab (ID: 92)
+[2025-08-12 23:07:43] [INFO] Backed up existing image: 1754784324_Menu_Kebab.png
+[2025-08-12 23:07:43] [INFO] Searching for image: Menu Kebab Menus food meal dish cuisine
+[2025-08-12 23:07:43] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:44] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:44] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:45] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:45] [ERROR] Failed to download image for: Menu Kebab
+[2025-08-12 23:07:45] [INFO] Processing meal: Menu Kofte (ID: 93)
+[2025-08-12 23:07:45] [INFO] Backed up existing image: 1754784324_Menu_Kofte.png
+[2025-08-12 23:07:45] [INFO] Searching for image: Menu Kofte Menus food meal dish cuisine
+[2025-08-12 23:07:45] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:46] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:46] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kofte+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:47] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:47] [ERROR] Failed to download image for: Menu Kofte
+[2025-08-12 23:07:47] [INFO] Processing meal: Menu Maxi Cheese Burger (ID: 94)
+[2025-08-12 23:07:47] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Cheese_Burger.png
+[2025-08-12 23:07:47] [INFO] Searching for image: Menu Maxi Cheese Burger Menus food meal dish cuisine
+[2025-08-12 23:07:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:49] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:49] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:49] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:50] [ERROR] Failed to download image for: Menu Maxi Cheese Burger
+[2025-08-12 23:07:50] [INFO] Processing meal: Menu Maxi Galette Kebab (ID: 95)
+[2025-08-12 23:07:50] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Galette_Kebab.png
+[2025-08-12 23:07:50] [INFO] Searching for image: Menu Maxi Galette Kebab Menus food meal dish cuisine
+[2025-08-12 23:07:50] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:51] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:51] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:52] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:52] [ERROR] Failed to download image for: Menu Maxi Galette Kebab
+[2025-08-12 23:07:52] [INFO] Processing meal: Menu Maxi Kebab (ID: 96)
+[2025-08-12 23:07:52] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Kebab.png
+[2025-08-12 23:07:52] [INFO] Searching for image: Menu Maxi Kebab Menus food meal dish cuisine
+[2025-08-12 23:07:53] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:53] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:53] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:53] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:54] [ERROR] Failed to download image for: Menu Maxi Kebab
+[2025-08-12 23:07:54] [INFO] Processing meal: Menu Maxi Tacos 999g (ID: 97)
+[2025-08-12 23:07:54] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Tacos_999g.png
+[2025-08-12 23:07:54] [INFO] Searching for image: Menu Maxi Tacos 999g Menus food meal dish cuisine
+[2025-08-12 23:07:55] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:55] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:56] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Tacos+999g+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:56] [ERROR] Failed to download image for: Menu Maxi Tacos 999g
+[2025-08-12 23:07:56] [INFO] Processing meal: Menu Paninis (ID: 98)
+[2025-08-12 23:07:56] [INFO] Backed up existing image: 1754784325_Menu_Paninis.png
+[2025-08-12 23:07:56] [INFO] Searching for image: Menu Paninis Menus food meal dish cuisine
+[2025-08-12 23:07:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:07:57] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:07:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:07:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Paninis+Menus+food+meal+dish+cuisine
+[2025-08-12 23:07:59] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:07:59] [ERROR] Failed to download image for: Menu Paninis
+[2025-08-12 23:07:59] [INFO] Processing meal: Menu Tacos (ID: 99)
+[2025-08-12 23:07:59] [INFO] Backed up existing image: 1754784325_Menu_Tacos.png
+[2025-08-12 23:07:59] [INFO] Searching for image: Menu Tacos Menus food meal dish cuisine
+[2025-08-12 23:08:00] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:00] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:00] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:00] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Menus+food+meal+dish+cuisine
+[2025-08-12 23:08:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:02] [ERROR] Failed to download image for: Menu Tacos
+[2025-08-12 23:08:02] [INFO] Processing meal: Menu Tacos Mixte (ID: 100)
+[2025-08-12 23:08:02] [INFO] Backed up existing image: 1754784325_Menu_Tacos_Mixte.png
+[2025-08-12 23:08:02] [INFO] Searching for image: Menu Tacos Mixte Menus food meal dish cuisine
+[2025-08-12 23:08:02] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:03] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:03] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:03] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Mixte+Menus+food+meal+dish+cuisine
+[2025-08-12 23:08:05] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:05] [ERROR] Failed to download image for: Menu Tacos Mixte
+[2025-08-12 23:08:05] [INFO] Processing meal: Assiette KOBANE (kebab kofte tenders) (ID: 101)
+[2025-08-12 23:08:05] [INFO] Backed up existing image: 1754784325_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-12 23:08:05] [INFO] Searching for image: Assiette KOBANE  kebab kofte tenders Assiettes food meal dish cuisine
+[2025-08-12 23:08:06] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:06] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:06] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:06] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+KOBANE++kebab+kofte+tenders+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:07] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:07] [ERROR] Failed to download image for: Assiette KOBANE (kebab kofte tenders)
+[2025-08-12 23:08:07] [INFO] Processing meal: Assiette Kebab (ID: 102)
+[2025-08-12 23:08:07] [INFO] Backed up existing image: 1754784325_Assiette_Kebab.png
+[2025-08-12 23:08:07] [INFO] Searching for image: Assiette Kebab Assiettes food meal dish cuisine
+[2025-08-12 23:08:08] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:08] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:09] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:09] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kebab+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:09] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:09] [ERROR] Failed to download image for: Assiette Kebab
+[2025-08-12 23:08:09] [INFO] Processing meal: Assiette Kofte (ID: 103)
+[2025-08-12 23:08:09] [INFO] Backed up existing image: 1754784325_Assiette_Kofte.png
+[2025-08-12 23:08:09] [INFO] Searching for image: Assiette Kofte Assiettes food meal dish cuisine
+[2025-08-12 23:08:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:10] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:11] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:11] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kofte+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:11] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:11] [ERROR] Failed to download image for: Assiette Kofte
+[2025-08-12 23:08:11] [INFO] Processing meal: Assiette Poulet Crème (ID: 104)
+[2025-08-12 23:08:11] [INFO] Backed up existing image: 1754784325_Assiette_Poulet_Cr__me.png
+[2025-08-12 23:08:11] [INFO] Searching for image: Assiette Poulet Cr  me Assiettes food meal dish cuisine
+[2025-08-12 23:08:12] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:12] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:13] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Poulet+Cr++me+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:13] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:13] [ERROR] Failed to download image for: Assiette Poulet Crème
+[2025-08-12 23:08:13] [INFO] Processing meal: Assiette Saumon (ID: 105)
+[2025-08-12 23:08:14] [INFO] Backed up existing image: 1754784325_Assiette_Saumon.png
+[2025-08-12 23:08:14] [INFO] Searching for image: Assiette Saumon Assiettes food meal dish cuisine
+[2025-08-12 23:08:14] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:15] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:15] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:15] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Saumon+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:16] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:16] [ERROR] Failed to download image for: Assiette Saumon
+[2025-08-12 23:08:16] [INFO] Processing meal: Assiette Steak (ID: 106)
+[2025-08-12 23:08:16] [INFO] Backed up existing image: 1754784325_Assiette_Steak.png
+[2025-08-12 23:08:16] [INFO] Searching for image: Assiette Steak Assiettes food meal dish cuisine
+[2025-08-12 23:08:16] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:17] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:17] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:17] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Steak+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:18] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:18] [ERROR] Failed to download image for: Assiette Steak
+[2025-08-12 23:08:18] [INFO] Processing meal: Menu Enfant (ID: 107)
+[2025-08-12 23:08:18] [INFO] Backed up existing image: 1754784325_Menu_Enfant.png
+[2025-08-12 23:08:18] [INFO] Searching for image: Menu Enfant Menus Enfant food meal dish cuisine
+[2025-08-12 23:08:19] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:19] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:20] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Enfant+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:08:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:20] [ERROR] Failed to download image for: Menu Enfant
+[2025-08-12 23:08:20] [INFO] Processing meal: KEBAB (ID: 108)
+[2025-08-12 23:08:20] [INFO] Backed up existing image: 1754784326_KEBAB.png
+[2025-08-12 23:08:20] [INFO] Searching for image: KEBAB Assiettes food meal dish cuisine
+[2025-08-12 23:08:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:21] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:22] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:22] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:22] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:22] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 23:08:23] [INFO] Processing meal: POULET (ID: 109)
+[2025-08-12 23:08:23] [INFO] Backed up existing image: 1754784326_POULET.png
+[2025-08-12 23:08:23] [INFO] Searching for image: POULET Assiettes food meal dish cuisine
+[2025-08-12 23:08:24] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:24] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:24] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?POULET+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:25] [ERROR] Failed to download image for: POULET
+[2025-08-12 23:08:25] [INFO] Processing meal: SAUMON (ID: 110)
+[2025-08-12 23:08:25] [INFO] Backed up existing image: 1754784326_SAUMON.png
+[2025-08-12 23:08:25] [INFO] Searching for image: SAUMON Assiettes food meal dish cuisine
+[2025-08-12 23:08:26] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:26] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:27] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:27] [INFO] Downloading image from: https://source.unsplash.com/800x600/?SAUMON+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:28] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:28] [ERROR] Failed to download image for: SAUMON
+[2025-08-12 23:08:28] [INFO] Processing meal: KOFTE (ID: 111)
+[2025-08-12 23:08:28] [INFO] Backed up existing image: 1754784326_KOFTE.png
+[2025-08-12 23:08:28] [INFO] Searching for image: KOFTE Assiettes food meal dish cuisine
+[2025-08-12 23:08:29] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:30] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:31] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:31] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:32] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 23:08:32] [INFO] Processing meal: STEAK (ID: 112)
+[2025-08-12 23:08:32] [INFO] Backed up existing image: 1754784326_STEAK.png
+[2025-08-12 23:08:32] [INFO] Searching for image: STEAK Assiettes food meal dish cuisine
+[2025-08-12 23:08:32] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:33] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:33] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:33] [INFO] Downloading image from: https://source.unsplash.com/800x600/?STEAK+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:34] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:34] [ERROR] Failed to download image for: STEAK
+[2025-08-12 23:08:34] [INFO] Processing meal: KING (ID: 113)
+[2025-08-12 23:08:34] [INFO] Backed up existing image: 1754784326_KING.png
+[2025-08-12 23:08:34] [INFO] Searching for image: KING Assiettes food meal dish cuisine
+[2025-08-12 23:08:35] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:35] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:36] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:36] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KING+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:08:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:36] [ERROR] Failed to download image for: KING
+[2025-08-12 23:08:36] [INFO] Processing meal: FALAFEL (ID: 114)
+[2025-08-12 23:08:36] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 23:08:36] [INFO] Searching for image: FALAFEL Salade food meal dish cuisine
+[2025-08-12 23:08:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:38] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:38] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Salade+food+meal+dish+cuisine
+[2025-08-12 23:08:39] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:39] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 23:08:39] [INFO] Processing meal: FETA (ID: 115)
+[2025-08-12 23:08:39] [INFO] Backed up existing image: 1754784326_FETA.png
+[2025-08-12 23:08:39] [INFO] Searching for image: FETA Salade food meal dish cuisine
+[2025-08-12 23:08:40] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:40] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:41] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FETA+Salade+food+meal+dish+cuisine
+[2025-08-12 23:08:41] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:41] [ERROR] Failed to download image for: FETA
+[2025-08-12 23:08:41] [INFO] Processing meal: THON (ID: 116)
+[2025-08-12 23:08:42] [INFO] Backed up existing image: 1754784326_THON.png
+[2025-08-12 23:08:42] [INFO] Searching for image: THON Salade food meal dish cuisine
+[2025-08-12 23:08:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:43] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:43] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:43] [INFO] Downloading image from: https://source.unsplash.com/800x600/?THON+Salade+food+meal+dish+cuisine
+[2025-08-12 23:08:44] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:44] [ERROR] Failed to download image for: THON
+[2025-08-12 23:08:44] [INFO] Processing meal: TENDERS (ID: 117)
+[2025-08-12 23:08:44] [INFO] Backed up existing image: 1754784326_TENDERS.png
+[2025-08-12 23:08:44] [INFO] Searching for image: TENDERS Salade food meal dish cuisine
+[2025-08-12 23:08:45] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:45] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:46] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:46] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TENDERS+Salade+food+meal+dish+cuisine
+[2025-08-12 23:08:46] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:46] [ERROR] Failed to download image for: TENDERS
+[2025-08-12 23:08:46] [INFO] Processing meal: FROMAGE (ID: 118)
+[2025-08-12 23:08:46] [INFO] Backed up existing image: 1754784326_FROMAGE.png
+[2025-08-12 23:08:47] [INFO] Searching for image: FROMAGE Tacos food meal dish cuisine
+[2025-08-12 23:08:47] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:48] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:48] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:48] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FROMAGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:08:49] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:49] [ERROR] Failed to download image for: FROMAGE
+[2025-08-12 23:08:49] [INFO] Processing meal: FALAFEL (ID: 119)
+[2025-08-12 23:08:49] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 23:08:49] [INFO] Searching for image: FALAFEL Tacos food meal dish cuisine
+[2025-08-12 23:08:50] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:50] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:51] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:08:51] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:51] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 23:08:51] [INFO] Processing meal: TACOS SOFT (ID: 120)
+[2025-08-12 23:08:51] [INFO] Backed up existing image: 1754784326_TACOS_SOFT.png
+[2025-08-12 23:08:51] [INFO] Searching for image: TACOS SOFT Tacos food meal dish cuisine
+[2025-08-12 23:08:52] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:52] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:53] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:53] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+SOFT+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:08:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:54] [ERROR] Failed to download image for: TACOS SOFT
+[2025-08-12 23:08:54] [INFO] Processing meal: BELGE (ID: 121)
+[2025-08-12 23:08:54] [INFO] Backed up existing image: 1754784326_BELGE.png
+[2025-08-12 23:08:54] [INFO] Searching for image: BELGE Tacos food meal dish cuisine
+[2025-08-12 23:08:54] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:55] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:55] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:55] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BELGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:08:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:56] [ERROR] Failed to download image for: BELGE
+[2025-08-12 23:08:56] [INFO] Processing meal: TACOS FALAFEL (ID: 122)
+[2025-08-12 23:08:56] [INFO] Backed up existing image: 1754784326_TACOS_FALAFEL.png
+[2025-08-12 23:08:56] [INFO] Searching for image: TACOS FALAFEL Tacos food meal dish cuisine
+[2025-08-12 23:08:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:08:57] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:08:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:08:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:08:59] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:08:59] [ERROR] Failed to download image for: TACOS FALAFEL
+[2025-08-12 23:08:59] [INFO] Processing meal: COMPOTE + CAPRISUN + JOUET (ID: 123)
+[2025-08-12 23:08:59] [INFO] Backed up existing image: 1754784327_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-12 23:08:59] [INFO] Searching for image: COMPOTE   CAPRISUN   JOUET Menus Enfant food meal dish cuisine
+[2025-08-12 23:09:00] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:00] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:01] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:01] [INFO] Downloading image from: https://source.unsplash.com/800x600/?COMPOTE+++CAPRISUN+++JOUET+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:09:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:02] [ERROR] Failed to download image for: COMPOTE + CAPRISUN + JOUET
+[2025-08-12 23:09:02] [INFO] Processing meal: BURGER + FRITES (ID: 124)
+[2025-08-12 23:09:02] [INFO] Backed up existing image: 1754784327_BURGER___FRITES.png
+[2025-08-12 23:09:02] [INFO] Searching for image: BURGER   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:09:02] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:03] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:03] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:03] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BURGER+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:09:04] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:04] [ERROR] Failed to download image for: BURGER + FRITES
+[2025-08-12 23:09:04] [INFO] Processing meal: NUGGETS + FRITES (ID: 125)
+[2025-08-12 23:09:04] [INFO] Backed up existing image: 1754784327_NUGGETS___FRITES.png
+[2025-08-12 23:09:04] [INFO] Searching for image: NUGGETS   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:09:05] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:05] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:05] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:05] [INFO] Downloading image from: https://source.unsplash.com/800x600/?NUGGETS+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:09:06] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:06] [ERROR] Failed to download image for: NUGGETS + FRITES
+[2025-08-12 23:09:06] [INFO] Processing meal: VIANDE KEBAB + FRITES (ID: 126)
+[2025-08-12 23:09:06] [INFO] Backed up existing image: 1754784327_VIANDE_KEBAB___FRITES.png
+[2025-08-12 23:09:06] [INFO] Searching for image: VIANDE KEBAB   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:09:07] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:07] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:07] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:07] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VIANDE+KEBAB+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:09:08] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:08] [ERROR] Failed to download image for: VIANDE KEBAB + FRITES
+[2025-08-12 23:09:08] [INFO] Processing meal: KEBAB (ID: 127)
+[2025-08-12 23:09:08] [INFO] Backed up existing image: 1754784327_KEBAB.png
+[2025-08-12 23:09:08] [INFO] Searching for image: KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:09:09] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:09] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:10] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:10] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:10] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:10] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 23:09:10] [INFO] Processing meal: MAXI KEBAB (ID: 128)
+[2025-08-12 23:09:10] [INFO] Backed up existing image: 1754784327_MAXI_KEBAB.png
+[2025-08-12 23:09:10] [INFO] Searching for image: MAXI KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:09:11] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:11] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:12] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:12] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:13] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:13] [ERROR] Failed to download image for: MAXI KEBAB
+[2025-08-12 23:09:13] [INFO] Processing meal: GALETTE (VIANDE AU CHOIX) (ID: 129)
+[2025-08-12 23:09:13] [INFO] Backed up existing image: 1754784327_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:09:13] [INFO] Searching for image: GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:09:13] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:14] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:14] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:14] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:15] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:15] [ERROR] Failed to download image for: GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:09:15] [INFO] Processing meal: MAXI GALETTE (VIANDE AU CHOIX) (ID: 130)
+[2025-08-12 23:09:15] [INFO] Backed up existing image: 1754784327_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:09:15] [INFO] Searching for image: MAXI GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:09:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:16] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:16] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:16] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:18] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:18] [ERROR] Failed to download image for: MAXI GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:09:18] [INFO] Processing meal: AMERICAIN (ID: 131)
+[2025-08-12 23:09:18] [INFO] Backed up existing image: 1754784327_AMERICAIN.png
+[2025-08-12 23:09:18] [INFO] Searching for image: AMERICAIN Sandwichs food meal dish cuisine
+[2025-08-12 23:09:19] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:19] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:20] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?AMERICAIN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:21] [ERROR] Failed to download image for: AMERICAIN
+[2025-08-12 23:09:21] [INFO] Processing meal: KOFTE (ID: 132)
+[2025-08-12 23:09:21] [INFO] Backed up existing image: 1754784327_KOFTE.png
+[2025-08-12 23:09:21] [INFO] Searching for image: KOFTE Sandwichs food meal dish cuisine
+[2025-08-12 23:09:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:22] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:22] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:22] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:23] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:23] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 23:09:23] [INFO] Processing meal: PANINI (VIANDE AU CHOIX) (ID: 133)
+[2025-08-12 23:09:23] [INFO] Backed up existing image: 1754784327_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:09:23] [INFO] Searching for image: PANINI  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:09:24] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:24] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:24] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PANINI++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:09:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:25] [ERROR] Failed to download image for: PANINI (VIANDE AU CHOIX)
+[2025-08-12 23:09:25] [INFO] Processing meal: PETITE FRITE (ID: 134)
+[2025-08-12 23:09:25] [INFO] Backed up existing image: 1754784327_PETITE_FRITE.png
+[2025-08-12 23:09:25] [INFO] Searching for image: PETITE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:09:26] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:27] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:27] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:27] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:09:28] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:28] [ERROR] Failed to download image for: PETITE FRITE
+[2025-08-12 23:09:28] [INFO] Processing meal: GRANDE FRITE (ID: 135)
+[2025-08-12 23:09:28] [INFO] Backed up existing image: 1754784327_GRANDE_FRITE.png
+[2025-08-12 23:09:29] [INFO] Searching for image: GRANDE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:09:29] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:29] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:30] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:30] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:09:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:31] [ERROR] Failed to download image for: GRANDE FRITE
+[2025-08-12 23:09:31] [INFO] Processing meal: PETITE VIANDE (ID: 136)
+[2025-08-12 23:09:31] [INFO] Backed up existing image: 1754784327_PETITE_VIANDE.png
+[2025-08-12 23:09:31] [INFO] Searching for image: PETITE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:09:31] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:31] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:32] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:32] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:09:32] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:32] [ERROR] Failed to download image for: PETITE VIANDE
+[2025-08-12 23:09:32] [INFO] Processing meal: GRANDE VIANDE (ID: 137)
+[2025-08-12 23:09:32] [INFO] Backed up existing image: 1754784327_GRANDE_VIANDE.png
+[2025-08-12 23:09:33] [INFO] Searching for image: GRANDE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:09:33] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:34] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:35] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:35] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:09:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:36] [ERROR] Failed to download image for: GRANDE VIANDE
+[2025-08-12 23:09:36] [INFO] Processing meal: TACOS (1 VIANDE AU CHOIX) (ID: 138)
+[2025-08-12 23:09:36] [INFO] Backed up existing image: 1754784327_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:09:36] [INFO] Searching for image: TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:09:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:37] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:38] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:09:39] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:39] [ERROR] Failed to download image for: TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:09:39] [INFO] Processing meal: TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 139)
+[2025-08-12 23:09:39] [INFO] Backed up existing image: 1754784328_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:09:39] [INFO] Searching for image: TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:09:40] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:40] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:41] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:09:42] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:42] [ERROR] Failed to download image for: TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:09:42] [INFO] Processing meal: MEGA TACOS (1 VIANDE AU CHOIX) (ID: 140)
+[2025-08-12 23:09:42] [INFO] Backed up existing image: 1754784328_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:09:42] [INFO] Searching for image: MEGA TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:09:43] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:44] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:44] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:44] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:09:45] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:45] [ERROR] Failed to download image for: MEGA TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:09:45] [INFO] Processing meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 141)
+[2025-08-12 23:09:45] [INFO] Backed up existing image: 1754784328_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:09:45] [INFO] Searching for image: MEGA TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:09:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:46] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:47] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:47] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:09:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:48] [ERROR] Failed to download image for: MEGA TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:09:48] [INFO] Processing meal: CHEESE BURGER (ID: 142)
+[2025-08-12 23:09:48] [INFO] Backed up existing image: 1754784328_CHEESE_BURGER.png
+[2025-08-12 23:09:48] [INFO] Searching for image: CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:09:49] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:50] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:50] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:50] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:09:51] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:51] [ERROR] Failed to download image for: CHEESE BURGER
+[2025-08-12 23:09:51] [INFO] Processing meal: DOUBLE CHEESE BURGER (ID: 143)
+[2025-08-12 23:09:51] [INFO] Backed up existing image: 1754784328_DOUBLE_CHEESE_BURGER.png
+[2025-08-12 23:09:51] [INFO] Searching for image: DOUBLE CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:09:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:52] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:52] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:52] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:09:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:56] [ERROR] Failed to download image for: DOUBLE CHEESE BURGER
+[2025-08-12 23:09:56] [INFO] Processing meal: CHICKEN (ID: 144)
+[2025-08-12 23:09:56] [INFO] Backed up existing image: 1754784328_CHICKEN.png
+[2025-08-12 23:09:56] [INFO] Searching for image: CHICKEN Burger food meal dish cuisine
+[2025-08-12 23:09:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:09:57] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:09:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:09:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHICKEN+Burger+food+meal+dish+cuisine
+[2025-08-12 23:09:58] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:09:58] [ERROR] Failed to download image for: CHICKEN
+[2025-08-12 23:09:58] [INFO] Processing meal: CROUSTY GOURMAND (POULET OU BŒUF) (ID: 145)
+[2025-08-12 23:09:58] [INFO] Backed up existing image: 1754784328_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-12 23:09:58] [INFO] Searching for image: CROUSTY GOURMAND  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:09:59] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:00] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:00] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:00] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:10:01] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:01] [ERROR] Failed to download image for: CROUSTY GOURMAND (POULET OU BŒUF)
+[2025-08-12 23:10:01] [INFO] Processing meal: VEGGIE BURGER (ID: 146)
+[2025-08-12 23:10:01] [INFO] Backed up existing image: 1754784328_VEGGIE_BURGER.png
+[2025-08-12 23:10:01] [INFO] Searching for image: VEGGIE BURGER Burger food meal dish cuisine
+[2025-08-12 23:10:02] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:02] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:02] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:02] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VEGGIE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:10:03] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:03] [ERROR] Failed to download image for: VEGGIE BURGER
+[2025-08-12 23:10:03] [INFO] Processing meal: LE BIG CHÈVRE (POULET OU BŒUF) (ID: 147)
+[2025-08-12 23:10:03] [INFO] Backed up existing image: 1754784328_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-12 23:10:03] [INFO] Searching for image: LE BIG CH  VRE  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:10:04] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:04] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:04] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:04] [INFO] Downloading image from: https://source.unsplash.com/800x600/?LE+BIG+CH++VRE++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:10:05] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:05] [ERROR] Failed to download image for: LE BIG CHÈVRE (POULET OU BŒUF)
+[2025-08-12 23:10:05] [INFO] Process completed. Success: 0, Errors: 79
+[2025-08-12 23:10:23] [INFO] Database connection established successfully
+[2025-08-12 23:10:23] [INFO] Starting image download process for all meals...
+[2025-08-12 23:10:23] [INFO] Found 79 meals to process
+[2025-08-12 23:10:23] [INFO] Processing meal: CROUSTY GOURMAND BŒUF (ID: 69)
+[2025-08-12 23:10:23] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 23:10:23] [INFO] Searching for image: CROUSTY GOURMAND B  UF Sandwichs food meal dish cuisine
+[2025-08-12 23:10:23] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:24] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:24] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+B++UF+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:25] [ERROR] Failed to download image for: CROUSTY GOURMAND BŒUF
+[2025-08-12 23:10:25] [INFO] Processing meal: CROUSTY GOURMAND CHICKEN (ID: 70)
+[2025-08-12 23:10:25] [INFO] Backed up existing image: 1754784323_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 23:10:25] [INFO] Searching for image: CROUSTY GOURMAND CHICKEN Sandwichs food meal dish cuisine
+[2025-08-12 23:10:25] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:26] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:26] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:26] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND+CHICKEN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:27] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:27] [ERROR] Failed to download image for: CROUSTY GOURMAND CHICKEN
+[2025-08-12 23:10:27] [INFO] Processing meal: DOUBLE CHEEZ BURGER (ID: 71)
+[2025-08-12 23:10:27] [INFO] Backed up existing image: 1754784323_DOUBLE_CHEEZ_BURGER.png
+[2025-08-12 23:10:27] [INFO] Searching for image: DOUBLE CHEEZ BURGER Sandwichs food meal dish cuisine
+[2025-08-12 23:10:27] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:28] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:28] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:28] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEEZ+BURGER+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:29] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:29] [ERROR] Failed to download image for: DOUBLE CHEEZ BURGER
+[2025-08-12 23:10:29] [INFO] Processing meal: Cheese Burger (ID: 72)
+[2025-08-12 23:10:29] [INFO] Backed up existing image: 1754784323_Cheese_Burger.png
+[2025-08-12 23:10:29] [INFO] Searching for image: Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:10:29] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:30] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:30] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:30] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:31] [ERROR] Failed to download image for: Cheese Burger
+[2025-08-12 23:10:31] [INFO] Processing meal: Maxi Galette Kebab (ID: 73)
+[2025-08-12 23:10:31] [INFO] Backed up existing image: 1754784323_Maxi_Galette_Kebab.png
+[2025-08-12 23:10:31] [INFO] Searching for image: Maxi Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:10:31] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:32] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:32] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:32] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:33] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:33] [ERROR] Failed to download image for: Maxi Galette Kebab
+[2025-08-12 23:10:33] [INFO] Processing meal: Chicken Burger (ID: 74)
+[2025-08-12 23:10:33] [INFO] Backed up existing image: 1754784323_Chicken_Burger.png
+[2025-08-12 23:10:33] [INFO] Searching for image: Chicken Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:10:33] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:34] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:34] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:34] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Chicken+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:36] [ERROR] Failed to download image for: Chicken Burger
+[2025-08-12 23:10:36] [INFO] Processing meal: Galette Kebab (ID: 75)
+[2025-08-12 23:10:36] [INFO] Backed up existing image: 1754784323_Galette_Kebab.png
+[2025-08-12 23:10:36] [INFO] Searching for image: Galette Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:10:36] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:37] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:37] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:37] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Galette+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:38] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:38] [ERROR] Failed to download image for: Galette Kebab
+[2025-08-12 23:10:38] [INFO] Processing meal: Maxi Cheese Burger (ID: 76)
+[2025-08-12 23:10:38] [INFO] Backed up existing image: 1754784323_Maxi_Cheese_Burger.png
+[2025-08-12 23:10:38] [INFO] Searching for image: Maxi Cheese Burger Sandwichs food meal dish cuisine
+[2025-08-12 23:10:38] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:39] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:39] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:39] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Cheese+Burger+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:40] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:40] [ERROR] Failed to download image for: Maxi Cheese Burger
+[2025-08-12 23:10:40] [INFO] Processing meal: Maxi Tacos 999g (ID: 77)
+[2025-08-12 23:10:40] [INFO] Backed up existing image: 1754784323_Maxi_Tacos_999g.png
+[2025-08-12 23:10:41] [INFO] Searching for image: Maxi Tacos 999g Sandwichs food meal dish cuisine
+[2025-08-12 23:10:41] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:42] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:43] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:43] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Maxi+Tacos+999g+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:43] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:43] [ERROR] Failed to download image for: Maxi Tacos 999g
+[2025-08-12 23:10:43] [INFO] Processing meal: Sandwich Américain (ID: 78)
+[2025-08-12 23:10:43] [INFO] Backed up existing image: 1754784323_Sandwich_Am__ricain.png
+[2025-08-12 23:10:43] [INFO] Searching for image: Sandwich Am  ricain Sandwichs food meal dish cuisine
+[2025-08-12 23:10:44] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:44] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:45] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:45] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Am++ricain+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:45] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:45] [ERROR] Failed to download image for: Sandwich Américain
+[2025-08-12 23:10:45] [INFO] Processing meal: Sandwich KEBAB (ID: 79)
+[2025-08-12 23:10:45] [INFO] Backed up existing image: 1754784324_Sandwich_KEBAB.png
+[2025-08-12 23:10:46] [INFO] Searching for image: Sandwich KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:10:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:47] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:47] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:47] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:48] [ERROR] Failed to download image for: Sandwich KEBAB
+[2025-08-12 23:10:48] [INFO] Processing meal: Sandwich Kofte (ID: 80)
+[2025-08-12 23:10:48] [INFO] Backed up existing image: 1754784324_Sandwich_Kofte.png
+[2025-08-12 23:10:48] [INFO] Searching for image: Sandwich Kofte Sandwichs food meal dish cuisine
+[2025-08-12 23:10:49] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:49] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:49] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:49] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Kofte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:50] [ERROR] Failed to download image for: Sandwich Kofte
+[2025-08-12 23:10:50] [INFO] Processing meal: Sandwich Maxi Kebab (ID: 81)
+[2025-08-12 23:10:50] [INFO] Backed up existing image: 1754784324_Sandwich_Maxi_Kebab.png
+[2025-08-12 23:10:50] [INFO] Searching for image: Sandwich Maxi Kebab Sandwichs food meal dish cuisine
+[2025-08-12 23:10:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:51] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:52] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:52] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Maxi+Kebab+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:53] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:53] [ERROR] Failed to download image for: Sandwich Maxi Kebab
+[2025-08-12 23:10:53] [INFO] Processing meal: Sandwich Paninis (ID: 82)
+[2025-08-12 23:10:53] [INFO] Backed up existing image: 1754784324_Sandwich_Paninis.png
+[2025-08-12 23:10:53] [INFO] Searching for image: Sandwich Paninis Sandwichs food meal dish cuisine
+[2025-08-12 23:10:53] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:54] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:55] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:55] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Sandwich+Paninis+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:55] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:55] [ERROR] Failed to download image for: Sandwich Paninis
+[2025-08-12 23:10:56] [INFO] Processing meal: Tacos (ID: 83)
+[2025-08-12 23:10:56] [INFO] Backed up existing image: 1754784324_Tacos.png
+[2025-08-12 23:10:56] [INFO] Searching for image: Tacos Sandwichs food meal dish cuisine
+[2025-08-12 23:10:56] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:56] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:57] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:57] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:10:58] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:10:58] [ERROR] Failed to download image for: Tacos
+[2025-08-12 23:10:58] [INFO] Processing meal: Tacos Mixte (ID: 84)
+[2025-08-12 23:10:58] [INFO] Backed up existing image: 1754784324_Tacos_Mixte.png
+[2025-08-12 23:10:58] [INFO] Searching for image: Tacos Mixte Sandwichs food meal dish cuisine
+[2025-08-12 23:10:58] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:10:59] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:10:59] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:10:59] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Tacos+Mixte+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:11:00] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:00] [ERROR] Failed to download image for: Tacos Mixte
+[2025-08-12 23:11:00] [INFO] Processing meal: MENU CROUSTY GOURMAND BŒUF (ID: 85)
+[2025-08-12 23:11:00] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_B__UF.png
+[2025-08-12 23:11:00] [INFO] Searching for image: MENU CROUSTY GOURMAND B  UF Menus food meal dish cuisine
+[2025-08-12 23:11:00] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:01] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:02] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:02] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+B++UF+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:02] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND BŒUF
+[2025-08-12 23:11:02] [INFO] Processing meal: MENU CROUSTY GOURMAND CHICKEN (ID: 86)
+[2025-08-12 23:11:03] [INFO] Backed up existing image: 1754784324_MENU_CROUSTY_GOURMAND_CHICKEN.png
+[2025-08-12 23:11:03] [INFO] Searching for image: MENU CROUSTY GOURMAND CHICKEN Menus food meal dish cuisine
+[2025-08-12 23:11:03] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:03] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:04] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:04] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+CROUSTY+GOURMAND+CHICKEN+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:04] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:04] [ERROR] Failed to download image for: MENU CROUSTY GOURMAND CHICKEN
+[2025-08-12 23:11:05] [INFO] Processing meal: MENU Double CHEEZ (ID: 87)
+[2025-08-12 23:11:05] [INFO] Backed up existing image: 1754784324_MENU_Double_CHEEZ.png
+[2025-08-12 23:11:05] [INFO] Searching for image: MENU Double CHEEZ Menus food meal dish cuisine
+[2025-08-12 23:11:05] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:06] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:06] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:06] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MENU+Double+CHEEZ+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:07] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:07] [ERROR] Failed to download image for: MENU Double CHEEZ
+[2025-08-12 23:11:07] [INFO] Processing meal: Menu Américain (ID: 88)
+[2025-08-12 23:11:07] [INFO] Backed up existing image: 1754784324_Menu_Am__ricain.png
+[2025-08-12 23:11:07] [INFO] Searching for image: Menu Am  ricain Menus food meal dish cuisine
+[2025-08-12 23:11:08] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:08] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:08] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:08] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Am++ricain+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:09] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:09] [ERROR] Failed to download image for: Menu Américain
+[2025-08-12 23:11:09] [INFO] Processing meal: Menu Cheese Burger (ID: 89)
+[2025-08-12 23:11:09] [INFO] Backed up existing image: 1754784324_Menu_Cheese_Burger.png
+[2025-08-12 23:11:09] [INFO] Searching for image: Menu Cheese Burger Menus food meal dish cuisine
+[2025-08-12 23:11:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:10] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:11] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:11] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:12] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:12] [ERROR] Failed to download image for: Menu Cheese Burger
+[2025-08-12 23:11:12] [INFO] Processing meal: Menu Chicken Burger (ID: 90)
+[2025-08-12 23:11:12] [INFO] Backed up existing image: 1754784324_Menu_Chicken_Burger.png
+[2025-08-12 23:11:12] [INFO] Searching for image: Menu Chicken Burger Menus food meal dish cuisine
+[2025-08-12 23:11:13] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:13] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:14] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:14] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Chicken+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:14] [ERROR] Failed to download image for: Menu Chicken Burger
+[2025-08-12 23:11:14] [INFO] Processing meal: Menu Galette Kebab (ID: 91)
+[2025-08-12 23:11:14] [INFO] Backed up existing image: 1754784324_Menu_Galette_Kebab.png
+[2025-08-12 23:11:14] [INFO] Searching for image: Menu Galette Kebab Menus food meal dish cuisine
+[2025-08-12 23:11:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:15] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:16] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:16] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:16] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:16] [ERROR] Failed to download image for: Menu Galette Kebab
+[2025-08-12 23:11:16] [INFO] Processing meal: Menu Kebab (ID: 92)
+[2025-08-12 23:11:16] [INFO] Backed up existing image: 1754784324_Menu_Kebab.png
+[2025-08-12 23:11:17] [INFO] Searching for image: Menu Kebab Menus food meal dish cuisine
+[2025-08-12 23:11:17] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:18] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:18] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:18] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:19] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:19] [ERROR] Failed to download image for: Menu Kebab
+[2025-08-12 23:11:19] [INFO] Processing meal: Menu Kofte (ID: 93)
+[2025-08-12 23:11:19] [INFO] Backed up existing image: 1754784324_Menu_Kofte.png
+[2025-08-12 23:11:19] [INFO] Searching for image: Menu Kofte Menus food meal dish cuisine
+[2025-08-12 23:11:19] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:20] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:20] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Kofte+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:21] [ERROR] Failed to download image for: Menu Kofte
+[2025-08-12 23:11:21] [INFO] Processing meal: Menu Maxi Cheese Burger (ID: 94)
+[2025-08-12 23:11:21] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Cheese_Burger.png
+[2025-08-12 23:11:21] [INFO] Searching for image: Menu Maxi Cheese Burger Menus food meal dish cuisine
+[2025-08-12 23:11:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:22] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:22] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:22] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Cheese+Burger+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:23] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:23] [ERROR] Failed to download image for: Menu Maxi Cheese Burger
+[2025-08-12 23:11:23] [INFO] Processing meal: Menu Maxi Galette Kebab (ID: 95)
+[2025-08-12 23:11:23] [INFO] Backed up existing image: 1754784324_Menu_Maxi_Galette_Kebab.png
+[2025-08-12 23:11:23] [INFO] Searching for image: Menu Maxi Galette Kebab Menus food meal dish cuisine
+[2025-08-12 23:11:24] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:24] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:25] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:25] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Galette+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:27] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:27] [ERROR] Failed to download image for: Menu Maxi Galette Kebab
+[2025-08-12 23:11:27] [INFO] Processing meal: Menu Maxi Kebab (ID: 96)
+[2025-08-12 23:11:27] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Kebab.png
+[2025-08-12 23:11:27] [INFO] Searching for image: Menu Maxi Kebab Menus food meal dish cuisine
+[2025-08-12 23:11:28] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:28] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:29] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:29] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Kebab+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:30] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:30] [ERROR] Failed to download image for: Menu Maxi Kebab
+[2025-08-12 23:11:30] [INFO] Processing meal: Menu Maxi Tacos 999g (ID: 97)
+[2025-08-12 23:11:30] [INFO] Backed up existing image: 1754784325_Menu_Maxi_Tacos_999g.png
+[2025-08-12 23:11:30] [INFO] Searching for image: Menu Maxi Tacos 999g Menus food meal dish cuisine
+[2025-08-12 23:11:31] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:31] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:32] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:32] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Maxi+Tacos+999g+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:33] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:33] [ERROR] Failed to download image for: Menu Maxi Tacos 999g
+[2025-08-12 23:11:33] [INFO] Processing meal: Menu Paninis (ID: 98)
+[2025-08-12 23:11:33] [INFO] Backed up existing image: 1754784325_Menu_Paninis.png
+[2025-08-12 23:11:33] [INFO] Searching for image: Menu Paninis Menus food meal dish cuisine
+[2025-08-12 23:11:33] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:34] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:34] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:34] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Paninis+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:35] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:35] [ERROR] Failed to download image for: Menu Paninis
+[2025-08-12 23:11:35] [INFO] Processing meal: Menu Tacos (ID: 99)
+[2025-08-12 23:11:35] [INFO] Backed up existing image: 1754784325_Menu_Tacos.png
+[2025-08-12 23:11:35] [INFO] Searching for image: Menu Tacos Menus food meal dish cuisine
+[2025-08-12 23:11:36] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:36] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:36] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:36] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:37] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:37] [ERROR] Failed to download image for: Menu Tacos
+[2025-08-12 23:11:37] [INFO] Processing meal: Menu Tacos Mixte (ID: 100)
+[2025-08-12 23:11:37] [INFO] Backed up existing image: 1754784325_Menu_Tacos_Mixte.png
+[2025-08-12 23:11:37] [INFO] Searching for image: Menu Tacos Mixte Menus food meal dish cuisine
+[2025-08-12 23:11:38] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:38] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:38] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Tacos+Mixte+Menus+food+meal+dish+cuisine
+[2025-08-12 23:11:39] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:39] [ERROR] Failed to download image for: Menu Tacos Mixte
+[2025-08-12 23:11:39] [INFO] Processing meal: Assiette KOBANE (kebab kofte tenders) (ID: 101)
+[2025-08-12 23:11:39] [INFO] Backed up existing image: 1754784325_Assiette_KOBANE__kebab_kofte_tenders_.png
+[2025-08-12 23:11:39] [INFO] Searching for image: Assiette KOBANE  kebab kofte tenders Assiettes food meal dish cuisine
+[2025-08-12 23:11:40] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:40] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:41] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+KOBANE++kebab+kofte+tenders+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:43] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:43] [ERROR] Failed to download image for: Assiette KOBANE (kebab kofte tenders)
+[2025-08-12 23:11:43] [INFO] Processing meal: Assiette Kebab (ID: 102)
+[2025-08-12 23:11:43] [INFO] Backed up existing image: 1754784325_Assiette_Kebab.png
+[2025-08-12 23:11:43] [INFO] Searching for image: Assiette Kebab Assiettes food meal dish cuisine
+[2025-08-12 23:11:44] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:44] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:45] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:45] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kebab+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:46] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:46] [ERROR] Failed to download image for: Assiette Kebab
+[2025-08-12 23:11:46] [INFO] Processing meal: Assiette Kofte (ID: 103)
+[2025-08-12 23:11:46] [INFO] Backed up existing image: 1754784325_Assiette_Kofte.png
+[2025-08-12 23:11:46] [INFO] Searching for image: Assiette Kofte Assiettes food meal dish cuisine
+[2025-08-12 23:11:46] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:47] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:47] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:47] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Kofte+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:48] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:48] [ERROR] Failed to download image for: Assiette Kofte
+[2025-08-12 23:11:48] [INFO] Processing meal: Assiette Poulet Crème (ID: 104)
+[2025-08-12 23:11:48] [INFO] Backed up existing image: 1754784325_Assiette_Poulet_Cr__me.png
+[2025-08-12 23:11:48] [INFO] Searching for image: Assiette Poulet Cr  me Assiettes food meal dish cuisine
+[2025-08-12 23:11:48] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:49] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:49] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:49] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Poulet+Cr++me+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:50] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:50] [ERROR] Failed to download image for: Assiette Poulet Crème
+[2025-08-12 23:11:50] [INFO] Processing meal: Assiette Saumon (ID: 105)
+[2025-08-12 23:11:50] [INFO] Backed up existing image: 1754784325_Assiette_Saumon.png
+[2025-08-12 23:11:50] [INFO] Searching for image: Assiette Saumon Assiettes food meal dish cuisine
+[2025-08-12 23:11:51] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:51] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:51] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Saumon+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:52] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:52] [ERROR] Failed to download image for: Assiette Saumon
+[2025-08-12 23:11:52] [INFO] Processing meal: Assiette Steak (ID: 106)
+[2025-08-12 23:11:52] [INFO] Backed up existing image: 1754784325_Assiette_Steak.png
+[2025-08-12 23:11:52] [INFO] Searching for image: Assiette Steak Assiettes food meal dish cuisine
+[2025-08-12 23:11:53] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:53] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:54] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:54] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Assiette+Steak+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:11:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:54] [ERROR] Failed to download image for: Assiette Steak
+[2025-08-12 23:11:54] [INFO] Processing meal: Menu Enfant (ID: 107)
+[2025-08-12 23:11:54] [INFO] Backed up existing image: 1754784325_Menu_Enfant.png
+[2025-08-12 23:11:54] [INFO] Searching for image: Menu Enfant Menus Enfant food meal dish cuisine
+[2025-08-12 23:11:55] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:55] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:56] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:56] [INFO] Downloading image from: https://source.unsplash.com/800x600/?Menu+Enfant+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:11:57] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:11:57] [ERROR] Failed to download image for: Menu Enfant
+[2025-08-12 23:11:57] [INFO] Processing meal: KEBAB (ID: 108)
+[2025-08-12 23:11:57] [INFO] Backed up existing image: 1754784326_KEBAB.png
+[2025-08-12 23:11:57] [INFO] Searching for image: KEBAB Assiettes food meal dish cuisine
+[2025-08-12 23:11:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:11:58] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:11:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:11:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:02] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:02] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 23:12:02] [INFO] Processing meal: POULET (ID: 109)
+[2025-08-12 23:12:02] [INFO] Backed up existing image: 1754784326_POULET.png
+[2025-08-12 23:12:02] [INFO] Searching for image: POULET Assiettes food meal dish cuisine
+[2025-08-12 23:12:03] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:03] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:04] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:04] [INFO] Downloading image from: https://source.unsplash.com/800x600/?POULET+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:04] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:04] [ERROR] Failed to download image for: POULET
+[2025-08-12 23:12:04] [INFO] Processing meal: SAUMON (ID: 110)
+[2025-08-12 23:12:04] [INFO] Backed up existing image: 1754784326_SAUMON.png
+[2025-08-12 23:12:04] [INFO] Searching for image: SAUMON Assiettes food meal dish cuisine
+[2025-08-12 23:12:05] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:05] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:06] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:06] [INFO] Downloading image from: https://source.unsplash.com/800x600/?SAUMON+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:07] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:07] [ERROR] Failed to download image for: SAUMON
+[2025-08-12 23:12:07] [INFO] Processing meal: KOFTE (ID: 111)
+[2025-08-12 23:12:07] [INFO] Backed up existing image: 1754784326_KOFTE.png
+[2025-08-12 23:12:07] [INFO] Searching for image: KOFTE Assiettes food meal dish cuisine
+[2025-08-12 23:12:07] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:08] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:08] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:08] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:10] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:10] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 23:12:10] [INFO] Processing meal: STEAK (ID: 112)
+[2025-08-12 23:12:10] [INFO] Backed up existing image: 1754784326_STEAK.png
+[2025-08-12 23:12:10] [INFO] Searching for image: STEAK Assiettes food meal dish cuisine
+[2025-08-12 23:12:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:11] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:11] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:11] [INFO] Downloading image from: https://source.unsplash.com/800x600/?STEAK+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:12] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:12] [ERROR] Failed to download image for: STEAK
+[2025-08-12 23:12:12] [INFO] Processing meal: KING (ID: 113)
+[2025-08-12 23:12:12] [INFO] Backed up existing image: 1754784326_KING.png
+[2025-08-12 23:12:12] [INFO] Searching for image: KING Assiettes food meal dish cuisine
+[2025-08-12 23:12:13] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:13] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:13] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:14] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KING+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:12:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:14] [ERROR] Failed to download image for: KING
+[2025-08-12 23:12:14] [INFO] Processing meal: FALAFEL (ID: 114)
+[2025-08-12 23:12:14] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 23:12:14] [INFO] Searching for image: FALAFEL Salade food meal dish cuisine
+[2025-08-12 23:12:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:15] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:16] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:16] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Salade+food+meal+dish+cuisine
+[2025-08-12 23:12:16] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:16] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 23:12:16] [INFO] Processing meal: FETA (ID: 115)
+[2025-08-12 23:12:16] [INFO] Backed up existing image: 1754784326_FETA.png
+[2025-08-12 23:12:16] [INFO] Searching for image: FETA Salade food meal dish cuisine
+[2025-08-12 23:12:17] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:17] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:18] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:18] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FETA+Salade+food+meal+dish+cuisine
+[2025-08-12 23:12:19] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:19] [ERROR] Failed to download image for: FETA
+[2025-08-12 23:12:19] [INFO] Processing meal: THON (ID: 116)
+[2025-08-12 23:12:19] [INFO] Backed up existing image: 1754784326_THON.png
+[2025-08-12 23:12:19] [INFO] Searching for image: THON Salade food meal dish cuisine
+[2025-08-12 23:12:19] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:20] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:20] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?THON+Salade+food+meal+dish+cuisine
+[2025-08-12 23:12:21] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:21] [ERROR] Failed to download image for: THON
+[2025-08-12 23:12:21] [INFO] Processing meal: TENDERS (ID: 117)
+[2025-08-12 23:12:21] [INFO] Backed up existing image: 1754784326_TENDERS.png
+[2025-08-12 23:12:21] [INFO] Searching for image: TENDERS Salade food meal dish cuisine
+[2025-08-12 23:12:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:22] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:22] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:22] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TENDERS+Salade+food+meal+dish+cuisine
+[2025-08-12 23:12:23] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:23] [ERROR] Failed to download image for: TENDERS
+[2025-08-12 23:12:23] [INFO] Processing meal: FROMAGE (ID: 118)
+[2025-08-12 23:12:23] [INFO] Backed up existing image: 1754784326_FROMAGE.png
+[2025-08-12 23:12:23] [INFO] Searching for image: FROMAGE Tacos food meal dish cuisine
+[2025-08-12 23:12:23] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:24] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:24] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FROMAGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:12:25] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:25] [ERROR] Failed to download image for: FROMAGE
+[2025-08-12 23:12:25] [INFO] Processing meal: FALAFEL (ID: 119)
+[2025-08-12 23:12:25] [INFO] Backed up existing image: 1754784326_FALAFEL.png
+[2025-08-12 23:12:25] [INFO] Searching for image: FALAFEL Tacos food meal dish cuisine
+[2025-08-12 23:12:26] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:26] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:26] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:27] [INFO] Downloading image from: https://source.unsplash.com/800x600/?FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:12:27] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:27] [ERROR] Failed to download image for: FALAFEL
+[2025-08-12 23:12:27] [INFO] Processing meal: TACOS SOFT (ID: 120)
+[2025-08-12 23:12:27] [INFO] Backed up existing image: 1754784326_TACOS_SOFT.png
+[2025-08-12 23:12:27] [INFO] Searching for image: TACOS SOFT Tacos food meal dish cuisine
+[2025-08-12 23:12:28] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:28] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:29] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:29] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+SOFT+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:12:29] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:29] [ERROR] Failed to download image for: TACOS SOFT
+[2025-08-12 23:12:29] [INFO] Processing meal: BELGE (ID: 121)
+[2025-08-12 23:12:29] [INFO] Backed up existing image: 1754784326_BELGE.png
+[2025-08-12 23:12:29] [INFO] Searching for image: BELGE Tacos food meal dish cuisine
+[2025-08-12 23:12:30] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:30] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:31] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:31] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BELGE+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:12:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:31] [ERROR] Failed to download image for: BELGE
+[2025-08-12 23:12:31] [INFO] Processing meal: TACOS FALAFEL (ID: 122)
+[2025-08-12 23:12:31] [INFO] Backed up existing image: 1754784326_TACOS_FALAFEL.png
+[2025-08-12 23:12:31] [INFO] Searching for image: TACOS FALAFEL Tacos food meal dish cuisine
+[2025-08-12 23:12:32] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:32] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:33] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:33] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+FALAFEL+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:12:33] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:33] [ERROR] Failed to download image for: TACOS FALAFEL
+[2025-08-12 23:12:33] [INFO] Processing meal: COMPOTE + CAPRISUN + JOUET (ID: 123)
+[2025-08-12 23:12:33] [INFO] Backed up existing image: 1754784327_COMPOTE___CAPRISUN___JOUET.png
+[2025-08-12 23:12:33] [INFO] Searching for image: COMPOTE   CAPRISUN   JOUET Menus Enfant food meal dish cuisine
+[2025-08-12 23:12:35] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:35] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:36] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:36] [INFO] Downloading image from: https://source.unsplash.com/800x600/?COMPOTE+++CAPRISUN+++JOUET+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:12:36] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:36] [ERROR] Failed to download image for: COMPOTE + CAPRISUN + JOUET
+[2025-08-12 23:12:36] [INFO] Processing meal: BURGER + FRITES (ID: 124)
+[2025-08-12 23:12:36] [INFO] Backed up existing image: 1754784327_BURGER___FRITES.png
+[2025-08-12 23:12:37] [INFO] Searching for image: BURGER   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:12:37] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:37] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:38] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:38] [INFO] Downloading image from: https://source.unsplash.com/800x600/?BURGER+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:12:39] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:39] [ERROR] Failed to download image for: BURGER + FRITES
+[2025-08-12 23:12:39] [INFO] Processing meal: NUGGETS + FRITES (ID: 125)
+[2025-08-12 23:12:39] [INFO] Backed up existing image: 1754784327_NUGGETS___FRITES.png
+[2025-08-12 23:12:39] [INFO] Searching for image: NUGGETS   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:12:39] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:40] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:41] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:41] [INFO] Downloading image from: https://source.unsplash.com/800x600/?NUGGETS+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:12:41] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:41] [ERROR] Failed to download image for: NUGGETS + FRITES
+[2025-08-12 23:12:41] [INFO] Processing meal: VIANDE KEBAB + FRITES (ID: 126)
+[2025-08-12 23:12:41] [INFO] Backed up existing image: 1754784327_VIANDE_KEBAB___FRITES.png
+[2025-08-12 23:12:41] [INFO] Searching for image: VIANDE KEBAB   FRITES Menus Enfant food meal dish cuisine
+[2025-08-12 23:12:42] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:43] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:43] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:43] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VIANDE+KEBAB+++FRITES+Menus+Enfant+food+meal+dish+cuisine
+[2025-08-12 23:12:44] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:44] [ERROR] Failed to download image for: VIANDE KEBAB + FRITES
+[2025-08-12 23:12:44] [INFO] Processing meal: KEBAB (ID: 127)
+[2025-08-12 23:12:44] [INFO] Backed up existing image: 1754784327_KEBAB.png
+[2025-08-12 23:12:44] [INFO] Searching for image: KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:12:44] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:45] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:45] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:45] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:46] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:46] [ERROR] Failed to download image for: KEBAB
+[2025-08-12 23:12:46] [INFO] Processing meal: MAXI KEBAB (ID: 128)
+[2025-08-12 23:12:46] [INFO] Backed up existing image: 1754784327_MAXI_KEBAB.png
+[2025-08-12 23:12:46] [INFO] Searching for image: MAXI KEBAB Sandwichs food meal dish cuisine
+[2025-08-12 23:12:47] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:48] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:48] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:48] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+KEBAB+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:49] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:49] [ERROR] Failed to download image for: MAXI KEBAB
+[2025-08-12 23:12:49] [INFO] Processing meal: GALETTE (VIANDE AU CHOIX) (ID: 129)
+[2025-08-12 23:12:49] [INFO] Backed up existing image: 1754784327_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:12:49] [INFO] Searching for image: GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:12:49] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:50] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:51] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:51] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:52] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:52] [ERROR] Failed to download image for: GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:12:52] [INFO] Processing meal: MAXI GALETTE (VIANDE AU CHOIX) (ID: 130)
+[2025-08-12 23:12:52] [INFO] Backed up existing image: 1754784327_MAXI_GALETTE__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:12:52] [INFO] Searching for image: MAXI GALETTE  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:12:52] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:53] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:53] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:53] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MAXI+GALETTE++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:54] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:54] [ERROR] Failed to download image for: MAXI GALETTE (VIANDE AU CHOIX)
+[2025-08-12 23:12:54] [INFO] Processing meal: AMERICAIN (ID: 131)
+[2025-08-12 23:12:54] [INFO] Backed up existing image: 1754784327_AMERICAIN.png
+[2025-08-12 23:12:54] [INFO] Searching for image: AMERICAIN Sandwichs food meal dish cuisine
+[2025-08-12 23:12:55] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:55] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:55] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:55] [INFO] Downloading image from: https://source.unsplash.com/800x600/?AMERICAIN+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:56] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:56] [ERROR] Failed to download image for: AMERICAIN
+[2025-08-12 23:12:56] [INFO] Processing meal: KOFTE (ID: 132)
+[2025-08-12 23:12:56] [INFO] Backed up existing image: 1754784327_KOFTE.png
+[2025-08-12 23:12:56] [INFO] Searching for image: KOFTE Sandwichs food meal dish cuisine
+[2025-08-12 23:12:57] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:57] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:12:58] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:12:58] [INFO] Downloading image from: https://source.unsplash.com/800x600/?KOFTE+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:12:58] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:12:58] [ERROR] Failed to download image for: KOFTE
+[2025-08-12 23:12:58] [INFO] Processing meal: PANINI (VIANDE AU CHOIX) (ID: 133)
+[2025-08-12 23:12:58] [INFO] Backed up existing image: 1754784327_PANINI__VIANDE_AU_CHOIX_.png
+[2025-08-12 23:12:58] [INFO] Searching for image: PANINI  VIANDE AU CHOIX Sandwichs food meal dish cuisine
+[2025-08-12 23:12:59] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:12:59] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:00] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:00] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PANINI++VIANDE+AU+CHOIX+Sandwichs+food+meal+dish+cuisine
+[2025-08-12 23:13:01] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:01] [ERROR] Failed to download image for: PANINI (VIANDE AU CHOIX)
+[2025-08-12 23:13:01] [INFO] Processing meal: PETITE FRITE (ID: 134)
+[2025-08-12 23:13:01] [INFO] Backed up existing image: 1754784327_PETITE_FRITE.png
+[2025-08-12 23:13:01] [INFO] Searching for image: PETITE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:13:02] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:02] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:03] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:03] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:13:03] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:03] [ERROR] Failed to download image for: PETITE FRITE
+[2025-08-12 23:13:03] [INFO] Processing meal: GRANDE FRITE (ID: 135)
+[2025-08-12 23:13:03] [INFO] Backed up existing image: 1754784327_GRANDE_FRITE.png
+[2025-08-12 23:13:03] [INFO] Searching for image: GRANDE FRITE Assiettes food meal dish cuisine
+[2025-08-12 23:13:04] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:04] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:05] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:05] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+FRITE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:13:05] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:05] [ERROR] Failed to download image for: GRANDE FRITE
+[2025-08-12 23:13:05] [INFO] Processing meal: PETITE VIANDE (ID: 136)
+[2025-08-12 23:13:05] [INFO] Backed up existing image: 1754784327_PETITE_VIANDE.png
+[2025-08-12 23:13:05] [INFO] Searching for image: PETITE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:13:06] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:06] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:07] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:07] [INFO] Downloading image from: https://source.unsplash.com/800x600/?PETITE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:13:08] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:08] [ERROR] Failed to download image for: PETITE VIANDE
+[2025-08-12 23:13:08] [INFO] Processing meal: GRANDE VIANDE (ID: 137)
+[2025-08-12 23:13:08] [INFO] Backed up existing image: 1754784327_GRANDE_VIANDE.png
+[2025-08-12 23:13:08] [INFO] Searching for image: GRANDE VIANDE Assiettes food meal dish cuisine
+[2025-08-12 23:13:08] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:09] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:09] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:09] [INFO] Downloading image from: https://source.unsplash.com/800x600/?GRANDE+VIANDE+Assiettes+food+meal+dish+cuisine
+[2025-08-12 23:13:10] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:10] [ERROR] Failed to download image for: GRANDE VIANDE
+[2025-08-12 23:13:10] [INFO] Processing meal: TACOS (1 VIANDE AU CHOIX) (ID: 138)
+[2025-08-12 23:13:10] [INFO] Backed up existing image: 1754784327_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:13:10] [INFO] Searching for image: TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:13:10] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:11] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:11] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:11] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:13:12] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:12] [ERROR] Failed to download image for: TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:13:12] [INFO] Processing meal: TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 139)
+[2025-08-12 23:13:12] [INFO] Backed up existing image: 1754784328_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:13:12] [INFO] Searching for image: TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:13:13] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:13] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:13] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:13] [INFO] Downloading image from: https://source.unsplash.com/800x600/?TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:13:14] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:14] [ERROR] Failed to download image for: TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:13:14] [INFO] Processing meal: MEGA TACOS (1 VIANDE AU CHOIX) (ID: 140)
+[2025-08-12 23:13:14] [INFO] Backed up existing image: 1754784328_MEGA_TACOS__1_VIANDE_AU_CHOIX_.png
+[2025-08-12 23:13:14] [INFO] Searching for image: MEGA TACOS  1 VIANDE AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:13:15] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:15] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:15] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:15] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS++1+VIANDE+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:13:16] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:16] [ERROR] Failed to download image for: MEGA TACOS (1 VIANDE AU CHOIX)
+[2025-08-12 23:13:16] [INFO] Processing meal: MEGA TACOS MIXTE (2 VIANDES AU CHOIX) (ID: 141)
+[2025-08-12 23:13:16] [INFO] Backed up existing image: 1754784328_MEGA_TACOS_MIXTE__2_VIANDES_AU_CHOIX_.png
+[2025-08-12 23:13:16] [INFO] Searching for image: MEGA TACOS MIXTE  2 VIANDES AU CHOIX Tacos food meal dish cuisine
+[2025-08-12 23:13:17] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:17] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:17] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:17] [INFO] Downloading image from: https://source.unsplash.com/800x600/?MEGA+TACOS+MIXTE++2+VIANDES+AU+CHOIX+Tacos+food+meal+dish+cuisine
+[2025-08-12 23:13:18] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:18] [ERROR] Failed to download image for: MEGA TACOS MIXTE (2 VIANDES AU CHOIX)
+[2025-08-12 23:13:18] [INFO] Processing meal: CHEESE BURGER (ID: 142)
+[2025-08-12 23:13:18] [INFO] Backed up existing image: 1754784328_CHEESE_BURGER.png
+[2025-08-12 23:13:18] [INFO] Searching for image: CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:13:19] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:19] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:20] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:20] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:20] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:20] [ERROR] Failed to download image for: CHEESE BURGER
+[2025-08-12 23:13:20] [INFO] Processing meal: DOUBLE CHEESE BURGER (ID: 143)
+[2025-08-12 23:13:20] [INFO] Backed up existing image: 1754784328_DOUBLE_CHEESE_BURGER.png
+[2025-08-12 23:13:20] [INFO] Searching for image: DOUBLE CHEESE BURGER Burger food meal dish cuisine
+[2025-08-12 23:13:21] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:21] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:22] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:22] [INFO] Downloading image from: https://source.unsplash.com/800x600/?DOUBLE+CHEESE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:22] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:22] [ERROR] Failed to download image for: DOUBLE CHEESE BURGER
+[2025-08-12 23:13:22] [INFO] Processing meal: CHICKEN (ID: 144)
+[2025-08-12 23:13:22] [INFO] Backed up existing image: 1754784328_CHICKEN.png
+[2025-08-12 23:13:23] [INFO] Searching for image: CHICKEN Burger food meal dish cuisine
+[2025-08-12 23:13:23] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:23] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:24] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:24] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CHICKEN+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:24] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:24] [ERROR] Failed to download image for: CHICKEN
+[2025-08-12 23:13:24] [INFO] Processing meal: CROUSTY GOURMAND (POULET OU BŒUF) (ID: 145)
+[2025-08-12 23:13:24] [INFO] Backed up existing image: 1754784328_CROUSTY_GOURMAND__POULET_OU_B__UF_.png
+[2025-08-12 23:13:25] [INFO] Searching for image: CROUSTY GOURMAND  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:13:25] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:26] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:26] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:26] [INFO] Downloading image from: https://source.unsplash.com/800x600/?CROUSTY+GOURMAND++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:27] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:27] [ERROR] Failed to download image for: CROUSTY GOURMAND (POULET OU BŒUF)
+[2025-08-12 23:13:27] [INFO] Processing meal: VEGGIE BURGER (ID: 146)
+[2025-08-12 23:13:27] [INFO] Backed up existing image: 1754784328_VEGGIE_BURGER.png
+[2025-08-12 23:13:27] [INFO] Searching for image: VEGGIE BURGER Burger food meal dish cuisine
+[2025-08-12 23:13:27] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:28] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:28] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:28] [INFO] Downloading image from: https://source.unsplash.com/800x600/?VEGGIE+BURGER+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:29] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:29] [ERROR] Failed to download image for: VEGGIE BURGER
+[2025-08-12 23:13:29] [INFO] Processing meal: LE BIG CHÈVRE (POULET OU BŒUF) (ID: 147)
+[2025-08-12 23:13:29] [INFO] Backed up existing image: 1754784328_LE_BIG_CH__VRE__POULET_OU_B__UF_.png
+[2025-08-12 23:13:29] [INFO] Searching for image: LE BIG CH  VRE  POULET OU B  UF Burger food meal dish cuisine
+[2025-08-12 23:13:29] [WARNING] Unsplash HTTP error: 401
+[2025-08-12 23:13:30] [WARNING] Pexels HTTP error: 401
+[2025-08-12 23:13:30] [WARNING] Pixabay HTTP error: 400
+[2025-08-12 23:13:30] [INFO] Downloading image from: https://source.unsplash.com/800x600/?LE+BIG+CH++VRE++POULET+OU+B++UF+Burger+food+meal+dish+cuisine
+[2025-08-12 23:13:31] [ERROR] Image download error: HTTP error: 503
+[2025-08-12 23:13:31] [ERROR] Failed to download image for: LE BIG CHÈVRE (POULET OU BŒUF)
+[2025-08-12 23:13:31] [INFO] Process completed. Success: 0, Errors: 79

@@ -496,29 +496,57 @@ class PaymentController extends Controller
         $fileName = Str::random(4) . time() . '.pdf';
         $path = public_path('assets//front/invoices/product/' . $fileName);
         $data['order']  = $order;
-        PDF::loadView('pdf.product', $data)->save($path);
-
-
-        ProductOrder::where('id', $order->id)->update([
-            'invoice_number' => $fileName
-        ]);
+        
+        try {
+            // Set PDF options to prevent timeout
+            $pdf = PDF::loadView('pdf.product', $data);
+            $pdf->setOptions([
+                'isHtml5ParserEnabled' => true,
+                'isRemoteEnabled' => false,
+                'isPhpEnabled' => false,
+                'defaultFont' => 'Arial',
+                'chroot' => public_path(),
+                'tempDir' => storage_path('app/temp'),
+                'logOutputFile' => storage_path('logs/pdf.log'),
+                'defaultMediaType' => 'screen',
+                'isFontSubsettingEnabled' => true,
+                'pdf_background' => false,
+                'dpi' => 96,
+                'defaultPaperSize' => 'a4',
+                'defaultPaperOrientation' => 'portrait',
+            ]);
+            
+            $pdf->save($path);
+            
+            ProductOrder::where('id', $order->id)->update([
+                'invoice_number' => $fileName
+            ]);
+            
+        } catch (\Exception $e) {
+            \Log::error('PDF generation failed for order ' . $order->id . ': ' . $e->getMessage());
+            // Continue without PDF if generation fails
+            $fileName = null;
+        }
 
         // Send Mail to Buyer
+        try {
+            $mailer = new MegaMailer;
+            $data = [
+                'toMail' => $order->billing_email,
+                'toName' => $order->billing_fname,
+                'attachment' => $fileName,
+                'customer_name' => $order->billing_fname,
+                'order_number' => $order->order_number,
+                'order_link' => "<a href='" . route('user-orders-details',$order->id) . "'>" . route('user-orders-details',$order->id) . "</a>",
+                'website_title' => $bs->website_title,
+                'templateType' => 'food_checkout',
+                'type' => 'foodCheckout'
+            ];
 
-        $mailer = new MegaMailer;
-        $data = [
-            'toMail' => $order->billing_email,
-            'toName' => $order->billing_fname,
-            'attachment' => $fileName,
-            'customer_name' => $order->billing_fname,
-            'order_number' => $order->order_number,
-            'order_link' => "<a href='" . route('user-orders-details',$order->id) . "'>" . route('user-orders-details',$order->id) . "</a>",
-            'website_title' => $bs->website_title,
-            'templateType' => 'food_checkout',
-            'type' => 'foodCheckout'
-        ];
-
-        $mailer->mailFromAdmin($data);
+            $mailer->mailFromAdmin($data);
+        } catch (\Exception $e) {
+            \Log::error('Email sending failed for order ' . $order->id . ': ' . $e->getMessage());
+        }
     }
 
     public function mailToAdmin($order) {

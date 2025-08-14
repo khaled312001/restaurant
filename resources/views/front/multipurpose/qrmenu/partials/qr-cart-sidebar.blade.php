@@ -19,7 +19,9 @@
             @endphp
             <div class="cart-item">
                <div class="thumb">
-                  <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" alt="Item Image" />
+                  <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" 
+                       alt="Item Image" 
+                       onerror="handleQRCartImageError(this, '{{asset('assets/front/img/product/featured/'.$item['photo'])}}')" />
                </div>
                <div class="details">
                   <h4 class="title mb-0">
@@ -92,3 +94,60 @@
     </div>
  </div>
  <div class="cart-sidebar-overlay"></div>
+
+<style>
+.placeholder-image {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+.cart-item .thumb img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    min-height: 60px;
+}
+</style>
+
+<script>
+// Function to handle QR cart image errors
+function handleQRCartImageError(img, originalSrc) {
+    console.log('QR Cart image error for:', originalSrc);
+    // Try to reload the original image first
+    if (img.src !== originalSrc) {
+        img.src = originalSrc;
+        return;
+    }
+    // If that fails, use placeholder
+    img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
+    img.classList.add('placeholder-image');
+}
+
+// Check all images in QR cart on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.cart-item .thumb img');
+    images.forEach(function(img) {
+        if (img.complete) {
+            // Check if image loaded successfully
+            if (img.naturalWidth < 100 || img.naturalHeight < 100) {
+                console.log('QR Cart image too small, trying to reload:', img.src);
+                // Force reload the image
+                const originalSrc = img.src;
+                img.src = '';
+                setTimeout(() => {
+                    img.src = originalSrc;
+                }, 100);
+            }
+        } else {
+            img.addEventListener('load', function() {
+                if (this.naturalWidth < 100 || this.naturalHeight < 100) {
+                    console.log('QR Cart loaded image too small:', this.src);
+                }
+            });
+        }
+        img.addEventListener('error', function() {
+            console.log('QR Cart image failed to load:', this.src);
+            handleQRCartImageError(this, this.src);
+        });
+    });
+});
+</script>

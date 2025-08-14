@@ -32,6 +32,11 @@ class StripeController extends PaymentController
 
     public function store(Request $request)
     {
+        // Check if session is valid
+        if (!$request->session()->has('cart')) {
+            return back()->with('error', 'Your session has expired. Please refresh the page and try again.');
+        }
+
         if($this->orderValidation($request)) {
             return $this->orderValidation($request);
         }
@@ -71,7 +76,13 @@ class StripeController extends PaymentController
         // save ordered items
         $this->saveOrderItem($order_id);
 
-        session()->put('request', $request->only('cardNumber', 'month', 'year', 'cardCVC'));
+        // Check if this token has already been used
+        if (Session::has('token_used_' . $request->stripeToken)) {
+            return back()->with('error', 'This payment token has already been used. Please try again with a new payment method.');
+        }
+
+        // Store the Stripe token instead of raw card data
+        session()->put('stripe_token', $request->stripeToken);
 
         return $this->apiRequest($order_id);
 
@@ -81,7 +92,35 @@ class StripeController extends PaymentController
     // send API request & redirect
     public function apiRequest($orderId) {
         $order = ProductOrder::find($orderId);
-        $request = session()->get('request');
+        $stripeToken = session()->get('stripe_token');
+
+        if (!$order) {
+            return back()->with('error', 'Order not found. Please try again.');
+        }
+
+        if (!$stripeToken) {
+            return back()->with('error', 'Payment token not found. Please try again.');
+        }
+
+        // Check if this order has already been processed
+        if ($order->payment_status === 'Completed') {
+            Session::forget('coupon');
+            Session::forget('cart');
+            Session::forget('stripe_token');
+            
+            if ($order->type == 'website') {
+                $success_url = route('product.payment.return', $order->order_number);
+            } elseif ($order->type == 'qr') {
+                $success_url = route('qr.payment.return', $order->order_number);
+            }
+            
+            return redirect($success_url)->with('info', 'Order has already been processed successfully.');
+        }
+
+        // Check if this token has already been used
+        if (Session::has('token_used_' . $stripeToken)) {
+            return back()->with('error', 'This payment token has already been used. Please try again with a new payment method.');
+        }
 
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
@@ -97,49 +136,68 @@ class StripeController extends PaymentController
             $success_url = route('qr.payment.return', $order->order_number);
         }
 
-
         $stripe = Stripe::make(Config::get('services.stripe.secret'));
         try {
-
-            $token = $stripe->tokens()->create([
-                'card' => [
-                    'number' => $request["cardNumber"],
-                    'exp_month' => $request["month"],
-                    'exp_year' => $request["year"],
-                    'cvc' => $request["cardCVC"],
+            // Mark token as used immediately to prevent duplicate usage
+            Session::put('token_used_' . $stripeToken, true);
+            
+            // Use the token directly instead of creating one from raw card data
+            $charge = $stripe->charges()->create([
+                'card' => $stripeToken,
+                'currency' =>  'USD',
+                'amount' => $usdTotal * 100, // Stripe expects amount in cents
+                'description' => $title,
+                'metadata' => [
+                    'order_id' => $order->id,
+                    'order_number' => $order->order_number,
                 ],
             ]);
-
-            if (!isset($token['id'])) {
-                return back()->with('error', 'Token Problem With Your Token.');
-            }
-
-            $charge = $stripe->charges()->create([
-                'card' => $token['id'],
-                'currency' =>  'USD',
-                'amount' => $usdTotal,
-                'description' => $title,
-            ]);
-
 
             if ($charge['status'] == 'succeeded') {
                 $order->payment_status = 'Completed';
                 $order->save();
 
-                $this->sendNotifications($order);
+                // Send notifications asynchronously to avoid timeout
+                try {
+                    $this->sendNotifications($order);
+                } catch (\Exception $e) {
+                    // Log the error but don't fail the payment
+                    \Log::warning('Notification failed for order ' . $order->id . ': ' . $e->getMessage());
+                }
 
+                // Clear all session data
                 Session::forget('coupon');
                 Session::forget('cart');
-                Session::forget('request');
+                Session::forget('stripe_token');
+                
+                // Add success message to session
+                Session::flash('success', 'Payment completed successfully! Order #' . $order->order_number . ' has been confirmed.');
+                
+                // Add a unique identifier to prevent reload issues
+                Session::put('payment_completed_' . $order->id, true);
 
-                return redirect($success_url);
+                return redirect($success_url)->with('payment_id', $charge['id']);
+            } else {
+                // Remove the token used flag if payment failed
+                Session::forget('token_used_' . $stripeToken);
+                return back()->with('error', 'Payment processing failed. Please try again.');
             }
         } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+            // Remove the token used flag if there was an error
+            Session::forget('token_used_' . $stripeToken);
+            return back()->with('error', 'Payment processing failed: ' . $e->getMessage());
         } catch (\Cartalyst\Stripe\Exception\CardErrorException $e) {
-            return back()->with('error', $e->getMessage());
+            // Remove the token used flag if there was a card error
+            Session::forget('token_used_' . $stripeToken);
+            return back()->with('error', 'Card error: ' . $e->getMessage());
         } catch (\Cartalyst\Stripe\Exception\MissingParameterException $e) {
-            return back()->with('error', $e->getMessage());
+            // Remove the token used flag if there was a missing parameter error
+            Session::forget('token_used_' . $stripeToken);
+            return back()->with('error', 'Payment configuration error: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Remove the token used flag if there was an unexpected error
+            Session::forget('token_used_' . $stripeToken);
+            return back()->with('error', 'An unexpected error occurred. Please try again.');
         }
     }
 }

@@ -20,51 +20,23 @@
     <div class="checkbox">
         <label>
             <input name="gateway" class="input-check" type="radio" value="stripe" data-tabid="stripe" data-action="{{route('product.stripe.submit')}}">
-            <span>{{__('Stripe')}}</span>
+            <span>{{__('Visa/Mastercard')}}</span>
         </label>
     </div>
 </div>
 
-
 <div class="row gateway-details" id="tab-stripe">
-
-    <div class="col-md-6">
-        <div class="field-label">{{__('Card Number')}} *</div>
-        <div class="field-input">
-            <input type="text" class="card-elements mb-0" name="cardNumber" placeholder="{{ __('Card Number')}}" autocomplete="off" value="{{old('cardNumber')}}" />
+    <div class="col-12">
+        <div id="card-element" class="form-control">
+            <!-- Stripe Elements will create input elements here -->
         </div>
-        @error('cardNumber')
-        <p class="text-danger">{{convertUtf8($message)}}</p>
-        @enderror
-        <span id="errCard" class="text-danger mb-0"></span>
-    </div>
-    <div class="col-md-6">
-        <div class="field-label">{{__('CVC')}} *</div>
-        <div class="field-input">
-            <input type="text" class="card-elements mb-0" placeholder="{{ __('CVC') }}" name="cardCVC" value="{{old('cardCVC')}}">
+        <div id="card-errors" class="text-danger mt-2" role="alert"></div>
+        
+        <div class="mt-3">
+            <small class="text-muted">
+                <i class="fas fa-lock"></i> Your payment information is secure and encrypted by Stripe.
+            </small>
         </div>
-        @error('cardCVC')
-        <p class="text-danger">{{convertUtf8($message)}}</p>
-        @enderror
-        <span id="errCVC text-danger mb-0"></span>
-    </div>
-    <div class="col-md-6 mb-4">
-        <div class="field-label">{{__('Month')}} *</div>
-        <div class="field-input">
-            <input type="text" class="card-elements mb-0" placeholder="{{__('Month')}}" name="month" value="{{old('month')}}">
-        </div>
-        @error('month')
-        <p class="text-danger">{{convertUtf8($message)}}</p>
-        @enderror
-    </div>
-    <div class="col-md-6 mb-4">
-        <div class="field-label">{{__('Year')}} *</div>
-        <div class="field-input">
-            <input type="text" class="card-elements mb-0" placeholder="{{__('Year')}}" name="year" value="{{old('year')}}">
-        </div>
-        @error('year')
-        <p class="text-danger">{{convertUtf8($message)}}</p>
-        @enderror
     </div>
 </div>
 @endif

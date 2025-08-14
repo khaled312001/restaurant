@@ -83,7 +83,9 @@
                                         <div class="column-box">
                                             <div class="prod-thumb">
                                                 <a href="{{route('front.product.details',[$product->slug,$product->id])}}">
-                                                    <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" alt="">
+                                                    <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" 
+                                                         alt="" 
+                                                         onerror="handleCartImageError(this, '{{asset('assets/front/img/product/featured/'.$item['photo'])}}')">
                                                 </a>
                                             </div>
                                         </div>
@@ -215,8 +217,71 @@
     "use strict";
     var symbol = "{{$be->base_currency_symbol}}";
     var position = "{{$be->base_currency_symbol_position}}";
+    
+    // Function to handle image loading errors
+    function handleImageError(img) {
+        if (img.naturalWidth < 100 || img.naturalHeight < 100) {
+            img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
+            img.classList.add('placeholder-image');
+        }
+    }
+    
+    // Function to handle cart image errors specifically
+    function handleCartImageError(img, originalSrc) {
+        console.log('Cart image error for:', originalSrc);
+        // Try to reload the original image first
+        if (img.src !== originalSrc) {
+            img.src = originalSrc;
+            return;
+        }
+        // If that fails, use placeholder
+        img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
+        img.classList.add('placeholder-image');
+    }
+    
+    // Check all images on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.prod-thumb img');
+        images.forEach(function(img) {
+            if (img.complete) {
+                // Check if image loaded successfully
+                if (img.naturalWidth < 100 || img.naturalHeight < 100) {
+                    console.log('Image too small, trying to reload:', img.src);
+                    // Force reload the image
+                    const originalSrc = img.src;
+                    img.src = '';
+                    setTimeout(() => {
+                        img.src = originalSrc;
+                    }, 100);
+                }
+            } else {
+                img.addEventListener('load', function() {
+                    if (this.naturalWidth < 100 || this.naturalHeight < 100) {
+                        console.log('Loaded image too small:', this.src);
+                    }
+                });
+            }
+            img.addEventListener('error', function() {
+                console.log('Image failed to load:', this.src);
+                handleCartImageError(this, this.src);
+            });
+        });
+    });
 </script>
 <script src="{{asset('assets/front/js/jquery.ui.js')}}"></script>
 <script src="{{asset('assets/front/js/product.js')}}"></script>
 <script src="{{asset('assets/front/js/cart.js')}}"></script>
 @endsection
+
+<style>
+.placeholder-image {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+.prod-thumb img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    min-height: 80px;
+}
+</style>

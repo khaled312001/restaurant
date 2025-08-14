@@ -11,7 +11,7 @@ use App\Models\PostalCode;
 use App\Models\ServingMethod;
 use App\Models\TimeFrame;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class QrMenuController extends Controller
@@ -100,15 +100,25 @@ class QrMenuController extends Controller
     }
 
     public function checkout(Request $request) {
-        if ($request->type != 'guest' && !Auth::check()) {
-            session()->put('link', route('front.qrmenu.checkout'));
-            return redirect()->route('front.qrmenu.login');
+        // السماح بالطلبات كضيف افتراضياً أو للمستخدمين المسجلين
+        if (!Auth::check()) {
+            // إذا لم يكن المستخدم مسجل دخول، نعتبره ضيف
+            $request->merge(['type' => 'guest']);
         }
 
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
+        }
+
+        // التأكد من وجود لغة
+        if (!$currentLang) {
+            // إذا لم توجد لغة افتراضية، استخدم أول لغة متاحة
+            $currentLang = Language::first();
+            if (!$currentLang) {
+                abort(500, 'No language configured');
+            }
         }
 
         $itemsCount = 0;
@@ -144,7 +154,8 @@ class QrMenuController extends Controller
         $data['payumoney'] = PaymentGateway::find(18);
 
         $data['discount'] = session()->has('coupon') && !empty(session()->get('coupon')) ? session()->get('coupon') : 0;
-        $days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+
+        $days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
         $disDays = [];
         foreach ($days as $key => $day) {
             $count = TimeFrame::where('day', $day)->count();

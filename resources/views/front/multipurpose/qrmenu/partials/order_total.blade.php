@@ -37,15 +37,7 @@
                     data-tax="{{ tax() }}" id="tax">{{ tax() }}</span>{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}
                 </span>
             </li>
-            <li style="{{ $rtl == 1 ?'direction:rtl !important':'' }}">
-                <span class="col-title">{{ __('Shipping Charge') }}</span>
-                <span  dir="ltr">
-                <i class="fas fa-plus"></i>
-                {{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : '' }}<span
-                    data="0"
-                    class="shipping">0</span>{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}
-                </span>
-            </li>
+            <!-- Shipping charge removed since home delivery is not available -->
             <li style="{{ $rtl == 1 ?'direction:rtl !important':'' }}">
                 <span class="col-title">{{ __('Total') }}</span>
                 <span  dir="ltr">

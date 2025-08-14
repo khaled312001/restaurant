@@ -95,6 +95,14 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="triggerImageRefresh()" title="Refresh product images">
+                                    <i class="fas fa-sync-alt"></i> {{ __('Refresh Images') }}
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-info" onclick="debugImages()" title="Debug image loading issues">
+                                    <i class="fas fa-bug"></i> {{ __('Debug Images') }}
+                                </button>
+                            </div>
                         </div>
 
                         <div class="shop-box shop-filter mt-30">
@@ -170,9 +178,14 @@
                                         @endif
                                         <a class="pricing-thumb"
                                             href="{{ route('front.product.details', [$product->slug, $product->id]) }}">
-                                            <img class="lazy wow fadeIn"
+                                            <img class="wow fadeIn"
                                                 data-src="{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}"
-                                                alt="" data-wow-delay=".5s">
+                                                src="{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}"
+                                                alt="{{ convertUtf8($product->title) }}" 
+                                                data-wow-delay=".5s"
+                                                data-product-id="{{ $product->id }}"
+                                                onerror="handleImageError(this)"
+                                                onload="validateAndLoadImage(this, '{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}')">
                                         </a>
                                         <h3 class="title">
                                             {{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : '' }}{{ convertUtf8($product->current_price) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}
@@ -259,6 +272,212 @@
         var sliderMinPrice = '{{ !empty(request()->input('minprice')) ? request()->input('minprice') : $minprice }}';
         var sliderMaxPrice = '{{ !empty(request()->input('maxprice')) ? request()->input('maxprice') : $maxprice }}';
         var sliderInitMax = '{{ $maxprice }}';
+        
+        // Function to handle image loading errors
+        function handleImageError(img) {
+            console.log('Image error for product:', img.dataset.productId);
+            // Try to load the actual image from data-src first
+            if (img.dataset.src && img.dataset.src !== img.src) {
+                img.src = img.dataset.src;
+                return;
+            }
+            // If that fails, use placeholder
+            img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
+            img.classList.add('placeholder-image');
+        }
+        
+        // Function to validate and load images properly
+        function validateAndLoadImage(img, originalSrc) {
+            console.log('Validating image for product:', img.dataset.productId, 'Original src:', originalSrc);
+            
+            // Check if image is valid
+            if (img.naturalWidth < 100 || img.naturalHeight < 100) {
+                console.log('Image too small, using placeholder for product:', img.dataset.productId);
+                img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
+                img.classList.add('placeholder-image');
+                return;
+            }
+            
+            // If image is valid, remove placeholder styling and ensure correct src
+            img.classList.remove('placeholder-image');
+            if (img.src !== originalSrc) {
+                img.src = originalSrc;
+            }
+            console.log('Image loaded successfully for product:', img.dataset.productId, 'Dimensions:', img.naturalWidth, 'x', img.naturalHeight);
+        }
+        
+        // Function to refresh images for a specific product
+        function refreshProductImage(productId, newImagePath) {
+            const img = document.querySelector(`img[data-product-id="${productId}"]`);
+            if (img) {
+                img.src = newImagePath;
+                img.classList.remove('placeholder-image');
+                console.log('Image refreshed for product:', productId);
+            }
+        }
+        
+        // Check all images on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, checking images...');
+            const images = document.querySelectorAll('.pricing-thumb img');
+            console.log('Found', images.length, 'images to check');
+            
+            images.forEach(function(img, index) {
+                console.log(`Image ${index + 1}:`, {
+                    productId: img.dataset.productId,
+                    src: img.src,
+                    dataSrc: img.dataset.src,
+                    naturalWidth: img.naturalWidth,
+                    naturalHeight: img.naturalHeight
+                });
+                
+                if (img.complete) {
+                    validateAndLoadImage(img, img.dataset.src);
+                } else {
+                    img.addEventListener('load', function() {
+                        validateAndLoadImage(this, this.dataset.src);
+                    });
+                }
+                img.addEventListener('error', function() {
+                    handleImageError(this);
+                });
+            });
+            
+            // Force check images after a short delay
+            setTimeout(function() {
+                console.log('Delayed image check...');
+                images.forEach(function(img) {
+                    validateAndLoadImage(img, img.dataset.src);
+                });
+            }, 1000);
+        });
+        
+        // Listen for image updates (useful for admin updates)
+        if (typeof EventSource !== 'undefined') {
+            // This could be used to listen for real-time image updates
+            console.log('EventSource available for real-time updates');
+        }
+        
+        // Global function to refresh product images (can be called from admin panel)
+        window.refreshProductImages = function() {
+            console.log('Refreshing all product images...');
+            const images = document.querySelectorAll('.pricing-thumb img');
+            images.forEach(function(img) {
+                const originalSrc = img.dataset.src;
+                if (originalSrc) {
+                    // Force reload the image
+                    img.src = originalSrc + '?t=' + new Date().getTime();
+                    img.classList.remove('placeholder-image');
+                }
+            });
+        };
+        
+        // Function to refresh a specific product image
+        window.refreshSpecificProductImage = function(productId) {
+            const img = document.querySelector(`img[data-product-id="${productId}"]`);
+            if (img) {
+                const originalSrc = img.dataset.src;
+                if (originalSrc) {
+                    img.src = originalSrc + '?t=' + new Date().getTime();
+                    img.classList.remove('placeholder-image');
+                    console.log('Refreshed image for product:', productId);
+                }
+            }
+        };
+
+        // Function to manually trigger image refresh (can be called from admin panel)
+        window.triggerImageRefresh = function() {
+            console.log('Manual image refresh triggered');
+            refreshAllProductImages();
+            
+            // Show success message
+            if (typeof showNotification === 'function') {
+                showNotification('Images refreshed successfully!', 'success');
+            } else {
+                alert('Images refreshed successfully!');
+            }
+        };
+        
+        // Function to debug image loading issues
+        window.debugImages = function() {
+            console.log('=== IMAGE DEBUG INFO ===');
+            const images = document.querySelectorAll('.pricing-thumb img');
+            console.log('Total images found:', images.length);
+            
+            images.forEach(function(img, index) {
+                const info = {
+                    index: index + 1,
+                    productId: img.dataset.productId,
+                    src: img.src,
+                    dataSrc: img.dataset.src,
+                    naturalWidth: img.naturalWidth,
+                    naturalHeight: img.naturalHeight,
+                    complete: img.complete,
+                    hasError: img.classList.contains('placeholder-image')
+                };
+                console.log(`Image ${index + 1}:`, info);
+                
+                // Check if image file exists
+                fetch(img.src, { method: 'HEAD' })
+                    .then(response => {
+                        console.log(`Image ${index + 1} fetch result:`, response.status, response.statusText);
+                    })
+                    .catch(error => {
+                        console.error(`Image ${index + 1} fetch error:`, error);
+                    });
+            });
+            
+            // Check browser console for any errors
+            console.log('Check browser console for any image loading errors');
+        };
     </script>
     <script src="{{ asset('assets/front/js/items.js') }}"></script>
+    <script src="{{ asset('assets/front/js/image-refresh-helper.js') }}"></script>
 @endsection
+
+<style>
+.placeholder-image {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+.pricing-thumb img {
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+.pricing-thumb img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.pricing-thumb {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.pricing-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+.pricing-thumb:hover::before {
+    opacity: 1;
+}
+.image-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+</style>

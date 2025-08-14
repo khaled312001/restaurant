@@ -94,6 +94,9 @@ Route::get('/product/payment/notify', 'Payment\product\PaypalController@notify')
 // stripe routes
 Route::post('/product/stripe/submit', 'Payment\product\StripeController@store')->name('product.stripe.submit');
 Route::get('/product/stripe/{orderId}/apiRequest', 'Payment\product\StripeController@apiRequest')->name('product.stripe.apiRequest');
+Route::get('/refresh-csrf-token', function() {
+    return response()->json(['token' => csrf_token()]);
+})->name('refresh.csrf.token');
 // Offline Gateways
 Route::post('/product/offline/{gatewayid}/submit', 'Payment\product\OfflineController@store')->name('product.offline.submit');
 //Flutterwave Routes

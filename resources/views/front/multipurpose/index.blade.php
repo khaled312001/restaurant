@@ -203,7 +203,9 @@
                                                                     <div class="menu-thumb">
                                                                         <img class="lazy wow fadeIn"
                                                                             data-src="{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}"
-                                                                            alt="menu" data-wow-delay=".5s">
+                                                                            src="{{ asset('assets/front/img/placeholder.jpg') }}"
+                                                                            alt="menu" data-wow-delay=".5s"
+                                                                            onerror="this.onerror=null; this.src='{{ asset('assets/front/img/placeholder.jpg') }}'; this.classList.add('placeholder-image');">
                                                                         <div class="thumb-overlay">
                                                                             <a
                                                                                 href="{{ route('front.product.details', [$product->slug, $product->id]) }}"><i

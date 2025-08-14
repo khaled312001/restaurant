@@ -30,17 +30,33 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="shop-item mr-70">
                         <div class="shop-thumb">
-                            @foreach ($product->product_images as $image)
-                            <div class="item">
-                                <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/sliders/'.$image->image)}}" alt="shop" data-wow-delay=".5s">
-                            </div>
-                            @endforeach
+                            @if($product->product_images && $product->product_images->count() > 0)
+                                @foreach ($product->product_images as $image)
+                                <div class="item">
+                                    <img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/sliders/'.$image->image)}}" 
+                                         src="{{ asset('assets/front/img/placeholder.jpg') }}"
+                                         alt="shop" data-wow-delay=".5s"
+                                         onerror="this.onerror=null; this.src='{{ asset('assets/front/img/placeholder.jpg') }}';">
+                                </div>
+                                @endforeach
+                            @else
+                                <div class="item">
+                                    <img class="lazy wow fadeIn" src="{{ asset('assets/front/img/placeholder.jpg') }}" alt="shop" data-wow-delay=".5s">
+                                </div>
+                            @endif
                         </div>
                         <div class="shop-list">
                             <ul class="shop-thumb-active">
-                                @foreach ($product->product_images as $img)
-                                <li><img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/sliders/'.$img->image)}}" alt="shop" data-wow-delay=".5s"></li>
-                                @endforeach
+                                @if($product->product_images && $product->product_images->count() > 0)
+                                    @foreach ($product->product_images as $img)
+                                    <li><img class="lazy wow fadeIn" data-src="{{asset('assets/front/img/product/sliders/'.$img->image)}}" 
+                                             src="{{ asset('assets/front/img/placeholder.jpg') }}"
+                                             alt="shop" data-wow-delay=".5s"
+                                             onerror="this.onerror=null; this.src='{{ asset('assets/front/img/placeholder.jpg') }}';"></li>
+                                    @endforeach
+                                @else
+                                    <li><img class="lazy wow fadeIn" src="{{ asset('assets/front/img/placeholder.jpg') }}" alt="shop" data-wow-delay=".5s"></li>
+                                @endif
                             </ul>
                         </div>
                     </div>

@@ -16,9 +16,9 @@ La page affiche **uniquement** ces 6 catégories :
 Quand les utilisateurs cliquent sur "Sandwichs" ou "Menus", ils accèdent à la même page contenant :
 - **Kebab et Galette** - Spécialités du restaurant
 - **Americain et Kofte** - Classiques américains et turcs
-- **Tacos** - Tacos mexicains
+- **Tacos** - Tacos 
 - **Burgers** - Burgers gourmets
-- **Panini** - Panini italiens
+- **Panini** - Panini 
 - **Assiettes** - Plats complets
 
 ## Implémentation Technique

@@ -86,7 +86,7 @@
                             </li>
                         </ul>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="{{ route('front.kebabGalette') }}" class="btn btn-danger" style="background: #e74c3c; color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            <a href="{{ route('front.americainKofte') }}" class="btn btn-danger" style="background: #e74c3c; color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
                                 <i class="fas fa-eye" style="margin-right: 8px;"></i>
                                 Voir le menu complet
                             </a>
@@ -108,20 +108,20 @@
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Tacos Mexicains</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Tacos Poulet</span>
-                                <span style="font-weight: 600; color: #27ae60;">9.00€</span>
+                                <span>Tacos (1 viande)</span>
+                                <span style="font-weight: 600; color: #27ae60;">8.00€</span>
                             </li>
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Tacos Boeuf</span>
+                                <span>Tacos Mixte (2 viandes)</span>
                                 <span style="font-weight: 600; color: #27ae60;">9.50€</span>
                             </li>
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Tacos Végétarien</span>
-                                <span style="font-weight: 600; color: #27ae60;">8.50€</span>
+                                <span>Mega Tacos (1 viande)</span>
+                                <span style="font-weight: 600; color: #27ae60;">12.50€</span>
                             </li>
                             <li style="padding: 8px 0; display: flex; justify-content: space-between;">
-                                <span>Tacos Mixte</span>
-                                <span style="font-weight: 600; color: #27ae60;">10.00€</span>
+                                <span>Mega Tacos Mixte</span>
+                                <span style="font-weight: 600; color: #27ae60;">14.50€</span>
                             </li>
                         </ul>
                         <div style="text-align: center; margin-top: 20px;">
@@ -137,9 +137,9 @@
             <!-- Burgers -->
             <div class="col-lg-4 col-md-6 mb-5">
                 <div class="menu-category-card" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;">
-                    <div class="card-image" style="height: 200px; background: linear-gradient(45deg, #8e44ad, #9b59b6); position: relative; overflow: hidden;">
+                    <div class="card-image" style="height: 200px; background: linear-gradient(45deg, #e67e22, #f39c12); position: relative; overflow: hidden;">
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
-                            <i class="fas fa-cheeseburger" style="font-size: 4rem; margin-bottom: 15px; display: block;"></i>
+                            <i class="fas fa-hamburger" style="font-size: 4rem; margin-bottom: 15px; display: block;"></i>
                             <h3 style="font-size: 1.5rem; font-weight: 600; margin: 0;">Burgers</h3>
                         </div>
                     </div>
@@ -147,22 +147,28 @@
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Burgers Gourmets</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Burger Classique</span>
-                                <span style="font-weight: 600; color: #8e44ad;">8.00€</span>
+                                <span>Cheese Burger</span>
+                                <span style="font-weight: 600; color: #e67e22;">5.50€</span>
                             </li>
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Burger Cheese</span>
-                                <span style="font-weight: 600; color: #8e44ad;">8.50€</span>
+                                <span>Double Cheese</span>
+                                <span style="font-weight: 600; color: #e67e22;">7.00€</span>
                             </li>
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Burger Royal</span>
-                                <span style="font-weight: 600; color: #8e44ad;">9.50€</span>
+                                <span>Chicken</span>
+                                <span style="font-weight: 600; color: #e67e22;">5.50€</span>
                             </li>
                             <li style="padding: 8px 0; display: flex; justify-content: space-between;">
-                                <span>Burger Végétarien</span>
-                                <span style="font-weight: 600; color: #8e44ad;">8.00€</span>
+                                <span>Veggie Burger</span>
+                                <span style="font-weight: 600; color: #e67e22;">4.00€</span>
                             </li>
                         </ul>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="{{ route('front.burgers') }}" class="btn btn-warning" style="background: #e67e22; color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                                Voir le menu complet
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -177,7 +183,7 @@
                         </div>
                     </div>
                     <div class="card-content" style="padding: 25px;">
-                        <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Panini Italiens</h4>
+                        <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Panini </h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Panini Jambon</span>

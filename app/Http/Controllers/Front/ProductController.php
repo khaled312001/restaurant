@@ -74,7 +74,7 @@ class ProductController extends Controller
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
+            $currentLang = Language::where('is_default', 1)->first();
         }
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
@@ -95,6 +95,34 @@ class ProductController extends Controller
         $data['be'] = $currentLang->basic_extended;
 
         return view('front.multipurpose.product.kebab_galette', $data);
+    }
+
+    public function americainKofte(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.americain_kofte', $data);
+    }
+
+    public function burgers(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.burgers', $data);
     }
 
     public function productDetails($slug, $id)

@@ -25,49 +25,37 @@
                         NOS SANDWICHS
                     </h2>
                     
-                                         <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                         <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f39c12;">
-                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem;">Plat</span>
-                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
-                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">KEBAB</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MAXI KEBAB</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GALETTE (VIANDE AU CHOIX)</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MAXI GALETTE (VIANDE AU CHOIX)</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">AMERICAIN</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                         </div>
-                         
-                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">KOFTE</h4>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                         </div>
-                     </div>
+                    <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f39c12;">
+                            <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem;">Plat</span>
+                            <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
+                            <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                        </div>
+                        
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">KEBAB</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                        </div>
+                        
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MAXI KEBAB</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                        </div>
+                        
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GALETTE (VIANDE AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                        </div>
+                        
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MAXI GALETTE (VIANDE AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Side Orders Menu -->
@@ -124,7 +112,7 @@
                     </div>
 
                     <!-- Galette Image -->
-                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
+                    <div class="food-item" style="text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
                             <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #27ae60, #2ecc71); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                                 <i class="fas fa-bread-slice" style="font-size: 4rem; color: white;"></i>
@@ -133,18 +121,6 @@
                         </div>
                         <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Galette</h4>
                         <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Viande au choix</p>
-                    </div>
-
-                    <!-- Americain Image -->
-                    <div class="food-item" style="text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #8e44ad, #9b59b6); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                                <i class="fas fa-hotdog" style="font-size: 4rem; color: white;"></i>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Americain</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Classique américain</p>
                     </div>
                 </div>
             </div>

@@ -58,7 +58,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                 @if ($bs->qr_call_waiter == 1)
-                                    <a class="dropdown-item" data-toggle="modal"
+                                    <a class="dropdown-item call-waiter-hidden" data-toggle="modal"
                                         data-target="#callWaiterModal">{{ __('Call Waiter') }}</a>
                                 @endif
                                 @auth

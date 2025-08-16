@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="{{ asset('assets/front/plugin_css/styles.php?color=' . str_replace('#', '', $bs->base_color)) }}">
     {{-- --========Theme wise End Header & Footer css=======-- --}}
 
+    {{-- Custom CSS to hide Call Waiter and Login --}}
+    <link rel="stylesheet" href="{{ asset('css/hide-elements.css') }}">
+
     {{-- ---==================== Common js=======================---- --}}
     @include('front.plugin_js')
     {{-- --============= Common js===========================--- --}}

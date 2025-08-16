@@ -119,7 +119,7 @@
                             </a>
                         </div>
                     @else
-                        <div class="item">
+                        <div class="item login-hidden">
                             <a href="{{ route('user.login') }}" class="btn-icon" target="_self" aria-label="User"
                                 title="{{ __('Login') }}">
                                 <i class="fal fa-sign-in"></i>
@@ -146,7 +146,7 @@
                         </a>
                     </div>
                     @if ($bs->website_call_waiter == 1)
-                    <div class="item">
+                    <div class="item call-waiter-hidden">
                         <a data-toggle="modal" data-target="#callWaiterModal" class="btn-icon" target="_self" title="{{ __('Call Waiter') }}"
                         data-tooltip="tooltip" data-bs-placement="top" data-bs-original-title="{{ __('Call Waiter') }}">
                             <i class="fal fa-bell"></i>

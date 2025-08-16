@@ -1,5 +1,5 @@
     {{-- START: Call Waiter Modal --}}
-    <div class="modal fade" id="callWaiterModal" tabindex="-1" role="dialog" aria-labelledby="callWaiterModalTitle"
+    <div class="modal fade call-waiter-hidden" id="callWaiterModal" tabindex="-1" role="dialog" aria-labelledby="callWaiterModalTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -13,7 +13,7 @@
                     @php
                         $tables = \App\Table::where('status', 1)->get();
                     @endphp
-                    <form id="callWaiterForm" action="{{ route('front.callwaiter') }}" method="GET">
+                    <form id="callWaiterModal" action="{{ route('front.callwaiter') }}" method="GET">
                         <select class="form-control" name="table" required>
                             <option value="" disabled selected>{{ __('Select a Table') }}</option>
                             @foreach ($tables as $table)
@@ -25,7 +25,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" form="callWaiterForm" class="btn btn-lg btn-primary">
+                    <button type="submit" form="callWaiterModal" class="btn btn-lg btn-primary">
                         {{ __('Call Waiter') }}
                     </button>
                 </div>

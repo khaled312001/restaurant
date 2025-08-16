@@ -40,7 +40,7 @@
                                     @endif
 
                                     @guest
-                                        <ul class="login">
+                                        <ul class="login login-hidden">
                                             <li><a href="{{ route('user.login') }}">{{ __('Se connecter') }}</a></li>
                                         </ul>
                                     @endguest
@@ -139,7 +139,7 @@
                                     </li>
                                 @endif
                                 @if ($bs->website_call_waiter == 1)
-                                    <li class="nav-item d-block d-sm-none"><a class="page-scroll"
+                                    <li class="nav-item d-block d-sm-none call-waiter-hidden"><a class="page-scroll"
                                             data-toggle="modal"
                                             data-target="#callWaiterModal">{{ __('Call Waiter') }}</a>
                                     </li>
@@ -159,7 +159,7 @@
                                     href="{{ route('front.reservation') }}">{{ __('Reservation') }}</a>
                             @endif
                             @if ($bs->website_call_waiter == 1)
-                                <a class="main-btn main-btn d-none d-sm-inline-block text-white ml-2"
+                                <a class="main-btn main-btn d-none d-sm-inline-block text-white ml-2 call-waiter-hidden"
                                     data-toggle="modal"
                                     data-target="#callWaiterModal">{{ __('Call Waiter') }}</a>
                             @endif

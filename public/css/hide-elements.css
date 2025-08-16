@@ -1,0 +1,34 @@
+/* Hide Call Waiter and Login elements */
+.call-waiter-hidden,
+.login-hidden {
+    display: none !important;
+}
+
+/* Hide Call Waiter buttons and links */
+[data-target="#callWaiterModal"],
+a[href*="callwaiter"],
+button[form="callWaiterForm"] {
+    display: none !important;
+}
+
+/* Hide Login buttons and links */
+a[href*="user.login"],
+a[href*="login"],
+.login ul li a[href*="login"] {
+    display: none !important;
+}
+
+/* Hide Call Waiter modal */
+#callWaiterModal {
+    display: none !important;
+}
+
+/* Hide specific Call Waiter items */
+.item:has([data-target="#callWaiterModal"]) {
+    display: none !important;
+}
+
+/* Hide Call Waiter in navigation */
+.nav-item:has([data-target="#callWaiterModal"]) {
+    display: none !important;
+} 

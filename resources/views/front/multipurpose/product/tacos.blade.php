@@ -1,17 +1,28 @@
 @extends('front.layout')
 @section('content')
 
-<!-- Page Header -->
-<div class="page-header" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 60px 0; text-align: center; color: white;">
+<!--====== PAGE TITLE PART START ======-->
+<section class="page-title-area d-flex align-items-center lazy" data-bg="{{asset('assets/front/img/'.$bs->breadcrumb)}}">
     <div class="container">
-        <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-            Tacos Mexicains
-        </h1>
-        <p style="font-size: 1.2rem; opacity: 0.9; margin: 0;">
-            Découvrez nos délicieux tacos préparés avec des ingrédients authentiques
-        </p>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-title-item text-center">
+                    <h2 class="title">Tacos Mexicains</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="flaticon-home"></i>{{__('Home')}}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('front.sandwiches')}}">Notre Carte</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tacos</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+<!--====== PAGE TITLE PART ENDS ======-->
+
+
 
 <!-- Menu Section -->
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">

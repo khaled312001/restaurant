@@ -66,7 +66,12 @@ class FrontendController extends Controller
         $data['members'] = Member::where('language_id', $lang_id)->where('feature', 1)->get();
         $data['testimonials'] = Testimonial::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
         $data['special_product'] = Product::where('language_id', $lang_id)->where('status', 1)->where('is_special', 1)->orderBy('id', 'desc')->get();
-        $data['categories'] = Pcategory::where('status', 1)->where('is_feature', 1)->where('language_id', $currentLang->id)->get();
+        // Filtrer uniquement les 6 catégories spécifiques du menu (même que dans ProductController)
+        $data['categories'] = Pcategory::where('status', 1)
+            ->where('language_id', $currentLang->id)
+            ->whereIn('name', ['Assiettes', 'Sandwichs', 'Menus', 'Salade', 'Menus Enfant', 'Nos Box'])
+            ->orderBy('id')
+            ->get();
 
         $data['products'] = Product::where('language_id', $lang_id)->where('status', 1)->paginate(10);
 

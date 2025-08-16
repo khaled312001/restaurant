@@ -22,7 +22,7 @@
     <!--====== PAGE TITLE PART ENDS ======-->
 
     <!--====== CATÉGORIES DU MENU PART START ======-->
-    <section class="menu-categories-area pt-120 pb-120">
+    <section class="nos-menus-area pt-120 pb-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -87,13 +87,18 @@
                                 </div>
                                 
                                 <div class="category-actions">
-                                    @if($category->name === 'Sandwichs' || $category->name === 'Menus')
+                                    @if($category->name === 'Sandwichs')
                                         <a href="{{ route('front.sandwiches') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
                                             Voir le menu
                                         </a>
+                                    @elseif($category->name === 'Menus')
+                                        <a href="{{ route('front.menus') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
                                     @else
-                                        <a href="{{ route('front.items', ['category_id' => $category->id]) }}" class="view-menu-btn">
+                                        <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
                                             Voir le menu
                                         </a>
@@ -126,7 +131,7 @@
     <!--====== CATÉGORIES DU MENU PART ENDS ======-->
 
     <style>
-        .menu-categories-area {
+        .nos-menus-area {
             background: #f8f9fa;
         }
         

@@ -193,23 +193,23 @@
                         </div>
                     </div>
                     <div class="card-content" style="padding: 25px;">
-                        <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Panini </h4>
+                        <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Panini Gourmets</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Panini Jambon</span>
-                                <span style="font-weight: 600; color: #f39c12;">6.50€</span>
-                            </li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Panini Thon</span>
+                                <span>Panini 3 fromages</span>
                                 <span style="font-weight: 600; color: #f39c12;">7.00€</span>
                             </li>
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                                <span>Panini Végétarien</span>
-                                <span style="font-weight: 600; color: #f39c12;">6.00€</span>
+                                <span>Panini viande choix (Kebab-steak-kofté-tenders-cordons-bleus)</span>
+                                <span style="font-weight: 600; color: #f39c12;">7.00€</span>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
+                                <span>Menu Panini 3 fromages</span>
+                                <span style="font-weight: 600; color: #f39c12;">10.00€</span>
                             </li>
                             <li style="padding: 8px 0; display: flex; justify-content: space-between;">
-                                <span>Panini Mixte</span>
-                                <span style="font-weight: 600; color: #f39c12;">7.50€</span>
+                                <span>Menu Panini viande choix</span>
+                                <span style="font-weight: 600; color: #f39c12;">10.00€</span>
                             </li>
                         </ul>
                     </div>

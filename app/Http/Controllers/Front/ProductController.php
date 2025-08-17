@@ -48,7 +48,26 @@ class ProductController extends Controller
             ->orderBy('id')
             ->get();
 
-        $data['products'] = Product::where('language_id', $lang_id)->where('status', 1)->paginate(10);
+        // Récupérer la catégorie sélectionnée si category_id est fourni
+        $selectedCategory = null;
+        if ($request->has('category_id')) {
+            $selectedCategory = Pcategory::where('id', $request->category_id)
+                ->where('language_id', $lang_id)
+                ->where('status', 1)
+                ->first();
+        }
+
+        // Construire la requête des produits
+        $productsQuery = Product::where('language_id', $lang_id)->where('status', 1);
+        
+        // Filtrer par catégorie si une catégorie est sélectionnée
+        if ($selectedCategory) {
+            $productsQuery->where('category_id', $selectedCategory->id);
+            $data['selectedCategory'] = $selectedCategory;
+        }
+
+        $data['products'] = $productsQuery->paginate(10);
+        $data['selectedCategory'] = $selectedCategory;
 
         return view('front.multipurpose.product.product', $data);
     }

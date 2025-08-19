@@ -144,6 +144,76 @@ class ProductController extends Controller
         return view('front.multipurpose.product.burgers', $data);
     }
 
+    public function assiettes(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.assiettes', $data);
+    }
+
+    public function menusEnfant(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.menus_enfant', $data);
+    }
+
+    public function salade(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.salade', $data);
+    }
+
+    public function nosBox(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.nos_box', $data);
+    }
+
+    public function panini(Request $request)
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+
+        return view('front.multipurpose.product.panini', $data);
+    }
+
     public function productDetails($slug, $id)
     {
         if (session()->has('lang')) {

@@ -37,7 +37,12 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/menu/tacos', 'Front\ProductController@tacos')->name('front.tacos');
     Route::get('/menu/kebab-galette', 'Front\ProductController@kebabGalette')->name('front.kebabGalette');
     Route::get('/menu/americain-kofte', 'Front\ProductController@americainKofte')->name('front.americainKofte');
-Route::get('/menu/burgers', 'Front\ProductController@burgers')->name('front.burgers');
+    Route::get('/menu/burgers', 'Front\ProductController@burgers')->name('front.burgers');
+    Route::get('/menu/assiettes', 'Front\ProductController@assiettes')->name('front.assiettes');
+    Route::get('/menu/menus-enfant', 'Front\ProductController@menusEnfant')->name('front.menusEnfant');
+    Route::get('/menu/salade', 'Front\ProductController@salade')->name('front.salade');
+    Route::get('/menu/nos-box', 'Front\ProductController@nosBox')->name('front.nosBox');
+    Route::get('/menu/panini', 'Front\ProductController@panini')->name('front.panini');
 
     Route::get('/team', 'Front\FrontendController@team')->name('front.team');
     Route::get('/career', 'Front\FrontendController@career')->name('front.career');

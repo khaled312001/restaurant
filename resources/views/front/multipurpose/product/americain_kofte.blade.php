@@ -43,17 +43,21 @@
                             <span style="color: #e74c3c; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
                         </div>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">AMERICAIN</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'americain', 'id' => 131]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">AMERICAIN</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                            </div>
+                        </a>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">KOFTE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'kofte', 'id' => 132]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">KOFTE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
@@ -69,25 +73,33 @@
                             <span style="color: #e74c3c; font-weight: 600; font-size: 1.1rem;">Prix</span>
                         </div>
                         
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">2,00€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'petite-frite', 'id' => 134]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE FRITE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">2,00€</span>
+                            </div>
+                        </a>
                         
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">4,00€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'grande-frite', 'id' => 135]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE FRITE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">4,00€</span>
+                            </div>
+                        </a>
                         
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">5,00€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'petite-viande', 'id' => 136]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE VIANDE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">5,00€</span>
+                            </div>
+                        </a>
                         
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">10,00€</span>
-                        </div>
+                        <a href="{{ route('front.product.details', ['slug' => 'grande-viande', 'id' => 137]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE VIANDE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">10,00€</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -190,14 +202,19 @@
 }
 
 .menu-item {
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.menu-item:hover {
-    background-color: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+.menu-item a:hover .menu-item {
+    background-color: rgba(231, 76, 60, 0.1);
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.menu-item a:hover h4,
+.menu-item a:hover span {
+    color: #e74c3c !important;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
 }
 
 .food-image {

@@ -409,6 +409,7 @@
                             <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
                         <h3 class="title">Choisissez parmi nos délicieuses catégories</h3>
                         <p class="text">Explorez notre sélection complète de plats préparés avec des ingrédients frais et de qualité</p>
+                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">48 plats disponibles au total</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +461,31 @@
                                 <div class="category-stats">
                                     <span class="meal-count">
                                         <i class="fas fa-utensils"></i>
-                                        {{ $category->products()->where('status', 1)->count() }} plats disponibles
+                                        @switch($category->name)
+                                            @case('Sandwichs')
+                                                8 plats disponibles
+                                                @break
+                                            @case('Menus')
+                                                26 plats disponibles
+                                                @break
+                                            @case('Assiettes')
+                                                2 plats disponibles
+                                                @break
+                                            @case('Menus Enfant')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Salade')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Nos Box')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Panini')
+                                                4 plats disponibles
+                                                @break
+                                            @default
+                                                {{ $category->products()->where('status', 1)->count() }} plats disponibles
+                                        @endswitch
                                     </span>
                                 </div>
                                 
@@ -472,6 +497,31 @@
                                         </a>
                                     @elseif($category->name === 'Menus')
                                         <a href="{{ route('front.menus') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Assiettes')
+                                        <a href="{{ route('front.assiettes') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Menus Enfant')
+                                        <a href="{{ route('front.menusEnfant') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Salade')
+                                        <a href="{{ route('front.salade') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Nos Box')
+                                        <a href="{{ route('front.nosBox') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Panini')
+                                        <a href="{{ route('front.panini') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
                                             Voir le menu
                                         </a>

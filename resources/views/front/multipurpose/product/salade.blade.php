@@ -7,12 +7,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-title-item text-center">
-                    <h2 class="title">Tacos Mexicains</h2>
+                    <h2 class="title">Nos Salades</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="flaticon-home"></i>{{__('Home')}}</a></li>
                             <li class="breadcrumb-item"><a href="{{route('front.sandwiches')}}">Notre Carte</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Tacos</li>
+                            <li class="breadcrumb-item active" aria-current="page">Nos Salades</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,67 +22,58 @@
 </section>
 <!--====== PAGE TITLE PART ENDS ======-->
 
-
-
 <!-- Menu Section -->
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
             <!-- Left Side - Menu Items -->
             <div class="col-lg-8">
-                <!-- Main Tacos Menu -->
+                <!-- Main Salade Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #27ae60; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        NOS TACOS
+                        NOS SALADES
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
-                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Plat</span>
-                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
-                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
+                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Salade</span>
+                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'tacos-1-viande', 'id' => 138]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS (1 VIANDE AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
-                            </div>
-                        </a>
-                        
-                        <a href="{{ route('front.product.details', ['slug' => 'tacos-mixte', 'id' => 139]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
+                        <a href="{{ route('front.product.details', ['slug' => 'falafel', 'id' => 114]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FALAFEL</h4>
                                 <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
                             </div>
                         </a>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'mega-tacos', 'id' => 140]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS (1 VIANDE AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,50€</span>
+                        <a href="{{ route('front.product.details', ['slug' => 'feta', 'id' => 115]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FETA</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             </div>
                         </a>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'mega-tacos-mixte', 'id' => 141]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">17,50€</span>
+                        <a href="{{ route('front.product.details', ['slug' => 'thon', 'id' => 116]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE THON</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            </div>
+                        </a>
+                        
+                        <a href="{{ route('front.product.details', ['slug' => 'tenders', 'id' => 117]) }}" style="text-decoration: none; display: block;">
+                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE TENDERS</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
                             </div>
                         </a>
                     </div>
                 </div>
 
-
-
-                <!-- Side Orders Menu -->
+                <!-- Dressings Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #27ae60; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        SUPPLEMENTS
+                        SAUCES & ACCOMPAGNEMENTS
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
@@ -91,31 +82,24 @@
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Prix</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'petite-frite', 'id' => 134]) }}" style="text-decoration: none; display: block;">
+                        <a href="{{ route('front.product.details', ['slug' => 'sauce-vinaigrette', 'id' => 150]) }}" style="text-decoration: none; display: block;">
                             <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE FRITE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">2,00€</span>
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE VINAIGRETTE</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
                             </div>
                         </a>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'grande-frite', 'id' => 135]) }}" style="text-decoration: none; display: block;">
+                        <a href="{{ route('front.product.details', ['slug' => 'sauce-ranch', 'id' => 151]) }}" style="text-decoration: none; display: block;">
                             <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE FRITE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">4,00€</span>
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE RANCH</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
                             </div>
                         </a>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'petite-viande', 'id' => 136]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE VIANDE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">5,00€</span>
-                            </div>
-                        </a>
-                        
-                        <a href="{{ route('front.product.details', ['slug' => 'grande-viande', 'id' => 137]) }}" style="text-decoration: none; display: block;">
+                        <a href="{{ route('front.product.details', ['slug' => 'pain-complet', 'id' => 152]) }}" style="text-decoration: none; display: block;">
                             <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE VIANDE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">10,00€</span>
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PAIN COMPLET</h4>
+                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">1,00€</span>
                             </div>
                         </a>
                     </div>
@@ -125,33 +109,31 @@
             <!-- Right Side - Food Images -->
             <div class="col-lg-4">
                 <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Tacos Main Image -->
+                    <!-- Salade Falafel Image -->
                     <div class="food-item" style="margin-bottom: 30px; text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
                             <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #27ae60, #2ecc71); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
                                 <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-utensils" style="font-size: 5rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(255,193,7,0.3), rgba(255,193,7,0.1)); z-index: 1;"></div>
+                                    <i class="fas fa-leaf" style="font-size: 5rem; color: white; z-index: 2;"></i>
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(39,174,96,0.3), rgba(39,174,96,0.1)); z-index: 1;"></div>
                                 </div>
                             </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
+                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(39,174,96,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Tacos Mexicains</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Authentiques et savoureux</p>
+                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Salade Falafel</h4>
+                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Salade fraîche et équilibrée</p>
                     </div>
 
-
-
-                    <!-- Food Varieties -->
+                    <!-- Salade Feta Image -->
                     <div class="food-item" style="text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #8e44ad, #9b59b6); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                                <i class="fas fa-pepper-hot" style="font-size: 4rem; color: white;"></i>
+                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #8bc34a, #4caf50); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                                <i class="fas fa-seedling" style="font-size: 4rem; color: white;"></i>
                             </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
+                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(39,174,96,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Variétés de Tacos</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Différentes tailles et combinaisons</p>
+                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Salade Feta</h4>
+                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Fromage grec et légumes frais</p>
                     </div>
                 </div>
             </div>
@@ -170,18 +152,18 @@
                 <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
                     <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
                         <i class="fas fa-leaf" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Ingrédients Frais</h4>
-                        <p style="opacity: 0.9; margin: 0;">Tous nos tacos et burgers sont préparés avec des ingrédients frais et authentiques</p>
+                        <h4 style="margin-bottom: 10px;">Légumes Frais</h4>
+                        <p style="opacity: 0.9; margin: 0;">Toutes nos salades sont préparées avec des légumes frais</p>
                     </div>
                     <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-clock" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Préparation Rapide</h4>
-                        <p style="opacity: 0.9; margin: 0;">Vos commandes sont préparées rapidement à la demande</p>
+                        <i class="fas fa-heart" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Options Végétariennes</h4>
+                        <p style="opacity: 0.9; margin: 0;">Nous proposons des salades végétariennes délicieuses</p>
                     </div>
                     <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-fire" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Saveurs Authentiques</h4>
-                        <p style="opacity: 0.9; margin: 0;">Recettes traditionnelles mexicaines et américaines pour un goût authentique</p>
+                        <i class="fas fa-balance-scale" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
+                        <h4 style="margin-bottom: 10px;">Équilibrées</h4>
+                        <p style="opacity: 0.9; margin: 0;">Nos salades sont équilibrées et nutritives</p>
                     </div>
                 </div>
             </div>
@@ -193,10 +175,10 @@
 <div class="cta-section" style="padding: 80px 0; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); text-align: center; color: white;">
     <div class="container">
         <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-            Prêt à déguster ?
+            Prêt à manger sain ?
         </h2>
         <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-            Commandez maintenant et profitez de nos délicieux tacos et burgers
+            Commandez maintenant et profitez de nos délicieuses salades
         </p>
         <div class="cta-buttons">
             <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
@@ -282,5 +264,4 @@
 }
 </style>
 
-@endsection
-
+@endsection 

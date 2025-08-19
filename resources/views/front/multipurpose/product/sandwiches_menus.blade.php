@@ -38,6 +38,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Nos Spécialités</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">4 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Kebab Classique</span>
@@ -77,6 +78,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Classiques Américains</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">4 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Americain</span>
@@ -116,6 +118,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Tacos Mexicains</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">4 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Tacos (1 viande)</span>
@@ -155,6 +158,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Burgers Gourmets</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">4 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Cheese Burger</span>
@@ -194,6 +198,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Panini Gourmets</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">4 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Panini 3 fromages</span>
@@ -212,6 +217,12 @@
                                 <span style="font-weight: 600; color: #f39c12;">10.00€</span>
                             </li>
                         </ul>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="{{ route('front.panini') }}" class="btn btn-warning" style="background: #f39c12; color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                                Voir le menu complet
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -227,6 +238,7 @@
                     </div>
                     <div class="card-content" style="padding: 25px;">
                         <h4 style="color: #333; font-weight: 600; margin-bottom: 15px; text-align: center;">Assiettes Complètes</h4>
+                        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-bottom: 15px;">2 plats disponibles</p>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
                                 <span>Assiette Kebab</span>
@@ -245,6 +257,12 @@
                                 <span style="font-weight: 600; color: #3498db;">18.00€</span>
                             </li>
                         </ul>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="{{ route('front.assiettes') }}" class="btn btn-primary" style="background: #3498db; color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                                Voir le menu complet
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

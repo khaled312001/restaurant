@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" @if ($rtl == 1) dir="rtl" @endif>
+<html lang="fr" @if ($rtl == 1) dir="rtl" @endif>
 
 <head>
     {{-- -Start of Google Analytics script --}}
@@ -11,16 +11,59 @@
     {{-- -====== Required meta tags ====== --}}
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="@yield('meta-description')">
-    <meta name="keywords" content="@yield('meta-keywords')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- -====== Title ====== --}}
-    <title>{{ $bs->website_title }}</title>
+    
+    {{-- Enhanced SEO Meta Tags --}}
+    <title>@yield('page-title', 'King Kebab Le Pouzin - Meilleur Kebab, Tacos, Burgers Halal | Restaurant Turc Authentique')</title>
+    <meta name="description" content="@yield('meta-description', 'King Kebab Le Pouzin ⭐ Restaurant kebab halal authentique depuis 20 ans. Spécialités: kebab, tacos, burgers, menus enfant. Ingrédients frais, viande 100% halal. Livraison et sur place.')">
+    <meta name="keywords" content="@yield('meta-keywords', 'King Kebab, kebab Le Pouzin, restaurant halal, tacos Le Pouzin, burger halal, kebab authentique, restaurant turc, viande halal, livraison kebab, menu enfant halal, assiettes kebab, sandwichs halal, nos box, salade halal, panini halal, King Kebab Le Pouzin, meilleur kebab Ardèche, restaurant Le Pouzin, cuisine turque, kebab grillé charbon, spécialités orientales')">
+    
+    {{-- Geo Tags for Local SEO --}}
+    <meta name="geo.region" content="FR-07">
+    <meta name="geo.placename" content="Le Pouzin">
+    <meta name="geo.position" content="44.7522;4.7469">
+    <meta name="ICBM" content="44.7522, 4.7469">
+    
+    {{-- Open Graph Tags for Social Media --}}
+    <meta property="og:site_name" content="King Kebab Le Pouzin">
+    <meta property="og:title" content="@yield('og-title', 'King Kebab Le Pouzin - Restaurant Kebab Halal Authentique')">
+    <meta property="og:description" content="@yield('og-description', 'Découvrez King Kebab Le Pouzin, restaurant kebab halal authentique depuis 20 ans. Spécialités turques, ingrédients frais, viande 100% halal. Livraison disponible.')">
+    <meta property="og:type" content="@yield('og-type', 'website')">
+    <meta property="og:url" content="@yield('og-url', url()->current())">
+    <meta property="og:image" content="@yield('og-image', asset('assets/front/img/king-kebab-og-image.jpg'))">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    
+    {{-- Twitter Card Tags --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter-title', 'King Kebab Le Pouzin - Restaurant Kebab Halal Authentique')">
+    <meta name="twitter:description" content="@yield('twitter-description', 'Restaurant kebab halal authentique depuis 20 ans. Spécialités turques, ingrédients frais, viande 100% halal.')">
+    <meta name="twitter:image" content="@yield('twitter-image', asset('assets/front/img/king-kebab-twitter-image.jpg'))">
+    
+    {{-- Additional SEO Tags --}}
+    <meta name="author" content="King Kebab Le Pouzin">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="1 day">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="language" content="French">
+    
+    {{-- Canonical URL --}}
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    
+    {{-- Alternate Language Tags --}}
+    <link rel="alternate" hreflang="fr" href="{{ url('/') }}">
+    <link rel="alternate" hreflang="fr-FR" href="{{ url('/') }}">
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}">
 
     {{-- -====== Favicon Icon ====== --}}
     <link rel="shortcut icon" href="{{ asset('assets/front/img/' . $bs->favicon) }}" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/front/img/' . $bs->favicon) }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/front/img/' . $bs->favicon) }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/front/img/' . $bs->favicon) }}">
 
     {{-- --=========Plugin common css===========- --}}
     @include('front.plugin_css')
@@ -205,6 +248,45 @@
         {!! $bs->addthis_script !!}
     @endif
     {{-- -End of AddThis script --}}
+
+    {{-- Structured Data JSON-LD --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "King Kebab Le Pouzin",
+        "image": "{{ asset('assets/front/img/' . $bs->favicon) }}",
+        "description": "Restaurant kebab halal authentique depuis 20 ans à Le Pouzin. Spécialités turques, ingrédients frais, viande 100% halal.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Le Pouzin",
+            "addressLocality": "Le Pouzin",
+            "addressRegion": "Ardèche",
+            "postalCode": "07250",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 44.7522,
+            "longitude": 4.7469
+        },
+        "url": "https://kingkebablepouzin.fr",
+        "telephone": "+33 0426423743",
+        "email": "support@kingkebabrestaurant.com",
+        "priceRange": "€",
+        "servesCuisine": ["Turkish", "Mediterranean", "Middle Eastern", "Halal"],
+        "paymentAccepted": ["Cash", "Credit Card"],
+        "currenciesAccepted": "EUR",
+        "openingHours": "Mo-Fr 09:00-23:00",
+        "hasMenu": "https://kingkebablepouzin.fr/menu",
+        "acceptsReservations": true,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
+    }
+    </script>
 
 </body>
 

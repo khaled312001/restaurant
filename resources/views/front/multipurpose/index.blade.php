@@ -1,5 +1,11 @@
 @extends('front.layout')
 
+@section('page-title', 'King Kebab Le Pouzin - Meilleur Restaurant Kebab Halal Authentique | Tacos, Burgers, Livraison')
+@section('meta-description', 'King Kebab Le Pouzin ⭐ Restaurant kebab halal authentique depuis 20 ans. Spécialités: kebab grillé charbon, tacos, burgers halal, menus enfant. Ingrédients frais 100% halal. Livraison rapide Le Pouzin Ardèche.')
+@section('meta-keywords', 'King Kebab Le Pouzin, kebab halal Le Pouzin, restaurant turc authentique, tacos Le Pouzin, burger halal Ardèche, livraison kebab Le Pouzin, meilleur kebab Ardèche, viande halal grillée charbon, restaurant halal Le Pouzin, cuisine turque authentique, spécialités orientales, menu enfant halal, assiettes kebab, nos box kebab, salade halal, panini halal, King Kebab Ardèche, kebab authentique depuis 20 ans')
+@section('og-title', 'King Kebab Le Pouzin - Restaurant Kebab Halal Authentique depuis 20 ans')
+@section('og-description', 'Découvrez King Kebab Le Pouzin, restaurant kebab halal authentique depuis 20 ans. Spécialités turques grillées au charbon, ingrédients frais 100% halal. Livraison disponible.')
+
 @section('content')
     <!--====== HERO SECTION PART START ======-->
     @if ($bs->home_version == 'static')

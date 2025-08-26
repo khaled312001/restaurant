@@ -1,0 +1,69 @@
+User-agent: *
+Allow: /
+
+# Allow all major search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Disallow admin areas and sensitive files
+Disallow: /admin/
+Disallow: /user/
+Disallow: /api/
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /.env
+Disallow: /config/
+Disallow: /database/
+Disallow: /bootstrap/
+Disallow: /tests/
+Disallow: /artisan
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /package.json
+Disallow: /webpack.mix.js
+Disallow: /node_modules/
+Disallow: /*?*print=
+Disallow: /*?*utm_
+Disallow: /search?
+Disallow: /cart
+Disallow: /checkout
+
+# Allow important directories for SEO
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /public/
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://kingkebablepouzin.fr/sitemap.xml
+Sitemap: https://kingkebablepouzin.fr/sitemap-images.xml
+Sitemap: https://kingkebablepouzin.fr/sitemap-categories.xml
+Sitemap: https://kingkebablepouzin.fr/sitemap-products.xml
+
+# Host directive
+Host: https://kingkebablepouzin.fr 

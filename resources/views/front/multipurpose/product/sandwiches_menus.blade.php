@@ -1,4 +1,11 @@
 @extends('front.layout')
+
+@section('page-title', 'Sandwichs & Menus Kebab Halal - King Kebab Le Pouzin | Livraison Ardèche')
+@section('meta-description', 'Découvrez nos sandwichs kebab halal et menus complets King Kebab Le Pouzin. Kebab classique, maxi kebab, tacos, burgers halal. Viande grillée charbon, ingrédients frais 100% halal. Livraison Le Pouzin.')
+@section('meta-keywords', 'sandwichs kebab halal Le Pouzin, menus kebab complets, kebab classique halal, maxi kebab Le Pouzin, tacos halal Ardèche, burgers halal Le Pouzin, King Kebab sandwichs, livraison kebab Le Pouzin, viande grillée charbon, menu complet halal')
+@section('og-title', 'Sandwichs & Menus Kebab Halal - King Kebab Le Pouzin')
+@section('og-description', 'Savourez nos délicieux sandwichs kebab halal et menus complets. Viande grillée au charbon, ingrédients frais 100% halal, préparés avec passion depuis 20 ans.')
+
 @section('content')
 
 <!--====== PAGE TITLE PART START ======-->
@@ -7,7 +14,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-title-item text-center">
-                    <h2 class="title">Notre Carte - Sandwichs & Menus</h2>
+                    <h1 class="title">Sandwichs & Menus Kebab Halal - King Kebab Le Pouzin</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('front.index')}}"><i class="flaticon-home"></i>{{__('Home')}}</a></li>

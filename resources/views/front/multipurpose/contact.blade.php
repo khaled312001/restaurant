@@ -1,5 +1,11 @@
 @extends('front.layout')
 
+@section('page-title', 'Contact King Kebab Le Pouzin | Restaurant Kebab Halal Ardèche | +33 0426423743')
+@section('meta-description', 'Contactez King Kebab Le Pouzin ☎️ +33 0426423743 📧 support@kingkebabrestaurant.com. Restaurant kebab halal authentique Le Pouzin Ardèche. Horaires, adresse, réservations, livraison.')
+@section('meta-keywords', 'contact King Kebab Le Pouzin, téléphone kebab Le Pouzin, adresse restaurant halal Le Pouzin, horaires King Kebab, réservation kebab Le Pouzin, livraison kebab Ardèche, restaurant halal contact, King Kebab téléphone, kebab Le Pouzin adresse')
+@section('og-title', 'Contact King Kebab Le Pouzin - Restaurant Kebab Halal Authentique')
+@section('og-description', 'Contactez-nous pour vos commandes, réservations ou renseignements. King Kebab Le Pouzin vous accueille depuis 20 ans avec passion et authenticité.')
+
 @section('content')
  <!--====== PAGE TITLE PART START ======-->
 

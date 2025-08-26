@@ -1,5 +1,11 @@
 @extends('front.layout')
 
+@section('page-title', 'Notre Carte - King Kebab Le Pouzin | Menu Kebab Halal, Tacos, Burgers')
+@section('meta-description', 'Découvrez notre carte complète King Kebab Le Pouzin: 48 plats halal disponibles. Sandwichs kebab, menus complets, tacos, burgers halal, assiettes, menus enfant, salades fraîches. Ingrédients 100% halal.')
+@section('meta-keywords', 'menu King Kebab Le Pouzin, carte kebab halal, sandwichs kebab Le Pouzin, menus kebab complets, tacos halal Ardèche, burgers halal Le Pouzin, assiettes kebab, menus enfant halal, salades halal, nos box kebab, panini halal, 48 plats halal, carte restaurant Le Pouzin')
+@section('og-title', 'Notre Carte Complète - King Kebab Le Pouzin | 48 Plats Halal Disponibles')
+@section('og-description', 'Explorez notre carte de 48 plats halal: sandwichs kebab, menus complets, tacos, burgers, assiettes, menus enfant et salades fraîches. Tous préparés avec des ingrédients frais 100% halal.')
+
 @section('content')
     <!--====== PAGE TITLE PART START ======-->
     <section class="page-title-area d-flex align-items-center lazy" data-bg="{{asset('assets/front/img/'.$bs->breadcrumb)}}">
@@ -29,9 +35,9 @@
                     <div class="section-title text-center">
                         <span>Découvrez notre carte
                             <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
-                        <h3 class="title">Choisissez parmi nos délicieuses catégories</h3>
-                        <p class="text">Explorez notre sélection complète de plats préparés avec des ingrédients frais et de qualité</p>
-                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">48 plats disponibles au total</p>
+                        <h1 class="title">Choisissez parmi nos délicieuses catégories King Kebab</h1>
+                        <p class="text">Explorez notre sélection complète de <strong>48 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure. Depuis 20 ans, King Kebab Le Pouzin vous propose les meilleures spécialités turques et orientales.</p>
+                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">✨ 48 plats halal disponibles au total ✨</p>
                     </div>
                 </div>
             </div>
@@ -59,25 +65,25 @@
                                 <p class="category-description">
                                     @switch($category->name)
                                         @case('Assiettes')
-                                            Plats complets servis avec riz, légumes et sauces
+                                            Assiettes kebab halal complètes avec riz basmati, légumes frais et sauces maison authentiques
                                             @break
                                         @case('Sandwichs')
-                                            Délicieux sandwiches et wraps fraîchement préparés
+                                            Sandwichs kebab halal et wraps fraîchement préparés avec viande grillée au charbon
                                             @break
                                         @case('Menus')
-                                            Menus complets avec boisson et accompagnement
+                                            Menus kebab complets halal avec boisson fraîche et accompagnement de votre choix
                                             @break
                                         @case('Salade')
-                                            Salades fraîches et équilibrées
+                                            Salades fraîches et équilibrées avec ingrédients halal de qualité supérieure
                                             @break
                                         @case('Menus Enfant')
-                                            Portions adaptées aux plus petits
+                                            Menus enfant halal spécialement conçus pour les plus petits gourmets
                                             @break
                                         @case('Nos Box')
-                                            Formules repas pratiques et gourmandes
+                                            Nos Box King Kebab: formules repas halal pratiques et généreuses
                                             @break
                                         @default
-                                            Découvrez nos délicieuses spécialités
+                                            Découvrez nos délicieuses spécialités halal authentiques King Kebab
                                     @endswitch
                                 </p>
                                 
@@ -163,11 +169,10 @@
                         <div class="info-icon">
                             <i class="fas fa-info-circle"></i>
                         </div>
-                        <h4>Informations importantes</h4>
-                        <p>Tous nos plats sont préparés à la commande avec des ingrédients frais et de qualité. 
-                           N'hésitez pas à nous demander des informations sur les allergènes ou à personnaliser votre commande.</p>
+                        <h2>King Kebab Le Pouzin - Informations importantes</h2>
+                        <p>Tous nos plats <strong>King Kebab</strong> sont préparés à la commande avec des <strong>ingrédients frais 100% halal</strong> et de qualité supérieure. Notre viande est grillée au charbon pour un goût authentique unique. Depuis 20 ans, nous respectons les traditions culinaires turques tout en garantissant la fraîcheur de nos produits. N'hésitez pas à nous demander des informations sur les allergènes ou à personnaliser votre commande selon vos préférences.</p>
                         <div class="contact-info">
-                            <span><i class="fas fa-phone"></i> Pour toute question : contactez-nous</span>
+                            <span><i class="fas fa-phone"></i> <strong>Commandes et renseignements :</strong> +33 0426423743</span>
                         </div>
                     </div>
                 </div>

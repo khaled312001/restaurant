@@ -518,9 +518,140 @@ $(function() {
     //====== Magnific Popup
 
     $('.video-popup').magnificPopup({
-        type: 'iframe'
-            // other options
+        type: 'iframe',
+        iframe: {
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: function(url) {
+                        var m = url.match(/[\\?&]v=([^&#]+)/);
+                        if (!m) {
+                            var m = url.match(/youtu\.be\/([^\/]+)/);
+                        }
+                        return m ? m[1] : null;
+                    },
+                    src: function(url) {
+                        var videoId = this.id(url);
+                        var origin = window.location.origin;
+                        return 'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1&origin=' + encodeURIComponent(origin);
+                    }
+                }
+            }
+        },
+        callbacks: {
+            beforeOpen: function() {
+                // Add loading indicator
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-loading');
+            },
+            open: function() {
+                // Handle any post-open logic
+                console.log('Video popup opened successfully');
+            },
+            close: function() {
+                // Clean up any resources
+                console.log('Video popup closed');
+            },
+            elementParse: function(item) {
+                console.log('Parsing video element:', item);
+            }
+        }
     });
+
+    // Fallback video popup function
+    window.openVideoPopup = function(embedUrl, originalUrl) {
+        // Try to use Magnific Popup first
+        if (typeof $.magnificPopup !== 'undefined') {
+            try {
+                $.magnificPopup.open({
+                    items: {
+                        src: embedUrl
+                    },
+                    type: 'iframe',
+                    iframe: {
+                        patterns: {
+                            youtube: {
+                                index: 'youtube.com/',
+                                id: function(url) {
+                                    var m = url.match(/[\\?&]v=([^&#]+)/);
+                                    if (!m) {
+                                        var m = url.match(/youtu\.be\/([^\/]+)/);
+                                    }
+                                    return m ? m[1] : null;
+                                },
+                                src: function(url) {
+                                    var videoId = this.id(url);
+                                    var origin = window.location.origin;
+                                    return 'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1&origin=' + encodeURIComponent(origin);
+                                }
+                            }
+                        }
+                    }
+                });
+                return false; // Prevent default link behavior
+            } catch (e) {
+                console.log('Magnific Popup failed, using fallback:', e);
+            }
+        }
+        
+        // Fallback to custom modal
+        var videoId = '';
+        if (originalUrl.includes('youtu.be/')) {
+            videoId = originalUrl.split('youtu.be/')[1].split('?')[0];
+        } else if (originalUrl.includes('youtube.com/watch?v=')) {
+            videoId = originalUrl.split('v=')[1].split('&')[0];
+        } else if (originalUrl.includes('youtube.com/embed/')) {
+            videoId = originalUrl.split('embed/')[1].split('?')[0];
+        }
+        
+        if (videoId) {
+            var origin = window.location.origin;
+            var fallbackEmbedUrl = 'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1&origin=' + encodeURIComponent(origin);
+            
+            // Create custom modal
+            var modal = document.createElement('div');
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center;';
+            
+            var content = document.createElement('div');
+            content.style.cssText = 'position:relative;max-width:90%;max-height:90%;';
+            
+            var iframe = document.createElement('iframe');
+            iframe.src = fallbackEmbedUrl;
+            iframe.width = '800';
+            iframe.height = '450';
+            iframe.style.border = 'none';
+            iframe.allowFullscreen = true;
+            
+            var closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = 'position:absolute;top:-40px;right:0;background:none;border:none;color:white;font-size:30px;cursor:pointer;';
+            closeBtn.onclick = function() {
+                document.body.removeChild(modal);
+            };
+            
+            content.appendChild(closeBtn);
+            content.appendChild(iframe);
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            // Close on outside click
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            };
+            
+            // Close on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (document.body.contains(modal)) {
+                        document.body.removeChild(modal);
+                    }
+                }
+            });
+        }
+        
+        return false; // Prevent default link behavior
+    };
 
 
     //===== Magnific Popup

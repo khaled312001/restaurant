@@ -115,8 +115,11 @@
                                         alt="experience">
                                 @endif
                                 <div class="experience-overlay">
-                                    <a class="video-popup" href="{{ getYouTubeEmbedUrl($bs->intro_video_link) }}"><i
-                                            class="flaticon-arrow"></i></a>
+                                    <a class="video-popup" href="{{ getYouTubeEmbedUrl($bs->intro_video_link) }}" 
+                                       data-video-url="{{ $bs->intro_video_link }}"
+                                       onclick="return openVideoPopup('{{ getYouTubeEmbedUrl($bs->intro_video_link) }}', '{{ $bs->intro_video_link }}')">
+                                        <i class="flaticon-arrow"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

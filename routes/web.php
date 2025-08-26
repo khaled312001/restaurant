@@ -149,8 +149,8 @@ Route::post('/product/payumoney/notify', 'Payment\Product\PayumoneyController@no
 ******************** QR Menu Routes **********************
 =======================================================*/
 // QR Order Checkout Section
-Route::get('/qr/{orderNum}/payment/return', 'Payment\product\PaymentController@qrPayReturn')->name('qr.payment.return');
-Route::get('/qr/payment/cancle', 'Payment\product\PaymentController@qrPayCancle')->name('qr.payment.cancle');
+Route::get('/qr/{orderNum}/payment/return', 'Payment\Product\PaymentController@qrPayReturn')->name('qr.payment.return');
+Route::get('/qr/payment/cancle', 'Payment\Product\PaymentController@qrPayCancle')->name('qr.payment.cancle');
 
 Route::prefix('qr-menu')->middleware(['setlang'])->group(function() {
     Route::get('/', 'Front\QrMenuController@qrMenu')->name('front.qrmenu');

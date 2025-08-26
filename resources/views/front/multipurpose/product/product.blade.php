@@ -206,9 +206,9 @@
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="product-card h-100">
                                 <div class="product-image">
-                                    @if (!empty($product->image))
+                                    @if (!empty($product->feature_image))
                                         <img class="lazy wow fadeIn" 
-                                             data-src="{{ asset('assets/front/img/products/' . $product->image) }}"
+                                             data-src="{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}"
                                              data-wow-delay=".3s" 
                                              alt="{{ convertUtf8($product->title) }}">
                                     @else
@@ -217,7 +217,7 @@
                                         </div>
                                     @endif
                                     
-                                    @if($product->featured)
+                                    @if($product->is_feature)
                                         <div class="featured-badge">
                                             <i class="fas fa-star"></i> Populaire
                                         </div>
@@ -227,14 +227,14 @@
                                 <div class="product-content">
                                     <h4 class="product-title">{{ convertUtf8($product->title) }}</h4>
                                     <p class="product-description">
-                                        {{ Str::limit(convertUtf8($product->description), 100) }}
+                                        {{ Str::limit(convertUtf8($product->summary), 100) }}
                                     </p>
                                     
                                     <div class="product-details">
                                         <div class="product-price">
-                                            <span class="price">{{ $product->price }}€</span>
-                                            @if($product->old_price && $product->old_price > $product->price)
-                                                <span class="old-price">{{ $product->old_price }}€</span>
+                                            <span class="price">{{ $product->current_price }}€</span>
+                                            @if($product->previous_price && $product->previous_price > $product->current_price)
+                                                <span class="old-price">{{ $product->previous_price }}€</span>
                                             @endif
                                         </div>
                                         

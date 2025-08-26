@@ -1,5 +1,7 @@
 <!-------------==================Common js=============== --->
+        @if ($bs->is_recaptcha == 1)
         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        @endif
         {{-- bootstrap popper js --}}
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 

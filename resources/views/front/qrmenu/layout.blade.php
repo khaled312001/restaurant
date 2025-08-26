@@ -153,7 +153,9 @@
         var currText = "{{ $be->base_currency_text }}";
         var select = "{{ __('Select') }}";
     </script>
+    @if ($bs->is_recaptcha == 1)
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    @endif
     <!--====== Bootstrap js ======-->
     <script src="{{ asset('assets/front/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>

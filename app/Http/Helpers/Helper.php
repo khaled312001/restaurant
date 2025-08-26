@@ -7,7 +7,7 @@ if (!function_exists('setEnvironmentValue')) {
     function setEnvironmentValue(array $values)
     {
 
-        $envFile = app()->environmentFilePath();
+        $envFile = base_path('.env');
         $str = file_get_contents($envFile);
 
         if (count($values) > 0) {

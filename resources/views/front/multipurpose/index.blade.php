@@ -230,10 +230,10 @@
                                                                 </div>
                                                                 <div class="menu-price-btn">
                                                                     <a class="cart-link d-md-none d-block btn mobile"
-                                                                    data-product="{{ $product }}"
+                                                                    data-product="{{ json_encode($product) }}"
                                                                     data-href="{{ route('add.cart', $product->id) }}">+</a>
                                                                     <a class="cart-link d-none d-md-block"
-                                                                        data-product="{{ $product }}"
+                                                                        data-product="{{ json_encode($product) }}"
                                                                         data-href="{{ route('add.cart', $product->id) }}">{{ __('Add to Cart') }}</a>
 
                                                                     <span>{{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : '' }}{{ convertUtf8($product->current_price) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}
@@ -369,10 +369,10 @@
                                                                     {{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : '' }}{{ convertUtf8($product->previous_price) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}</del>
                                                             @endif
                                                             <a class="cart-link d-md-none d-block btn mobile"
-                                                            data-product="{{ $product }}"
+                                                            data-product="{{ json_encode($product) }}"
                                                             data-href="{{ route('add.cart', $product->id) }}">+</a>
                                                             <a class="cart-link d-none d-md-block"
-                                                                data-product="{{ $product }}"
+                                                                data-product="{{ json_encode($product) }}"
                                                                 data-href="{{ route('add.cart', $product->id) }}">{{ __('Add to Cart') }}</a>
                                                         </div>
                                                         @if ($product->is_special == 1)
@@ -547,18 +547,99 @@
                 @endforeach
             </div>
 
-            <!-- Section d'information supplémentaire -->
+            <!-- Section d'information importante -->
             <div class="row mt-5">
                 <div class="col-lg-12">
-                    <div class="menu-info-card text-center">
-                        <div class="info-icon">
-                            <i class="fas fa-info-circle"></i>
+                    <div class="enhanced-info-section">
+                        <div class="info-header text-center mb-4">
+                            <div class="info-icon-wrapper">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="info-title">Informations importantes</h3>
+                            <div class="info-subtitle">Votre satisfaction est notre priorité</div>
                         </div>
-                        <h4>Informations importantes</h4>
-                        <p>Tous nos plats sont préparés à la commande avec des ingrédients frais et de qualité. 
-                           N'hésitez pas à nous demander des informations sur les allergènes ou à personnaliser votre commande.</p>
-                        <div class="contact-info">
-                            <span><i class="fas fa-phone"></i> Pour toute question : contactez-nous</span>
+                        
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h5>Ingrédients Frais</h5>
+                                    <p>Tous nos plats sont préparés à la commande avec des ingrédients frais et de qualité supérieure. Nous sélectionnons rigoureusement nos fournisseurs pour garantir la fraîcheur de nos produits.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-allergies"></i>
+                                    </div>
+                                    <h5>Allergènes & Personnalisation</h5>
+                                    <p>Nous prenons très au sérieux les allergies alimentaires. N'hésitez pas à nous demander des informations détaillées sur les allergènes ou à personnaliser votre commande selon vos besoins.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <h5>Préparation & Délais</h5>
+                                    <p>Nos plats sont préparés à la commande pour garantir fraîcheur et qualité. Les délais de préparation varient selon l'affluence (généralement 10-15 minutes).</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-halal"></i>
+                                    </div>
+                                    <h5>Certification Halal</h5>
+                                    <p>Tous nos produits sont certifiés halal. Nous respectons scrupuleusement les règles d'hygiène et de préparation conformes aux standards halal.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <h5>Spécialités Maison</h5>
+                                    <p>Découvrez nos recettes traditionnelles turques transmises de génération en génération. Chaque plat est préparé avec passion et authenticité.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="info-card">
+                                    <div class="info-card-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <h5>Service Client</h5>
+                                    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions. N'hésitez pas à nous contacter pour des demandes spéciales ou des informations complémentaires.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-section text-center mt-4">
+                            <div class="contact-info-wrapper">
+                                <h5>Besoin d'aide ?</h5>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <i class="fas fa-phone"></i>
+                                        <span>Appelez-nous</span>
+                                    </div>
+                                    <div class="contact-method">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Posez vos questions</span>
+                                    </div>
+                                    <div class="contact-method">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Demandes spéciales</span>
+                                    </div>
+                                </div>
+                                <p class="contact-note">Notre équipe est disponible pour vous accompagner dans le choix de vos plats et répondre à toutes vos demandes.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -572,9 +653,8 @@
         <section class="good-food-area pt-180 pb-120 gray-bg">
             <style>
                 .good-food-area::before {
-                    background-image: url('{{ asset('assets/front/img/' . $be->special_section_bg) }}');
+                    background-image: url("{{ asset('assets/front/img/' . $be->special_section_bg) }}");
                 }
-
             </style>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -601,379 +681,4 @@
                                         data-src="{{ asset('assets/front/img/product/featured/' . $sproduct->feature_image) }}"
                                         alt="">
                                     <div class="special-btns">
-                                        <a class="cart-link" data-product="{{ $sproduct }}"
-                                            data-href="{{ route('add.cart', $sproduct->id) }}">{{ __('Add to Cart') }}</a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="menu-list-content text-right d-none d-lg-block">
-                            @php
-                                $parts = preg_split('/\s+/', convertUtf8($be->special_section_title));
-                            @endphp
-                            <ul>
-                                @foreach ($parts as $part)
-                                    <li>{{ convertUtf8($part) }}</li>
-                                @endforeach
-                            </ul>
-                            <a><span>{{ convertUtf8($be->special_section_subtitle) }}</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-    <!--====== GOOD FOOD PART ENDS ======-->
-
-    <!--====== TEAM PART START ======-->
-    @if ($bs->team_section == 1)
-        <section class="team-area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
-                        <div class="section-title text-center">
-                            <span>{{ convertUtf8($bs->team_section_title) }} <img
-                                    src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
-                            <h3 class="title">{{ convertUtf8($bs->team_section_subtitle) }}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    @foreach ($members as $member)
-                        <div class="col-lg-4 col-md-7 col-sm-9">
-                            <div class="single-team mt-30">
-                                <div class="team-thumb">
-                                    @if ($member->image)
-                                        <img class="lazy wow fadeIn"
-                                            data-src="{{ asset('assets/front/img/members/' . $member->image) }}"
-                                            data-wow-delay=".5s" data-wow-duration="1s" alt="team">
-                                    @endif
-                                    <div class="team-overlay">
-                                        <div class="link">
-                                            <a><i class="flaticon-add"></i></a>
-                                        </div>
-                                        <div class="social">
-                                            <ul>
-                                                @if ($member->facebook)
-                                                    <li><a href="{{ $member->facebook }}" target="_bank"><i
-                                                                class="flaticon-facebook"></i></a></li>
-                                                @endif
-                                                @if ($member->twitter)
-                                                    <li><a href="{{ $member->twitter }}" target="_bank"><i
-                                                                class="flaticon-twitter" ></i></a></li>
-                                                @endif
-                                                @if ($member->instagram)
-                                                    <li><a href="{{ $member->instagram }}" target="_bank"><i
-                                                                class="flaticon-instagram"></i></a></li>
-                                                @endif
-                                                @if ($member->linkedin)
-                                                    <li><a href="{{ $member->linkedin }}" target="_bank"><i
-                                                                class="flaticon-linkedin"></i></a></li>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team-content text-center">
-                                    <h4 class="title">{{ convertUtf8($member->name) }}</h4>
-                                    <span>{{ convertUtf8($member->rank) }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-        </section>
-    @endif
-    <!--====== TEAM PART ENDS ======-->
-
-    <!--====== CLIENT PART START ======-->
-    @if ($bs->testimonial_section == 1)
-        <section class="client-area bg_cover pt-105 pb-95 lazy"
-            data-bg="{{ $be->testimonial_bg_img ? asset('assets/front/img/' . $be->testimonial_bg_img) : '' }}">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="client-title text-center">
-                            <h3 class="title">{{ convertUtf8($bs->testimonial_title) }}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="client-items client-active">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="single-client">
-                                    <div class="text">
-                                        <p>{{ convertUtf8($testimonial->comment) }}</p>
-                                    </div>
-                                    <div class="client-info d-block d-sm-flex justify-content-between">
-                                        <div class="item-1">
-                                            @if ($testimonial->image)
-                                                <img class="lazy wow fadeIn"
-                                                    data-src="{{ asset('assets/front/img/testimonials/' . $testimonial->image) }}"
-                                                    alt="clients">
-                                            @endif
-                                            <span>{{ convertUtf8($testimonial->name) }}</span>
-                                            <p>{{ convertUtf8($testimonial->rank) }}</p>
-                                        </div>
-                                        <div class="item-2 text-sm-right text-left">
-                                            <ul>
-                                                @php
-                                                    $i = 0;
-                                                    for ($i == 1; $i < $testimonial->rating; $i++) {
-                                                        echo '<li><i class="flaticon-star"></i></li>';
-                                                    }
-                                                @endphp
-                                            </ul>
-                                            <span>({{ $testimonial->rating }} {{ __('Stars') }})</span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-    <!--====== CLIENT PART ENDS ======-->
-
-    <!--====== BLOG PART START ======-->
-    @if ($bs->news_section == 1)
-        <section class="blog-area pb-130">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
-                        <div class="section-title text-center">
-                            <span>{{ convertUtf8($bs->blog_section_title) }} <img
-                                    src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
-                            <h3 class="title">{{ convertUtf8($bs->blog_section_subtitle) }}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    @foreach ($blogs as $blog)
-                        <div class="col-lg-6 col-md-8">
-                            <div class="single-blog mt-30">
-                                <div class="blog-thumb">
-                                    <img class="lazy wow fadeIn"
-                                        data-src="{{ asset('assets/front/img/blogs/' . $blog->main_image) }}" alt=""
-                                        data-wow-delay=".5s" data-wow-duration="1s">
-                                </div>
-                                <div class="blog-content">
-                                    <a href="{{ route('front.blogdetails', [$blog->slug, $blog->id]) }}">
-                                        <h3 class="title">{{ convertUtf8($blog->title) }}</h3>
-                                    </a>
-                                    <p>{{ convertUtf8(strlen(strip_tags($blog->content)) > 100)? convertUtf8(substr(strip_tags($blog->content), 0, 100)) . '...': convertUtf8(strip_tags($blog->content)) }}
-                                    </p>
-
-                                    <div
-                                        class="blog-comments d-block d-sm-flex justify-content-between align-items-center">
-                                        <a
-                                            href="{{ route('front.blogdetails', [$blog->slug, $blog->id]) }}">{{ __('Read More') }}</a>
-                                        <ul>
-                                            <li><i class="far fa-calendar-alt"></i>
-                                                {{ \Carbon\Carbon::parse($blog->created_at)->diffForHumans() }}
-                                                <span>|</span> {{ __('Admin') }}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
-
-            </div>
-
-        </section>
-    @endif
-    <!--====== BLOG PART ENDS ======-->
-
-
-    <!--====== RESERVATION PART START ======-->
-    @if ($bs->is_quote == 1)
-        @if ($bs->table_section == 1)
-            <section class="reservation-area bg_cover">
-                <div id="map">
-                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $bs->latitude }},%20{{ $bs->longitude }}+(My%20Business%20Name)&amp;t=&amp;z={{ $bs->map_zoom }}&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                </div>
-            </section>
-        @endif
-    @endif
-    <!--====== RESERVATION PART ENDS ======-->
-
-    {{-- Variation Modal Starts --}}
-    {{-- @include('front.partials.variation-modal') --}}
-    {{-- Variation Modal Ends --}}
-
-    <style>
-        .nos-menus-area {
-            background: #f8f9fa;
-        }
-        
-        .category-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .category-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .category-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .category-card:hover .category-image img {
-            transform: scale(1.05);
-        }
-        
-        .category-placeholder {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f9fa;
-            color: #6c757d;
-            font-size: 3rem;
-        }
-        
-        .category-content {
-            padding: 1.5rem;
-        }
-        
-        .category-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.75rem;
-            text-align: center;
-        }
-        
-        .category-description {
-            color: #6c757d;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-            text-align: center;
-            min-height: 3rem;
-        }
-        
-        .category-stats {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .meal-count {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .meal-count i {
-            margin-right: 0.5rem;
-        }
-        
-        .category-actions {
-            text-align: center;
-        }
-        
-        .view-menu-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .view-menu-btn:hover {
-            background: linear-gradient(45deg, #e55a2b, #e0851a);
-            color: white;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
-        }
-        
-        .view-menu-btn i {
-            margin-right: 0.5rem;
-        }
-        
-        .menu-info-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 2px solid #e3f2fd;
-        }
-        
-        .info-icon {
-            font-size: 3rem;
-            color: #1976d2;
-            margin-bottom: 1rem;
-        }
-        
-        .menu-info-card h4 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        .menu-info-card p {
-            color: #6c757d;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info {
-            color: #1976d2;
-            font-weight: 500;
-        }
-        
-        .contact-info i {
-            margin-right: 0.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .category-card {
-                margin-bottom: 2rem;
-            }
-            
-            .category-title {
-                font-size: 1.2rem;
-            }
-            
-            .category-description {
-                min-height: auto;
-            }
-        }
-    </style>
-@endsection
+                                        <a class="cart-link" data-product="{{

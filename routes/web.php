@@ -939,6 +939,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
 });
 
+// Sitemap Routes for SEO
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'), [
+        'Content-Type' => 'application/xml'
+    ]);
+});
+
+Route::get('/sitemap-index.xml', function () {
+    return response()->file(public_path('sitemap-index.xml'), [
+        'Content-Type' => 'application/xml'
+    ]);
+});
+
 // Fallback route - must be last
 Route::fallback(function () {
     return view('errors.404');

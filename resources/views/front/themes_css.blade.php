@@ -21,6 +21,7 @@
 <!--========= common css ============--->
 @if ($activeTheme == 'multipurpose' || !request()->routeIs('front.index'))
 <link rel="stylesheet" href="{{ asset('assets/front/multipurpose/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/front/css/testimonials.css') }}">
 @endif
 
 <!--========= rtl css ============--->

@@ -6,6 +6,155 @@
 @section('og-title', 'King Kebab Le Pouzin - Restaurant Kebab Halal Authentique depuis 20 ans')
 @section('og-description', 'Découvrez King Kebab Le Pouzin, restaurant kebab halal authentique depuis 20 ans. Spécialités turques grillées au charbon, ingrédients frais 100% halal. Livraison disponible.')
 
+@section('style')
+<style>
+/* Testimonial Styles */
+.testimonial-area {
+    background: #f8f9fa;
+    position: relative;
+}
+
+.testimonial-area .section-title {
+    margin-bottom: 60px;
+}
+
+.testimonial-area .section-title span {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.testimonial-area .section-title .title {
+    color: #000;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.testimonial-slider {
+    position: relative;
+}
+
+.single-testimonial {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.single-testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.single-testimonial::before {
+    content: '"';
+    font-size: 80px;
+    color: #ff6b35;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: "Playfair Display", serif;
+    opacity: 0.3;
+}
+
+.testimonial-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #64656a;
+    margin-bottom: 25px;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ff6b35;
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.author-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h5.name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 5px 0;
+    font-family: "Playfair Display", serif;
+}
+
+.author-info .designation {
+    font-size: 14px;
+    color: #ff6b35;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 767px) {
+    .single-testimonial {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .testimonial-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    .author-thumb {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .author-info h5.name {
+        font-size: 16px;
+    }
+    
+    .author-info .designation {
+        font-size: 12px;
+    }
+    
+    .testimonial-area .section-title .title {
+        font-size: 24px;
+    }
+    
+    .testimonial-area .section-title span {
+        font-size: 16px;
+    }
+}
+</style>
+@endsection
+
 @section('content')
     <!--====== HERO SECTION PART START ======-->
     @if ($bs->home_version == 'static')
@@ -213,8 +362,7 @@
                                                                         <img class="lazy wow fadeIn"
                                                                             data-src="{{ asset('assets/front/img/product/featured/' . $product->feature_image) }}"
                                                                             src="{{ asset('assets/front/img/placeholder.jpg') }}"
-                                                                            alt="menu" data-wow-delay=".5s"
-                                                                            onerror="this.onerror=null; this.src='{{ asset('assets/front/img/placeholder.jpg') }}'; this.classList.add('placeholder-image');">
+                                                                            alt="menu" data-wow-delay=".5s">
                                                                         <div class="thumb-overlay">
                                                                             <a
                                                                                 href="{{ route('front.product.details', [$product->slug, $product->id]) }}"><i
@@ -696,43 +844,359 @@
 
     <!--====== TESTIMONIAL PART START ======-->
     @if ($bs->testimonial_section == 1)
+    <style>
+    /* Testimonial Styles */
+    .testimonial-area {
+        background: #f8f9fa;
+        position: relative;
+    }
+
+    .testimonial-area .section-title {
+        margin-bottom: 60px;
+    }
+
+    .testimonial-area .section-title span {
+        color: #ff6b35;
+        font-weight: 600;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .testimonial-area .section-title .title {
+        color: #000;
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .testimonial-slider {
+        position: relative;
+    }
+
+    .single-testimonial {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        margin: 15px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .single-testimonial:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .single-testimonial::before {
+        content: '"';
+        font-size: 80px;
+        color: #ff6b35;
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-family: "Playfair Display", serif;
+        opacity: 0.3;
+    }
+
+    .testimonial-content p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #64656a;
+        margin-bottom: 25px;
+        font-style: italic;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .author-thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #ff6b35;
+        background: linear-gradient(45deg, #ff6b35, #ffa500);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .author-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .author-info h5.name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 0 5px 0;
+        font-family: "Playfair Display", serif;
+    }
+
+    .author-info .designation {
+        font-size: 14px;
+        color: #ff6b35;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Custom Slick Slider Button Styles */
+    .testimonial-slider .slick-prev,
+    .testimonial-slider .slick-next {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #ff6b35, #ffa500);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    .testimonial-slider .slick-prev:hover,
+    .testimonial-slider .slick-next:hover {
+        background: linear-gradient(45deg, #ffa500, #ff6b35);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    .testimonial-slider .slick-prev {
+        left: -60px;
+    }
+
+    .testimonial-slider .slick-next {
+        right: -60px;
+    }
+
+    .testimonial-slider .slick-prev:before {
+        content: "‹";
+        font-size: 30px;
+        line-height: 1;
+    }
+
+    .testimonial-slider .slick-next:before {
+        content: "›";
+        font-size: 30px;
+        line-height: 1;
+    }
+
+    /* Custom Slick Dots Styles */
+    .testimonial-slider .slick-dots {
+        bottom: -40px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .testimonial-slider .slick-dots li {
+        margin: 0;
+    }
+
+    .testimonial-slider .slick-dots li button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        border: none;
+        font-size: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .testimonial-slider .slick-dots li.slick-active button {
+        background: #ff6b35;
+        transform: scale(1.2);
+    }
+
+    @media (max-width: 767px) {
+        .single-testimonial {
+            padding: 30px 20px;
+            margin: 10px;
+        }
+        
+        .testimonial-content p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .author-thumb {
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
+        }
+        
+        .author-info h5.name {
+            font-size: 16px;
+        }
+        
+        .author-info .designation {
+            font-size: 12px;
+        }
+        
+        .testimonial-area .section-title .title {
+            font-size: 24px;
+        }
+        
+        .testimonial-area .section-title span {
+            font-size: 16px;
+        }
+
+        .testimonial-slider .slick-prev,
+        .testimonial-slider .slick-next {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .testimonial-slider .slick-prev {
+            left: -50px;
+        }
+
+        .testimonial-slider .slick-next {
+            right: -50px;
+        }
+    }
+    </style>
         <section class="testimonial-area pt-120 pb-120">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="section-title text-center">
-                            <span>{{ convertUtf8($be->testimonial_section_title) }} <img
+                            <span>Avis de nos clients <img
                                     src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
-                            <h3 class="title">{{ convertUtf8($be->testimonial_section_subtitle) }}</h3>
+                            <h3 class="title">Ce que disent nos clients</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="testimonial-slider">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="single-testimonial">
-                                    <div class="testimonial-content">
-                                        <p>{{ convertUtf8($testimonial->comment) }}</p>
-                                        <div class="testimonial-author">
-                                            <div class="author-thumb">
-                                                <img class="lazy"
-                                                    data-src="{{ asset('assets/front/img/testimonial/' . $testimonial->image) }}"
-                                                    alt="testimonial">
-                                            </div>
-                                            <div class="author-info">
-                                                <h5 class="name">{{ convertUtf8($testimonial->name) }}</h5>
-                                                <span class="designation">{{ convertUtf8($testimonial->designation) }}</span>
-                                            </div>
+                            <div class="single-testimonial">
+                                <div class="testimonial-content">
+                                    <p>Le rapport qualité-prix est excellent, surtout pour la quantité généreuse servie. Les portions sont copieuses, et on sent vraiment que les produits utilisés sont de haute qualité. C'est l'endroit idéal pour un repas rapide mais savoureux, que ce soit seul ou entre amis.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <span>EW</span>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5 class="name">Emma Watson</h5>
+                                            <span class="designation">Cliente fidèle</span>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                            
+                            <div class="single-testimonial">
+                                <div class="testimonial-content">
+                                    <p>L'accueil chaleureux et le service impeccable font de chaque visite une expérience agréable. Le personnel est toujours à l'écoute et prêt à conseiller les clients, ce qui rend ce lieu unique et convivial. Sans oublier la qualité exceptionnelle des plats qui me donne envie d'y retourner souvent.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <span>MR</span>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5 class="name">Marcos Reus</h5>
+                                            <span class="designation">Client régulier</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="single-testimonial">
+                                <div class="testimonial-content">
+                                    <p>Le King Kebab est un véritable joyau culinaire. Chaque bouchée est une explosion de saveurs grâce à des ingrédients frais et une préparation soignée qui respecte la tradition. Je recommande vivement ce restaurant à tous les amateurs de kebab authentique.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <span>RI</span>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5 class="name">Rebeca Isabella</h5>
+                                            <span class="designation">Gastronome</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="single-testimonial">
+                                <div class="testimonial-content">
+                                    <p>Ce que j'adore chez King Kebab, c'est la cuisson parfaite de la viande, juteuse et tendre à la fois. Les épices sont bien dosées, ce qui offre un équilibre parfait entre goût relevé et saveur douce. Un vrai régal pour les papilles et un incontournable de la ville.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <span>AH</span>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5 class="name">Amelia Hanna</h5>
+                                            <span class="designation">Critique culinaire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <script>
+        $(document).ready(function() {
+            // Initialize testimonial slider
+            if($(".testimonial-slider").length) {
+                $(".testimonial-slider").slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            }
+        });
+        </script>
     @endif
     <!--====== TESTIMONIAL PART ENDS ======-->
 

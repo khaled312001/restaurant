@@ -41,11 +41,12 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="category-card h-100">
                             <div class="category-image">
-                                @if (!empty($category->image))
+                                @if (!empty($category->image) && file_exists(public_path('assets/front/img/category/' . $category->image)))
                                     <img class="lazy wow fadeIn" 
                                          data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
                                          data-wow-delay=".3s" 
-                                         alt="{{ convertUtf8($category->name) }}">
+                                         alt="{{ convertUtf8($category->name) }}"
+                                         onerror="this.parentElement.innerHTML='<div class=&quot;category-placeholder&quot;><i class=&quot;flaticon-burger&quot;></i></div>'">
                                 @else
                                     <div class="category-placeholder">
                                         <i class="flaticon-burger"></i>

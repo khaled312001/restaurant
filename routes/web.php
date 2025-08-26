@@ -92,53 +92,53 @@ Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkou
 Route::get('/checkout/{slug}', 'Front\ProductController@Prdouctcheckout')->name('front.product.checkout');
 
 // CHECKOUT SECTION
-Route::get('/product/{orderNum}/payment/return', 'Payment\product\PaymentController@payreturn')->name('product.payment.return');
-Route::get('/product/payment/cancle', 'Payment\product\PaymentController@paycancle')->name('product.payment.cancle');
+Route::get('/product/{orderNum}/payment/return', 'Payment\Product\PaymentController@payreturn')->name('product.payment.return');
+Route::get('/product/payment/cancle', 'Payment\Product\PaymentController@paycancle')->name('product.payment.cancle');
 // paypal routes
-Route::post('/product/paypal/submit', 'Payment\product\PaypalController@store')->name('product.paypal.submit');
-Route::get('/product/paypal/{orderId}/apiRequest', 'Payment\product\PaypalController@apiRequest')->name('product.paypal.apiRequest');
-Route::get('/product/payment/notify', 'Payment\product\PaypalController@notify')->name('product.paypal.notify');
+Route::post('/product/paypal/submit', 'Payment\Product\PaypalController@store')->name('product.paypal.submit');
+Route::get('/product/paypal/{orderId}/apiRequest', 'Payment\Product\PaypalController@apiRequest')->name('product.paypal.apiRequest');
+Route::get('/product/payment/notify', 'Payment\Product\PaypalController@notify')->name('product.paypal.notify');
 // stripe routes
-Route::post('/product/stripe/submit', 'Payment\product\StripeController@store')->name('product.stripe.submit');
-Route::get('/product/stripe/{orderId}/apiRequest', 'Payment\product\StripeController@apiRequest')->name('product.stripe.apiRequest');
+Route::post('/product/stripe/submit', 'Payment\Product\StripeController@store')->name('product.stripe.submit');
+Route::get('/product/stripe/{orderId}/apiRequest', 'Payment\Product\StripeController@apiRequest')->name('product.stripe.apiRequest');
 Route::get('/refresh-csrf-token', function() {
     return response()->json(['token' => csrf_token()]);
 })->name('refresh.csrf.token');
 // Offline Gateways
-Route::post('/product/offline/{gatewayid}/submit', 'Payment\product\OfflineController@store')->name('product.offline.submit');
+Route::post('/product/offline/{gatewayid}/submit', 'Payment\Product\OfflineController@store')->name('product.offline.submit');
 //Flutterwave Routes
-Route::post('/product/flutterwave/submit', 'Payment\product\FlutterWaveController@store')->name('product.flutterwave.submit');
-Route::get('/product/flutterwave/{orderId}/apiRequest', 'Payment\product\FlutterWaveController@apiRequest')->name('product.flutterwave.apiRequest');
-Route::post('/product/flutterwave/notify', 'Payment\product\FlutterWaveController@notify')->name('product.flutterwave.notify');
-Route::get('/product/flutterwave/notify', 'Payment\product\FlutterWaveController@success')->name('product.flutterwave.success');
+Route::post('/product/flutterwave/submit', 'Payment\Product\FlutterWaveController@store')->name('product.flutterwave.submit');
+Route::get('/product/flutterwave/{orderId}/apiRequest', 'Payment\Product\FlutterWaveController@apiRequest')->name('product.flutterwave.apiRequest');
+Route::post('/product/flutterwave/notify', 'Payment\Product\FlutterWaveController@notify')->name('product.flutterwave.notify');
+Route::get('/product/flutterwave/notify', 'Payment\Product\FlutterWaveController@success')->name('product.flutterwave.success');
 //Paystack Routes
-Route::post('/product/paystack/submit', 'Payment\product\PaystackController@store')->name('product.paystack.submit');
-Route::get('/product/paystack/{orderId}/apiRequest', 'Payment\product\PaystackController@apiRequest')->name('product.paystack.apiRequest');
-Route::get('/product/paystack/notify', 'Payment\product\PaystackController@notify')->name('product.paystack.notify');
+Route::post('/product/paystack/submit', 'Payment\Product\PaystackController@store')->name('product.paystack.submit');
+Route::get('/product/paystack/{orderId}/apiRequest', 'Payment\Product\PaystackController@apiRequest')->name('product.paystack.apiRequest');
+Route::get('/product/paystack/notify', 'Payment\Product\PaystackController@notify')->name('product.paystack.notify');
 // RazorPay
-Route::post('/product/razorpay/submit', 'Payment\product\RazorpayController@store')->name('product.razorpay.submit');
-Route::get('/product/razorpay/{orderId}/apiRequest', 'Payment\product\RazorpayController@apiRequest')->name('product.razorpay.apiRequest');
-Route::post('/product/razorpay/notify', 'Payment\product\RazorpayController@notify')->name('product.razorpay.notify');
+Route::post('/product/razorpay/submit', 'Payment\Product\RazorpayController@store')->name('product.razorpay.submit');
+Route::get('/product/razorpay/{orderId}/apiRequest', 'Payment\Product\RazorpayController@apiRequest')->name('product.razorpay.apiRequest');
+Route::post('/product/razorpay/notify', 'Payment\Product\RazorpayController@notify')->name('product.razorpay.notify');
 //Instamojo Routes
-Route::post('/product/instamojo/submit', 'Payment\product\InstamojoController@store')->name('product.instamojo.submit');
-Route::get('/product/instamojo/{orderId}/apiRequest', 'Payment\product\InstamojoController@apiRequest')->name('product.instamojo.apiRequest');
-Route::get('/product/instamojo/notify', 'Payment\product\InstamojoController@notify')->name('product.instamojo.notify');
+Route::post('/product/instamojo/submit', 'Payment\Product\InstamojoController@store')->name('product.instamojo.submit');
+Route::get('/product/instamojo/{orderId}/apiRequest', 'Payment\Product\InstamojoController@apiRequest')->name('product.instamojo.apiRequest');
+Route::get('/product/instamojo/notify', 'Payment\Product\InstamojoController@notify')->name('product.instamojo.notify');
 //PayTM Routes
-Route::post('/product/paytm/submit', 'Payment\product\PaytmController@store')->name('product.paytm.submit');
-Route::get('/product/paytm/{orderId}/apiRequest', 'Payment\product\PaytmController@apiRequest')->name('product.paytm.apiRequest');
-Route::post('/product/paytm/notify', 'Payment\product\PaytmController@notify')->name('product.paytm.notify');
+Route::post('/product/paytm/submit', 'Payment\Product\PaytmController@store')->name('product.paytm.submit');
+Route::get('/product/paytm/{orderId}/apiRequest', 'Payment\Product\PaytmController@apiRequest')->name('product.paytm.apiRequest');
+Route::post('/product/paytm/notify', 'Payment\Product\PaytmController@notify')->name('product.paytm.notify');
 //Mollie Routes
-Route::post('/product/mollie/submit', 'Payment\product\MollieController@store')->name('product.mollie.submit');
-Route::get('/product/mollie/{orderId}/apiRequest', 'Payment\product\MollieController@apiRequest')->name('product.mollie.apiRequest');
-Route::get('/product/mollie/notify', 'Payment\product\MollieController@notify')->name('product.mollie.notify');
+Route::post('/product/mollie/submit', 'Payment\Product\MollieController@store')->name('product.mollie.submit');
+Route::get('/product/mollie/{orderId}/apiRequest', 'Payment\Product\MollieController@apiRequest')->name('product.mollie.apiRequest');
+Route::get('/product/mollie/notify', 'Payment\Product\MollieController@notify')->name('product.mollie.notify');
 // Mercado Pago
-Route::post('/product/mercadopago/submit', 'Payment\product\MercadopagoController@store')->name('product.mercadopago.submit');
-Route::get('/product/mercadopago/{orderId}/apiRequest', 'Payment\product\MercadopagoController@apiRequest')->name('product.mercadopago.apiRequest');
-Route::post('/product/mercadopago/notify', 'Payment\product\MercadopagoController@notify')->name('product.mercadopago.notify');
+Route::post('/product/mercadopago/submit', 'Payment\Product\MercadopagoController@store')->name('product.mercadopago.submit');
+Route::get('/product/mercadopago/{orderId}/apiRequest', 'Payment\Product\MercadopagoController@apiRequest')->name('product.mercadopago.apiRequest');
+Route::post('/product/mercadopago/notify', 'Payment\Product\MercadopagoController@notify')->name('product.mercadopago.notify');
 // PayUmoney
-Route::post('/product/payumoney/submit', 'Payment\product\PayumoneyController@store')->name('product.payumoney.submit');
-Route::get('/product/payumoney/{orderId}/apiRequest', 'Payment\product\PayumoneyController@apiRequest')->name('product.payumoney.apiRequest');
-Route::post('/product/payumoney/notify', 'Payment\product\PayumoneyController@notify')->name('product.payumoney.notify');
+Route::post('/product/payumoney/submit', 'Payment\Product\PayumoneyController@store')->name('product.payumoney.submit');
+Route::get('/product/payumoney/{orderId}/apiRequest', 'Payment\Product\PayumoneyController@apiRequest')->name('product.payumoney.apiRequest');
+Route::post('/product/payumoney/notify', 'Payment\Product\PayumoneyController@notify')->name('product.payumoney.notify');
 // CHECKOUT SECTION ENDS
 
 

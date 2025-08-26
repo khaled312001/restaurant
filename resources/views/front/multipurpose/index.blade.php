@@ -681,4 +681,192 @@
                                         data-src="{{ asset('assets/front/img/product/featured/' . $sproduct->feature_image) }}"
                                         alt="">
                                     <div class="special-btns">
-                                        <a class="cart-link" data-product="{{
+                                        <a class="cart-link" data-product="{{ json_encode($sproduct) }}"
+                                            data-href="{{ route('add.cart', $sproduct->id) }}">{{ __('Add to Cart') }}</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--====== GOOD FOOD PART ENDS ======-->
+
+    <!--====== TESTIMONIAL PART START ======-->
+    @if ($bs->testimonial_section == 1)
+        <section class="testimonial-area pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title text-center">
+                            <span>{{ convertUtf8($be->testimonial_section_title) }} <img
+                                    src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
+                            <h3 class="title">{{ convertUtf8($be->testimonial_section_subtitle) }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="testimonial-slider">
+                            @foreach ($testimonials as $testimonial)
+                                <div class="single-testimonial">
+                                    <div class="testimonial-content">
+                                        <p>{{ convertUtf8($testimonial->comment) }}</p>
+                                        <div class="testimonial-author">
+                                            <div class="author-thumb">
+                                                <img class="lazy"
+                                                    data-src="{{ asset('assets/front/img/testimonial/' . $testimonial->image) }}"
+                                                    alt="testimonial">
+                                            </div>
+                                            <div class="author-info">
+                                                <h5 class="name">{{ convertUtf8($testimonial->name) }}</h5>
+                                                <span class="designation">{{ convertUtf8($testimonial->designation) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--====== TESTIMONIAL PART ENDS ======-->
+
+    <!--====== BLOG PART START ======-->
+    @if ($bs->blog_section == 1)
+        <section class="blog-area pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title text-center">
+                            <span>{{ convertUtf8($be->blog_section_title) }} <img
+                                    src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
+                            <h3 class="title">{{ convertUtf8($be->blog_section_subtitle) }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($blogs as $blog)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-blog mt-30">
+                                <div class="blog-thumb">
+                                    <img class="lazy wow fadeIn"
+                                        data-src="{{ asset('assets/front/img/blog/' . $blog->main_image) }}"
+                                        data-wow-delay=".5s" alt="blog">
+                                    <div class="thumb-overlay">
+                                        <a href="{{ route('front.blog.details', $blog->slug) }}"><i
+                                                class="flaticon-add"></i></a>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-calendar-alt"></i>
+                                            {{ $blog->created_at->format('d M Y') }}</span>
+                                        <span><i class="far fa-user"></i> {{ __('Admin') }}</span>
+                                    </div>
+                                    <h4 class="title"><a
+                                            href="{{ route('front.blog.details', $blog->slug) }}">{{ convertUtf8($blog->title) }}</a>
+                                    </h4>
+                                    <p>{{ convertUtf8(strlen($blog->content)) > 120? convertUtf8(substr($blog->content, 0, 120)) . '...': convertUtf8($blog->content) }}
+                                    </p>
+                                    <a class="read-more"
+                                        href="{{ route('front.blog.details', $blog->slug) }}">{{ __('Read More') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--====== BLOG PART ENDS ======-->
+
+    <!--====== CONTACT PART START ======-->
+    @if ($bs->contact_section == 1)
+        <section class="contact-area pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-title text-center">
+                            <span>{{ convertUtf8($be->contact_section_title) }} <img
+                                    src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
+                            <h3 class="title">{{ convertUtf8($be->contact_section_subtitle) }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="contact-form">
+                            <form action="{{ route('front.contact.send') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" placeholder="{{ __('Name') }}" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" placeholder="{{ __('Email') }}" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="phone" placeholder="{{ __('Phone') }}" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="subject" placeholder="{{ __('Subject') }}" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea name="message" placeholder="{{ __('Message') }}" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit">{{ __('Send Message') }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-info">
+                            @if ($be->contact_address)
+                                <div class="single-contact-info">
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">{{ __('Address') }}</h5>
+                                        <p>{{ convertUtf8($be->contact_address) }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($be->contact_phone)
+                                <div class="single-contact-info">
+                                    <div class="icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">{{ __('Phone') }}</h5>
+                                        <p>{{ convertUtf8($be->contact_phone) }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($be->contact_email)
+                                <div class="single-contact-info">
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="title">{{ __('Email') }}</h5>
+                                        <p>{{ convertUtf8($be->contact_email) }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--====== CONTACT PART ENDS ======-->
+
+@endsection

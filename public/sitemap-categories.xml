@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Menu Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Sandwichs Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/sandwichs</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Menus Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/menus</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Tacos Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/tacos</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Kebab Galette Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/kebab-galette</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Americain Kofte Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/americain-kofte</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Burgers Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/burgers</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Assiettes Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/assiettes</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Menus Enfant Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/menus-enfant</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Salade Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/salade</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Nos Box Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/nos-box</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Panini Category -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu/panini</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset> 

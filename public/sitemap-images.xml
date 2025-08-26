@@ -2,99 +2,108 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-    <!-- Kebab Products -->
+    <!-- Homepage Images -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/</loc>
+        <image:image>
+            <image:loc>https://kingkebablepouzin.fr/assets/front/img/king-kebab-logo.jpg</image:loc>
+            <image:title>King Kebab Le Pouzin - Restaurant Kebab Halal Authentique</image:title>
+            <image:caption>Restaurant kebab halal authentique à Le Pouzin depuis 20 ans</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://kingkebablepouzin.fr/assets/front/img/hero-bg.jpg</image:loc>
+            <image:title>King Kebab Le Pouzin - Le vrai goût du kebab authentique</image:title>
+            <image:caption>Découvrez nos spécialités turques grillées au charbon</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Menu Images -->
+    <url>
+        <loc>https://kingkebablepouzin.fr/menu</loc>
+        <image:image>
+            <image:loc>https://kingkebablepouzin.fr/assets/front/img/menu-banner.jpg</image:loc>
+            <image:title>Notre Carte - King Kebab Le Pouzin</image:title>
+            <image:caption>48 plats halal disponibles au total</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Kebab Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/kebab-galette</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/kebab-galette.jpg</image:loc>
             <image:title>Kebab Galette - King Kebab Le Pouzin</image:title>
+            <image:caption>Kebab authentique grillé au charbon</image:caption>
         </image:image>
     </url>
 
-    <!-- Tacos Products -->
+    <!-- Tacos Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/tacos</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/tacos.jpg</image:loc>
             <image:title>Tacos Halal - King Kebab Le Pouzin</image:title>
+            <image:caption>Tacos fraîchement préparés avec viande halal</image:caption>
         </image:image>
     </url>
 
-    <!-- Burger Products -->
+    <!-- Burger Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/burgers</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/burgers.jpg</image:loc>
             <image:title>Burgers Halal - King Kebab Le Pouzin</image:title>
+            <image:caption>Burgers gourmets avec viande halal de qualité</image:caption>
         </image:image>
     </url>
 
-    <!-- Assiettes Products -->
+    <!-- Assiettes Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/assiettes</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/assiettes.jpg</image:loc>
             <image:title>Assiettes Kebab - King Kebab Le Pouzin</image:title>
+            <image:caption>Assiettes complètes avec riz basmati et légumes</image:caption>
         </image:image>
     </url>
 
-    <!-- Menu Enfant Products -->
+    <!-- Menu Enfant Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/menus-enfant</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/menu-enfant.jpg</image:loc>
             <image:title>Menu Enfant Halal - King Kebab Le Pouzin</image:title>
+            <image:caption>Menus spécialement conçus pour les enfants</image:caption>
         </image:image>
     </url>
 
-    <!-- Salade Products -->
+    <!-- Salade Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/salade</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/salade.jpg</image:loc>
             <image:title>Salades Halal - King Kebab Le Pouzin</image:title>
+            <image:caption>Salades fraîches et équilibrées</image:caption>
         </image:image>
     </url>
 
-    <!-- Nos Box Products -->
+    <!-- Nos Box Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/nos-box</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/nos-box.jpg</image:loc>
             <image:title>Nos Box King Kebab - Le Pouzin</image:title>
+            <image:caption>Formules repas pratiques et généreuses</image:caption>
         </image:image>
     </url>
 
-    <!-- Panini Products -->
+    <!-- Panini Images -->
     <url>
         <loc>https://kingkebablepouzin.fr/menu/panini</loc>
-        <lastmod>2025-01-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
         <image:image>
             <image:loc>https://kingkebablepouzin.fr/assets/front/img/panini.jpg</image:loc>
             <image:title>Panini Halal - King Kebab Le Pouzin</image:title>
+            <image:caption>Panini chauds et savoureux</image:caption>
         </image:image>
     </url>
 

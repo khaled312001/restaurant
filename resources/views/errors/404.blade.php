@@ -1,5 +1,9 @@
 @extends('front.layout')
 
+@section('page-title', 'Page Non Trouvée - King Kebab Le Pouzin')
+@section('meta-description', 'Page non trouvée. Retournez à l\'accueil de King Kebab Le Pouzin pour découvrir nos délicieux kebabs halal authentiques.')
+@section('meta-keywords', '404, page non trouvée, King Kebab Le Pouzin, restaurant kebab halal')
+
 @section('content')
 @php
         if (session()->has('lang')) {
@@ -12,7 +16,7 @@
 
     <!--====== PAGE TITLE PART START ======-->
 
-    <section class="page-title-area d-flex align-items-center" style="background-image:url('{{asset('assets/front/img/'.$bs->breadcrumb)}}')">
+    <section class="page-title-area d-flex align-items-center" style="background-image:url('{{asset('assets/front/img/breadcrumb-bg.jpg')}}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

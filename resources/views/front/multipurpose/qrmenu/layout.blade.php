@@ -95,10 +95,11 @@
     {{-- Loader --}}
 
     {{-- START: Cart Icon --}}
-    <div class="cart-icon">
-        <div id="cartQuantity">
-            <img src="{{asset('assets/front/img/static/cart-icon.png')}}" alt="Cart Icon">
-            <span class="cart-count">{{$itemsCount}}</span>
+    <div class="cart-icon" style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f8f9fa; border-radius: 8px; cursor: pointer;">
+        <div id="cartQuantity" style="display: flex; align-items: center; gap: 8px;">
+            <img src="{{asset('assets/front/img/static/cart-icon.png')}}" alt="Cart Icon" style="width: 65px; height: 65px; object-fit: contain;">
+            <span class="cart-count" style="background: #dc3545; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; min-width: 20px; text-align: center;">{{$itemsCount}}</span>
+            <span style="font-size: 16px; color: #333; font-weight: 500; margin-right: 5px; background: linear-gradient(45deg, #f8f9fa, #e9ecef); padding: 8px 12px; border-radius: 6px; border: 1px solid #dee2e6;">Aperçu de mes commandes</span>
         </div>
     </div>
     {{-- END: Cart Icon --}}

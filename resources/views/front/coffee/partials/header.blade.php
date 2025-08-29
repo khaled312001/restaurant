@@ -120,7 +120,7 @@
 
                     <div class="item cart cartQuantity" id="cartQuantity">
                         <a href="{{ route('front.cart') }}" class="btn-icon pe-2" target="_self" aria-label="User"
-                            title="User">
+                            title="User" style="width: 60px; height: 60px; font-size: 24px;">
                             <i class="fal fa-shopping-bag"></i>
                             @php
                                 $itemsCount = 0;
@@ -133,6 +133,7 @@
                             @endphp
                             <span class="badge rounded-pill bg-primary cart-quantity">{{ $itemsCount }}</span>
                         </a>
+                        <span style="margin-right: 10px; font-size: 14px; color: #333; font-weight: 500; background: linear-gradient(45deg, #f8f9fa, #e9ecef); padding: 8px 12px; border-radius: 6px; border: 1px solid #dee2e6;">Aperçu de mes commandes</span>
                     </div>
                     @if ($bs->website_call_waiter == 1)
                     <div class="item call-waiter-hidden">

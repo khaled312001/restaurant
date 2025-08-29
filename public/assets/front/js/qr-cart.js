@@ -61,10 +61,12 @@ function addToCart(url, variant, qty, addons) {
             $('#variationModal').modal('hide');
             toastr["success"](res.message);
             $(".cartQuantity").load(location.href + " .cartQuantity");
+            // Trigger cart updated event
+            $(document).trigger('cartUpdated');
             // Force reload cart sidebar to update totals
             setTimeout(function() {
                 location.reload();
-            }, 5000);
+            }, 1000);
         } else {
             toastr["error"](res.error);
         }

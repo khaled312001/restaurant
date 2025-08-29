@@ -18,9 +18,6 @@
             $product = App\Models\Product::findOrFail($id);
             @endphp
             <div class="cart-item">
-               <div class="thumb">
-                  <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" alt="Item Image" />
-               </div>
                <div class="details">
                   <h4 class="title mb-0">
                      <a>{{convertUtf8($item['name'])}}</a>

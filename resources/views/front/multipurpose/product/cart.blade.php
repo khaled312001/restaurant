@@ -66,7 +66,6 @@
                         <table class="cart-table">
                             <thead class="cart-header">
                                 <tr>
-                                    <th class="prod-column">{{__('Product')}}</th>
                                     <th>{{__('Product Title')}}</th>
                                     <th>{{__('Quantity')}}</th>
                                     <th class="price">{{__('Price')}}</th>
@@ -82,18 +81,6 @@
                                     $product = App\Models\Product::findOrFail($id);
                                 @endphp
                                 <tr class="remove{{$id}}">
-
-                                    <td class="prod-column">
-                                        <div class="column-box">
-                                            <div class="prod-thumb">
-                                                <a href="{{route('front.product.details',[$product->slug,$product->id])}}">
-                                                    <img src="{{asset('assets/front/img/product/featured/'.$item['photo'])}}" 
-                                                         alt="" 
-                                                         onerror="handleCartImageError(this, '{{asset('assets/front/img/product/featured/'.$item['photo'])}}')">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
                                     <td>
                                         <div class="title">
                                             <a target="_blank" href="{{route('front.product.details',[$product->slug,$product->id])}}">

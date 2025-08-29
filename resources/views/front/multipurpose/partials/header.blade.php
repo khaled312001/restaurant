@@ -51,8 +51,8 @@
                                         </ul>
                                     @endauth
                                     <div id="cartQuantity" class="cart cartQuantity">
-                                        <a href="{{ route('front.cart') }}">
-                                            <i class="fas fa-cart-plus"></i>
+                                        <a href="{{ route('front.cart') }}" style="display: flex; align-items: center; gap: 10px;">
+                                            <i class="fas fa-cart-plus" style="font-size: 24px;"></i>
                                             @php
                                                 $itemsCount = 0;
                                                 $cart = session()->get('cart');

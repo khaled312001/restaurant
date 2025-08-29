@@ -44,7 +44,9 @@ function addToCart(url, variant, qty, addons) {
     $(".modal-cart-link i").addClass('d-inline-block');
 
 
-    $.get(cartUrl + ',,,' + qty + ',,,' + totalPrice(qty) + ',,,' + JSON.stringify(variant) + ',,,' + JSON.stringify(addons), function (res) {
+    let calculatedTotal = totalPrice(qty);
+    console.log('Adding to cart with total:', calculatedTotal);
+    $.get(cartUrl + ',,,' + qty + ',,,' + calculatedTotal + ',,,' + JSON.stringify(variant) + ',,,' + JSON.stringify(addons), function (res) {
 
         $(".request-loader").removeClass("show");
 
@@ -59,6 +61,10 @@ function addToCart(url, variant, qty, addons) {
             $('#variationModal').modal('hide');
             toastr["success"](res.message);
             $(".cartQuantity").load(location.href + " .cartQuantity");
+            // Force reload cart sidebar to update totals
+            setTimeout(function() {
+                location.reload();
+            }, 5000);
         } else {
             toastr["error"](res.error);
         }

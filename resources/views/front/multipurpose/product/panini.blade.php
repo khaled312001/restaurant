@@ -35,43 +35,76 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f39c12;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f39c12;">
                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem;">Panini</span>
                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                            <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'panini-3-fromages', 'id' => 145]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI 3 FROMAGES</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI 3 FROMAGES</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="panini-type-145" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 145) }}', 'panini-type-145')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'panini-viande-choix', 'id' => 146]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI VIANDE CHOIX</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI VIANDE CHOIX</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="panini-type-146" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 146) }}', 'panini-type-146')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'panini-kebab', 'id' => 147]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI KEBAB</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI KEBAB</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
+                            <div style="text-align: center;">
+                                <select id="panini-type-147" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,50€)</option>
+                                    <option value="menu">Menu (10,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 147) }}', 'panini-type-147')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'panini-steak', 'id' => 148]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI STEAK</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI STEAK</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                            <div style="text-align: center;">
+                                <select id="panini-type-148" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (8,00€)</option>
+                                    <option value="menu">Menu (11,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 148) }}', 'panini-type-148')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -272,5 +305,21 @@
     }
 }
 </style>
+
+<script>
+function addToCartWithType(url, selectId) {
+    const select = document.getElementById(selectId);
+    const selectedType = select.value;
+    
+    // إضافة النوع المحدد كـ variant
+    const variant = [{
+        name: 'Type',
+        price: selectedType === 'menu' ? 3.00 : 0 // فرق السعر بين Menu و Seul
+    }];
+    
+    // استدعاء الدالة الأصلية مع النوع المحدد
+    addToCart(url, variant, 1, []);
+}
+</script>
 
 @endsection 

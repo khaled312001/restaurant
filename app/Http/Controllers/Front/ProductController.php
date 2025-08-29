@@ -344,6 +344,31 @@ class ProductController extends Controller
         if (!$product) {
             abort(404);
         }
+        
+        // Recalculate total on server side to ensure accuracy
+        $calculatedTotal = (float)$product->current_price;
+        
+        // Add variations price
+        if (is_array($variant)) {
+            foreach ($variant as $variation) {
+                if (is_array($variation) && array_key_exists('price', $variation)) {
+                    $calculatedTotal += (float)$variation["price"];
+                }
+            }
+        }
+        
+        // Add addons price
+        if (is_array($addons)) {
+            foreach ($addons as $addon) {
+                if (is_array($addon) && array_key_exists('price', $addon)) {
+                    $calculatedTotal += (float)$addon["price"];
+                }
+            }
+        }
+        
+        // Multiply by quantity
+        $calculatedTotal = $calculatedTotal * $qty;
+        
         $cart = Session::get('cart');
         $ckey = uniqid();
 
@@ -358,12 +383,13 @@ class ProductController extends Controller
                     "variations" => $variant,
                     "addons" => $addons,
                     "product_price" => (float)$product->current_price,
-                    "total" => $total,
+                    "total" => $calculatedTotal,
                     "photo" => $product->feature_image
                 ]
             ];
 
             Session::put('cart', $cart);
+            Session::save();
             return response()->json(['message' => 'Product added to cart successfully!']);
         }
 
@@ -371,8 +397,30 @@ class ProductController extends Controller
         foreach ($cart as $key => $cartItem) {
             if ($cartItem["id"] == $id && $variant == $cartItem["variations"] && $addons == $cartItem["addons"]) {
                 $cart[$key]['qty'] = (int)$cart[$key]['qty'] + $qty;
-                $cart[$key]['total'] = (float)$cart[$key]['total'] + $total;
+                // Recalculate total for this item
+                $itemTotal = (float)$cartItem["product_price"];
+                
+                // Add variations price
+                if (is_array($cartItem["variations"])) {
+                    foreach ($cartItem["variations"] as $variation) {
+                        if (is_array($variation) && array_key_exists('price', $variation)) {
+                            $itemTotal += (float)$variation["price"];
+                        }
+                    }
+                }
+                
+                // Add addons price
+                if (is_array($cartItem["addons"])) {
+                    foreach ($cartItem["addons"] as $addon) {
+                        if (is_array($addon) && array_key_exists('price', $addon)) {
+                            $itemTotal += (float)$addon["price"];
+                        }
+                    }
+                }
+                
+                $cart[$key]['total'] = $itemTotal * $cart[$key]['qty'];
                 Session::put('cart', $cart);
+                Session::save();
                 return response()->json(['message' => 'Product added to cart successfully!']);
             }
         }
@@ -385,13 +433,13 @@ class ProductController extends Controller
             "variations" => $variant,
             "addons" => $addons,
             "product_price" => (float)$product->current_price,
-            "total" => $total,
+            "total" => $calculatedTotal,
             "photo" => $product->feature_image
         ];
 
 
         Session::put('cart', $cart);
-
+        Session::save();
 
         return response()->json(['message' => 'Product added to cart successfully!']);
     }
@@ -432,6 +480,7 @@ class ProductController extends Controller
         }
 
         Session::put('cart', $cart);
+        Session::save();
 
         return response()->json(['message' => 'Cart Update Successfully.']);
     }
@@ -443,6 +492,7 @@ class ProductController extends Controller
             $cart = Session::get('cart');
             unset($cart[$id]);
             Session::put('cart', $cart);
+            Session::save();
 
             return response()->json(['message' => 'Item removed successfully']);
         }

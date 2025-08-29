@@ -28,8 +28,12 @@ class QrMenuController extends Controller
         $cart = session()->get('cart');
         if(!empty($cart)){
             foreach($cart as $p){
-                $itemsCount += $p['qty'];
-                $cartTotal += (float)$p['total'];
+                if (isset($p['qty']) && is_numeric($p['qty'])) {
+                    $itemsCount += (int)$p['qty'];
+                }
+                if (isset($p['total']) && is_numeric($p['total'])) {
+                    $cartTotal += (float)$p['total'];
+                }
             }
         }
 
@@ -57,9 +61,39 @@ class QrMenuController extends Controller
 
         // changing qty & total for the item
         $cart["$key"]['qty'] = $qty;
-        $cart["$key"]['total'] = $qty * (float)$cart["$key"]["product_price"];
+        
+        // calculate total including variations and addons
+        $total = 0;
+        $cartItem = $cart["$key"];
+        
+        // add product price
+        $total += (float)$cartItem["product_price"];
+        
+        // add variations price
+        $variations = $cartItem["variations"];
+        if (is_array($variations)) {
+            foreach ($variations as $variation) {
+                if (is_array($variation) && array_key_exists('price', $variation)) {
+                    $total += (float)$variation["price"];
+                }
+            }
+        }
+        
+        // add addons price
+        $addons = $cartItem["addons"];
+        if (is_array($addons)) {
+            foreach ($addons as $addon) {
+                if (is_array($addon) && array_key_exists('price', $addon)) {
+                    $total += (float)$addon["price"];
+                }
+            }
+        }
+        
+        // multiply by quantity
+        $cart["$key"]['total'] = $total * $qty;
 
         session()->put('cart', $cart);
+        session()->save();
         $cart = session()->get('cart');
         return response()->json(['cart' => $cart, 'key' => $key]);
     }
@@ -70,6 +104,7 @@ class QrMenuController extends Controller
         unset($cart["$key"]);
 
         session()->put('cart', $cart);
+        session()->save();
         return response()->json($cart);
     }
 
@@ -84,8 +119,12 @@ class QrMenuController extends Controller
         $cart = session()->get('cart');
         if(!empty($cart)){
             foreach($cart as $p){
-                $itemsCount += $p['qty'];
-                $cartTotal += (float)$p['total'];
+                if (isset($p['qty']) && is_numeric($p['qty'])) {
+                    $itemsCount += (int)$p['qty'];
+                }
+                if (isset($p['total']) && is_numeric($p['total'])) {
+                    $cartTotal += (float)$p['total'];
+                }
             }
         }
 
@@ -126,8 +165,12 @@ class QrMenuController extends Controller
         $cart = session()->get('cart');
         if(!empty($cart)){
             foreach($cart as $p){
-                $itemsCount += $p['qty'];
-                $cartTotal += (float)$p['total'];
+                if (isset($p['qty']) && is_numeric($p['qty'])) {
+                    $itemsCount += (int)$p['qty'];
+                }
+                if (isset($p['total']) && is_numeric($p['total'])) {
+                    $cartTotal += (float)$p['total'];
+                }
             }
         }
 

@@ -35,38 +35,55 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Salade</span>
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
+                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'falafel', 'id' => 114]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FALAFEL</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FALAFEL</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 114) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'feta', 'id' => 115]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FETA</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE FETA</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 115) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'thon', 'id' => 116]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE THON</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE THON</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 116) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'tenders', 'id' => 117]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE TENDERS</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE TENDERS</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 117) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -77,31 +94,44 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: flex; justify-content: space-between; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Article</span>
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Prix</span>
+                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'sauce-vinaigrette', 'id' => 150]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE VINAIGRETTE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE VINAIGRETTE</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 150) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'sauce-ranch', 'id' => 151]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE RANCH</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SAUCE RANCH</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">0,50€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 151) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'pain-complet', 'id' => 152]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PAIN COMPLET</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem;">1,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PAIN COMPLET</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">1,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 152) }}')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -263,5 +293,11 @@
     }
 }
 </style>
+
+<script>
+function addToCartSimple(url) {
+    addToCart(url, [], 1, []);
+}
+</script>
 
 @endsection 

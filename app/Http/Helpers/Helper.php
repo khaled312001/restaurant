@@ -256,7 +256,9 @@ if (!function_exists('cartTotal')) {
         if (session()->has('cart') && !empty(session()->get('cart'))) {
             $cart = session()->get('cart');
             foreach ($cart as $key => $cartItem) {
-                $total += $cartItem['total'];
+                if (isset($cartItem['total']) && is_numeric($cartItem['total'])) {
+                    $total += (float)$cartItem['total'];
+                }
             }
         }
 

@@ -47,8 +47,12 @@
                                 $countitem = 0;
                                 if($cart){
                                 foreach($cart as $p){
-                                    $cartTotal += $p['total'];
-                                    $countitem += $p['qty'];
+                                    if (isset($p['total']) && is_numeric($p['total'])) {
+                                        $cartTotal += (float)$p['total'];
+                                    }
+                                    if (isset($p['qty']) && is_numeric($p['qty'])) {
+                                        $countitem += (int)$p['qty'];
+                                    }
                                 }
                             }
                             @endphp

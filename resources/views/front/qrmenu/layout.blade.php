@@ -98,8 +98,9 @@
     {{-- START: Cart Icon --}}
     <div class="cart-icon">
         <div id="cartQuantity" class="cartQuantity">
-            <img src="{{ asset('assets/front/img/static/cart-icon.png') }}" alt="Cart Icon">
+            <img src="{{ asset('assets/front/img/static/cart-icon.png') }}" alt="Cart Icon" style="width: 35px; height: 35px;">
             <span class="cart-count">{{ $itemsCount }}</span>
+            <span class="cart-text" style="margin-right: 10px; font-size: 14px; color: #333;">معاينة طلباتي</span>
         </div>
     </div>
     {{-- END: Cart Icon --}}

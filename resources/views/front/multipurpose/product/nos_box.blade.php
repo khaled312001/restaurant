@@ -35,38 +35,55 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #9b59b6;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #9b59b6;">
                             <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem;">Box</span>
                             <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
+                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'box-famille', 'id' => 153]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX FAMILLE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">25,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX FAMILLE</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">25,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 153) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'box-couple', 'id' => 154]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX COUPLE</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">18,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX COUPLE</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">18,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 154) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'box-etudiant', 'id' => 155]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX ÉTUDIANT</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX ÉTUDIANT</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 155) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'box-travail', 'id' => 156]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX TRAVAIL</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX TRAVAIL</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="addToCartSimple('{{ route('add.cart', 156) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -262,5 +279,11 @@
     }
 }
 </style>
+
+<script>
+function addToCartSimple(url) {
+    addToCart(url, [], 1, []);
+}
+</script>
 
 @endsection 

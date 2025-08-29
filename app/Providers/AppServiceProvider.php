@@ -90,6 +90,21 @@ class AppServiceProvider extends ServiceProvider
                     $rtl = 0;
                 }
 
+                // Calculate cart data
+                $itemsCount = 0;
+                $cartTotal = 0;
+                $cart = session()->get('cart');
+                if(!empty($cart)){
+                    foreach($cart as $p){
+                        if (isset($p['qty']) && is_numeric($p['qty'])) {
+                            $itemsCount += (int)$p['qty'];
+                        }
+                        if (isset($p['total']) && is_numeric($p['total'])) {
+                            $cartTotal += (float)$p['total'];
+                        }
+                    }
+                }
+
                 $view->with('activeTheme', $activeTheme );
                 $view->with('bs', $bs );
                 $view->with('be', $be );
@@ -97,6 +112,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('apopups', $apopups);
                 $view->with('menus', $menus );
                 $view->with('rtl', $rtl );
+                $view->with('cart', $cart );
+                $view->with('itemsCount', $itemsCount );
+                $view->with('cartTotal', $cartTotal );
             } catch (\Exception $e) {
                 // Set default values if database operations fail
                 $view->with('activeTheme', 'default');
@@ -106,6 +124,9 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('apopups', collect([]));
                 $view->with('menus', json_encode([]));
                 $view->with('rtl', 0);
+                $view->with('cart', []);
+                $view->with('itemsCount', 0);
+                $view->with('cartTotal', 0);
             }
         });
         View::share('langs', $langs);

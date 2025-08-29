@@ -37,43 +37,76 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #27ae60;">
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem;">Plat</span>
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
                             <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                            <span style="color: #27ae60; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'tacos-1-viande', 'id' => 138]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS (1 VIANDE AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS (1 VIANDE AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
+                            <div style="text-align: center;">
+                                <select id="tacos-type-138" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (8,00€)</option>
+                                    <option value="menu">Menu (11,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 138) }}', 'tacos-type-138')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'tacos-mixte', 'id' => 139]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
+                            <div style="text-align: center;">
+                                <select id="tacos-type-139" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (9,50€)</option>
+                                    <option value="menu">Menu (12,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 139) }}', 'tacos-type-139')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'mega-tacos', 'id' => 140]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS (1 VIANDE AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS (1 VIANDE AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,50€</span>
+                            <div style="text-align: center;">
+                                <select id="tacos-type-140" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (12,50€)</option>
+                                    <option value="menu">Menu (15,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 140) }}', 'tacos-type-140')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'mega-tacos-mixte', 'id' => 141]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">17,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MEGA TACOS MIXTE (2 VIANDES AU CHOIX)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">17,50€</span>
+                            <div style="text-align: center;">
+                                <select id="tacos-type-141" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (14,50€)</option>
+                                    <option value="menu">Menu (17,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 141) }}', 'tacos-type-141')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -281,6 +314,22 @@
     }
 }
 </style>
+
+<script>
+function addToCartWithType(url, selectId) {
+    const select = document.getElementById(selectId);
+    const selectedType = select.value;
+    
+    // إضافة النوع المحدد كـ variant
+    const variant = [{
+        name: 'Type',
+        price: selectedType === 'menu' ? 3.00 : 0 // فرق السعر بين Menu و Seul
+    }];
+    
+    // استدعاء الدالة الأصلية مع النوع المحدد
+    addToCart(url, variant, 1, []);
+}
+</script>
 
 @endsection
 

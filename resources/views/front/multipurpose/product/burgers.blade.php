@@ -37,59 +37,108 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e67e22;">
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e67e22;">
                             <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem;">Plat</span>
                             <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
                             <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                            <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'cheese-burger', 'id' => 142]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHEESE BURGER</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHEESE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-142" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 142) }}', 'burger-type-142')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'double-cheese-burger', 'id' => 143]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">DOUBLE CHEESE BURGER</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">DOUBLE CHEESE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-143" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 143) }}', 'burger-type-143')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'chicken-burger', 'id' => 144]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHICKEN</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHICKEN</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-144" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 144) }}', 'burger-type-144')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'crousty-gourmand', 'id' => 145]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CROUSTY GOURMAND (POULET OU BŒUF)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CROUSTY GOURMAND (POULET OU BŒUF)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-145" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 145) }}', 'burger-type-145')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'veggie-burger', 'id' => 146]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">VEGGIE BURGER</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">4,00€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">VEGGIE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">4,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-146" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (4,00€)</option>
+                                    <option value="menu">Menu (7,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 146) }}', 'burger-type-146')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                         
-                        <a href="{{ route('front.product.details', ['slug' => 'le-big-chevre', 'id' => 147]) }}" style="text-decoration: none; display: block;">
-                            <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; cursor: pointer;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">LE BIG CHÈVRE (POULET OU BŒUF)</h4>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">6,50€</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">LE BIG CHÈVRE (POULET OU BŒUF)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">6,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                            <div style="text-align: center;">
+                                <select id="burger-type-147" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (6,50€)</option>
+                                    <option value="menu">Menu (9,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 147) }}', 'burger-type-147')" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
@@ -327,5 +376,21 @@
     }
 }
 </style>
+
+<script>
+function addToCartWithType(url, selectId) {
+    const select = document.getElementById(selectId);
+    const selectedType = select.value;
+    
+    // إضافة النوع المحدد كـ variant
+    const variant = [{
+        name: 'Type',
+        price: selectedType === 'menu' ? 3.00 : 0 // فرق السعر بين Menu و Seul
+    }];
+    
+    // استدعاء الدالة الأصلية مع النوع المحدد
+    addToCart(url, variant, 1, []);
+}
+</script>
 
 @endsection

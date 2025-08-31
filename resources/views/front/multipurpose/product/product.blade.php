@@ -27,90 +27,41 @@
     </section>
     <!--====== PAGE TITLE PART ENDS ======-->
 
-    <!--====== HERO SECTION START ======-->
-    <section class="hero-section" style="padding: 80px 0; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white;">
+    <!--====== CATÉGORIES DU MENU PART START ======-->
+    <section class="nos-menus-area pt-120 pb-120">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <div class="hero-content">
-                        <h1 class="hero-title" style="font-size: 3rem; font-weight: 700; margin-bottom: 20px;">
-                            Choisissez parmi nos délicieuses catégories King Kebab
-                        </h1>
-                        <p class="hero-description" style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-                            Explorez notre sélection complète de <strong>48 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure.
-                        </p>
-                        <div class="hero-stats" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; display: inline-block;">
-                            <span style="font-size: 1.3rem; font-weight: 600; color: #ff6b35;">
-                                ✨ 48 plats halal disponibles au total ✨
-                            </span>
-                        </div>
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <span>Découvrez notre carte
+                            <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
+                        <h1 class="title">Choisissez parmi nos délicieuses catégories King Kebab</h1>
+                        <p class="text">Explorez notre sélection complète de <strong>48 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure. Depuis 20 ans, King Kebab Le Pouzin vous propose les meilleures spécialités turques et orientales.</p>
+                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">✨ 48 plats halal disponibles au total ✨</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--====== HERO SECTION ENDS ======-->
 
-    <!--====== CATÉGORIES DU MENU PART START ======-->
-    <section class="categories-section" style="padding: 80px 0; background: #f8f9fa;">
-        <div class="container">
             <div class="row">
                 @foreach ($categories as $category)
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="category-card-enhanced">
-                            <div class="category-header">
-                                <div class="category-icon">
-                                    @switch($category->name)
-                                        @case('Sandwichs')
-                                            <i class="fas fa-hamburger"></i>
-                                            @break
-                                        @case('Menus')
-                                            <i class="fas fa-utensils"></i>
-                                            @break
-                                        @case('Assiettes')
-                                            <i class="fas fa-plate-wheat"></i>
-                                            @break
-                                        @case('Salade')
-                                            <i class="fas fa-leaf"></i>
-                                            @break
-                                        @case('Menus Enfant')
-                                            <i class="fas fa-child"></i>
-                                            @break
-                                        @case('Nos Box')
-                                            <i class="fas fa-box"></i>
-                                            @break
-                                        @default
-                                            <i class="fas fa-utensils"></i>
-                                    @endswitch
-                                </div>
-                                <div class="category-badge">
-                                    @switch($category->name)
-                                        @case('Sandwichs')
-                                            8 plats
-                                            @break
-                                        @case('Menus')
-                                            22 plats
-                                            @break
-                                        @case('Assiettes')
-                                            2 plats
-                                            @break
-                                        @case('Menus Enfant')
-                                            4 plats
-                                            @break
-                                        @case('Salade')
-                                            4 plats
-                                            @break
-                                        @case('Nos Box')
-                                            4 plats
-                                            @break
-                                        @default
-                                            {{ $category->products()->where('status', 1)->count() }} plats
-                                    @endswitch
-                                </div>
+                        <div class="category-card h-100">
+                            <div class="category-image">
+                                @if (!empty($category->image) && file_exists(public_path('assets/front/img/category/' . $category->image)))
+                                    <img class="lazy wow fadeIn" 
+                                         data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
+                                         data-wow-delay=".3s" 
+                                         alt="{{ convertUtf8($category->name) }}"
+                                         onerror="this.parentElement.innerHTML='<div class=&quot;category-placeholder&quot;><i class=&quot;flaticon-burger&quot;></i></div>'">
+                                @else
+                                    <div class="category-placeholder">
+                                        <i class="flaticon-burger"></i>
+                                    </div>
+                                @endif
                             </div>
                             
-                            <div class="category-body">
-                                <h3 class="category-title">{{ convertUtf8($category->name) }}</h3>
+                            <div class="category-content">
+                                <h4 class="category-title">{{ convertUtf8($category->name) }}</h4>
                                 <p class="category-description">
                                     @switch($category->name)
                                         @case('Assiettes')
@@ -136,147 +87,103 @@
                                     @endswitch
                                 </p>
                                 
-                                <div class="category-features">
-                                    @switch($category->name)
-                                        @case('Sandwichs')
-                                            <span class="feature-tag">Viande grillée</span>
-                                            <span class="feature-tag">Pain frais</span>
-                                            @break
-                                        @case('Menus')
-                                            <span class="feature-tag">Complet</span>
-                                            <span class="feature-tag">Boisson incluse</span>
-                                            @break
-                                        @case('Assiettes')
-                                            <span class="feature-tag">Riz basmati</span>
-                                            <span class="feature-tag">Légumes frais</span>
-                                            @break
-                                        @case('Salade')
-                                            <span class="feature-tag">Frais</span>
-                                            <span class="feature-tag">Équilibré</span>
-                                            @break
-                                        @case('Menus Enfant')
-                                            <span class="feature-tag">Jouet inclus</span>
-                                            <span class="feature-tag">Portion adaptée</span>
-                                            @break
-                                        @case('Nos Box')
-                                            <span class="feature-tag">Partage</span>
-                                            <span class="feature-tag">Économique</span>
-                                            @break
-                                        @default
-                                            <span class="feature-tag">Halal</span>
-                                            <span class="feature-tag">Frais</span>
-                                    @endswitch
+                                <div class="category-stats">
+                                    <span class="meal-count">
+                                        <i class="fas fa-utensils"></i>
+                                        @switch($category->name)
+                                            @case('Sandwichs')
+                                                8 plats disponibles
+                                                @break
+                                            @case('Menus')
+                                                22 plats disponibles
+                                                @break
+                                            @case('Assiettes')
+                                                2 plats disponibles
+                                                @break
+                                            @case('Menus Enfant')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Salade')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Nos Box')
+                                                4 plats disponibles
+                                                @break
+                                            @case('Panini')
+                                                4 plats disponibles
+                                                @break
+                                            @default
+                                                {{ $category->products()->where('status', 1)->count() }} plats disponibles
+                                        @endswitch
+                                    </span>
                                 </div>
-                            </div>
-                            
-                            <div class="category-footer">
-                                @if($category->name === 'Sandwichs')
-                                    <a href="{{ route('front.sandwiches') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @elseif($category->name === 'Menus')
-                                    <a href="{{ route('front.menus') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @elseif($category->name === 'Assiettes')
-                                    <a href="{{ route('front.assiettes') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @elseif($category->name === 'Menus Enfant')
-                                    <a href="{{ route('front.menusEnfant') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @elseif($category->name === 'Salade')
-                                    <a href="{{ route('front.salade') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @elseif($category->name === 'Nos Box')
-                                    <a href="{{ route('front.nosBox') }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @else
-                                    <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="category-btn">
-                                        <i class="fas fa-eye"></i>
-                                        Voir le menu
-                                    </a>
-                                @endif
+                                
+                                <div class="category-actions">
+                                    @if($category->name === 'Sandwichs')
+                                        <a href="{{ route('front.sandwiches') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Menus')
+                                        <a href="{{ route('front.menus') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Assiettes')
+                                        <a href="{{ route('front.assiettes') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Menus Enfant')
+                                        <a href="{{ route('front.menusEnfant') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Salade')
+                                        <a href="{{ route('front.salade') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @elseif($category->name === 'Nos Box')
+                                        <a href="{{ route('front.nosBox') }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @else
+                                        <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-        </div>
-    </section>
-    <!--====== CATÉGORIES DU MENU PART ENDS ======-->
 
-    <!--====== INFORMATION SECTION START ======-->
-    <section class="info-section" style="padding: 80px 0; background: #2c3e50; color: white;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="info-card">
-                        <div class="info-header text-center">
-                            <div class="info-icon">
-                                <i class="fas fa-info-circle"></i>
-                            </div>
-                            <h2>King Kebab Le Pouzin - Informations importantes</h2>
+            <!-- Section d'information supplémentaire -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="menu-info-card text-center">
+                        <div class="info-icon">
+                            <i class="fas fa-info-circle"></i>
                         </div>
-                        
-                        <div class="info-content">
-                            <p>Tous nos plats <strong>King Kebab</strong> sont préparés à la commande avec des <strong>ingrédients frais 100% halal</strong> et de qualité supérieure. Notre viande est grillée au charbon pour un goût authentique unique. Depuis 20 ans, nous respectons les traditions culinaires turques tout en garantissant la fraîcheur de nos produits.</p>
-                            
-                            <div class="info-features">
-                                <div class="info-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Ingrédients 100% halal</span>
-                                </div>
-                                <div class="info-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Viande grillée au charbon</span>
-                                </div>
-                                <div class="info-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Préparé à la commande</span>
-                                </div>
-                                <div class="info-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>20 ans d'expérience</span>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-info">
-                                <div class="contact-item">
-                                    <i class="fas fa-phone"></i>
-                                    <div>
-                                        <strong>Commandes et renseignements</strong>
-                                        <span>+33 0426423743</span>
-                                    </div>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-clock"></i>
-                                    <div>
-                                        <strong>Heures d'ouverture</strong>
-                                        <span>Lun à Ven 9h - 23h</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <h2>King Kebab Le Pouzin - Informations importantes</h2>
+                        <p>Tous nos plats <strong>King Kebab</strong> sont préparés à la commande avec des <strong>ingrédients frais 100% halal</strong> et de qualité supérieure. Notre viande est grillée au charbon pour un goût authentique unique. Depuis 20 ans, nous respectons les traditions culinaires turques tout en garantissant la fraîcheur de nos produits. N'hésitez pas à nous demander des informations sur les allergènes ou à personnaliser votre commande selon vos préférences.</p>
+                        <div class="contact-info">
+                            <span><i class="fas fa-phone"></i> <strong>Commandes et renseignements :</strong> +33 0426423743</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--====== INFORMATION SECTION ENDS ======-->
+    <!--====== CATÉGORIES DU MENU PART ENDS ======-->
 
     <!--====== PRODUITS DE LA CATÉGORIE SÉLECTIONNÉE PART START ======-->
     @if(isset($selectedCategory))
-        <section class="category-products-area pt-80 pb-80" style="background: white;">
+        <section class="category-products-area pt-80 pb-80">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -303,7 +210,7 @@
                 <div class="row">
                     @forelse ($products as $product)
                         <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="product-card-enhanced">
+                            <div class="product-card h-100">
                                 <div class="product-image">
                                     @if (!empty($product->feature_image))
                                         <img class="lazy wow fadeIn" 
@@ -375,263 +282,42 @@
     <!--====== PRODUITS DE LA CATÉGORIE SÉLECTIONNÉE PART ENDS ======-->
 
     <style>
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
+        .nos-menus-area {
+            background: #f8f9fa;
         }
         
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Enhanced Category Cards */
-        .category-card-enhanced {
+        .category-card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid #e9ecef;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
-        .category-card-enhanced:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         
-        .category-header {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            padding: 30px 25px 20px;
-            position: relative;
-            color: white;
-        }
-        
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-        
-        .category-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-        
-        .category-body {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .category-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .category-description {
-            color: #6c757d;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-            flex-grow: 1;
-        }
-        
-        .category-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .feature-tag {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .category-footer {
-            padding: 0 25px 25px;
-        }
-        
-        .category-btn {
-            display: block;
-            width: 100%;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 1rem;
-        }
-        
-        .category-btn:hover {
-            background: linear-gradient(45deg, #e55a2b, #e0851a);
-            color: white;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
-        }
-        
-        .category-btn i {
-            margin-right: 8px;
-        }
-        
-        /* Info Section */
-        .info-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .info-header {
-            margin-bottom: 30px;
-        }
-        
-        .info-icon {
-            font-size: 4rem;
-            color: #ff6b35;
-            margin-bottom: 20px;
-        }
-        
-        .info-card h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0;
-        }
-        
-        .info-content p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .info-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .info-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
-        
-        .info-feature i {
-            color: #27ae60;
-            font-size: 1.2rem;
-        }
-        
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 15px;
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #ff6b35;
-        }
-        
-        .contact-item div {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .contact-item strong {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .contact-item span {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        /* Enhanced Product Cards */
-        .product-card-enhanced {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-            height: 100%;
-        }
-        
-        .product-card-enhanced:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .product-image {
+        .category-image {
             height: 200px;
             overflow: hidden;
             position: relative;
         }
         
-        .product-image img {
+        .category-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
         
-        .product-card-enhanced:hover .product-image img {
+        .category-card:hover .category-image img {
             transform: scale(1.05);
         }
         
-        .product-placeholder {
+        .category-placeholder {
             height: 100%;
             display: flex;
             align-items: center;
@@ -641,217 +327,311 @@
             font-size: 3rem;
         }
         
-        .featured-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-title {
+            font-size: 1.4rem;
             font-weight: 600;
-        }
-        
-        .product-content {
-            padding: 25px;
-        }
-        
-        .product-title {
-            font-size: 1.3rem;
-            font-weight: 700;
             color: #2c3e50;
-            margin-bottom: 15px;
+            margin-bottom: 0.75rem;
             text-align: center;
         }
         
-        .product-description {
+        .category-description {
             color: #6c757d;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: center;
+            min-height: 3rem;
+        }
+        
+        .category-stats {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meal-count {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .meal-count i {
+            margin-right: 0.5rem;
+        }
+        
+        .category-actions {
             text-align: center;
         }
         
-        .product-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .product-price {
-            text-align: center;
-        }
-        
-        .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ff6b35;
-        }
-        
-        .old-price {
-            font-size: 1.1rem;
-            color: #6c757d;
-            text-decoration: line-through;
-            margin-left: 8px;
-        }
-        
-        .product-actions {
-            text-align: center;
-        }
-        
-        .view-product-btn {
+        .view-menu-btn {
             display: inline-block;
             background: linear-gradient(45deg, #ff6b35, #f7931e);
             color: white;
-            padding: 12px 20px;
-            border-radius: 15px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
             border: none;
-            font-size: 0.95rem;
         }
         
-        .view-product-btn:hover {
+        .view-menu-btn:hover {
             background: linear-gradient(45deg, #e55a2b, #e0851a);
             color: white;
             text-decoration: none;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
         }
         
-        .view-product-btn i {
-            margin-right: 8px;
+        .view-menu-btn i {
+            margin-right: 0.5rem;
         }
         
-        /* Back to categories button */
+        .menu-info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid #e3f2fd;
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-info-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-info-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            color: #1976d2;
+            font-weight: 500;
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .category-card {
+                margin-bottom: 2rem;
+            }
+            
+            .category-title {
+                font-size: 1.2rem;
+            }
+            
+            .category-description {
+                min-height: auto;
+            }
+        }
+
+        /* Styles pour la section des produits de catégorie */
+        .category-products-area {
+            background: white;
+        }
+
         .back-to-categories-btn {
             display: inline-block;
             background: #6c757d;
             color: white;
-            padding: 15px 25px;
-            border-radius: 15px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
-            margin-bottom: 30px;
-            font-size: 1rem;
+            margin-bottom: 2rem;
         }
-        
+
         .back-to-categories-btn:hover {
             background: #5a6268;
             color: white;
             text-decoration: none;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
         }
-        
+
         .back-to-categories-btn i {
-            margin-right: 8px;
+            margin-right: 0.5rem;
         }
-        
-        /* No products message */
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-placeholder {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 3rem;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .product-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: center;
+            min-height: 3rem;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .product-price {
+            text-align: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .old-price {
+            font-size: 1rem;
+            color: #6c757d;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        .product-actions {
+            text-align: center;
+        }
+
+        .view-product-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .view-product-btn:hover {
+            background: linear-gradient(45deg, #e55a2b, #e0851a);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .view-product-btn i {
+            margin-right: 0.5rem;
+        }
+
         .no-products-message {
-            padding: 60px 20px;
+            padding: 3rem;
             color: #6c757d;
         }
-        
-        .no-products-message i {
-            margin-bottom: 20px;
-        }
-        
-        .no-products-message h4 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        /* Pagination */
+
         .pagination-wrapper {
-            margin-top: 40px;
+            margin-top: 2rem;
         }
-        
+
         .pagination-wrapper .pagination {
             justify-content: center;
         }
-        
+
         .pagination-wrapper .page-link {
             color: #ff6b35;
             border-color: #ff6b35;
-            border-radius: 10px;
-            margin: 0 5px;
         }
-        
+
         .pagination-wrapper .page-item.active .page-link {
             background-color: #ff6b35;
             border-color: #ff6b35;
         }
-        
-        /* Responsive Design */
+
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem !important;
-            }
-            
-            .hero-description {
-                font-size: 1rem !important;
-            }
-            
-            .category-card-enhanced {
-                margin-bottom: 30px;
-            }
-            
-            .category-title {
-                font-size: 1.3rem;
-            }
-            
-            .info-card {
-                padding: 30px 20px;
-            }
-            
-            .info-card h2 {
-                font-size: 2rem;
-            }
-            
-            .info-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-            
             .product-details {
                 flex-direction: column;
                 text-align: center;
             }
             
             .product-title {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 1.8rem !important;
+                font-size: 1.1rem;
             }
             
-            .category-header {
-                padding: 25px 20px 15px;
-            }
-            
-            .category-icon {
-                font-size: 2.5rem;
-            }
-            
-            .category-body {
-                padding: 20px;
-            }
-            
-            .product-content {
-                padding: 20px;
+            .product-description {
+                min-height: auto;
             }
         }
     </style>

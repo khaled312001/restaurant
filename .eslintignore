@@ -1,0 +1,28 @@
+# Blade template files
+**/*.blade.php
+
+# PHP files
+**/*.php
+
+# Vendor files
+vendor/
+node_modules/
+
+# Compiled assets
+public/css/
+public/js/
+public/mix-manifest.json
+
+# Laravel specific
+storage/
+bootstrap/cache/
+.env
+
+# Other template files
+**/*.tpl
+**/*.twig
+**/*.smarty
+
+# Configuration files
+*.config.js
+*.config.json 

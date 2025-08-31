@@ -1,3 +1,4 @@
+{{-- eslint-disable --}}
 @extends('front.layout')\n<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-responsive.css') }}">
 @section('content')
 

@@ -13,7 +13,6 @@ if (!function_exists('setEnvironmentValue')) {
         if (count($values) > 0) {
             foreach ($values as $envKey => $envValue) {
 
-                $str .= "\n"; // In case the searched variable is in the last line without \n
                 $keyPosition = strpos($str, "{$envKey}=");
                 $endOfLinePosition = strpos($str, "\n", $keyPosition);
                 $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);

@@ -1,4 +1,3 @@
-{{-- eslint-disable --}}
 @extends('front.layout')
 @section('content')
 

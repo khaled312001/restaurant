@@ -164,15 +164,15 @@
     <script>
         "use strict";
         var mainurl = "{{ url('/') }}";
-        var lat = "{{ $bs->latitude ?? '' }}";
-        var lng = "{{ $bs->longitude ?? '' }}";
-        var rtl = "{{ $rtl ?? 0 }}";
-        var position = "{{ $be->base_currency_symbol_position ?? '' }}";
-        var symbol = "{{ $be->base_currency_symbol ?? '' }}";
-        var textPosition = "{{ $be->base_currency_text_position ?? '' }}";
-        var currText = "{{ $be->base_currency_text ?? '' }}";
-        var vap_pub_key = "{{ env('VAPID_PUBLIC_KEY') ?? '' }}";
-        var select = "{{ __('Select') ?? 'Select' }}";
+        var lat = '{{ $bs->latitude }}';
+        var lng = '{{ $bs->longitude }}';
+        var rtl = {{ $rtl }};
+        var position = "{{ $be->base_currency_symbol_position }}";
+        var symbol = "{{ $be->base_currency_symbol }}";
+        var textPosition = "{{ $be->base_currency_text_position }}";
+        var currText = "{{ $be->base_currency_text }}";
+        var vap_pub_key = "{{ env('VAPID_PUBLIC_KEY') }}";
+        var select = "{{ __('Select') }}";
     </script>
 
     {{-- ------------==================Common js=============== - --}}
@@ -199,14 +199,14 @@
     {{-- whatsapp init code --}}
     @if ($bs->is_whatsapp == 1)
         <script type="text/javascript">
-            var whatsapp_popup = "{{ $bs->whatsapp_popup ?? 0 }}";
-            var whatsappImg = "{{ asset('assets/front/img/whatsapp.svg') ?? '' }}";
+            var whatsapp_popup = {{ $bs->whatsapp_popup }};
+            var whatsappImg = "{{ asset('assets/front/img/whatsapp.svg') }}";
             $(function() {
                 $('#WAButton').floatingWhatsApp({
-                    phone: "{{ $bs->whatsapp_number ?? '' }}", //WhatsApp Business phone number
-                    headerTitle: "{{ $bs->whatsapp_header_title ?? '' }}", //Popup Title
-                    popupMessage: "{{ nl2br($bs->whatsapp_popup_message ?? '') }}", //Popup Message
-                    showPopup: whatsapp_popup == "1" ? true : false, //Enables popup display
+                    phone: "{{ $bs->whatsapp_number }}", //WhatsApp Business phone number
+                    headerTitle: "{{ $bs->whatsapp_header_title }}", //Popup Title
+                    popupMessage: `{!! nl2br($bs->whatsapp_popup_message) !!}`, //Popup Message
+                    showPopup: whatsapp_popup == 1 ? true : false, //Enables popup display
                     buttonImage: '<img src="' + whatsappImg + '" />', //Button Image
                     position: "right" //Position: left | right
 

@@ -1,5 +1,5 @@
 {{-- eslint-disable --}}
-@extends('front.layout')\n<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-responsive.css') }}">
+@extends('front.layout')
 @section('content')
 
 <!--====== PAGE TITLE PART START ======-->
@@ -37,7 +37,7 @@
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
                         <!-- Desktop Header (hidden on mobile) -->
-                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #2ecc71;">
+                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #2ecc71;">
                             <span style="color: #2ecc71; font-weight: 600; font-size: 1.1rem;">Plat</span>
                             <span style="color: #2ecc71; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
                             <span style="color: #2ecc71; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
@@ -45,7 +45,7 @@
                         </div>
                         
                         <!-- Desktop Layout (hidden on mobile) -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE CÉSAR</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,50€</span>
@@ -93,7 +93,7 @@
                         </div>
                         
                         <!-- Desktop Layout (hidden on mobile) -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE NIÇOISE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
@@ -141,7 +141,7 @@
                         </div>
                         
                         <!-- Desktop Layout (hidden on mobile) -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">SALADE VÉGÉTARIENNE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>

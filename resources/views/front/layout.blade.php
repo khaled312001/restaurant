@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="{{ asset('css/hide-elements.css') }}">
 {{-- Fix for whitespace issues --}}
 <link rel="stylesheet" href="{{ asset('css/fix-whitespace.css') }}">
+{{-- Mobile responsive CSS --}}
+<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-responsive.css') }}">
 {{-- ---==================== Common js=======================---- --}}
 @include('front.plugin_js')
 {{-- --============= Common js===========================--- --}}

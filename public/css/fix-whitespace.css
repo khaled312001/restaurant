@@ -1,0 +1,29 @@
+/* Fix for unwanted whitespace/newline characters at the top of pages */
+html, body {
+    white-space: normal !important;
+}
+
+/* Ensure no pre-formatted text rendering */
+pre, code {
+    white-space: pre-wrap !important;
+}
+
+/* Remove any potential whitespace from the beginning */
+body::before {
+    content: none !important;
+}
+
+/* Ensure proper text rendering */
+* {
+    white-space: normal;
+}
+
+/* Specific fix for any elements that might be causing issues */
+.container, .row, .col, [class*="col-"] {
+    white-space: normal !important;
+}
+
+/* Fix for any potential newline rendering */
+p, div, span, h1, h2, h3, h4, h5, h6 {
+    white-space: normal !important;
+} 

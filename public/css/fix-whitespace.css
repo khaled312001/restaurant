@@ -1,62 +1,32 @@
-/* Fix for unwanted whitespace/newline characters at the top of pages */
+/* Comprehensive fix for whitespace issues */
 html, body {
     white-space: normal !important;
-    font-size: 0; /* Hide any text content */
+    font-size: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+/* Restore font size for actual content */
+p, div, span, h1, h2, h3, h4, h5, h6, a, button, input, textarea, select, label, li, td, th {
+    font-size: initial !important;
+}
+
+/* Hide any text nodes that might contain whitespace */
+body > *:first-child {
+    font-size: initial !important;
+}
+
+/* Remove any potential whitespace from the beginning */
+body::before, html::before {
+    content: none !important;
+    display: none !important;
 }
 
 /* Ensure no pre-formatted text rendering */
 pre, code {
     white-space: pre-wrap !important;
-    font-size: initial; /* Restore font size for code */
-}
-
-/* Remove any potential whitespace from the beginning */
-body::before {
-    content: none !important;
-    display: none !important;
-}
-
-/* Ensure proper text rendering */
-* {
-    white-space: normal;
-}
-
-/* Specific fix for any elements that might be causing issues */
-.container, .row, .col, [class*="col-"] {
-    white-space: normal !important;
-}
-
-/* Fix for any potential newline rendering */
-p, div, span, h1, h2, h3, h4, h5, h6 {
-    white-space: normal !important;
-    font-size: initial; /* Restore font size for text elements */
-}
-
-/* Hide any text nodes that might contain only whitespace */
-body > *:first-child {
-    font-size: initial;
-}
-
-/* Specific fix for the top area */
-body > *:first-child:not(script):not(style) {
-    font-size: initial;
-}
-
-/* Hide any whitespace text nodes */
-body > text {
-    display: none !important;
-}
-
-/* Ensure the first visible element starts at the top */
-body > *:first-child:not(script):not(style):not(text) {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* Additional fix for any remaining whitespace */
-html::before, body::before {
-    content: none !important;
-    display: none !important;
+    font-size: initial !important;
 }
 
 /* Force the body to start at the very top */
@@ -66,7 +36,23 @@ body {
     line-height: 1 !important;
 }
 
-/* Hide any potential whitespace characters */
-body > *:first-child {
-    line-height: 1 !important;
-} 
+/* Hide any whitespace text nodes */
+body > text {
+    display: none !important;
+}
+
+/* Additional fix for any remaining whitespace */
+* {
+    white-space: normal !important;
+}
+
+/* Specific fix for any elements that might be causing issues */
+.container, .row, .col, [class*="col-"] {
+    white-space: normal !important;
+}
+
+/* Ensure the first visible element starts at the top */
+body > *:first-child:not(script):not(style):not(text) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}

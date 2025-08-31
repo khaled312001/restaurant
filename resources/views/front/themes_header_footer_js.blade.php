@@ -1,5 +1,4 @@
-
-     {{--- bakery theme js --}}
+{{--- bakery theme js --}}
     @if ($activeTheme == 'bakery')
         @if (!request()->routeIs('front.index'))
             @include('front.bakery.include.bakery_header_footer_js')

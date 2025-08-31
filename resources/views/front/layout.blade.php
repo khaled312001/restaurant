@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="fr" @if ($rtl == 1) dir="rtl" @endif>
+<!doctype html><html lang="fr" @if ($rtl == 1) dir="rtl" @endif>
 <head>
 {{-- -Start of Google Analytics script --}}
 @if ($bs->is_analytics == 1)

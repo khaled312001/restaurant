@@ -1,4 +1,4 @@
-@extends('front.layout')
+@extends('front.layout')\n<link rel="stylesheet" href="{{ asset('assets/front/css/mobile-responsive.css') }}">
 @section('content')
 
 <!--====== PAGE TITLE PART START ======-->
@@ -37,12 +37,302 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e67e22;">
-                            <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem;">Plat</span>
-                            <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
-                            <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
-                            <span style="color: #e67e22; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
+                        <!-- Desktop Header (hidden on mobile) -->
+                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #8e44ad;">
+                            <span style="color: #8e44ad; font-weight: 600; font-size: 1.1rem;">Plat</span>
+                            <span style="color: #8e44ad; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
+                            <span style="color: #8e44ad; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
+                            <span style="color: #8e44ad; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHEESE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-137" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 137) }}', 'product-type-137')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">CHEESE BURGER</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">5,50€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">8,50€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-137" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 137) }}', 'product-type-mobile-137')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">DOUBLE CHEESE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-138" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 138) }}', 'product-type-138')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">DOUBLE CHEESE BURGER</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">7,00€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">10,00€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-138" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 138) }}', 'product-type-mobile-138')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHICKEN</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-139" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 139) }}', 'product-type-139')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">CHICKEN</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">5,50€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">8,50€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-139" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (5,50€)</option>
+                                    <option value="menu">Menu (8,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 139) }}', 'product-type-mobile-139')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CROUSTY GOURMAND (POULET OU BŒUF)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-140" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 140) }}', 'product-type-140')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">CROUSTY GOURMAND (POULET OU BŒUF)</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">7,00€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">10,00€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-140" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (7,00€)</option>
+                                    <option value="menu">Menu (10,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 140) }}', 'product-type-mobile-140')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">VEGGIE BURGER</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">4,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-141" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (4,00€)</option>
+                                    <option value="menu">Menu (7,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 141) }}', 'product-type-141')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">VEGGIE BURGER</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">4,00€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">7,00€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-141" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (4,00€)</option>
+                                    <option value="menu">Menu (7,00€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 141) }}', 'product-type-mobile-141')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout (hidden on mobile) -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">LE BIG CHÈVRE (POULET OU BŒUF)</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">6,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
+                            <div style="text-align: center;">
+                                <select id="product-type-142" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                    <option value="seul">Seul (6,50€)</option>
+                                    <option value="menu">Menu (9,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 142) }}', 'product-type-142')" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout (hidden on desktop) -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">LE BIG CHÈVRE (POULET OU BŒUF)</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #8e44ad; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">6,50€</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">9,50€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <select id="product-type-mobile-142" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
+                                    <option value="seul">Seul (6,50€)</option>
+                                    <option value="menu">Menu (9,50€)</option>
+                                </select>
+                                <button onclick="addToCartWithType('{{ route('add.cart', 142) }}', 'product-type-mobile-142')" class="btn btn-warning" style="background: #8e44ad; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+</div>
                         
                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHEESE BURGER</h4>
@@ -293,12 +583,12 @@
         <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
             Commandez maintenant et profitez de nos délicieux burgers
         </p>
-        <div class="cta-buttons">
-            <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
+        <div class="cta-buttons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+            <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; min-width: 200px;">
                 <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
                 Retour au menu
             </a>
-            <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white;">
+            <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white; min-width: 200px;">
                 <i class="fas fa-home" style="margin-right: 10px;"></i>
                 Accueil
             </a>

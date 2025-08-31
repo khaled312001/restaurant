@@ -1,0 +1,214 @@
+/* Mobile Responsive Styles for Menu Pages */
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .menu-section {
+        padding: 40px 0;
+    }
+    
+    .cta-buttons .btn {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Hide desktop elements on mobile */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    /* Show mobile elements */
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* Adjust layout for mobile */
+    .col-lg-8 {
+        order: 2;
+    }
+    
+    .col-lg-4 {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    /* Mobile menu adjustments */
+    .menu-category {
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .menu-category h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .menu-table {
+        padding: 15px !important;
+    }
+    
+    /* Mobile food images */
+    .food-images {
+        position: static !important;
+    }
+    
+    .food-item {
+        margin-bottom: 20px !important;
+    }
+    
+    .food-image {
+        height: 200px !important;
+    }
+    
+    /* Mobile info grid */
+    .info-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    
+    .info-item {
+        padding: 15px !important;
+    }
+    
+    .info-item i {
+        font-size: 2rem !important;
+    }
+    
+    /* Mobile CTA section */
+    .cta-section {
+        padding: 40px 0 !important;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .cta-section p {
+        font-size: 1rem !important;
+    }
+    
+    /* Mobile menu items */
+    .menu-item-mobile {
+        background: rgba(255,255,255,0.05) !important;
+        border-radius: 15px !important;
+        padding: 20px !important;
+        margin-bottom: 15px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    
+    /* Mobile buttons */
+    .btn {
+        width: 100% !important;
+        padding: 12px 24px !important;
+        font-size: 1rem !important;
+        border-radius: 25px !important;
+    }
+    
+    /* Mobile selects */
+    .form-control {
+        padding: 12px !important;
+        font-size: 1rem !important;
+        width: 100% !important;
+    }
+}
+
+/* Tablet Responsive Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .desktop-only {
+        display: block !important;
+    }
+    
+    .mobile-only {
+        display: none !important;
+    }
+    
+    .menu-category {
+        padding: 25px !important;
+    }
+    
+    .menu-category h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .food-image {
+        height: 250px !important;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+    .desktop-only {
+        display: block !important;
+    }
+    
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+/* Common hover effects */
+.menu-category {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.menu-item {
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.menu-item-mobile {
+    transition: all 0.3s ease;
+}
+
+.menu-item-mobile:hover {
+    background-color: rgba(255,255,255,0.1) !important;
+    transform: translateY(-2px);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.food-image {
+    transition: transform 0.3s ease;
+}
+
+.food-item:hover .food-image {
+    transform: scale(1.05);
+}
+
+.glow-effect {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.info-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+} 

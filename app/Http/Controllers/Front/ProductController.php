@@ -197,6 +197,23 @@ class ProductController extends Controller
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
+        // Get Nos Box category
+        $nosBoxCategory = Pcategory::where('name', 'Nos Box')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->first();
+
+        // Get products from Nos Box category
+        if ($nosBoxCategory) {
+            $data['products'] = Product::where('category_id', $nosBoxCategory->id)
+                ->where('language_id', $currentLang->id)
+                ->where('status', 1)
+                ->orderBy('id')
+                ->get();
+        } else {
+            $data['products'] = collect();
+        }
+
         return view('front.multipurpose.product.nos_box', $data);
     }
 

@@ -35,88 +35,61 @@
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #9b59b6;">
-                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem;">Box</span>
-                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #9b59b6;">
+                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem;">Produit</span>
+                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">5 pièces</span>
+                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">10 pièces</span>
                             <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX FAMILLE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">25,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 153) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                        @if(isset($products) && $products->count() > 0)
+                            @foreach($products as $product)
+                                <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                    <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">{{ $product->title }}</h4>
+                                    <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->current_price, 2) }}€</span>
+                                    <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->current_price * 1.9, 2) }}€</span>
+                                    <div style="text-align: center;">
+                                        <select id="product-type-{{ $product->id }}" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
+                                            <option value="5">5 pièces ({{ number_format($product->current_price, 2) }}€)</option>
+                                            <option value="10">10 pièces ({{ number_format($product->current_price * 1.9, 2) }}€)</option>
+                                        </select>
+                                        <button onclick="addToCartWithType('{{ route('add.cart', $product->id) }}', 'product-type-{{ $product->id }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                            <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                            Commander
+                                        </button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-center" style="color: white; padding: 40px;">
+                                <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                                <p style="font-size: 1.1rem; margin: 0;">Aucun produit disponible pour le moment</p>
                             </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX COUPLE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">18,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 154) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX ÉTUDIANT</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 155) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX TRAVAIL</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 156) }}')" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
 
-                <!-- Box Contents -->
+                <!-- Information Section -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #9b59b6; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        CONTENU DES BOX
+                        INFORMATIONS IMPORTANTES
                     </h2>
                     
-                    <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: flex; justify-content: space-between; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #9b59b6;">
-                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem;">Box</span>
-                            <span style="color: #9b59b6; font-weight: 600; font-size: 1.1rem;">Contenu</span>
+                    <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
+                            <i class="fas fa-users" style="font-size: 2.5rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
+                            <h4 style="color: white; margin-bottom: 10px;">Parfait pour Partager</h4>
+                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Nos box sont idéales pour partager en famille ou entre amis</p>
                         </div>
-                        
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX FAMILLE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1rem;">4 sandwiches + 4 frites + 4 boissons</span>
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
+                            <i class="fas fa-clock" style="font-size: 2.5rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
+                            <h4 style="color: white; margin-bottom: 10px;">Économie de Temps</h4>
+                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Commandez une box et économisez du temps</p>
                         </div>
-                        
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX COUPLE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1rem;">2 sandwiches + 2 frites + 2 boissons</span>
-                        </div>
-                        
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX ÉTUDIANT</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1rem;">1 sandwich + frites + boisson + dessert</span>
-                        </div>
-                        
-                        <div class="menu-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BOX TRAVAIL</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1rem;">1 sandwich + salade + boisson + fruit</span>
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
+                            <i class="fas fa-percentage" style="font-size: 2.5rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
+                            <h4 style="color: white; margin-bottom: 10px;">Prix Avantageux</h4>
+                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Nos box offrent un excellent rapport qualité-prix</p>
                         </div>
                     </div>
                 </div>
@@ -125,61 +98,31 @@
             <!-- Right Side - Food Images -->
             <div class="col-lg-4">
                 <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Box Famille Image -->
+                    <!-- Box Image -->
                     <div class="food-item" style="margin-bottom: 30px; text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
                             <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #9b59b6, #8e44ad); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
                                 <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-users" style="font-size: 5rem; color: white; z-index: 2;"></i>
+                                    <i class="fas fa-box" style="font-size: 5rem; color: white; z-index: 2;"></i>
                                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(155,89,182,0.3), rgba(155,89,182,0.1)); z-index: 1;"></div>
                                 </div>
                             </div>
                             <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(155,89,182,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Box Famille</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Parfait pour toute la famille</p>
+                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Nos Box</h4>
+                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Parfait pour partager</p>
                     </div>
 
-                    <!-- Box Étudiant Image -->
+                    <!-- Special Offer Image -->
                     <div class="food-item" style="text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
                             <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #e74c3c, #c0392b); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                                <i class="fas fa-graduation-cap" style="font-size: 4rem; color: white;"></i>
+                                <i class="fas fa-percentage" style="font-size: 4rem; color: white;"></i>
                             </div>
                             <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(155,89,182,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Box Étudiant</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Idéal pour les étudiants</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Information Section -->
-<div class="info-section" style="padding: 60px 0; background: #34495e; color: white;">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; color: #9b59b6;">
-                    Informations importantes
-                </h2>
-                <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-users" style="font-size: 3rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Parfait pour Partager</h4>
-                        <p style="opacity: 0.9; margin: 0;">Nos box sont idéales pour partager en famille ou entre amis</p>
-                    </div>
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-clock" style="font-size: 3rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Économie de Temps</h4>
-                        <p style="opacity: 0.9; margin: 0;">Commandez une box et économisez du temps</p>
-                    </div>
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-percentage" style="font-size: 3rem; color: #9b59b6; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Prix Avantageux</h4>
-                        <p style="opacity: 0.9; margin: 0;">Nos box offrent un excellent rapport qualité-prix</p>
+                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Offres Spéciales</h4>
+                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Économies sur les grandes quantités</p>
                     </div>
                 </div>
             </div>
@@ -223,14 +166,14 @@
     transition: all 0.3s ease;
 }
 
-.menu-item a:hover .menu-item {
+.menu-item:hover {
     background-color: rgba(155, 89, 182, 0.1);
     transform: translateX(10px);
     box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
 }
 
-.menu-item a:hover h4,
-.menu-item a:hover span {
+.menu-item:hover h4,
+.menu-item:hover span {
     color: #9b59b6 !important;
     text-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
 }
@@ -281,7 +224,27 @@
 </style>
 
 <script>
+// Set global price variable for cart.js
+var pprice = 0.00;
+
+function addToCartWithType(url, selectId) {
+    const select = document.getElementById(selectId);
+    const quantity = parseInt(select.value);
+    
+    // Get the product price from the select option
+    const optionText = select.options[select.selectedIndex].text;
+    const priceMatch = optionText.match(/€([\d.]+)/);
+    if (priceMatch) {
+        pprice = parseFloat(priceMatch[1]);
+    }
+    
+    // Add to cart with quantity
+    addToCart(url, [], quantity, []);
+}
+
 function addToCartSimple(url) {
+    // Set default price
+    pprice = 0.00;
     addToCart(url, [], 1, []);
 }
 </script>

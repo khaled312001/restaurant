@@ -515,104 +515,72 @@ function collectCustomizationOptions() {
 
 // Function to add item to cart with customization
 function addToCartWithCustomization(customization) {
-    // Create a summary of the customization
-    let customizationSummary = [];
+    // Debug: Log the customization object
+    console.log('Customization object:', customization);
     
-    if (customization.meatChoice) {
-        customizationSummary.push(`Viande: ${customization.meatChoice}`);
+    // Validate required selections based on product type
+    if (currentHasMeatChoice && !customization.meatChoice) {
+        alert('Veuillez choisir votre viande');
+        return;
     }
     
-    if (customization.vegetables.length > 0) {
-        if (customization.vegetables.includes('no-vegetables')) {
-            customizationSummary.push('Sans légumes');
-        } else {
-            const vegNames = {
-                'tomatoes': 'Tomates',
-                'salad': 'Salade',
-                'onions': 'Oignons'
-            };
-            const selectedVegs = customization.vegetables
-                .filter(v => v !== 'no-vegetables')
-                .map(v => vegNames[v] || v);
-            if (selectedVegs.length > 0) {
-                customizationSummary.push(`Légumes: ${selectedVegs.join(', ')}`);
-            }
-        }
+    if (currentProductType !== 'Assiette' && customization.vegetables.length === 0) {
+        alert('Veuillez choisir au moins une option de légumes');
+        return;
     }
     
-    if (customization.drinkChoice) {
-        const drinkNames = {
-            'coca-cola': 'Coca-Cola',
-            'coca-cherry': 'Coca Cherry',
-            'coca-zero': 'Coca Zero',
-            'oasis-tropical': 'Oasis Tropical',
-            'oasis-apple': 'Oasis Apple',
-            'ice-tea': 'Ice Tea',
-            'fuze-tea': 'Fuze Tea',
-            'sprite': 'Sprite',
-            'fanta-orange': 'Fanta Orange',
-            'tropico': 'Tropico',
-            'orangina': 'Orangina'
-        };
-        customizationSummary.push(`Boisson: ${drinkNames[customization.drinkChoice] || customization.drinkChoice}`);
+    if (customization.sauces.length === 0) {
+        alert('Veuillez choisir au moins une sauce');
+        return;
     }
     
-    if (customization.sauces.length > 0) {
-        const sauceNames = {
-            'white-sauce': 'Sauce Blanche',
-            'mayonnaise': 'Mayonnaise',
-            'ketchup': 'Ketchup',
-            'harissa': 'Harissa',
-            'mustard': 'Moutarde',
-            'bbq': 'BBQ',
-            'curry': 'Curry',
-            'algerienne': 'Algérienne',
-            'samourai': 'Samouraï',
-            'andalouse': 'Andalouse'
-        };
-        const selectedSauces = customization.sauces.map(s => sauceNames[s] || s);
-        customizationSummary.push(`Sauces: ${selectedSauces.join(', ')}`);
+    if (currentIsMenu && !customization.drinkChoice) {
+        alert('Veuillez choisir votre boisson');
+        return;
     }
     
-    // Show success message
-    const message = `✅ ${customization.productName} (${customization.type}) ajouté au panier !\n\nPersonnalisations:\n${customizationSummary.join('\n')}\n\nQuantité: ${customization.quantity}`;
-    
-    // You can customize this alert or replace it with a toast notification
-    alert(message);
-    
-    // Close the modal
+    // Close the modal first
     $('#customizationModal').modal('hide');
     
-    // Store customization data in session and redirect to cart
-    // We'll use a form submission to store the data
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '{{ route("add.cart", "") }}/' + customization.productId;
+    // Create form data
+    const formData = new FormData();
+    formData.append('_token', '{{ csrf_token() }}');
+    formData.append('customizations', JSON.stringify(customization));
+    formData.append('quantity', customization.quantity);
     
-    // Add CSRF token
-    const csrfToken = document.createElement('input');
-    csrfToken.type = 'hidden';
-    csrfToken.name = '_token';
-    csrfToken.value = '{{ csrf_token() }}';
-    form.appendChild(csrfToken);
+    // Debug: Log the form data being sent
+    console.log('Form data being sent:');
+    console.log('_token:', '{{ csrf_token() }}');
+    console.log('customizations:', JSON.stringify(customization));
+    console.log('quantity:', customization.quantity);
     
-    // Add customization data
-    const customizationInput = document.createElement('input');
-    customizationInput.type = 'hidden';
-    customizationInput.name = 'customizations';
-    customizationInput.value = JSON.stringify(customization);
-    form.appendChild(customizationInput);
-    
-    // Add quantity
-    const quantityInput = document.createElement('input');
-    quantityInput.type = 'hidden';
-    quantityInput.name = 'quantity';
-    quantityInput.value = customization.quantity;
-    form.appendChild(quantityInput);
-    
-    // Add to page and submit
-    document.body.appendChild(form);
-    form.submit();
+    // Send AJAX request
+    fetch('{{ route("add.cart", "") }}/' + customization.productId, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        if (data.success && data.redirect) {
+            // Redirect to cart page
+            window.location.href = data.redirect;
+        } else {
+            // Fallback redirect
+            window.location.href = '{{ route("front.cart") }}';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Fallback redirect on error
+        window.location.href = '{{ route("front.cart") }}';
+    });
 }
 
 // Initialize the modal when the page loads

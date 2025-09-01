@@ -160,6 +160,28 @@ class PaymentController extends Controller
             }
             
             $orderItem->save();
+
+            // Save customization if exists
+            if (!empty($item['customizations'])) {
+                try {
+                    $customizationData = is_string($item['customizations']) ? 
+                        json_decode($item['customizations'], true) : $item['customizations'];
+                    
+                    $customization = new \App\Models\Customization();
+                    $customization->order_item_id = $orderItem->id;
+                    $customization->product_name = $customizationData['productName'] ?? $item['name'];
+                    $customization->product_type = $customizationData['type'] ?? 'Product';
+                    $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? $item['product_price']);
+                    $customization->quantity = $customizationData['quantity'] ?? $item['qty'];
+                    $customization->meat_choice = $customizationData['meatChoice'] ?? null;
+                    $customization->vegetables = $customizationData['vegetables'] ?? [];
+                    $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
+                    $customization->sauces = $customizationData['sauces'] ?? [];
+                    $customization->save();
+                } catch (\Exception $e) {
+                    \Log::error('Failed to save customization for order item: ' . $e->getMessage());
+                }
+            }
         }
     }
 } 

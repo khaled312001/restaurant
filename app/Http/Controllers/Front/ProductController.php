@@ -338,6 +338,7 @@ class ProductController extends Controller
     public function addToCart($id, Request $request = null)
     {
         $cart = Session::get('cart');
+        $customizationData = null; // Initialize customizationData
 
         // Check if this is a POST request with customization data
         if ($request && $request->isMethod('post')) {
@@ -444,8 +445,28 @@ class ProductController extends Controller
         ];
 
         // Add customizations if provided
-        if (isset($customizationData)) {
+        if ($customizationData) {
             $cartItem["customizations"] = $customizationData;
+            
+            // Save customization to database
+            try {
+                $customization = new \App\Models\Customization();
+                $customization->product_name = $customizationData['productName'] ?? $product->title;
+                $customization->product_type = $customizationData['type'] ?? 'Product';
+                $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? $product->current_price);
+                $customization->quantity = $customizationData['quantity'] ?? $qty;
+                $customization->meat_choice = $customizationData['meatChoice'] ?? null;
+                $customization->vegetables = $customizationData['vegetables'] ?? [];
+                $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
+                $customization->sauces = $customizationData['sauces'] ?? [];
+                $customization->save();
+                
+                // Store customization ID in cart item
+                $cartItem["customization_id"] = $customization->id;
+            } catch (\Exception $e) {
+                // Log error but continue with cart
+                \Log::error('Failed to save customization: ' . $e->getMessage());
+            }
         }
 
         // if cart is empty then this the first product
@@ -458,7 +479,11 @@ class ProductController extends Controller
             Session::save();
             
             if ($request && $request->isMethod('post')) {
-                return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Product added to cart successfully!',
+                    'redirect' => url('/cart')
+                ]);
             }
             return response()->json(['message' => 'Product added to cart successfully!']);
         }
@@ -505,7 +530,11 @@ class ProductController extends Controller
                 Session::save();
                 
                 if ($request && $request->isMethod('post')) {
-                    return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Product added to cart successfully!',
+                        'redirect' => url('/cart')
+                    ]);
                 }
                 return response()->json(['message' => 'Product added to cart successfully!']);
             }
@@ -518,7 +547,11 @@ class ProductController extends Controller
         Session::save();
 
         if ($request && $request->isMethod('post')) {
-            return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+            return response()->json([
+                'success' => true,
+                'message' => 'Product added to cart successfully!',
+                'redirect' => url('/cart')
+            ]);
         }
         return response()->json(['message' => 'Product added to cart successfully!']);
     }

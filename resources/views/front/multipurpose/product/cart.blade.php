@@ -41,6 +41,14 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div id="refreshDiv">
                     @if($cart != null)
+                        <!-- Debug: Show cart contents -->
+                        @if(config('app.debug'))
+                            <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin-bottom: 20px; font-family: monospace; font-size: 12px;">
+                                <strong>Debug - Cart Contents:</strong><br>
+                                <pre>{{ print_r($cart, true) }}</pre>
+                            </div>
+                        @endif
+                        
                         <ul class="total-item-info">
                             @php
                                 $cartTotal = 0;
@@ -114,42 +122,96 @@
                                                 </p>
                                             @endif
                                             @if (!empty($item["customizations"]))
-                                                <p>
-                                                    <strong>{{__("Customizations")}}:</strong><br>
-                                                    @php
-                                                        $customizations = $item["customizations"];
-                                                        if (is_string($customizations)) {
-                                                            $customizations = json_decode($customizations, true);
-                                                        }
-                                                    @endphp
-                                                    @if (is_array($customizations))
-                                                        @if (!empty($customizations['meatChoice']))
-                                                            <span class="text-capitalize">{{__("Meat")}}:</span> {{ucfirst($customizations['meatChoice'])}}<br>
+                                                <div class="customizations-display" style="margin-top: 10px;">
+                                                    <strong style="color: #f39c12; font-size: 0.9rem;">{{__("Customizations")}}:</strong>
+                                                    <div class="customization-items" style="margin-top: 8px;">
+                                                        @php
+                                                            $customizations = $item["customizations"];
+                                                            if (is_string($customizations)) {
+                                                                $customizations = json_decode($customizations, true);
+                                                            }
+                                                        @endphp
+                                                        @if (is_array($customizations))
+                                                            @if (!empty($customizations['meatChoice']))
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-drumstick-bite" style="margin-right: 5px;"></i>
+                                                                    {{__("Meat")}}: {{ucfirst($customizations['meatChoice'])}}
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($customizations['vegetables']) && is_array($customizations['vegetables']))
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-leaf" style="margin-right: 5px;"></i>
+                                                                    {{__("Vegetables")}}: 
+                                                                    @foreach ($customizations['vegetables'] as $veg)
+                                                                        @if ($veg === 'no-vegetables')
+                                                                            {{__("No Vegetables")}}
+                                                                        @else
+                                                                            {{ucfirst(str_replace('-', ' ', $veg))}}
+                                                                        @endif
+                                                                        @if (!$loop->last), @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($customizations['drinkChoice']))
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-glass-whiskey" style="margin-right: 5px;"></i>
+                                                                    {{__("Drink")}}: {{ucfirst(str_replace('-', ' ', $customizations['drinkChoice']))}}
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($customizations['sauces']) && is_array($customizations['sauces']))
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-tint" style="margin-right: 5px;"></i>
+                                                                    {{__("Sauces")}}: 
+                                                                    @foreach ($customizations['sauces'] as $sauce)
+                                                                        {{ucfirst(str_replace('-', ' ', $sauce))}}
+                                                                        @if (!$loop->last), @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
                                                         @endif
-                                                        @if (!empty($customizations['vegetables']) && is_array($customizations['vegetables']))
-                                                            <span class="text-capitalize">{{__("Vegetables")}}:</span> 
-                                                            @foreach ($customizations['vegetables'] as $veg)
-                                                                @if ($veg === 'no-vegetables')
-                                                                    {{__("No Vegetables")}}
-                                                                @else
-                                                                    {{ucfirst(str_replace('-', ' ', $veg))}}
-                                                                @endif
-                                                                @if (!$loop->last), @endif
-                                                            @endforeach
-                                                            <br>
-                                                        @endif
-                                                        @if (!empty($customizations['drinkChoice']))
-                                                            <span class="text-capitalize">{{__("Drink")}}:</span> {{ucfirst(str_replace('-', ' ', $customizations['drinkChoice']))}}<br>
-                                                        @endif
-                                                        @if (!empty($customizations['sauces']) && is_array($customizations['sauces']))
-                                                            <span class="text-capitalize">{{__("Sauces")}}:</span> 
-                                                            @foreach ($customizations['sauces'] as $sauce)
-                                                                {{ucfirst(str_replace('-', ' ', $sauce))}}
-                                                                @if (!$loop->last), @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-                                                </p>
+                                                    </div>
+                                                </div>
+                                            @elseif (!empty($item["customization_id"]))
+                                                <!-- Display customizations from database -->
+                                                @php
+                                                    $customization = \App\Models\Customization::find($item["customization_id"]);
+                                                @endphp
+                                                @if($customization)
+                                                    <div class="customizations-display" style="margin-top: 10px;">
+                                                        <strong style="color: #f39c12; font-size: 0.9rem;">{{__("Customizations")}}:</strong>
+                                                        <div class="customization-items" style="margin-top: 8px;">
+                                                            @if($customization->meat_choice)
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-drumstick-bite" style="margin-right: 5px;"></i>
+                                                                    {{__("Meat")}}: {{ucfirst($customization->meat_choice)}}
+                                                                </div>
+                                                            @endif
+                                                            @if($customization->vegetables && count($customization->vegetables) > 0)
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-leaf" style="margin-right: 5px;"></i>
+                                                                    {{__("Vegetables")}}: {{$customization->vegetables_text}}
+                                                                </div>
+                                                            @endif
+                                                            @if($customization->drink_choice)
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-glass-whiskey" style="margin-right: 5px;"></i>
+                                                                    {{__("Drink")}}: {{$customization->drink_text}}
+                                                                </div>
+                                                            @endif
+                                                            @if($customization->sauces && count($customization->sauces) > 0)
+                                                                <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
+                                                                    <i class="fas fa-tint" style="margin-right: 5px;"></i>
+                                                                    {{__("Sauces")}}: {{$customization->sauces_text}}
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @else
+                                                <!-- Debug: Show when no customizations -->
+                                                <div style="margin-top: 10px; color: #999; font-size: 0.8rem;">
+                                                    <em>No customizations found for this item</em>
+                                                </div>
                                             @endif
                                         </div>
                                     </td>

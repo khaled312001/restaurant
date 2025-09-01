@@ -956,3 +956,9 @@ Route::get('/sitemap-index.xml', function () {
 Route::fallback(function () {
     return view('errors.404');
 });
+
+// Admin Customizations Routes
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    Route::resource('customizations', 'Admin\CustomizationController');
+    Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('customizations.order');
+});

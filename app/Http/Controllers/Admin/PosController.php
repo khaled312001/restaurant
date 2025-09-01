@@ -401,6 +401,28 @@ class PosController extends Controller
                 'image' => $cartItem["photo"],
                 'created_at' => Carbon::now()
             ]);
+
+            // Save customization to database if exists
+            if (!empty($cartItem['customizations'])) {
+                try {
+                    $customizationData = is_string($cartItem['customizations']) ? 
+                        json_decode($cartItem['customizations'], true) : $cartItem['customizations'];
+                    
+                    $customization = new \App\Models\Customization();
+                    $customization->order_item_id = OrderItem::where('product_order_id', $orderId)->where('product_id', $cartItem['id'])->first()->id;
+                    $customization->product_name = $customizationData['productName'] ?? $cartItem['name'];
+                    $customization->product_type = $customizationData['type'] ?? 'Product';
+                    $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? $cartItem['product_price']);
+                    $customization->quantity = $customizationData['quantity'] ?? $cartItem['qty'];
+                    $customization->meat_choice = $customizationData['meatChoice'] ?? null;
+                    $customization->vegetables = $customizationData['vegetables'] ?? [];
+                    $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
+                    $customization->sauces = $customizationData['sauces'] ?? [];
+                    $customization->save();
+                } catch (\Exception $e) {
+                    \Log::error('Failed to save customization for POS order item: ' . $e->getMessage());
+                }
+            }
         }
 
 

@@ -96,6 +96,26 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="breadcrumb-area">
+                                        <div class="container">
+                                            <div class="breadcrumb-content">
+                                                <h2 class="title">{{__('Order Details')}}</h2>
+                                                @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
+                                                    <div class="mt-2">
+                                                        <span class="badge badge-warning">
+                                                            <i class="fas fa-cogs"></i>
+                                                            {{ __('Customizations Available') }}: {{ $order->orderItems->where('customizations', '!=', null)->count() }}
+                                                        </span>
+                                                    </div>
+                                                @endif
+                                                <ul class="breadcrumb-list">
+                                                    <li class="breadcrumb-item"><a href="{{route('front.index')}}">{{__('Home')}}</a></li>
+                                                    <li class="breadcrumb-item"><a href="{{route('user.orders')}}">{{__('My Orders')}}</a></li>
+                                                    <li class="breadcrumb-item active" aria-current="page">{{__('Order Details')}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="billing-add-area">
                                         <div class="row">
 

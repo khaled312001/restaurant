@@ -12,7 +12,20 @@
 
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">{{__('Order Details')}}</h4>
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4 class="page-title">{{__('Order Details')}}</h4>
+            @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
+                <div class="mt-2">
+                    <a href="{{ route('admin.customizations.order', $order->id) }}" 
+                       class="btn btn-warning btn-sm">
+                        <i class="fas fa-cogs"></i>
+                        {{ __('View Customizations') }}
+                        <span class="badge badge-light">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                    </a>
+                </div>
+            @endif
+        </div>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('admin.dashboard')}}">

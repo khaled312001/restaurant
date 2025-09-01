@@ -149,6 +149,7 @@
                             <th scope="col">Completed</th>
                             <th scope="col">Gateway</th>
                             <th scope="col">Time</th>
+                            <th scope="col">Customizations</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -264,12 +265,27 @@
                               </td>
 
                               <td>
+                                @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
+                                  <a class="dropdown-item" href="{{route('admin.customizations.order',$order->id)}}">
+                                    <i class="fas fa-cogs text-warning"></i> Customizations
+                                    <span class="badge badge-warning">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                                  </a>
+                                @endif
+                              </td>
+                              <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       Actions
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                       <a class="dropdown-item" href="{{route('admin.product.details',$order->id)}}">Details</a>
+
+                                      @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
+                                      <a class="dropdown-item" href="{{route('admin.customizations.order',$order->id)}}">
+                                        <i class="fas fa-cogs text-warning"></i> Customizations
+                                        <span class="badge badge-warning">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                                      </a>
+                                      @endif
 
                                       <a href="#" class="dropdown-item editbtn" data-toggle="modal" data-target="#mailModal" data-email="{{$order->billing_email}}">Send Mail</a>
 

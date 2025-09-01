@@ -86,7 +86,10 @@
                                 <table class="cart-table">
                                     <thead class="cart-header">
                                         <tr>
+                                            <th class="prod-column" width="10%">{{ __('Product') }}</th>
                                             <th width="70%">{{ __('Product Title') }}</th>
+                                            <th>{{ __('Variations') }}</th>
+                                            <th>{{ __('Addons') }}</th>
                                             <th>{{ __('Quantity') }}</th>
                                             <th>{{ __('Total') }}</th>
                                         </tr>
@@ -96,133 +99,62 @@
                                         @php
                                         $id = $item["id"];
                                         $product = App\Models\Product::findOrFail($id);
+                                        $total += $item['total'];
                                         @endphp
                                         <tr class="remove{{ $id }}">
-                                            <td width="70%">
-                                                <div class="title">
-                                                    <h5 class="prod-title">{{ convertUtf8($item['name']) }}</h5>
-                                                    @if (!empty($item["variations"]))
-                                                        <p><strong>{{__("Variation")}}:</strong> <br>
-                                                            @php
-                                                                $variations = $item["variations"];
-                                                            @endphp
-                                                            @foreach ($variations as $vKey => $variation)
-                                                                <span class="text-capitalize">{{str_replace("_"," ",$vKey)}}:</span> {{$variation["name"]}}
-                                                                @if (!$loop->last)
-                                                                ,
-                                                                @endif
-                                                            @endforeach    
-                                                        </p>
-                                                    @endif
-                                                    @if (!empty($item['addons']))
-                                                    <p>
-                                                        <strong>{{ __("Add On's") }}:</strong><br>
-                                                        @php
-                                                        $addons = $item["addons"];
-                                                        @endphp
-                                                        @foreach ($addons as $addon)
-                                                        {{ $addon['name'] }}
-                                                        @if (!$loop->last)
-                                                        ,
-                                                        @endif
-                                                        @endforeach
-                                                    </p>
-                                                    @endif
-                                                    @if (!empty($item["customizations"]))
-                                                        <div class="customizations-display" style="margin-top: 10px;">
-                                                            <strong style="color: #f39c12; font-size: 0.9rem;">{{__("Customizations")}}:</strong>
-                                                            <div class="customization-items" style="margin-top: 8px;">
-                                                                @php
-                                                                    $customizations = $item["customizations"];
-                                                                    if (is_string($customizations)) {
-                                                                        $customizations = json_decode($customizations, true);
-                                                                    }
-                                                                @endphp
-                                                                @if (is_array($customizations))
-                                                                    @if (!empty($customizations['meatChoice']))
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-drumstick-bite" style="margin-right: 5px;"></i>
-                                                                            {{__("Meat")}}: {{ucfirst($customizations['meatChoice'])}}
-                                                                        </div>
-                                                                    @endif
-                                                                    @if (!empty($customizations['vegetables']) && is_array($customizations['vegetables']))
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-leaf" style="margin-right: 5px;"></i>
-                                                                            {{__("Vegetables")}}: 
-                                                                            @foreach ($customizations['vegetables'] as $veg)
-                                                                                @if ($veg === 'no-vegetables')
-                                                                                    {{__("No Vegetables")}}
-                                                                                @else
-                                                                                    {{ucfirst(str_replace('-', ' ', $veg))}}
-                                                                                @endif
-                                                                                @if (!$loop->last), @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                    @endif
-                                                                    @if (!empty($customizations['drinkChoice']))
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-glass-whiskey" style="margin-right: 5px;"></i>
-                                                                            {{__("Drink")}}: {{ucfirst(str_replace('-', ' ', $customizations['drinkChoice']))}}
-                                                                        </div>
-                                                                    @endif
-                                                                    @if (!empty($customizations['sauces']) && is_array($customizations['sauces']))
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-tint" style="margin-right: 5px;"></i>
-                                                                            {{__("Sauces")}}: 
-                                                                            @foreach ($customizations['sauces'] as $sauce)
-                                                                                {{ucfirst(str_replace('-', ' ', $sauce))}}
-                                                                                @if (!$loop->last), @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                    @endif
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    @elseif (!empty($item["customization_id"]))
-                                                        <!-- Display customizations from database -->
-                                                        @php
-                                                            $customization = \App\Models\Customization::find($item["customization_id"]);
-                                                        @endphp
-                                                        @if($customization)
-                                                            <div class="customizations-display" style="margin-top: 10px;">
-                                                                <strong style="color: #f39c12; font-size: 0.9rem;">{{__("Customizations")}}:</strong>
-                                                                <div class="customization-items" style="margin-top: 8px;">
-                                                                    @if($customization->meat_choice)
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-drumstick-bite" style="margin-right: 5px;"></i>
-                                                                            {{__("Meat")}}: {{ucfirst($customization->meat_choice)}}
-                                                                        </div>
-                                                                    @endif
-                                                                    @if($customization->vegetables && count($customization->vegetables) > 0)
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-leaf" style="margin-right: 5px;"></i>
-                                                                            {{__("Vegetables")}}: {{$customization->vegetables_text}}
-                                                                        </div>
-                                                                    @endif
-                                                                    @if($customization->drink_choice)
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-glass-whiskey" style="margin-right: 5px;"></i>
-                                                                            {{__("Drink")}}: {{$customization->drink_text}}
-                                                                        </div>
-                                                                    @endif
-                                                                    @if($customization->sauces && count($customization->sauces) > 0)
-                                                                        <div class="customization-badge" style="display: inline-block; background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 2px 4px; font-weight: 600;">
-                                                                            <i class="fas fa-tint" style="margin-right: 5px;"></i>
-                                                                            {{__("Sauces")}}: {{$customization->sauces_text}}
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    @endif
+                                            <td class="prod-column">
+                                                <div class="prod-thumb">
+                                                    <img src="{{ asset('assets/images/products/'.$item['photo']) }}" alt="{{ $item['name'] }}" style="width: 80px; height: 80px; object-fit: cover;">
                                                 </div>
+                                            </td>
+                                            <td class="prod-title">
+                                                <h4 class="title">{{ $item['name'] }}</h4>
+                                                <p class="base-price">
+                                                    {{__('Base Price')}}: {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($item['product_price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
+                                                </p>
+                                            </td>
+                                            <td class="variations">
+                                                @if(isset($item['variations']) && is_array($item['variations']) && count($item['variations']) > 0)
+                                                    <div class="variations-list">
+                                                        @foreach($item['variations'] as $varKey => $variation)
+                                                            @if(is_array($variation) && array_key_exists('name', $variation))
+                                                                <span class="badge badge-info">
+                                                                    {{ $variation['name'] }}
+                                                                    @if(array_key_exists('price', $variation))
+                                                                        (+{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($variation['price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}})
+                                                                    @endif
+                                                                </span>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <span class="text-muted">-</span>
+                                                @endif
+                                            </td>
+                                            <td class="addons">
+                                                @if(isset($item['addons']) && is_array($item['addons']) && count($item['addons']) > 0)
+                                                    <div class="addons-list">
+                                                        @foreach($item['addons'] as $addonKey => $addon)
+                                                            @if(is_array($addon) && array_key_exists('name', $addon))
+                                                                <span class="badge badge-success">
+                                                                    {{ $addon['name'] }}
+                                                                    @if(array_key_exists('price', $addon))
+                                                                        (+{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($addon['price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}})
+                                                                    @endif
+                                                                </span>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <span class="text-muted">-</span>
+                                                @endif
                                             </td>
                                             <td class="qty">
                                                 {{ $item['qty'] }}
                                             </td>
                                             <input type="hidden" value="{{ $id }}" class="product_id">
                                             <td class="sub-total">
-                                                <span dir="ltr">{{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : '' }}{{ $item['total'] }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}</span>
+                                                <span dir="ltr">{{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{ number_format($item['total'], 2) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}</span>
                                             </td>
                                         </tr>
                                         @endforeach

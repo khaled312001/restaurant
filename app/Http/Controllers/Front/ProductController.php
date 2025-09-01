@@ -329,9 +329,56 @@ class ProductController extends Controller
 
         if (Session::has('cart')) {
             $cart = Session::get('cart');
+            
+            // Validate and clean cart data
+            if (is_array($cart)) {
+                foreach ($cart as $key => $item) {
+                    // Ensure all required fields exist
+                    if (!isset($item['id']) || !isset($item['name']) || !isset($item['qty']) || !isset($item['total'])) {
+                        unset($cart[$key]);
+                        continue;
+                    }
+                    
+                    // Validate product exists
+                    $product = Product::find($item['id']);
+                    if (!$product) {
+                        unset($cart[$key]);
+                        continue;
+                    }
+                    
+                    // Recalculate total to ensure accuracy
+                    $itemTotal = (float)$item['product_price'];
+                    
+                    // Add variations price
+                    if (isset($item['variations']) && is_array($item['variations'])) {
+                        foreach ($item['variations'] as $variation) {
+                            if (is_array($variation) && array_key_exists('price', $variation)) {
+                                $itemTotal += (float)$variation["price"];
+                            }
+                        }
+                    }
+                    
+                    // Add addons price
+                    if (isset($item['addons']) && is_array($item['addons'])) {
+                        foreach ($item['addons'] as $addon) {
+                            if (is_array($addon) && array_key_exists('price', $addon)) {
+                                $itemTotal += (float)$addon["price"];
+                            }
+                        }
+                    }
+                    
+                    // Update total
+                    $cart[$key]['total'] = $itemTotal * (int)$item['qty'];
+                }
+                
+                // Save cleaned cart
+                Session::put('cart', $cart);
+                Session::save();
+            }
         } else {
             $cart = null;
         }
+        
         return view('front.multipurpose.product.cart', compact('cart'));
     }
 
@@ -713,27 +760,40 @@ class ProductController extends Controller
         $qtys = $request->qty;
         $i = 0;
 
+        if (!is_array($qtys)) {
+            return response()->json(['error' => 'Invalid quantity data']);
+        }
 
         foreach ($cart as $cartKey => $cartItem) {
+            if (!isset($qtys[$i]) || !is_numeric($qtys[$i]) || $qtys[$i] < 1) {
+                $i++;
+                continue;
+            }
+
             $total = 0;
             $cart[$cartKey]["qty"] = (int)$qtys[$i];
 
             // calculate total
-            $addons = $cartItem["addons"];
+            $addons = isset($cartItem["addons"]) ? $cartItem["addons"] : [];
             if (is_array($addons)) {
                 foreach ($addons as $key => $addon) {
-                    $total += (float)$addon["price"];
+                    if (is_array($addon) && array_key_exists('price', $addon)) {
+                        $total += (float)$addon["price"];
+                    }
                 }
             }
-            $variations = $cartItem["variations"];
+            
+            $variations = isset($cartItem["variations"]) ? $cartItem["variations"] : [];
             if (is_array($variations)) {
                 foreach ($variations as $key => $variation) {
-                    $total += (float)$variation["price"];
+                    if (is_array($variation) && array_key_exists('price', $variation)) {
+                        $total += (float)$variation["price"];
+                    }
                 }
             }
 
             $total += (float)$cartItem["product_price"];
-            $total = $total * $qtys[$i];
+            $total = $total * (int)$qtys[$i];
 
             // save total in the cart item
             $cart[$cartKey]["total"] = $total;
@@ -744,7 +804,7 @@ class ProductController extends Controller
         Session::put('cart', $cart);
         Session::save();
 
-        return response()->json(['message' => 'Cart Update Successfully.']);
+        return response()->json(['message' => 'Cart Updated Successfully.']);
     }
 
 

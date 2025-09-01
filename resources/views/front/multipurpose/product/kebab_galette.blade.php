@@ -47,13 +47,13 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <select id="kebab-type-127" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (7,00€)</option>
-                                    <option value="menu">Menu (10,50€)</option>
-                                </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 127) }}', 'kebab-type-127')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
+                                <button onclick="openCustomizationModal(127, 'KEBAB', '7,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </button>
+                                <button onclick="openCustomizationModal(127, 'KEBAB', '10,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
                                 </button>
                             </div>
                         </div>
@@ -63,13 +63,13 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
                             <div style="text-align: center;">
-                                <select id="kebab-type-128" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (12,00€)</option>
-                                    <option value="menu">Menu (15,00€)</option>
-                                </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 128) }}', 'kebab-type-128')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
+                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '12,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </button>
+                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '15,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
                                 </button>
                             </div>
                         </div>
@@ -79,13 +79,13 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <select id="kebab-type-129" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (7,50€)</option>
-                                    <option value="menu">Menu (10,50€)</option>
-                                </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 129) }}', 'kebab-type-129')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
+                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '7,50', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </button>
+                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '10,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
                                 </button>
                             </div>
                         </div>
@@ -95,13 +95,13 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
                             <div style="text-align: center;">
-                                <select id="kebab-type-130" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (12,00€)</option>
-                                    <option value="menu">Menu (15,00€)</option>
-                                </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 130) }}', 'kebab-type-130')" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
+                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '12,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </button>
+                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '15,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
                                 </button>
                             </div>
                         </div>
@@ -197,63 +197,67 @@
                         <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Galette</h4>
                         <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Viande au choix</p>
                     </div>
+
+                    <!-- Information Section -->
+                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <h4 style="color: #f39c12; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
+                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
+                            Informations
+                        </h4>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
+                            <i class="fas fa-clock" style="color: #f39c12; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">10-15 minutes</p>
+                        </div>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
+                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Ingrédients frais</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Légumes de saison</p>
+                        </div>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
+                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Qualité garantie</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Viandes halal</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Information Section -->
-<div class="info-section" style="padding: 60px 0; background: #34495e; color: white;">
+<!-- Call to Action Section -->
+<div class="cta-section" style="background: linear-gradient(45deg, #2c3e50, #34495e); padding: 60px 0; text-align: center;">
     <div class="container">
-        <div class="row text-center">
+        <div class="row">
             <div class="col-lg-12">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; color: #f39c12;">
-                    Informations importantes
+                <h2 style="color: white; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
+                    Prêt à déguster ?
                 </h2>
-                <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-utensils" style="font-size: 3rem; color: #f39c12; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Ingrédients Frais</h4>
-                        <p style="opacity: 0.9; margin: 0;">Tous nos sandwichs sont préparés avec des ingrédients frais et de qualité</p>
-                    </div>
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-clock" style="font-size: 3rem; color: #f39c12; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Préparation Rapide</h4>
-                        <p style="opacity: 0.9; margin: 0;">Vos commandes sont préparées rapidement à la demande</p>
-                    </div>
-                    <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <i class="fas fa-leaf" style="font-size: 3rem; color: #f39c12; margin-bottom: 15px; display: block;"></i>
-                        <h4 style="margin-bottom: 10px;">Options Végétariennes</h4>
-                        <p style="opacity: 0.9; margin: 0;">Nous proposons des alternatives végétariennes délicieuses</p>
-                    </div>
+                <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Personnalisez votre kebab ou galette selon vos préférences et ajoutez-le à votre panier en quelques clics !
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
+                        <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                        Retour au menu
+                    </a>
+                    <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white;">
+                        <i class="fas fa-home" style="margin-right: 10px;"></i>
+                        Accueil
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Call to Action -->
-<div class="cta-section" style="padding: 80px 0; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); text-align: center; color: white;">
-    <div class="container">
-        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-            Prêt à déguster ?
-        </h2>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-            Commandez maintenant et profitez de nos délicieux sandwichs
-        </p>
-        <div class="cta-buttons">
-            <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
-                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
-                Retour au menu
-            </a>
-            <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white;">
-                <i class="fas fa-home" style="margin-right: 10px;"></i>
-                Accueil
-            </a>
-        </div>
-    </div>
-</div>
+<!-- Include Customization Modal -->
+@include('front.multipurpose.product.customization_modal')
 
 <style>
 .menu-category {
@@ -327,18 +331,13 @@
 </style>
 
 <script>
-function addToCartWithType(url, selectId) {
-    const select = document.getElementById(selectId);
-    const selectedType = select.value;
+function addToCart(url, variant, quantity, extras) {
+    // Existing addToCart function
+    // You can keep your existing implementation here
+    console.log('Adding to cart:', url, variant, quantity, extras);
     
-    // إضافة النوع المحدد كـ variant
-    const variant = [{
-        name: 'Type',
-        price: selectedType === 'menu' ? 3.50 : 0 // فرق السعر بين Menu و Seul
-    }];
-    
-    // استدعاء الدالة الأصلية مع النوع المحدد
-    addToCart(url, variant, 1, []);
+    // For now, redirect to the cart route
+    window.location.href = url;
 }
 </script>
 

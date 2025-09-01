@@ -15,6 +15,7 @@ class OrderItem extends Model
         "sku",
         "variations",
         "addons",
+        "customizations",
         "variations_price",
         "addons_price",
         "product_price",

@@ -46,7 +46,7 @@ Route::middleware(['setlang'])->group(function () {
     // Product
     Route::get('/product', 'Front\ProductController@product')->name('front.product');
     Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
-    Route::get('/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
+    Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
     Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
     Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->name('cart.item.remove');
     Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');
@@ -74,7 +74,7 @@ Route::get('/items', 'Front\ProductController@items')->name('front.items');
 Route::get('/menus', 'Front\ProductController@product')->name('front.product');
 Route::get('/{slug}/{id}/item', 'Front\ProductController@productDetails')->name('front.product.details');
 Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
-Route::get('/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
+Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
 Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
 Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->name('cart.item.remove');
 Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');

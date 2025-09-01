@@ -37,7 +37,7 @@
                             <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
                         <h1 class="title">Choisissez parmi nos délicieuses catégories King Kebab</h1>
                         <p class="text">Explorez notre sélection complète de <strong>48 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure. Depuis 20 ans, King Kebab Le Pouzin vous propose les meilleures spécialités turques et orientales.</p>
-                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">✨ 48 plats halal disponibles au total ✨</p>
+                        <p class="text highlight-text">✨ 48 plats halal disponibles au total ✨</p>
                     </div>
                 </div>
             </div>
@@ -46,137 +46,107 @@
                 @foreach ($categories as $category)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="category-card h-100">
-                            <div class="category-image">
-                                @if (!empty($category->image) && file_exists(public_path('assets/front/img/category/' . $category->image)))
-                                    <img class="lazy wow fadeIn" 
-                                         data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
-                                         data-wow-delay=".3s" 
-                                         alt="{{ convertUtf8($category->name) }}"
-                                         onerror="this.parentElement.innerHTML='<div class=&quot;category-placeholder&quot;><i class=&quot;flaticon-burger&quot;></i></div>'">
-                                @else
-                                    <div class="category-placeholder">
-                                        <i class="flaticon-burger"></i>
-                                    </div>
-                                @endif
-                            </div>
-                            
-                            <div class="category-content">
-                                <h4 class="category-title">{{ convertUtf8($category->name) }}</h4>
-                                <p class="category-description">
-                                    @switch($category->name)
-                                        @case('Assiettes')
-                                            Assiettes kebab halal complètes avec riz basmati, légumes frais et sauces maison authentiques
-                                            @break
-                                        @case('Sandwichs')
-                                            Sandwichs kebab halal et wraps fraîchement préparés avec viande grillée au charbon
-                                            @break
-                                        @case('Menus')
-                                            Menus kebab complets halal avec boisson fraîche et accompagnement de votre choix
-                                            @break
-                                        @case('Salade')
-                                            Salades fraîches et équilibrées avec ingrédients halal de qualité supérieure
-                                            @break
-                                        @case('Menus Enfant')
-                                            Menus enfant halal spécialement conçus pour les plus petits gourmets
-                                            @break
-                                        @case('Nos Box')
-                                            Nos Box King Kebab: formules repas halal pratiques et généreuses
-                                            @break
-                                        @default
-                                            Découvrez nos délicieuses spécialités halal authentiques King Kebab
-                                    @endswitch
-                                </p>
-                                
-                                <div class="category-stats">
-                                    <span class="meal-count">
-                                        <i class="fas fa-utensils"></i>
-                                        @switch($category->name)
-                                            @case('Sandwichs')
-                                                8 plats disponibles
-                                                @break
-                                            @case('Menus')
-                                                22 plats disponibles
-                                                @break
-                                            @case('Assiettes')
-                                                2 plats disponibles
-                                                @break
-                                            @case('Menus Enfant')
-                                                4 plats disponibles
-                                                @break
-                                            @case('Salade')
-                                                4 plats disponibles
-                                                @break
-                                            @case('Nos Box')
-                                                4 plats disponibles
-                                                @break
-                                            @case('Panini')
-                                                4 plats disponibles
-                                                @break
-                                            @default
-                                                {{ $category->products()->where('status', 1)->count() }} plats disponibles
-                                        @endswitch
-                                    </span>
-                                </div>
-                                
-                                <div class="category-actions">
-                                    @if($category->name === 'Sandwichs')
-                                        <a href="{{ route('front.sandwiches') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
-                                    @elseif($category->name === 'Menus')
-                                        <a href="{{ route('front.menus') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
-                                    @elseif($category->name === 'Assiettes')
-                                        <a href="{{ route('front.assiettes') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
-                                    @elseif($category->name === 'Menus Enfant')
-                                        <a href="{{ route('front.menusEnfant') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
-                                    @elseif($category->name === 'Salade')
-                                        <a href="{{ route('front.salade') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
-                                    @elseif($category->name === 'Nos Box')
-                                        <a href="{{ route('front.nosBox') }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
+                            @if($category->name === 'Sandwichs')
+                                <a href="{{ route('front.sandwiches') }}" class="card-link">
+                            @elseif($category->name === 'Menus')
+                                <a href="{{ route('front.menus') }}" class="card-link">
+                            @elseif($category->name === 'Assiettes')
+                                <a href="{{ route('front.assiettes') }}" class="card-link">
+                            @elseif($category->name === 'Menus Enfant')
+                                <a href="{{ route('front.menusEnfant') }}" class="card-link">
+                            @elseif($category->name === 'Salade')
+                                <a href="{{ route('front.salade') }}" class="card-link">
+                            @elseif($category->name === 'Nos Box')
+                                <a href="{{ route('front.nosBox') }}" class="card-link">
+                            @else
+                                <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="card-link">
+                            @endif
+                                <div class="category-image">
+                                    @if (!empty($category->image) && file_exists(public_path('assets/front/img/category/' . $category->image)))
+                                        <img class="lazy wow fadeIn" 
+                                             data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
+                                             data-wow-delay=".3s" 
+                                             alt="{{ convertUtf8($category->name) }}"
+                                             onerror="this.parentElement.innerHTML='<div class=&quot;category-placeholder&quot;><i class=&quot;flaticon-burger&quot;></i></div>'">
                                     @else
-                                        <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="view-menu-btn">
-                                            <i class="fas fa-eye"></i>
-                                            Voir le menu
-                                        </a>
+                                        <div class="category-placeholder">
+                                            <i class="flaticon-burger"></i>
+                                        </div>
                                     @endif
                                 </div>
-                            </div>
+                                
+                                <div class="category-content">
+                                    <h4 class="category-title">{{ convertUtf8($category->name) }}</h4>
+                                    <p class="category-description">
+                                        @switch($category->name)
+                                            @case('Assiettes')
+                                                Assiettes kebab halal complètes avec riz basmati, légumes frais et sauces maison authentiques
+                                                @break
+                                            @case('Sandwichs')
+                                                Sandwichs kebab halal et wraps fraîchement préparés avec viande grillée au charbon
+                                                @break
+                                            @case('Menus')
+                                                Menus kebab complets halal avec boisson fraîche et accompagnement de votre choix
+                                                @break
+                                            @case('Salade')
+                                                Salades fraîches et équilibrées avec ingrédients halal de qualité supérieure
+                                                @break
+                                            @case('Menus Enfant')
+                                                Menus enfant halal spécialement conçus pour les plus petits gourmets
+                                                @break
+                                            @case('Nos Box')
+                                                Nos Box King Kebab: formules repas halal pratiques et généreuses
+                                                @break
+                                            @default
+                                                Découvrez nos délicieuses spécialités halal authentiques King Kebab
+                                        @endswitch
+                                    </p>
+                                    
+                                    <div class="category-stats">
+                                        <span class="meal-count">
+                                            <i class="fas fa-utensils"></i>
+                                            @switch($category->name)
+                                                @case('Sandwichs')
+                                                    8 plats disponibles
+                                                    @break
+                                                @case('Menus')
+                                                    22 plats disponibles
+                                                    @break
+                                                @case('Assiettes')
+                                                    2 plats disponibles
+                                                    @break
+                                                @case('Menus Enfant')
+                                                    4 plats disponibles
+                                                    @break
+                                                @case('Salade')
+                                                    4 plats disponibles
+                                                    @break
+                                                @case('Nos Box')
+                                                    4 plats disponibles
+                                                    @break
+                                                @case('Panini')
+                                                    4 plats disponibles
+                                                    @break
+                                                @default
+                                                    {{ $category->products()->where('status', 1)->count() }} plats disponibles
+                                            @endswitch
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="category-actions">
+                                        <span class="view-menu-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir le menu
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <!-- Section d'information supplémentaire -->
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="menu-info-card text-center">
-                        <div class="info-icon">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                        <h2>King Kebab Le Pouzin - Informations importantes</h2>
-                        <p>Tous nos plats <strong>King Kebab</strong> sont préparés à la commande avec des <strong>ingrédients frais 100% halal</strong> et de qualité supérieure. Notre viande est grillée au charbon pour un goût authentique unique. Depuis 20 ans, nous respectons les traditions culinaires turques tout en garantissant la fraîcheur de nos produits. N'hésitez pas à nous demander des informations sur les allergènes ou à personnaliser votre commande selon vos préférences.</p>
-                        <div class="contact-info">
-                            <span><i class="fas fa-phone"></i> <strong>Commandes et renseignements :</strong> +33 0426423743</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </section>
     <!--====== CATÉGORIES DU MENU PART ENDS ======-->
@@ -293,6 +263,19 @@
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid #e9ecef;
+            position: relative;
+        }
+        
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+        
+        .card-link:hover {
+            text-decoration: none;
+            color: inherit;
         }
         
         .category-card:hover {
@@ -402,30 +385,116 @@
             border: 2px solid #e3f2fd;
         }
         
+        .info-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
         .info-icon {
             font-size: 3rem;
             color: #1976d2;
-            margin-bottom: 1rem;
+            margin-right: 1rem;
         }
         
-        .menu-info-card h4 {
+        .info-header h2 {
             color: #2c3e50;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
         }
         
-        .menu-info-card p {
+        .info-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .main-description {
             color: #6c757d;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
         
-        .contact-info {
+        .info-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: calc(50% - 0.75rem); /* Two columns */
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-right: 1rem;
+        }
+        
+        .feature-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-text p {
+            font-size: 0.85rem;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+        
+        .info-contact {
+            border-top: 1px solid #e9ecef;
+            padding-top: 1.5rem;
+        }
+        
+        .contact-header h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-header i {
+            margin-right: 0.5rem;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
             color: #1976d2;
+            margin-right: 1rem;
+        }
+        
+        .contact-info strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .phone-number {
+            color: #ff6b35;
             font-weight: 500;
         }
         
-        .contact-info i {
-            margin-right: 0.5rem;
+        .highlight-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-top: 10px;
         }
         
         @media (max-width: 768px) {
@@ -439,6 +508,10 @@
             
             .category-description {
                 min-height: auto;
+            }
+
+            .feature-item {
+                width: 100%; /* Full width on small screens */
             }
         }
 

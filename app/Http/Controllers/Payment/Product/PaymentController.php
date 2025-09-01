@@ -96,7 +96,7 @@ class PaymentController extends Controller
     {
         $order = new ProductOrder();
         $order->order_number = 'ORD-' . Str::random(8) . time();
-        $order->user_id = auth()->id();
+        $order->user_id = auth()->check() ? auth()->id() : null;
         $order->billing_fname = $request->billing_fname;
         $order->billing_lname = $request->billing_lname;
         $order->billing_email = $request->billing_email;
@@ -120,12 +120,45 @@ class PaymentController extends Controller
     protected function saveOrderItem($order_id)
     {
         $cart = Session::get('cart');
-        foreach ($cart as $id => $item) {
+        foreach ($cart as $key => $item) {
             $orderItem = new OrderItem();
-            $orderItem->order_id = $order_id;
-            $orderItem->product_id = $id;
+            $orderItem->product_order_id = $order_id;
+            $orderItem->product_id = $item['id'];
+            $orderItem->title = $item['name'];
             $orderItem->qty = $item['qty'];
-            $orderItem->price = $item['price'];
+            $orderItem->product_price = $item['product_price'];
+            $orderItem->total = $item['total'];
+            $orderItem->image = $item['photo'];
+            
+            // Handle variations
+            if (!empty($item['variations'])) {
+                $orderItem->variations = json_encode($item['variations']);
+                $varTotal = 0.00;
+                foreach ($item['variations'] as $variation) {
+                    if (is_array($variation) && array_key_exists('price', $variation)) {
+                        $varTotal += (float)$variation["price"];
+                    }
+                }
+                $orderItem->variations_price = $varTotal * $item['qty'];
+            }
+            
+            // Handle addons
+            if (!empty($item['addons'])) {
+                $orderItem->addons = json_encode($item['addons']);
+                $addonTotal = 0.00;
+                foreach ($item['addons'] as $addon) {
+                    if (is_array($addon) && array_key_exists('price', $addon)) {
+                        $addonTotal += (float)$addon["price"];
+                    }
+                }
+                $orderItem->addons_price = $addonTotal * $item['qty'];
+            }
+            
+            // Handle customizations
+            if (!empty($item['customizations'])) {
+                $orderItem->customizations = json_encode($item['customizations']);
+            }
+            
             $orderItem->save();
         }
     }

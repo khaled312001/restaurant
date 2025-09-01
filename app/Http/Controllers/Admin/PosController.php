@@ -392,6 +392,7 @@ class PosController extends Controller
                 'title' => $cartItem["name"],
                 'variations' => json_encode($cartItem["variations"]),
                 'addons' => json_encode($cartItem["addons"]),
+                'customizations' => !empty($cartItem["customizations"]) ? json_encode($cartItem["customizations"]) : null,
                 'variations_price' => $varTotal,
                 'addons_price' => $addonTotal,
                 'product_price' => $pprice,

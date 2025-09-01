@@ -113,6 +113,44 @@
                                                     @endforeach
                                                 </p>
                                             @endif
+                                            @if (!empty($item["customizations"]))
+                                                <p>
+                                                    <strong>{{__("Customizations")}}:</strong><br>
+                                                    @php
+                                                        $customizations = $item["customizations"];
+                                                        if (is_string($customizations)) {
+                                                            $customizations = json_decode($customizations, true);
+                                                        }
+                                                    @endphp
+                                                    @if (is_array($customizations))
+                                                        @if (!empty($customizations['meatChoice']))
+                                                            <span class="text-capitalize">{{__("Meat")}}:</span> {{ucfirst($customizations['meatChoice'])}}<br>
+                                                        @endif
+                                                        @if (!empty($customizations['vegetables']) && is_array($customizations['vegetables']))
+                                                            <span class="text-capitalize">{{__("Vegetables")}}:</span> 
+                                                            @foreach ($customizations['vegetables'] as $veg)
+                                                                @if ($veg === 'no-vegetables')
+                                                                    {{__("No Vegetables")}}
+                                                                @else
+                                                                    {{ucfirst(str_replace('-', ' ', $veg))}}
+                                                                @endif
+                                                                @if (!$loop->last), @endif
+                                                            @endforeach
+                                                            <br>
+                                                        @endif
+                                                        @if (!empty($customizations['drinkChoice']))
+                                                            <span class="text-capitalize">{{__("Drink")}}:</span> {{ucfirst(str_replace('-', ' ', $customizations['drinkChoice']))}}<br>
+                                                        @endif
+                                                        @if (!empty($customizations['sauces']) && is_array($customizations['sauces']))
+                                                            <span class="text-capitalize">{{__("Sauces")}}:</span> 
+                                                            @foreach ($customizations['sauces'] as $sauce)
+                                                                {{ucfirst(str_replace('-', ' ', $sauce))}}
+                                                                @if (!$loop->last), @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                </p>
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="qty">

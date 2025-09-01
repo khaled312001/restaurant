@@ -48,8 +48,8 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KEBAB</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 102) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                <button onclick="openCustomizationModal(102, 'ASSIETTE KEBAB', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -70,8 +70,8 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 102) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                <button onclick="openCustomizationModal(102, 'ASSIETTE KEBAB', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -82,8 +82,8 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE GRILLÉE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 105) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                <button onclick="openCustomizationModal(105, 'ASSIETTE GRILLÉE', '14,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -104,8 +104,8 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 105) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                <button onclick="openCustomizationModal(105, 'ASSIETTE GRILLÉE', '14,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -116,8 +116,8 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KOFTE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 103) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                <button onclick="openCustomizationModal(103, 'ASSIETTE KOFTE', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -138,20 +138,20 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 103) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                <button onclick="openCustomizationModal(103, 'ASSIETTE KOFTE', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
                             </div>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr;">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE POULET CRÈME</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 104) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                                <button onclick="openCustomizationModal(104, 'ASSIETTE POULET CRÈME', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -172,8 +172,42 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 104) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                                <button onclick="openCustomizationModal(104, 'ASSIETTE POULET CRÈME', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop Layout -->
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0;">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KOBANE</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                            <div style="text-align: center;">
+                                <button onclick="openCustomizationModal(101, 'ASSIETTE KOBANE', '15,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Commander
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout -->
+                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">ASSIETTE KOBANE</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #3498db; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">15,00€</span>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <button onclick="openCustomizationModal(101, 'ASSIETTE KOBANE', '15,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1rem; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
                             </div>
@@ -181,212 +215,97 @@
                     </div>
                 </div>
 
-                <!-- Suppléments Section -->
-                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <!-- Supplements Menu -->
+                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #3498db; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        SUPPLÉMENTS
+                        SUPPLEMENTS
                     </h2>
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <!-- Desktop Header -->
-                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #3498db;">
-                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem;">Supplément</span>
-                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
+                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #3498db;">
+                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem;">Article</span>
+                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem;">Prix</span>
                             <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">2,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">2,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 130) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="addToCart('{{ route('add.cart', 134) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Mobile Layout -->
-                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">PETITE FRITE</h4>
-                                <div style="text-align: right;">
-                                    <div style="color: #3498db; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">2,50€</span>
-                            </div>
-                            
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 130) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">3,50€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">4,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 131) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="addToCart('{{ route('add.cart', 135) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Mobile Layout -->
-                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">GRANDE FRITE</h4>
-                                <div style="text-align: right;">
-                                    <div style="color: #3498db; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">3,50€</span>
-                            </div>
-                            
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 131) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">3,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">5,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 132) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="addToCart('{{ route('add.cart', 136) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
                             </div>
-                        </div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">PETITE VIANDE</h4>
-                                <div style="text-align: right;">
-                                    <div style="color: #3498db; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">3,00€</span>
-                            </div>
-                            
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 132) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">4,50€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 133) }}')" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="menu-item-mobile mobile-only" style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.2rem;">GRANDE VIANDE</h4>
-                                <div style="text-align: right;">
-                                    <div style="color: #3498db; font-size: 0.9rem; margin-bottom: 5px;">Prix</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
-                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">4,50€</span>
-                            </div>
-                            
-                            <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 133) }}')" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Information Section -->
-                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                    <h2 style="color: #3498db; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        INFORMATIONS IMPORTANTES
-                    </h2>
-                    
-                    <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-utensils" style="font-size: 2.5rem; color: #3498db; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Plats Complets</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Assiettes généreuses avec riz et légumes</p>
-                        </div>
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-fire" style="font-size: 2.5rem; color: #3498db; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Viandes Grillées</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Viandes fraîches grillées à la perfection</p>
-                        </div>
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-plus" style="font-size: 2.5rem; color: #3498db; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Suppléments</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Frites et viandes supplémentaires disponibles</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side - Product Cards -->
+            <!-- Right Side - Food Images and Info -->
             <div class="col-lg-4">
-                <div class="product-cards" style="position: sticky; top: 20px;">
-                    <!-- Assiette Kebab Card -->
-                    <div class="product-card" style="margin-bottom: 30px; text-align: center;">
+                <div class="food-images" style="position: sticky; top: 20px;">
+                    <!-- Assiette Image -->
+                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
                         <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #3498db, #2980b9); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
+                            <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #3498db, #2980b9); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
                                 <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-utensils" style="font-size: 4rem; color: white; z-index: 2;"></i>
+                                    <i class="fas fa-utensils" style="font-size: 5rem; color: white; z-index: 2;"></i>
                                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(52,152,219,0.3), rgba(52,152,219,0.1)); z-index: 1;"></div>
                                 </div>
                             </div>
                             <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(52,152,219,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Assiette Kebab</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Kebab, riz, légumes</p>
+                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Assiettes Complètes</h4>
+                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Plats généreux avec accompagnements</p>
                     </div>
 
-                    <!-- Assiette Grillée Card -->
-                    <div class="product-card" style="text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #e74c3c, #c0392b); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                                <i class="fas fa-fire" style="font-size: 4rem; color: white;"></i>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(52,152,219,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
+                    <!-- Information Section -->
+                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <h4 style="color: #3498db; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
+                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
+                            Informations
+                        </h4>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
+                            <i class="fas fa-clock" style="color: #3498db; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">15-20 minutes</p>
                         </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Assiette Grillée</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Viandes grillées, riz</p>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
+                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Accompagnements</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Riz, légumes, sauces</p>
+                        </div>
+                        
+                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
+                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Portions généreuses</h5>
+                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Idéal pour les gros appétits</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -394,36 +313,112 @@
     </div>
 </div>
 
-<!-- Call to Action -->
-<div class="cta-section" style="padding: 80px 0; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); text-align: center; color: white;">
+<!-- Call to Action Section -->
+<div class="cta-section" style="background: linear-gradient(45deg, #2c3e50, #34495e); padding: 60px 0; text-align: center;">
     <div class="container">
-        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
-            Prêt à déguster nos assiettes ?
-        </h2>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-            Commandez maintenant et profitez de nos plats complets
-        </p>
-        <div class="cta-buttons">
-            <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
-                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
-                Retour au menu
-            </a>
-            <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white;">
-                <i class="fas fa-home" style="margin-right: 10px;"></i>
-                Accueil
-            </a>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 style="color: white; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">
+                    Prêt à déguster ?
+                </h2>
+                <p style="color: #bdc3c7; font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Personnalisez vos sauces et ajoutez votre assiette au panier en quelques clics !
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="{{ route('front.sandwiches') }}" class="btn btn-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; margin-right: 20px;">
+                        <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                        Retour au menu
+                    </a>
+                    <a href="{{ route('front.index') }}" class="btn btn-outline-light btn-lg" style="padding: 15px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: 2px solid white;">
+                        <i class="fas fa-home" style="margin-right: 10px;"></i>
+                        Accueil
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Responsive CSS -->
+<!-- Include Customization Modal -->
+@include('front.multipurpose.product.customization_modal')
+
 <style>
+.menu-category {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.menu-item {
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.food-image {
+    transition: transform 0.3s ease;
+}
+
+.food-item:hover .food-image {
+    transform: scale(1.05);
+}
+
+.glow-effect {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.info-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     .desktop-only {
         display: none !important;
     }
+    
     .mobile-only {
         display: block !important;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .menu-section {
+        padding: 40px 0;
+    }
+    
+    .cta-buttons .btn {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 300px;
     }
 }
 
@@ -431,37 +426,20 @@
     .mobile-only {
         display: none !important;
     }
+    
     .desktop-only {
         display: grid !important;
     }
 }
-
-.menu-item:hover {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.menu-item-mobile:hover {
-    background: rgba(255,255,255,0.1) !important;
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
 </style>
 
-<!-- JavaScript for cart functionality -->
 <script>
-function addToCartSimple(url) {
+function addToCart(url, variant, quantity, extras) {
+    // Existing addToCart function
+    // You can keep your existing implementation here
+    console.log('Adding to cart:', url, variant, quantity, extras);
+    
+    // For now, redirect to the cart route
     window.location.href = url;
 }
 </script>

@@ -335,28 +335,241 @@ class ProductController extends Controller
         return view('front.multipurpose.product.cart', compact('cart'));
     }
 
-    public function addToCart($id)
+    public function addToCart($id, Request $request = null)
     {
-
         $cart = Session::get('cart');
 
-        $data = explode(',,,', $id);
-        $id = (int)$data[0];
-        $qty = (int)$data[1];
-        $total = (float)$data[2];
-        $variant = json_decode($data[3], true);
-        $addons = json_decode($data[4], true);
+        // Check if this is a POST request with customization data
+        if ($request && $request->isMethod('post')) {
+            $customizations = $request->input('customizations');
+            $quantity = (int)$request->input('quantity', 1);
+            
+            if ($customizations) {
+                $customizationData = json_decode($customizations, true);
+                $id = (int)$id;
+                $qty = $quantity;
+                $total = 0;
+                $variant = [];
+                $addons = [];
+            } else {
+                // Fallback to GET logic
+                return $this->addToCartGet($id);
+            }
+        } else {
+            // Check if this is a simple product addition or complex one
+            if (strpos($id, ',,,') !== false) {
+                // Complex product with variants/addons
+                $data = explode(',,,', $id);
+                $id = (int)$data[0];
+                $qty = (int)$data[1];
+                $total = (float)$data[2];
+                $variant = json_decode($data[3], true);
+                $addons = json_decode($data[4], true);
+            } else {
+                // Simple product addition - use default values
+                $id = (int)$id;
+                $qty = 1;
+                $total = 0;
+                $variant = [];
+                $addons = [];
+            }
+        }
 
         $product = Product::findOrFail($id);
         // validations
         if ($qty < 1) {
-            return response()->json(['error' => 'Quanty must be 1 or more than 1.']);
+            return response()->json(['error' => 'Quantity must be 1 or more than 1.']);
         }
+        
         $pvariant = json_decode($product->variations, true);
+        
+        // If this is a simple addition but the product has variations, 
+        // we need to handle this case gracefully
         if (!empty($pvariant) && empty($variant)) {
-            return response()->json(['error' => 'You must select a variant.']);
+            // For simple additions, try to use the first available variant
+            if (is_array($pvariant)) {
+                $firstVariantKey = array_key_first($pvariant);
+                if ($firstVariantKey && is_array($pvariant[$firstVariantKey]) && !empty($pvariant[$firstVariantKey])) {
+                    $firstVariant = $pvariant[$firstVariantKey][0]; // Get first option of first variant
+                    $variant = [$firstVariantKey => $firstVariant];
+                } else {
+                    return response()->json(['error' => 'You must select a variant.']);
+                }
+            } else {
+                return response()->json(['error' => 'You must select a variant.']);
+            }
         }
 
+        if (!$product) {
+            abort(404);
+        }
+        
+        // Recalculate total on server side to ensure accuracy
+        $calculatedTotal = (float)$product->current_price;
+        
+        // Add variations price
+        if (is_array($variant)) {
+            foreach ($variant as $variation) {
+                if (is_array($variation) && array_key_exists('price', $variation)) {
+                    $calculatedTotal += (float)$variation["price"];
+                }
+            }
+        }
+        
+        // Add addons price
+        if (is_array($addons)) {
+            foreach ($addons as $addon) {
+                if (is_array($addon) && array_key_exists('price', $addon)) {
+                    $calculatedTotal += (float)$addon["price"];
+                }
+            }
+        }
+        
+        // Multiply by quantity
+        $calculatedTotal = $calculatedTotal * $qty;
+        
+        $cart = Session::get('cart');
+        $ckey = uniqid();
+
+        // Prepare cart item data
+        $cartItem = [
+            "id" => $id,
+            "name" => $product->title,
+            "qty" => (int)$qty,
+            "variations" => $variant,
+            "addons" => $addons,
+            "product_price" => (float)$product->current_price,
+            "total" => $calculatedTotal,
+            "photo" => $product->feature_image
+        ];
+
+        // Add customizations if provided
+        if (isset($customizationData)) {
+            $cartItem["customizations"] = $customizationData;
+        }
+
+        // if cart is empty then this the first product
+        if (!$cart) {
+            $cart = [
+                $ckey => $cartItem
+            ];
+
+            Session::put('cart', $cart);
+            Session::save();
+            
+            if ($request && $request->isMethod('post')) {
+                return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+            }
+            return response()->json(['message' => 'Product added to cart successfully!']);
+        }
+
+        // if cart not empty then check if this product (with same variation and customizations) exist then increment quantity
+        foreach ($cart as $key => $existingCartItem) {
+            $variationsMatch = $variant == $existingCartItem["variations"];
+            $addonsMatch = $addons == $existingCartItem["addons"];
+            $customizationsMatch = true;
+            
+            if (isset($customizationData) && isset($existingCartItem["customizations"])) {
+                $customizationsMatch = $customizationData == $existingCartItem["customizations"];
+            } elseif (!isset($customizationData) && !isset($existingCartItem["customizations"])) {
+                $customizationsMatch = true;
+            } else {
+                $customizationsMatch = false;
+            }
+            
+            if ($existingCartItem["id"] == $id && $variationsMatch && $addonsMatch && $customizationsMatch) {
+                $cart[$key]['qty'] = (int)$cart[$key]['qty'] + $qty;
+                // Recalculate total for this item
+                $itemTotal = (float)$existingCartItem["product_price"];
+                
+                // Add variations price
+                if (is_array($existingCartItem["variations"])) {
+                    foreach ($existingCartItem["variations"] as $variation) {
+                        if (is_array($variation) && array_key_exists('price', $variation)) {
+                            $itemTotal += (float)$variation["price"];
+                        }
+                    }
+                }
+                
+                // Add addons price
+                if (is_array($existingCartItem["addons"])) {
+                    foreach ($existingCartItem["addons"] as $addon) {
+                        if (is_array($addon) && array_key_exists('price', $addon)) {
+                            $itemTotal += (float)$addon["price"];
+                        }
+                    }
+                }
+                
+                $cart[$key]['total'] = $itemTotal * $cart[$key]['qty'];
+                Session::put('cart', $cart);
+                Session::save();
+                
+                if ($request && $request->isMethod('post')) {
+                    return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+                }
+                return response()->json(['message' => 'Product added to cart successfully!']);
+            }
+        }
+
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart[$ckey] = $cartItem;
+
+        Session::put('cart', $cart);
+        Session::save();
+
+        if ($request && $request->isMethod('post')) {
+            return redirect()->route('front.cart')->with('success', 'Product added to cart successfully!');
+        }
+        return response()->json(['message' => 'Product added to cart successfully!']);
+    }
+
+    // Helper method for GET requests (original logic)
+    private function addToCartGet($id)
+    {
+        $cart = Session::get('cart');
+
+        // Check if this is a simple product addition or complex one
+        if (strpos($id, ',,,') !== false) {
+            // Complex product with variants/addons
+            $data = explode(',,,', $id);
+            $id = (int)$data[0];
+            $qty = (int)$data[1];
+            $total = (float)$data[2];
+            $variant = json_decode($data[3], true);
+            $addons = json_decode($data[4], true);
+        } else {
+            // Simple product addition - use default values
+            $id = (int)$id;
+            $qty = 1;
+            $total = 0;
+            $variant = [];
+            $addons = [];
+        }
+
+        $product = Product::findOrFail($id);
+        // validations
+        if ($qty < 1) {
+            return response()->json(['error' => 'Quantity must be 1 or more than 1.']);
+        }
+        
+        $pvariant = json_decode($product->variations, true);
+        
+        // If this is a simple addition but the product has variations, 
+        // we need to handle this case gracefully
+        if (!empty($pvariant) && empty($variant)) {
+            // For simple additions, try to use the first available variant
+            if (is_array($pvariant)) {
+                $firstVariantKey = array_key_first($pvariant);
+                if ($firstVariantKey && is_array($pvariant[$firstVariantKey]) && !empty($pvariant[$firstVariantKey])) {
+                    $firstVariant = $pvariant[$firstVariantKey][0]; // Get first option of first variant
+                    $variant = [$firstVariantKey => $firstVariant];
+                } else {
+                    return response()->json(['error' => 'You must select a variant.']);
+                }
+            } else {
+                return response()->json(['error' => 'You must select a variant.']);
+            }
+        }
 
         if (!$product) {
             abort(404);
@@ -453,7 +666,6 @@ class ProductController extends Controller
             "total" => $calculatedTotal,
             "photo" => $product->feature_image
         ];
-
 
         Session::put('cart', $cart);
         Session::save();

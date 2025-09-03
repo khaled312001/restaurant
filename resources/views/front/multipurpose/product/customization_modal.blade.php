@@ -20,269 +20,43 @@
                     <h5 id="modalProductPrice" style="color: #f39c12; font-weight: 700; font-size: 1.3rem; margin: 0;"></h5>
                 </div>
 
-                <!-- Meat Choice Section (for Tacos/Galettes) -->
-                <div id="meatChoiceSection" class="customization-section" style="display: none; margin-bottom: 25px;">
-                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid #e74c3c; padding-bottom: 10px;">
-                        <i class="fas fa-drumstick-bite" style="margin-right: 10px; color: #e74c3c;"></i>
-                        Choisissez votre viande
-                    </h5>
-                    <div class="meat-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="kebab" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-fire" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Kebab</div>
+                <!-- Dynamic Addons Sections -->
+                @if(isset($addons))
+                    @foreach($addons as $category => $categoryData)
+                        @if(count($categoryData['items']) > 0)
+                            <div id="{{ $category }}Section" class="customization-section" style="display: none; margin-bottom: 25px;">
+                                <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid {{ $category == 'meat' ? '#e74c3c' : ($category == 'vegetables' ? '#27ae60' : ($category == 'drinks' ? '#3498db' : ($category == 'sauces' ? '#e67e22' : '#9b59b6'))) }}; padding-bottom: 10px;">
+                                    <i class="fas {{ $category == 'meat' ? 'fa-drumstick-bite' : ($category == 'vegetables' ? 'fa-leaf' : ($category == 'drinks' ? 'fa-glass-whiskey' : ($category == 'sauces' ? 'fa-fire' : 'fa-plus'))) }}" style="margin-right: 10px; color: {{ $category == 'meat' ? '#e74c3c' : ($category == 'vegetables' ? '#27ae60' : ($category == 'drinks' ? '#3498db' : ($category == 'sauces' ? '#e67e22' : '#9b59b6'))) }};"></i>
+                                    {{ $categoryData['label'] }}
+                                </h5>
+                                <div class="{{ $category }}-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
+                                    @foreach($categoryData['items'] as $addon)
+                                        <label class="{{ $category }}-option" style="cursor: pointer; text-align: center;">
+                                            @if($category == 'meat')
+                                                <input type="radio" name="meatChoice" value="{{ $addon->name }}" style="display: none;">
+                                            @else
+                                                <input type="checkbox" name="{{ $category }}" value="{{ $addon->name }}" style="display: none;">
+                                            @endif
+                                            <div class="{{ $category }}-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
+                                                <i class="{{ $addon->icon ?? 'fas fa-cog' }}" style="font-size: 1.5rem; color: {{ $category == 'meat' ? '#e74c3c' : ($category == 'vegetables' ? '#27ae60' : ($category == 'drinks' ? '#3498db' : ($category == 'sauces' ? '#e67e22' : '#9b59b6'))) }}; margin-bottom: 8px;"></i>
+                                                <div class="{{ $category }}-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">{{ $addon->name }}</div>
+                                                @if($addon->price > 0)
+                                                    <div class="addon-price" style="font-size: 0.8rem; color: #e74c3c; font-weight: 600;">+{{ number_format($addon->price, 2) }}€</div>
+                                                @endif
+                                            </div>
+                                        </label>
+                                    @endforeach
+                                </div>
                             </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="steak" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-cut" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Steak</div>
-                            </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="chicken" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-drumstick-bite" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Poulet</div>
-                            </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="jacket" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-utensils" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Jacket</div>
-                            </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="cordon-bleu" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-star" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Cordon Bleu</div>
-                            </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="tenders" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-feather" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Tenders</div>
-                            </div>
-                        </label>
-                        <label class="meat-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="meatChoice" value="nuggets" style="display: none;">
-                            <div class="meat-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-circle" style="font-size: 2rem; color: #e74c3c; margin-bottom: 10px;"></i>
-                                <div class="meat-text" style="font-weight: 600; color: #2c3e50;">Nuggets</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
+                        @endif
+                    @endforeach
+                @endif
 
-                <!-- Vegetables Section -->
-                <div id="vegetablesSection" class="customization-section" style="display: none; margin-bottom: 25px;">
-                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">
-                        <i class="fas fa-leaf" style="margin-right: 10px; color: #27ae60;"></i>
-                        Légumes
-                    </h5>
-                    <div class="vegetable-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
-                        <label class="vegetable-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="vegetables" value="tomatoes" style="display: none;">
-                            <div class="vegetable-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-circle" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 8px;"></i>
-                                <div class="vegetable-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Tomates</div>
-                            </div>
-                        </label>
-                        <label class="vegetable-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="vegetables" value="salad" style="display: none;">
-                            <div class="vegetable-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-leaf" style="font-size: 1.5rem; color: #27ae60; margin-bottom: 8px;"></i>
-                                <div class="vegetable-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Salade</div>
-                            </div>
-                        </label>
-                        <label class="vegetable-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="vegetables" value="onions" style="display: none;">
-                            <div class="vegetable-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-circle" style="font-size: 1.5rem; color: #8e44ad; margin-bottom: 8px;"></i>
-                                <div class="vegetable-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Oignons</div>
-                            </div>
-                        </label>
-                        <label class="vegetable-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="vegetables" value="no-vegetables" style="display: none;">
-                            <div class="vegetable-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-times-circle" style="font-size: 1.5rem; color: #95a5a6; margin-bottom: 8px;"></i>
-                                <div class="vegetable-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Sans légumes</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
 
-                <!-- Drink Choice Section (for Menu Items) -->
-                <div id="drinkChoiceSection" class="customization-section" style="display: none; margin-bottom: 25px;">
-                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
-                        <i class="fas fa-glass-whiskey" style="margin-right: 10px; color: #3498db;"></i>
-                        Choisissez votre boisson
-                    </h5>
-                    <div class="drink-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="coca-cola" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #8b0000; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Coca-Cola</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="coca-cherry" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #8b0000; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Coca Cherry</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="coca-zero" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #8b0000; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Coca Zero</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="oasis-tropical" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #ff6b35; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Oasis Tropical</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="oasis-apple" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #27ae60; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Oasis Apple</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="ice-tea" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #8b4513; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Ice Tea</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="fuze-tea" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #8b4513; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Fuze Tea</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="sprite" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #27ae60; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Sprite</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="fanta-orange" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #ff8c00; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Fanta Orange</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="tropico" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #ff8c00; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Tropico</div>
-                            </div>
-                        </label>
-                        <label class="drink-option" style="cursor: pointer; text-align: center;">
-                            <input type="radio" name="drinkChoice" value="orangina" style="display: none;">
-                            <div class="drink-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #ff8c00; margin-bottom: 8px;"></i>
-                                <div class="drink-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Orangina</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
 
-                <!-- Sauces Section -->
-                <div id="saucesSection" class="customization-section" style="display: none; margin-bottom: 25px;">
-                    <h5 style="color: #2c3e50; font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid #e67e22; padding-bottom: 10px;">
-                        <i class="fas fa-fire" style="margin-right: 10px; color: #e67e22;"></i>
-                        Sauces
-                    </h5>
-                    <div class="sauce-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="white-sauce" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #f8f9fa; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Sauce Blanche</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="mayonnaise" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #f8f9fa; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Mayonnaise</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="ketchup" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Ketchup</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="harissa" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-fire" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Harissa</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="mustard" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #f39c12; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Moutarde</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="bbq" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-fire" style="font-size: 1.5rem; color: #8b4513; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">BBQ</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="curry" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #f39c12; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Curry</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="algerienne" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #e67e22; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Algérienne</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="samourai" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-fire" style="font-size: 1.5rem; color: #e74c3c; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Samouraï</div>
-                            </div>
-                        </label>
-                        <label class="sauce-option" style="cursor: pointer; text-align: center;">
-                            <input type="checkbox" name="sauces" value="andalouse" style="display: none;">
-                            <div class="sauce-card" style="background: white; border: 2px solid #e9ecef; border-radius: 15px; padding: 15px; transition: all 0.3s ease;">
-                                <i class="fas fa-tint" style="font-size: 1.5rem; color: #e67e22; margin-bottom: 8px;"></i>
-                                <div class="sauce-text" style="font-weight: 600; color: #2c3e50; font-size: 0.9rem;">Andalouse</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
+
+
+
 
                 <!-- Quantity Section -->
                 <div class="quantity-section" style="text-align: center; margin-bottom: 25px;">
@@ -408,21 +182,11 @@ function openCustomizationModal(productId, productName, price, type, hasMeatChoi
 
 // Function to show/hide customization sections based on product type
 function showCustomizationSections() {
-    // Meat choice section - show for Tacos/Galettes
-    const meatSection = document.getElementById('meatChoiceSection');
-    meatSection.style.display = currentHasMeatChoice ? 'block' : 'none';
-    
-    // Vegetables section - show for all sandwiches and menu items (except Assiettes)
-    const vegetablesSection = document.getElementById('vegetablesSection');
-    vegetablesSection.style.display = (currentProductType !== 'Assiette') ? 'block' : 'none';
-    
-    // Drinks section - show for menu items only
-    const drinksSection = document.getElementById('drinkChoiceSection');
-    drinksSection.style.display = currentIsMenu ? 'block' : 'none';
-    
-    // Sauces section - show for all items
-    const saucesSection = document.getElementById('saucesSection');
-    saucesSection.style.display = 'block';
+    // Show all dynamic addon sections
+    const addonSections = document.querySelectorAll('[id$="Section"]');
+    addonSections.forEach(section => {
+        section.style.display = 'block';
+    });
 }
 
 // Function to reset the modal form
@@ -442,6 +206,10 @@ function resetModalForm() {
     // Reset sauces
     const sauceInputs = document.querySelectorAll('input[name="sauces"]');
     sauceInputs.forEach(input => input.checked = false);
+    
+    // Reset extras
+    const extraInputs = document.querySelectorAll('input[name="extras"]');
+    extraInputs.forEach(input => input.checked = false);
     
     // Reset quantity
     currentQuantity = 1;
@@ -483,7 +251,8 @@ function collectCustomizationOptions() {
         meatChoice: null,
         vegetables: [],
         drinkChoice: null,
-        sauces: []
+        sauces: [],
+        extras: []
     };
     
     // Get meat choice
@@ -508,6 +277,12 @@ function collectCustomizationOptions() {
     const selectedSauces = document.querySelectorAll('input[name="sauces"]:checked');
     selectedSauces.forEach(input => {
         customization.sauces.push(input.value);
+    });
+    
+    // Get extras
+    const selectedExtras = document.querySelectorAll('input[name="extras"]:checked');
+    selectedExtras.forEach(input => {
+        customization.extras.push(input.value);
     });
     
     return customization;

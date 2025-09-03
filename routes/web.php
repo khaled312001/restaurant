@@ -276,6 +276,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
 
     Route::group(['middleware' => 'checkpermission:Basic Settings'], function () {
+        // Admin Addons Routes
+        Route::get('/addons', 'Admin\AddonController@index')->name('admin.addons.index');
+        Route::get('/addons/create', 'Admin\AddonController@create')->name('admin.addons.create');
+        Route::post('/addons', 'Admin\AddonController@store')->name('admin.addons.store');
+        Route::get('/addons/{id}', 'Admin\AddonController@show')->name('admin.addons.show');
+        Route::get('/addons/{id}/edit', 'Admin\AddonController@edit')->name('admin.addons.edit');
+        Route::put('/addons/{id}', 'Admin\AddonController@update')->name('admin.addons.update');
+        Route::delete('/addons/{id}', 'Admin\AddonController@destroy')->name('admin.addons.destroy');
+        Route::post('/addons/{id}/toggle-status', 'Admin\AddonController@toggleStatus')->name('admin.addons.toggle-status');
+        Route::post('/addons/update-sort-order', 'Admin\AddonController@updateSortOrder')->name('admin.addons.update-sort-order');
+
         // Admin Favicon Routes
         //updated by saif
         
@@ -933,9 +944,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/qr-code/generate', 'Admin\QrController@generate')->name('admin.qrcode.generate');
     });
 
-
-
-
+    // Admin Customizations Routes (no permission required - accessible to all admins)
+    Route::resource('customizations', 'Admin\CustomizationController')->names([
+        'index' => 'admin.customizations.index',
+        'create' => 'admin.customizations.create',
+        'store' => 'admin.customizations.store',
+        'show' => 'admin.customizations.show',
+        'edit' => 'admin.customizations.edit',
+        'update' => 'admin.customizations.update',
+        'destroy' => 'admin.customizations.destroy'
+    ]);
+    Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('admin.customizations.order');
 
 });
 
@@ -957,8 +976,4 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
-// Admin Customizations Routes
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
-    Route::resource('customizations', 'Admin\CustomizationController');
-    Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('customizations.order');
-});
+

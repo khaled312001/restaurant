@@ -113,6 +113,19 @@ class ProductController extends Controller
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
+        // Get addons from database grouped by category
+        $addons = \App\Models\Addon::active()->get();
+        $groupedAddons = [];
+        
+        foreach (\App\Models\Addon::CATEGORIES as $category => $label) {
+            $groupedAddons[$category] = [
+                'label' => $label,
+                'items' => $addons->where('category', $category)
+            ];
+        }
+        
+        $data['addons'] = $groupedAddons;
+
         return view('front.multipurpose.product.kebab_galette', $data);
     }
 
@@ -330,6 +343,9 @@ class ProductController extends Controller
         if (Session::has('cart')) {
             $cart = Session::get('cart');
             
+            // Debug: Log cart contents
+            \Log::info('Cart contents:', $cart);
+            
             // Validate and clean cart data
             if (is_array($cart)) {
                 foreach ($cart as $key => $item) {
@@ -345,6 +361,9 @@ class ProductController extends Controller
                         unset($cart[$key]);
                         continue;
                     }
+                    
+                    // Debug: Log each cart item
+                    \Log::info('Cart item ' . $key . ':', $item);
                     
                     // Recalculate total to ensure accuracy
                     $itemTotal = (float)$item['product_price'];
@@ -495,6 +514,56 @@ class ProductController extends Controller
         if ($customizationData) {
             $cartItem["customizations"] = $customizationData;
             
+            // Debug: Log the cart item with customizations
+            \Log::info('Cart item with customizations:', $cartItem);
+            
+            // Prepare addons array for database storage
+            $allAddons = [];
+            
+            // Add meat choice
+            if (!empty($customizationData['meatChoice'])) {
+                $allAddons[] = [
+                    'name' => $customizationData['meatChoice'],
+                    'category' => 'meat',
+                    'price' => 0.00,
+                    'type' => 'meat_choice'
+                ];
+            }
+            
+            // Add vegetables
+            if (!empty($customizationData['vegetables']) && is_array($customizationData['vegetables'])) {
+                foreach ($customizationData['vegetables'] as $vegetable) {
+                    $allAddons[] = [
+                        'name' => $vegetable,
+                        'category' => 'vegetables',
+                        'price' => 0.00,
+                        'type' => 'vegetable'
+                    ];
+                }
+            }
+            
+            // Add drink choice
+            if (!empty($customizationData['drinkChoice'])) {
+                $allAddons[] = [
+                    'name' => $customizationData['drinkChoice'],
+                    'category' => 'drinks',
+                    'price' => 0.00,
+                    'type' => 'drink'
+                ];
+            }
+            
+            // Add sauces
+            if (!empty($customizationData['sauces']) && is_array($customizationData['sauces'])) {
+                foreach ($customizationData['sauces'] as $sauce) {
+                    $allAddons[] = [
+                        'name' => $sauce,
+                        'category' => 'sauces',
+                        'price' => 0.00,
+                        'type' => 'sauce'
+                    ];
+                }
+            }
+            
             // Save customization to database
             try {
                 $customization = new \App\Models\Customization();
@@ -506,6 +575,7 @@ class ProductController extends Controller
                 $customization->vegetables = $customizationData['vegetables'] ?? [];
                 $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
                 $customization->sauces = $customizationData['sauces'] ?? [];
+                $customization->addons = $allAddons; // Store all addons in one field
                 $customization->save();
                 
                 // Store customization ID in cart item
@@ -515,6 +585,9 @@ class ProductController extends Controller
                 \Log::error('Failed to save customization: ' . $e->getMessage());
             }
         }
+
+        // Debug: Log the final cart item before saving
+        \Log::info('Final cart item to be saved:', $cartItem);
 
         // if cart is empty then this the first product
         if (!$cart) {
@@ -810,13 +883,42 @@ class ProductController extends Controller
 
     public function cartitemremove($id)
     {
-        if ($id) {
-            $cart = Session::get('cart');
-            unset($cart[$id]);
-            Session::put('cart', $cart);
-            Session::save();
-
-            return response()->json(['message' => 'Item removed successfully']);
+        try {
+            if ($id !== null) {
+                $cart = Session::get('cart');
+                
+                if (isset($cart[$id])) {
+                    unset($cart[$id]);
+                    Session::put('cart', $cart);
+                    Session::save();
+                    
+                    \Log::info("Cart item removed successfully. ID: {$id}");
+                    
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Article supprimé avec succès',
+                        'cart_count' => count($cart)
+                    ]);
+                } else {
+                    \Log::warning("Cart item not found for removal. ID: {$id}");
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Article non trouvé dans le panier'
+                    ], 404);
+                }
+            } else {
+                \Log::error("Invalid ID provided for cart item removal");
+                return response()->json([
+                    'success' => false,
+                    'message' => 'ID invalide'
+                ], 400);
+            }
+        } catch (\Exception $e) {
+            \Log::error("Error removing cart item: " . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression: ' . $e->getMessage()
+            ], 500);
         }
     }
 

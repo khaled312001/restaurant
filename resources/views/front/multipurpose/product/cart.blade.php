@@ -73,9 +73,7 @@
                                 <thead>
                                     <tr>
                                         <th>{{__('Product')}}</th>
-                                        <th>{{__('Product Title')}}</th>
-                                        <th>{{__('Variations')}}</th>
-                                        <th>{{__('Addons')}}</th>
+                                        <th>{{__('Customizations')}}</th>
                                         <th>{{__('Quantity')}}</th>
                                         <th>{{__('Unit Price')}}</th>
                                         <th>{{__('Total')}}</th>
@@ -108,13 +106,6 @@
                                     @endphp
                                     <tr class="remove{{ $key }}">
                                         <td>
-                                            <div class="cart-product">
-                                                <div class="cart-product-img">
-                                                    <img src="{{ asset('assets/images/products/'.$item['photo']) }}" alt="{{ $item['name'] }}">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
                                             <div class="cart-product-info">
                                                 <h5 class="cart-product-title">{{ $item['name'] }}</h5>
                                                 <p class="cart-product-price">
@@ -123,62 +114,167 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @if(isset($item['variations']) && is_array($item['variations']) && count($item['variations']) > 0)
-                                                <div class="variations-list">
-                                                    @foreach($item['variations'] as $varKey => $variation)
-                                                        @if(is_array($variation) && array_key_exists('name', $variation))
-                                                            <span class="badge badge-info">
-                                                                {{ $variation['name'] }}
-                                                                @if(array_key_exists('price', $variation))
-                                                                    (+{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($variation['price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}})
-                                                                @endif
-                                                            </span>
+                                            <div class="customization-details">
+                                                @if(isset($item['customizations']))
+                                                    @php
+                                                        $customizations = $item['customizations'];
+                                                        
+                                                        // Try to get addons from database if customization_id exists
+                                                        $dbAddons = [];
+                                                        if (isset($item['customization_id'])) {
+                                                            try {
+                                                                $customizationModel = App\Models\Customization::find($item['customization_id']);
+                                                                if ($customizationModel && $customizationModel->addons) {
+                                                                    $dbAddons = $customizationModel->addons;
+                                                                }
+                                                            } catch (Exception $e) {
+                                                                // Fallback to session data
+                                                                $dbAddons = [];
+                                                            }
+                                                        }
+                                                        
+                                                        // Use database addons if available, otherwise fallback to session data
+                                                        $allAddons = !empty($dbAddons) ? $dbAddons : [];
+                                                        
+                                                        // Group addons by category
+                                                        $groupedAddons = [];
+                                                        foreach ($allAddons as $addon) {
+                                                            $category = $addon['category'] ?? 'other';
+                                                            if (!isset($groupedAddons[$category])) {
+                                                                $groupedAddons[$category] = [];
+                                                            }
+                                                            $groupedAddons[$category][] = $addon;
+                                                        }
+                                                    @endphp
+                                                    
+                                                    <!-- Display all addons grouped by category -->
+                                                    @foreach($groupedAddons as $category => $addons)
+                                                        @if(count($addons) > 0)
+                                                            <div class="customization-item">
+                                                                @switch($category)
+                                                                    @case('meat')
+                                                                        <strong><i class="fas fa-drumstick-bite text-danger"></i> Viande:</strong>
+                                                                        @break
+                                                                    @case('vegetables')
+                                                                        <strong><i class="fas fa-leaf text-success"></i> Légumes:</strong>
+                                                                        @break
+                                                                    @case('drinks')
+                                                                        <strong><i class="fas fa-glass-whiskey text-info"></i> Boisson:</strong>
+                                                                        @break
+                                                                    @case('sauces')
+                                                                        <strong><i class="fas fa-fire text-warning"></i> Sauces:</strong>
+                                                                        @break
+                                                                    @case('extras')
+                                                                        <strong><i class="fas fa-plus text-primary"></i> Suppléments:</strong>
+                                                                        @break
+                                                                    @default
+                                                                        <strong><i class="fas fa-cog text-secondary"></i> {{ ucfirst($category) }}:</strong>
+                                                                @endswitch
+                                                                
+                                                                @foreach($addons as $addon)
+                                                                    @php
+                                                                        $badgeClass = 'badge-secondary';
+                                                                        switch($category) {
+                                                                            case 'meat': $badgeClass = 'badge-danger'; break;
+                                                                            case 'vegetables': $badgeClass = 'badge-success'; break;
+                                                                            case 'drinks': $badgeClass = 'badge-info'; break;
+                                                                            case 'sauces': $badgeClass = 'badge-warning'; break;
+                                                                            case 'extras': $badgeClass = 'badge-primary'; break;
+                                                                        }
+                                                                        
+                                                                        $addonName = $addon['name'] ?? $addon;
+                                                                        $addonPrice = $addon['price'] ?? 0;
+                                                                        $priceText = $addonPrice > 0 ? " (+" . number_format($addonPrice, 2) . "€)" : "";
+                                                                    @endphp
+                                                                    <span class="badge {{ $badgeClass }}">{{ ucfirst(str_replace('-', ' ', $addonName)) }}{{ $priceText }}</span>
+                                                                @endforeach
+                                                            </div>
                                                         @endif
                                                     @endforeach
-                                                </div>
-                                            @else
-                                                <span class="text-muted">-</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if(isset($item['addons']) && is_array($item['addons']) && count($item['addons']) > 0)
-                                                <div class="addons-list">
-                                                    @foreach($item['addons'] as $addonKey => $addon)
-                                                        @if(is_array($addon) && array_key_exists('name', $addon))
-                                                            <span class="badge badge-success">
-                                                                {{ $addon['name'] }}
-                                                                @if(array_key_exists('price', $addon))
-                                                                    (+{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($addon['price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}})
-                                                                @endif
-                                                            </span>
+                                                    
+                                                    <!-- Fallback to old customization data if no database addons -->
+                                                    @if(empty($dbAddons))
+                                                        <!-- Meat Choice -->
+                                                        @if(isset($customizations['meatChoice']) && $customizations['meatChoice'])
+                                                            <div class="customization-item">
+                                                                <strong><i class="fas fa-drumstick-bite text-danger"></i> Viande:</strong>
+                                                                <span class="badge badge-primary">{{ ucfirst($customizations['meatChoice']) }}</span>
+                                                            </div>
                                                         @endif
-                                                    @endforeach
-                                                </div>
-                                            @else
-                                                <span class="text-muted">-</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="cart-quantity">
-                                                <input type="number" value="{{ $item['qty'] }}" min="1" class="form-control qty-input" data-key="{{ $key }}" data-product-id="{{ $id }}">
+                                                        
+                                                        <!-- Vegetables -->
+                                                        @if(isset($customizations['vegetables']) && is_array($customizations['vegetables']) && count($customizations['vegetables']) > 0)
+                                                            <div class="customization-item">
+                                                                <strong><i class="fas fa-leaf text-success"></i> Légumes:</strong>
+                                                                @foreach($customizations['vegetables'] as $vegetable)
+                                                                    <span class="badge badge-success">{{ ucfirst(str_replace('-', ' ', $vegetable)) }}</span>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                        
+                                                        <!-- Drinks -->
+                                                        @if(isset($customizations['drinkChoice']) && $customizations['drinkChoice'])
+                                                            <div class="customization-item">
+                                                                <strong><i class="fas fa-glass-whiskey text-info"></i> Boisson:</strong>
+                                                                <span class="badge badge-info">{{ ucfirst(str_replace('-', ' ', $customizations['drinkChoice'])) }}</span>
+                                                            </div>
+                                                        @endif
+                                                        
+                                                        <!-- Sauces -->
+                                                        @if(isset($customizations['sauces']) && is_array($customizations['sauces']) && count($customizations['sauces']) > 0)
+                                                            <div class="customization-item">
+                                                                <strong><i class="fas fa-fire text-warning"></i> Sauces:</strong>
+                                                                @foreach($customizations['sauces'] as $sauce)
+                                                                    <span class="badge badge-warning">{{ ucfirst(str_replace('-', ' ', $sauce)) }}</span>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                @else
+                                                    <!-- Fallback to old variations/addons system -->
+                                                    @if (!empty($item["variations"]))
+                                                        <div class="customization-item">
+                                                            <strong><i class="fas fa-cog text-primary"></i> Variations:</strong>
+                                                            @php
+                                                                $variations = $item["variations"];
+                                                            @endphp
+                                                            @foreach ($variations as $vKey => $variation)
+                                                                <span class="badge badge-primary">{{str_replace("_"," ",$vKey)}}: {{$variation["name"]}}</span>
+                                                                @if (!$loop->last) @endif
+                                                            @endforeach    
+                                                        </div>
+                                                    @endif
+                                                    
+                                                    @if (!empty($item["addons"]))
+                                                        <div class="customization-item">
+                                                            <strong><i class="fas fa-plus text-success"></i> Suppléments:</strong>
+                                                            @php
+                                                                $addons = $item["addons"];
+                                                            @endphp
+                                                            @foreach ($addons as $addon)
+                                                                <span class="badge badge-success">{{$addon["name"]}}</span>
+                                                                @if (!$loop->last) @endif
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="unit-price">
-                                                {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}} {{number_format($unitPrice, 2)}} {{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="item-total">
-                                                {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}} {{number_format($item['total'], 2)}} {{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <div class="cart-action">
-                                                <button type="button" class="btn btn-sm btn-danger remove-item" data-key="{{ $key }}">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                            <div class="quantity-controls">
+                                                <input type="number" class="form-control qty-input" data-key="{{ $key }}" value="{{ $item['qty'] }}" min="1" max="10" style="width: 80px; text-align: center;">
                                             </div>
+                                        </td>
+                                        <td>
+                                            <span class="unit-price">{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($unitPrice, 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="item-total">{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($item['total'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm remove-item" data-key="{{ $key }}">
+                                                <i class="fas fa-trash"></i> {{__('Remove')}}
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -194,7 +290,7 @@
                                     </a>
                                 </div>
                                 <div class="update-cart float-right d-inline-block">
-                                    <button class="main-btn main-btn-2" id="cartUpdate" data-href="{{route('cart.update')}}" type="button">
+                                    <button class="btn btn-primary" id="cartUpdate" data-href="{{route('cart.update')}}" type="button">
                                         <span>{{__('Update Cart')}}</span>
                                     </button>
                                 </div>
@@ -219,13 +315,63 @@
 @endsection
 
 
-@section('scripts')
+@section('script')
 <script>
     "use strict";
     
-    $(document).ready(function() {
+    // Wait for jQuery to be loaded
+    function waitForJQuery(callback) {
+        if (typeof jQuery !== 'undefined') {
+            callback();
+        } else {
+            setTimeout(function() {
+                waitForJQuery(callback);
+            }, 100);
+        }
+    }
+    
+    waitForJQuery(function() {
+        // Wait for DOM to be fully loaded
+        $(document).ready(function() {
+            console.log('Cart page JavaScript loaded');
+            console.log('jQuery version:', $.fn.jquery);
+            
+            // Show alert to confirm JavaScript is working
+            alert('JavaScript is working! Cart page loaded successfully.');
+            
+            // Initialize event handlers
+            initializeCartHandlers();
+            
+            // Additional debug
+            console.log('DOM ready, checking elements...');
+            console.log('Remove buttons:', $('.remove-item').length);
+            console.log('Cart items:', $('.cart-item').length);
+        });
+    });
+    
+    function initializeCartHandlers() {
+        console.log('Initializing cart handlers...');
+        
+        // Debug: Check if elements exist
+        console.log('Remove buttons found:', $('.remove-item').length);
+        console.log('Quantity inputs found:', $('.qty-input').length);
+        console.log('Update cart button found:', $('#cartUpdate').length);
+        
+        // Debug: Show all remove buttons
+        $('.remove-item').each(function(index) {
+            console.log(`Remove button ${index}:`, {
+                element: this,
+                key: $(this).data('key'),
+                text: $(this).text().trim(),
+                classes: $(this).attr('class')
+            });
+        });
+        
+        // Show alert with button count
+        alert(`Found ${$('.remove-item').length} remove buttons`);
+        
         // Handle quantity changes
-        $('.qty-input').on('change', function() {
+        $(document).on('change', '.qty-input', function() {
             let qty = parseInt($(this).val());
             if (qty < 1) {
                 $(this).val(1);
@@ -234,19 +380,36 @@
             updateCartItem($(this).data('key'), qty);
         });
         
-        // Handle remove item
-        $('.remove-item').on('click', function() {
+        // Handle remove item - using event delegation
+        $(document).on('click', '.remove-item', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             let key = $(this).data('key');
-            if (confirm('Are you sure you want to remove this item?')) {
+            console.log('Remove item clicked for key:', key);
+            console.log('Button element:', this);
+            console.log('Button data:', $(this).data());
+            
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet article ?')) {
                 removeCartItem(key);
             }
         });
         
         // Handle update cart button
-        $('#cartUpdate').on('click', function() {
+        $(document).on('click', '#cartUpdate', function() {
             updateCart();
         });
-    });
+        
+        console.log('Cart handlers initialized');
+        
+        // Test click event
+        setTimeout(function() {
+            console.log('Testing click events...');
+            $('.remove-item').each(function(index) {
+                console.log(`Remove button ${index}:`, $(this).data('key'), this);
+            });
+        }, 1000);
+    }
     
     function updateCartItem(key, qty) {
         // Update the cart item quantity locally first
@@ -277,16 +440,68 @@
     }
     
     function removeCartItem(key) {
+        console.log('Removing item with key:', key);
+        alert(`Attempting to remove item with key: ${key}`);
+        
+        // Find the button and show loading state
+        let button = $(`.remove${key} .remove-item`);
+        if (button.length === 0) {
+            console.error('Button not found for key:', key);
+            alert('Erreur: bouton non trouvé');
+            return;
+        }
+        
+        button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Suppression...');
+        
+        // Make AJAX request
         $.ajax({
             url: '{{ route("cart.item.remove", "") }}/' + key,
             type: 'GET',
+            dataType: 'json',
+            timeout: 10000, // 10 second timeout
             success: function(response) {
-                if (response.message) {
-                    location.reload();
+                console.log('Remove response:', response);
+                if (response && response.message) {
+                    // Show success message
+                    if (typeof toastr !== 'undefined') {
+                        toastr.success(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                    
+                    // Reload page after short delay
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    console.error('Invalid response format:', response);
+                    button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
+                    alert('Réponse invalide du serveur');
                 }
             },
-            error: function() {
-                alert('Error removing item');
+            error: function(xhr, status, error) {
+                console.error('Remove error:', error);
+                console.error('Status:', status);
+                console.error('Response:', xhr.responseText);
+                
+                // Reset button state
+                button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
+                
+                // Show error message
+                let errorMsg = 'Erreur lors de la suppression. Veuillez réessayer.';
+                if (status === 'timeout') {
+                    errorMsg = 'Délai d\'attente dépassé. Veuillez réessayer.';
+                } else if (xhr.status === 404) {
+                    errorMsg = 'Route non trouvée. Veuillez contacter l\'administrateur.';
+                } else if (xhr.status === 500) {
+                    errorMsg = 'Erreur serveur. Veuillez réessayer plus tard.';
+                }
+                
+                if (typeof toastr !== 'undefined') {
+                    toastr.error(errorMsg);
+                } else {
+                    alert(errorMsg);
+                }
             }
         });
     }
@@ -310,25 +525,161 @@
                 }
             },
             error: function() {
-                alert('Error updating cart');
+                alert('Erreur lors de la mise à jour du panier');
             }
         });
     }
 </script>
-<script src="{{asset('assets/front/js/jquery.ui.js')}}"></script>
-<script src="{{asset('assets/front/js/product.js')}}"></script>
-<script src="{{asset('assets/front/js/cart.js')}}"></script>
+<!-- Temporarily disabled to avoid conflicts -->
+<!-- <script src="{{asset('assets/front/js/jquery.ui.js')}}"></script> -->
+<!-- <script src="{{asset('assets/front/js/product.js')}}"></script> -->
+<!-- <script src="{{asset('assets/front/js/cart.js')}}"></script> -->
 @endsection
+
 <style>
-.placeholder-image {
-    opacity: 0.7;
-    filter: grayscale(100%);
+.customization-details {
+    padding: 10px;
 }
-.prod-thumb img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    min-height: 80px;
+
+.customization-item {
+    margin-bottom: 8px;
+    padding: 5px 0;
+}
+
+.customization-item strong {
+    display: inline-block;
+    margin-right: 8px;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.customization-item .badge {
+    margin-right: 5px;
+    margin-bottom: 3px;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+}
+
+.badge-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.badge-success {
+    background-color: #27ae60;
+    color: white;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #f39c12;
+    color: white;
+}
+
+.badge-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.cart-product-info h5 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.cart-product-info p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.quantity-controls {
+    text-align: center;
+}
+
+.quantity-controls input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.main-btn-2 {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.main-btn-2:hover {
+    background: linear-gradient(45deg, #e67e22, #d68910);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+    border-color: #dee2e6;
+}
+
+.total-item-info {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.total-item-info li {
+    margin: 0;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.cart-middle {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
 }
 </style>
 

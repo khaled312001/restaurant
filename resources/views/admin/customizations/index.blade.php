@@ -36,7 +36,11 @@
                                     <td>
                                         <strong>{{ $customization->product_name }}</strong>
                                         @if($customization->orderItem)
-                                            <br><small class="text-muted">Order: #{{ $customization->orderItem->order_id }}</small>
+                                            @if(isset($customization->is_json) && $customization->is_json)
+                                                <br><small class="text-muted">Order: #{{ $customization->orderItem->product_order_id }}</small>
+                                            @else
+                                                <br><small class="text-muted">Order: #{{ $customization->orderItem->order_id ?? $customization->orderItem->product_order_id }}</small>
+                                            @endif
                                         @endif
                                     </td>
                                     <td>
@@ -81,14 +85,18 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.customizations.show', $customization->id) }}" 
-                                               class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-danger" 
-                                                    onclick="deleteCustomization({{ $customization->id }})">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            @if(!isset($customization->is_json) || !$customization->is_json)
+                                                <a href="{{ route('admin.customizations.show', $customization->id) }}" 
+                                                   class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-sm btn-danger" 
+                                                        onclick="deleteCustomization({{ $customization->id }})">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            @else
+                                                <span class="text-muted">View in Order</span>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

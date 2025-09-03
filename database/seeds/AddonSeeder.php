@@ -14,17 +14,22 @@ class AddonSeeder extends Seeder
      */
     public function run()
     {
+        // Clear existing addons
+        Addon::truncate();
+
         $addons = [
-            // Sauces - الصلصات
+            // ===== SAUCES =====
             [
-                'name' => 'White Sauce',
+                'name' => 'Sauce Blanche',
                 'name_ar' => 'صلصة بيضاء',
                 'name_fr' => 'Sauce Blanche',
                 'category' => 'sauces',
                 'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Creamy white sauce',
-                'sort_order' => 1
+                'icon' => 'fas fa-fire',
+                'description' => 'Sauce blanche crémeuse et onctueuse',
+                'is_active' => true,
+                'sort_order' => 1,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
                 'name' => 'Mayonnaise',
@@ -32,9 +37,11 @@ class AddonSeeder extends Seeder
                 'name_fr' => 'Mayonnaise',
                 'category' => 'sauces',
                 'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Classic mayonnaise',
-                'sort_order' => 2
+                'icon' => 'fas fa-fire',
+                'description' => 'Mayonnaise classique',
+                'is_active' => true,
+                'sort_order' => 2,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
                 'name' => 'Ketchup',
@@ -42,144 +49,306 @@ class AddonSeeder extends Seeder
                 'name_fr' => 'Ketchup',
                 'category' => 'sauces',
                 'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Tomato ketchup',
-                'sort_order' => 3
+                'icon' => 'fas fa-fire',
+                'description' => 'Ketchup tomate',
+                'is_active' => true,
+                'sort_order' => 3,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
                 'name' => 'Harissa',
-                'name_ar' => 'حريرة',
+                'name_ar' => 'هريسة',
                 'name_fr' => 'Harissa',
                 'category' => 'sauces',
                 'price' => 0.00,
                 'icon' => 'fas fa-fire',
-                'description' => 'Spicy harissa sauce',
-                'sort_order' => 4
+                'description' => 'Sauce harissa épicée',
+                'is_active' => true,
+                'sort_order' => 4,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Mustard',
-                'name_ar' => 'خردل',
+                'name' => 'Moutarde',
+                'name_ar' => 'الخردل',
                 'name_fr' => 'Moutarde',
                 'category' => 'sauces',
                 'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Dijon mustard',
-                'sort_order' => 5
+                'icon' => 'fas fa-fire',
+                'description' => 'Moutarde forte',
+                'is_active' => true,
+                'sort_order' => 5,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'BBQ Sauce',
-                'name_ar' => 'صلصة باربيكيو',
-                'name_fr' => 'Sauce BBQ',
+                'name' => 'Barbecue',
+                'name_ar' => 'باربكيو',
+                'name_fr' => 'Barbecue',
                 'category' => 'sauces',
                 'price' => 0.00,
                 'icon' => 'fas fa-fire',
-                'description' => 'Barbecue sauce',
-                'sort_order' => 6
+                'description' => 'Sauce barbecue fumée',
+                'is_active' => true,
+                'sort_order' => 6,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Curry Sauce',
-                'name_ar' => 'صلصة الكاري',
-                'name_fr' => 'Sauce Curry',
-                'category' => 'sauces',
-                'price' => 0.00,
-                'icon' => 'fas fa-pepper-hot',
-                'description' => 'Spicy curry sauce',
-                'sort_order' => 7
-            ],
-            [
-                'name' => 'Algerian Sauce',
-                'name_ar' => 'صلصة جزائرية',
-                'name_fr' => 'Sauce Algérienne',
-                'category' => 'sauces',
-                'price' => 0.00,
-                'icon' => 'fas fa-pepper-hot',
-                'description' => 'Traditional Algerian sauce',
-                'sort_order' => 8
-            ],
-            [
-                'name' => 'Samurai Sauce',
-                'name_ar' => 'صلصة ساموراي',
-                'name_fr' => 'Sauce Samouraï',
+                'name' => 'Curry',
+                'name_ar' => 'كاري',
+                'name_fr' => 'Curry',
                 'category' => 'sauces',
                 'price' => 0.00,
                 'icon' => 'fas fa-fire',
-                'description' => 'Spicy samurai sauce',
-                'sort_order' => 9
+                'description' => 'Sauce curry indienne',
+                'is_active' => true,
+                'sort_order' => 7,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Andalusian Sauce',
-                'name_ar' => 'صلصة أندلسية',
-                'name_fr' => 'Sauce Andalouse',
+                'name' => 'Aigre Douce',
+                'name_ar' => 'اجيري',
+                'name_fr' => 'Aigre Douce',
                 'category' => 'sauces',
                 'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Andalusian style sauce',
-                'sort_order' => 10
+                'icon' => 'fas fa-fire',
+                'description' => 'Sauce aigre douce chinoise',
+                'is_active' => true,
+                'sort_order' => 8,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
+            ],
+            [
+                'name' => 'Samouraï',
+                'name_ar' => 'الساموراي',
+                'name_fr' => 'Samouraï',
+                'category' => 'sauces',
+                'price' => 0.00,
+                'icon' => 'fas fa-fire',
+                'description' => 'Sauce samouraï épicée',
+                'is_active' => true,
+                'sort_order' => 9,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
+            ],
+            [
+                'name' => 'Andalouse',
+                'name_ar' => 'الأندلسي',
+                'name_fr' => 'Andalouse',
+                'category' => 'sauces',
+                'price' => 0.00,
+                'icon' => 'fas fa-fire',
+                'description' => 'Sauce andalouse crémeuse',
+                'is_active' => true,
+                'sort_order' => 10,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'salade', 'nos_box']
             ],
 
-            // Vegetables - الخضروات
+            // ===== VEGETABLES =====
             [
-                'name' => 'Tomatoes',
-                'name_ar' => 'طماطم',
+                'name' => 'Tomates',
+                'name_ar' => 'الطماطم',
                 'name_fr' => 'Tomates',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-seedling',
-                'description' => 'Fresh tomatoes',
-                'sort_order' => 1
+                'icon' => 'fas fa-leaf',
+                'description' => 'Tomates fraîches',
+                'is_active' => true,
+                'sort_order' => 11,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Lettuce',
-                'name_ar' => 'خس',
+                'name' => 'Salade',
+                'name_ar' => 'سلطة',
                 'name_fr' => 'Salade',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-seedling',
-                'description' => 'Fresh lettuce',
-                'sort_order' => 2
+                'icon' => 'fas fa-leaf',
+                'description' => 'Salade verte fraîche',
+                'is_active' => true,
+                'sort_order' => 12,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Onions',
-                'name_ar' => 'بصل',
+                'name' => 'Oignons',
+                'name_ar' => 'البصل',
                 'name_fr' => 'Oignons',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-seedling',
-                'description' => 'Fresh onions',
-                'sort_order' => 3
+                'icon' => 'fas fa-leaf',
+                'description' => 'Oignons frais',
+                'is_active' => true,
+                'sort_order' => 13,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Cucumber',
-                'name_ar' => 'خيار',
-                'name_fr' => 'Concombre',
+                'name' => 'Sans Légumes',
+                'name_ar' => 'بدون خضار',
+                'name_fr' => 'Sans Légumes',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-seedling',
-                'description' => 'Fresh cucumber',
-                'sort_order' => 4
+                'icon' => 'fas fa-leaf',
+                'description' => 'Aucun légume',
+                'is_active' => true,
+                'sort_order' => 14,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'Carrots',
-                'name_ar' => 'جزر',
-                'name_fr' => 'Carottes',
+                'name' => 'Sans Tomates',
+                'name_ar' => 'بدون طماطم',
+                'name_fr' => 'Sans Tomates',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-seedling',
-                'description' => 'Fresh carrots',
-                'sort_order' => 5
+                'icon' => 'fas fa-leaf',
+                'description' => 'Exclure les tomates',
+                'is_active' => true,
+                'sort_order' => 15,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
             [
-                'name' => 'No Vegetables',
-                'name_ar' => 'بدون خضروات',
-                'name_fr' => 'Sans légumes',
+                'name' => 'Sans Salade',
+                'name_ar' => 'بدون سلطة',
+                'name_fr' => 'Sans Salade',
                 'category' => 'vegetables',
                 'price' => 0.00,
-                'icon' => 'fas fa-times',
-                'description' => 'No vegetables option',
-                'sort_order' => 6
+                'icon' => 'fas fa-leaf',
+                'description' => 'Exclure la salade',
+                'is_active' => true,
+                'sort_order' => 16,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
+            ],
+            [
+                'name' => 'Sans Oignons',
+                'name_ar' => 'بدون بصل',
+                'name_fr' => 'Sans Oignons',
+                'category' => 'vegetables',
+                'price' => 0.00,
+                'icon' => 'fas fa-leaf',
+                'description' => 'Exclure les oignons',
+                'is_active' => true,
+                'sort_order' => 17,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'salade', 'nos_box']
             ],
 
-            // Meat Choices - اختيارات اللحم
+            // ===== DRINKS =====
+            [
+                'name' => 'Coca Cola',
+                'name_ar' => 'كوكا كولا',
+                'name_fr' => 'Coca Cola',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Coca Cola classique',
+                'is_active' => true,
+                'sort_order' => 18,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Coca Cherry',
+                'name_ar' => 'كوكا شيري',
+                'name_fr' => 'Coca Cherry',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Coca Cola cerise',
+                'is_active' => true,
+                'sort_order' => 19,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Coca Zero',
+                'name_ar' => 'كوكا زيرو',
+                'name_fr' => 'Coca Zero',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Coca Cola sans sucre',
+                'is_active' => true,
+                'sort_order' => 20,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Oasis Tropical',
+                'name_ar' => 'أواسيس تروبيكال',
+                'name_fr' => 'Oasis Tropical',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Jus Oasis tropical',
+                'is_active' => true,
+                'sort_order' => 21,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Oasis Pomme Raisins',
+                'name_ar' => 'تفاح الواحة مع الكشمش الأسود والتوت',
+                'name_fr' => 'Oasis Pomme Raisins',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Jus Oasis pomme avec raisins',
+                'is_active' => true,
+                'sort_order' => 22,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Thé Glacé',
+                'name_ar' => 'شاي مثلج',
+                'name_fr' => 'Thé Glacé',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Thé glacé rafraîchissant',
+                'is_active' => true,
+                'sort_order' => 23,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Fanta Orange',
+                'name_ar' => 'فانتا برتقال',
+                'name_fr' => 'Fanta Orange',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Fanta orange',
+                'is_active' => true,
+                'sort_order' => 24,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Sprite',
+                'name_ar' => 'سبرايت',
+                'name_fr' => 'Sprite',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Sprite citron-lime',
+                'is_active' => true,
+                'sort_order' => 25,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Tropica',
+                'name_ar' => 'تروبيكا',
+                'name_fr' => 'Tropica',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Jus Tropica',
+                'is_active' => true,
+                'sort_order' => 26,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Orangina',
+                'name_ar' => 'أورانجينا',
+                'name_fr' => 'Orangina',
+                'category' => 'drinks',
+                'price' => 0.00,
+                'icon' => 'fas fa-glass-whiskey',
+                'description' => 'Orangina avec pulpe',
+                'is_active' => true,
+                'sort_order' => 27,
+                'product_types' => ['sandwiches', 'tacos', 'galettes', 'burgers', 'panini', 'menus_enfant', 'nos_box']
+            ],
+
+            // ===== MEAT CHOICES =====
             [
                 'name' => 'Kebab',
                 'name_ar' => 'كباب',
@@ -187,38 +356,46 @@ class AddonSeeder extends Seeder
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Traditional kebab meat',
-                'sort_order' => 1
+                'description' => 'Viande kebab traditionnelle',
+                'is_active' => true,
+                'sort_order' => 28,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
                 'name' => 'Steak',
-                'name_ar' => 'ستيك',
+                'name_ar' => 'شريحة لحم',
                 'name_fr' => 'Steak',
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Beef steak',
-                'sort_order' => 2
+                'description' => 'Steak de bœuf grillé',
+                'is_active' => true,
+                'sort_order' => 29,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
-                'name' => 'Chicken',
-                'name_ar' => 'دجاج',
+                'name' => 'Poulet',
+                'name_ar' => 'فرخة',
                 'name_fr' => 'Poulet',
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Grilled chicken',
-                'sort_order' => 3
+                'description' => 'Poulet grillé',
+                'is_active' => true,
+                'sort_order' => 30,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
-                'name' => 'Jacket',
-                'name_ar' => 'جاكيت',
-                'name_fr' => 'Jacket',
+                'name' => 'Escalope',
+                'name_ar' => 'سترة',
+                'name_fr' => 'Escalope',
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Jacket style meat',
-                'sort_order' => 4
+                'description' => 'Escalope de poulet',
+                'is_active' => true,
+                'sort_order' => 31,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
                 'name' => 'Cordon Bleu',
@@ -227,18 +404,22 @@ class AddonSeeder extends Seeder
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Cordon bleu style',
-                'sort_order' => 5
+                'description' => 'Cordon bleu de poulet',
+                'is_active' => true,
+                'sort_order' => 32,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
                 'name' => 'Tenders',
-                'name_ar' => 'تندرز',
+                'name_ar' => 'قطع طرية',
                 'name_fr' => 'Tenders',
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Chicken tenders',
-                'sort_order' => 6
+                'description' => 'Tenders de poulet',
+                'is_active' => true,
+                'sort_order' => 33,
+                'product_types' => ['tacos', 'galettes']
             ],
             [
                 'name' => 'Nuggets',
@@ -247,97 +428,79 @@ class AddonSeeder extends Seeder
                 'category' => 'meat',
                 'price' => 0.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Chicken nuggets',
-                'sort_order' => 7
+                'description' => 'Nuggets de poulet',
+                'is_active' => true,
+                'sort_order' => 34,
+                'product_types' => ['tacos', 'galettes']
             ],
-
-            // Drinks - المشروبات
             [
-                'name' => 'Coca Cola',
-                'name_ar' => 'كوكا كولا',
-                'name_fr' => 'Coca Cola',
-                'category' => 'drinks',
+                'name' => 'Dinde',
+                'name_ar' => 'ديك رومي',
+                'name_fr' => 'Dinde',
+                'category' => 'meat',
                 'price' => 0.00,
-                'icon' => 'fas fa-wine-bottle',
-                'description' => 'Coca Cola soft drink',
-                'sort_order' => 1
-            ],
-            [
-                'name' => 'Fanta',
-                'name_ar' => 'فانتا',
-                'name_fr' => 'Fanta',
-                'category' => 'drinks',
-                'price' => 0.00,
-                'icon' => 'fas fa-wine-bottle',
-                'description' => 'Fanta orange drink',
-                'sort_order' => 2
-            ],
-            [
-                'name' => 'Sprite',
-                'name_ar' => 'سبرايت',
-                'name_fr' => 'Sprite',
-                'category' => 'drinks',
-                'price' => 0.00,
-                'icon' => 'fas fa-wine-bottle',
-                'description' => 'Sprite lemon drink',
-                'sort_order' => 3
-            ],
-            [
-                'name' => 'Water',
-                'name_ar' => 'ماء',
-                'name_fr' => 'Eau',
-                'category' => 'drinks',
-                'price' => 0.00,
-                'icon' => 'fas fa-tint',
-                'description' => 'Mineral water',
-                'sort_order' => 4
-            ],
-            [
-                'name' => 'No Drink',
-                'name_ar' => 'بدون مشروب',
-                'name_fr' => 'Sans boisson',
-                'category' => 'drinks',
-                'price' => 0.00,
-                'icon' => 'fas fa-times',
-                'description' => 'No drink option',
-                'sort_order' => 5
-            ],
-
-            // Extra Items - إضافات إضافية
-            [
-                'name' => 'Extra Cheese',
-                'name_ar' => 'جبنة إضافية',
-                'name_fr' => 'Fromage Extra',
-                'category' => 'extras',
-                'price' => 1.00,
-                'icon' => 'fas fa-cheese',
-                'description' => 'Additional cheese',
-                'sort_order' => 1
-            ],
-            [
-                'name' => 'French Fries',
-                'name_ar' => 'بطاطس مقلية',
-                'name_fr' => 'Frites',
-                'category' => 'extras',
-                'price' => 3.50,
-                'icon' => 'fas fa-french-fries',
-                'description' => 'French fries portion',
-                'sort_order' => 2
-            ],
-            [
-                'name' => 'Extra Meat',
-                'name_ar' => 'لحم إضافي',
-                'name_fr' => 'Viande Extra',
-                'category' => 'extras',
-                'price' => 2.00,
                 'icon' => 'fas fa-drumstick-bite',
-                'description' => 'Additional meat portion',
-                'sort_order' => 3
+                'description' => 'Viande de dinde',
+                'is_active' => true,
+                'sort_order' => 35,
+                'product_types' => ['tacos', 'galettes']
+            ],
+
+            // ===== EXTRA ITEMS =====
+            [
+                'name' => 'Petite Frite',
+                'name_ar' => 'بطاطس صغيرة',
+                'name_fr' => 'Petite Frite',
+                'category' => 'extras',
+                'price' => 0.00,
+                'icon' => 'fas fa-plus',
+                'description' => 'Portion de frites petite',
+                'is_active' => true,
+                'sort_order' => 36,
+                'product_types' => ['sandwiches', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Grande Frite',
+                'name_ar' => 'بطاطس كبيرة',
+                'name_fr' => 'Grande Frite',
+                'category' => 'extras',
+                'price' => 0.00,
+                'icon' => 'fas fa-plus',
+                'description' => 'Portion de frites grande',
+                'is_active' => true,
+                'sort_order' => 37,
+                'product_types' => ['sandwiches', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Petite Viande',
+                'name_ar' => 'لحم صغير',
+                'name_fr' => 'Petite Viande',
+                'category' => 'extras',
+                'price' => 0.00,
+                'icon' => 'fas fa-plus',
+                'description' => 'Portion de viande petite',
+                'is_active' => true,
+                'sort_order' => 38,
+                'product_types' => ['sandwiches', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'nos_box']
+            ],
+            [
+                'name' => 'Grande Viande',
+                'name_ar' => 'لحم كبير',
+                'name_fr' => 'Grande Viande',
+                'category' => 'extras',
+                'price' => 0.00,
+                'icon' => 'fas fa-plus',
+                'description' => 'Portion de viande grande',
+                'is_active' => true,
+                'sort_order' => 39,
+                'product_types' => ['sandwiches', 'burgers', 'panini', 'assiettes', 'menus_enfant', 'nos_box']
             ]
         ];
 
         foreach ($addons as $addon) {
             Addon::create($addon);
         }
+
+        $this->command->info('Addons seeded successfully!');
     }
 }

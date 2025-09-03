@@ -35,6 +35,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\SalesReport' => $baseDir . '/app/Exports/SalesReport.php',
     'App\\Helpers\\QrCodeGenerator' => $baseDir . '/app/Helpers/QrCodeGenerator.php',
+    'App\\Http\\Controllers\\Admin\\AddonController' => $baseDir . '/app/Http/Controllers/Admin/AddonController.php',
     'App\\Http\\Controllers\\Admin\\BackupController' => $baseDir . '/app/Http/Controllers/Admin/BackupController.php',
     'App\\Http\\Controllers\\Admin\\BasicController' => $baseDir . '/app/Http/Controllers/Admin/BasicController.php',
     'App\\Http\\Controllers\\Admin\\BcategoryController' => $baseDir . '/app/Http/Controllers/Admin/BcategoryController.php',

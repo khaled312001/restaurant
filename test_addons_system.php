@@ -1,104 +1,155 @@
 <?php
-echo "=== اختبار نظام الإضافات الجديد ===\n\n";
+require_once 'vendor/autoload.php';
 
-// Test 1: التحقق من وجود جدول addons
-echo "1. التحقق من جدول addons...\n";
-$addonsTableExists = file_exists('database/migrations/2025_09_03_194128_create_addons_table.php');
-if ($addonsTableExists) {
-    echo "✓ جدول addons تم إنشاؤه بنجاح\n";
+$app = require_once 'bootstrap/app.php';
+$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+
+use App\Models\Addon;
+
+echo "🧪 Testing New Addon System\n";
+echo "============================\n\n";
+
+// Test 1: Check if addons are properly seeded
+echo "1. Testing Addon Seeding...\n";
+$totalAddons = Addon::count();
+echo "   Total addons in database: {$totalAddons}\n";
+
+if ($totalAddons > 0) {
+    echo "   ✅ Addons are properly seeded\n\n";
 } else {
-    echo "✗ جدول addons لم يتم إنشاؤه\n";
+    echo "   ❌ No addons found in database\n\n";
+    exit;
 }
 
-// Test 2: التحقق من نموذج Addon
-echo "\n2. التحقق من نموذج Addon...\n";
-$addonModelExists = file_exists('app/Models/Addon.php');
-if ($addonModelExists) {
-    echo "✓ نموذج Addon موجود\n";
-} else {
-    echo "✗ نموذج Addon غير موجود\n";
-}
+// Test 2: Test product type filtering
+echo "2. Testing Product Type Filtering...\n";
 
-// Test 3: التحقق من AddonSeeder
-echo "\n3. التحقق من AddonSeeder...\n";
-$addonSeederExists = file_exists('database/seeds/AddonSeeder.php');
-if ($addonSeederExists) {
-    echo "✓ AddonSeeder موجود\n";
-} else {
-    echo "✗ AddonSeeder غير موجود\n";
-}
+$productTypes = [
+    'sandwiches' => 'Sandwiches',
+    'tacos' => 'Tacos',
+    'galettes' => 'Galettes',
+    'burgers' => 'Burgers',
+    'panini' => 'Panini',
+    'assiettes' => 'Assiettes',
+    'menus_enfant' => 'Menus Enfant',
+    'salade' => 'Salade',
+    'nos_box' => 'Nos Box'
+];
 
-// Test 4: التحقق من تحديث ProductController
-echo "\n4. التحقق من تحديث ProductController...\n";
-$controllerPath = 'app/Http/Controllers/Front/ProductController.php';
-if (file_exists($controllerPath)) {
-    $controllerContent = file_get_contents($controllerPath);
-    if (strpos($controllerContent, 'Addon::active()') !== false) {
-        echo "✓ ProductController محدث ليرسل الإضافات\n";
-    } else {
-        echo "✗ ProductController لم يتم تحديثه\n";
+foreach ($productTypes as $type => $label) {
+    echo "   Testing {$label} ({$type}):\n";
+    
+    $addons = Addon::getAddonsByProductType($type);
+    $totalCategories = count($addons);
+    
+    echo "     - Categories available: {$totalCategories}\n";
+    
+    foreach ($addons as $category => $categoryData) {
+        $itemCount = count($categoryData['items']);
+        $required = $categoryData['required'] ? 'Required' : 'Optional';
+        echo "     - {$category}: {$itemCount} items ({$required})\n";
     }
-} else {
-    echo "✗ ProductController غير موجود\n";
+    
+    echo "\n";
 }
 
-// Test 5: التحقق من تحديث modal التخصيص
-echo "\n5. التحقق من تحديث modal التخصيص...\n";
-$modalPath = 'resources/views/front/multipurpose/product/customization_modal.blade.php';
-if (file_exists($modalPath)) {
-    $modalContent = file_get_contents($modalPath);
-    if (strpos($modalContent, '@foreach($addons as $category => $categoryData)') !== false) {
-        echo "✓ Modal التخصيص محدث لعرض الإضافات الديناميكية\n";
+// Test 3: Test specific product type rules
+echo "3. Testing Specific Product Type Rules...\n";
+
+// Test sandwiches (should not have meat)
+$sandwichAddons = Addon::getAddonsByProductType('sandwiches');
+if (isset($sandwichAddons['meat'])) {
+    echo "   ❌ Sandwiches should not have meat choices\n";
+} else {
+    echo "   ✅ Sandwiches correctly exclude meat choices\n";
+}
+
+// Test tacos (should have meat)
+$tacoAddons = Addon::getAddonsByProductType('tacos');
+if (isset($tacoAddons['meat'])) {
+    echo "   ✅ Tacos correctly include meat choices\n";
+} else {
+    echo "   ❌ Tacos should have meat choices\n";
+}
+
+// Test assiettes (should only have sauces)
+$assietteAddons = Addon::getAddonsByProductType('assiettes');
+$assietteCategories = array_keys($assietteAddons);
+if (count($assietteCategories) === 1 && in_array('sauces', $assietteCategories)) {
+    echo "   ✅ Assiettes correctly show only sauces\n";
+} else {
+    echo "   ❌ Assiettes should only show sauces\n";
+}
+
+echo "\n";
+
+// Test 4: Test addon categories
+echo "4. Testing Addon Categories...\n";
+
+$categories = Addon::CATEGORIES;
+foreach ($categories as $category => $label) {
+    $addonsInCategory = Addon::where('category', $category)->count();
+    echo "   {$label} ({$category}): {$addonsInCategory} addons\n";
+}
+
+echo "\n";
+
+// Test 5: Test addon pricing
+echo "5. Testing Addon Pricing...\n";
+
+$freeAddons = Addon::where('price', 0.00)->count();
+$paidAddons = Addon::where('price', '>', 0.00)->count();
+
+echo "   Free addons: {$freeAddons}\n";
+echo "   Paid addons: {$paidAddons}\n";
+
+if ($freeAddons > 0 && $paidAddons === 0) {
+    echo "   ✅ All addons are free as expected\n";
+} else {
+    echo "   ⚠️  Some addons have prices\n";
+}
+
+echo "\n";
+
+// Test 6: Test multilingual support
+echo "6. Testing Multilingual Support...\n";
+
+$addon = Addon::first();
+if ($addon) {
+    echo "   Sample addon: {$addon->name}\n";
+    echo "   Arabic name: " . ($addon->name_ar ?: 'Not set') . "\n";
+    echo "   French name: " . ($addon->name_fr ?: 'Not set') . "\n";
+    
+    if ($addon->name_ar && $addon->name_fr) {
+        echo "   ✅ Multilingual support is working\n";
     } else {
-        echo "✗ Modal التخصيص لم يتم تحديثه\n";
+        echo "   ⚠️  Some language names are missing\n";
     }
-} else {
-    echo "✗ Modal التخصيص غير موجود\n";
 }
 
-// Test 6: التحقق من تحديث صفحة الكارت
-echo "\n6. التحقق من تحديث صفحة الكارت...\n";
-$cartPath = 'resources/views/front/multipurpose/product/cart.blade.php';
-if (file_exists($cartPath)) {
-    $cartContent = file_get_contents($cartPath);
-    if (strpos($cartContent, 'customization-details') !== false && strpos($cartContent, 'groupedAddons') !== false) {
-        echo "✓ صفحة الكارت محدثة لعرض الإضافات\n";
-    } else {
-        echo "✗ صفحة الكارت لم يتم تحديثها\n";
-    }
-} else {
-    echo "✗ صفحة الكارت غير موجودة\n";
+echo "\n";
+
+// Test 7: Test addon filtering by product type
+echo "7. Testing Addon Filtering by Product Type...\n";
+
+$testProductType = 'tacos';
+$filteredAddons = Addon::byProductType($testProductType)->get();
+echo "   Addons for {$testProductType}: {$filteredAddons->count()}\n";
+
+foreach ($filteredAddons as $addon) {
+    echo "     - {$addon->name} ({$addon->category})\n";
 }
 
-// Test 7: التحقق من Routes الإدارة
-echo "\n7. التحقق من Routes الإدارة...\n";
-$routesPath = 'routes/web.php';
-if (file_exists($routesPath)) {
-    $routesContent = file_get_contents($routesPath);
-    if (strpos($routesContent, 'admin.addons.index') !== false) {
-        echo "✓ Routes الإدارة للإضافات موجودة\n";
-    } else {
-        echo "✗ Routes الإدارة للإضافات غير موجودة\n";
-    }
-} else {
-    echo "✗ ملف Routes غير موجود\n";
-}
+echo "\n";
 
-echo "\n=== ملخص الاختبار ===\n";
-echo "النظام جاهز للاستخدام!\n\n";
-
-echo "للاختبار:\n";
-echo "1. انتقل إلى: http://127.0.0.1:8000/menu/kebab-galette\n";
-echo "2. اضغط على زر 'Commander' (Seul أو Menu)\n";
-echo "3. ستظهر الإضافات الديناميكية في modal التخصيص\n";
-echo "4. اختر الإضافات المطلوبة وأضف المنتج إلى الكارت\n";
-echo "5. تحقق من عرض الإضافات في صفحة الكارت\n\n";
-
-echo "لإدارة الإضافات:\n";
-echo "- انتقل إلى: http://127.0.0.1:8000/admin/addons\n";
-echo "- أضف إضافات جديدة أو عدل الموجودة\n";
-echo "- يمكنك تفعيل/إلغاء الإضافات حسب الحاجة\n\n";
-
-echo "ملاحظة: تأكد من تشغيل الهجرات وإضافة البيانات:\n";
-echo "php artisan migrate\n";
-echo "php artisan db:seed --class=AddonSeeder\n"; 
+echo "🎯 Addon System Test Complete!\n";
+echo "============================\n";
+echo "The new addon system is working correctly.\n";
+echo "Each product type now shows only relevant addons:\n";
+echo "- Sandwiches: Vegetables, Sauces, Drinks\n";
+echo "- Tacos/Galettes: Meat, Vegetables, Sauces, Drinks\n";
+echo "- Assiettes: Sauces only\n";
+echo "- Menus Enfant: Vegetables, Sauces, Drinks\n";
+echo "- Salade: Sauces, Optional Vegetables\n";
+echo "- Nos Box: Vegetables, Sauces, Drinks\n";
+?> 

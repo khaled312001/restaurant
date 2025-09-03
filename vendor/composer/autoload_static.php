@@ -881,6 +881,7 @@ class ComposerStaticInit5300c00ac444ad79c1b477729322127d
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\SalesReport' => __DIR__ . '/../..' . '/app/Exports/SalesReport.php',
         'App\\Helpers\\QrCodeGenerator' => __DIR__ . '/../..' . '/app/Helpers/QrCodeGenerator.php',
+        'App\\Http\\Controllers\\Admin\\AddonController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AddonController.php',
         'App\\Http\\Controllers\\Admin\\BackupController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BackupController.php',
         'App\\Http\\Controllers\\Admin\\BasicController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BasicController.php',
         'App\\Http\\Controllers\\Admin\\BcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BcategoryController.php',

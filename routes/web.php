@@ -959,14 +959,6 @@ Route::fallback(function () {
 
 // Admin Customizations Routes
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
-    Route::get('/profile', 'Admin\ProfileController@index')->name('profile');
-    Route::post('/profile/update', 'Admin\ProfileController@update')->name('profile.update');
-    Route::get('/profile/change-password', 'Admin\ProfileController@changePassword')->name('changePass');
-    Route::post('/profile/change-password', 'Admin\ProfileController@updatePassword')->name('changePass.update');
-    Route::get('/logout', 'Admin\AuthController@logout')->name('logout');
-    
-    // Admin Customizations Routes
     Route::resource('customizations', 'Admin\CustomizationController');
     Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('customizations.order');
 });

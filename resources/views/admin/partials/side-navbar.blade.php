@@ -228,17 +228,7 @@
                                     </a>
                                 </li>
 
-                                {{-- Customizations Management --}}
-                                <li class="
-                @if (request()->path() == 'admin/customizations') active
-                @elseif(request()->is('admin/customizations/*')) active @endif">
-                                    <a href="{{ route('admin.customizations.index') }}">
-                                        <span class="sub-item">
-                                            <i class="fas fa-cogs" style="margin-right: 5px; color: #f39c12;"></i>
-                                            {{ __('Customizations') }}
-                                        </span>
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                     </li>
@@ -246,16 +236,14 @@
 
 
                 {{-- Customizations Management --}}
-                @if (empty($admin->role) || (!empty($permissions) && in_array('Order Management', $permissions)))
-                    <li class="nav-item
+                <li class="nav-item
           @if (request()->path() == 'admin/customizations') active
           @elseif(request()->is('admin/customizations/*')) active @endif">
-                        <a href="{{ route('admin.customizations.index') }}">
-                            <i class="fas fa-cogs" style="color: #f39c12;"></i>
-                            <p>{{ __('Customizations') }}</p>
-                        </a>
-                    </li>
-                @endif
+                    <a href="{{ route('admin.customizations.index') }}">
+                        <i class="fas fa-cogs" style="color: #f39c12;"></i>
+                        <p>{{ __('Customizations') }}</p>
+                    </a>
+                </li>
 
 
                 {{-- Customers --}}

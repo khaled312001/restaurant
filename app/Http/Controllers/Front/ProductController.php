@@ -844,6 +844,54 @@ class ProductController extends Controller
             }
         }
 
+        // Get basic settings and extended settings
+        try {
+            $data['bs'] = $currentLang->basic_setting;
+            $data['be'] = $currentLang->basic_extended;
+            $data['rtl'] = $currentLang->rtl ?? 0;
+            $data['currentLang'] = $currentLang;
+            $data['activeTheme'] = $currentLang->basic_setting->theme ?? 'multipurpose';
+            
+            // Get languages and socials
+            $data['langs'] = \App\Models\Language::all();
+            $data['socials'] = collect([]);
+            
+            // Get popups and menus
+            $data['apopups'] = $currentLang->popups()->where('status', 1)->orderBy('serial_number', 'ASC')->get();
+            if (\App\Models\Menu::where('language_id', $currentLang->id)->count() > 0) {
+                $data['menus'] = \App\Models\Menu::where('language_id', $currentLang->id)->first()->menus;
+            } else {
+                $data['menus'] = json_encode([]);
+            }
+            
+            // Calculate cart data
+            $data['itemsCount'] = 0;
+            $data['cartTotal'] = 0;
+            if(!empty($data['cart'])){
+                foreach($data['cart'] as $p){
+                    if (isset($p['qty']) && is_numeric($p['qty'])) {
+                        $data['itemsCount'] += (int)$p['qty'];
+                    }
+                    if (isset($p['total']) && is_numeric($p['total'])) {
+                        $data['cartTotal'] += (float)$p['total'];
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            // Set default values if database operations fail
+            $data['bs'] = null;
+            $data['be'] = null;
+            $data['rtl'] = 0;
+            $data['currentLang'] = null;
+            $data['activeTheme'] = 'multipurpose';
+            $data['langs'] = collect([]);
+            $data['socials'] = collect([]);
+            $data['apopups'] = collect([]);
+            $data['menus'] = json_encode([]);
+            $data['itemsCount'] = 0;
+            $data['cartTotal'] = 0;
+        }
+
         if (Session::has('cart')) {
             $data['cart'] = Session::get('cart');
         } else {

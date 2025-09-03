@@ -237,6 +237,20 @@
 <!-- Include Customization Modal -->
 @include('front.multipurpose.product.customization_modal')
 
+<!-- Debug Information (remove in production) -->
+@if(config('app.debug'))
+<div class="debug-info" style="background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 10px; border: 1px solid #dee2e6;">
+    <h5>Debug Info - Addons Data:</h5>
+    <pre>{{ print_r($addons, true) }}</pre>
+    
+    <h5>Debug Info - Product Type:</h5>
+    <p>{{ $productType }}</p>
+    
+    <h5>Debug Info - Current Language:</h5>
+    <p>ID: {{ $currentLang->id }}, Code: {{ $currentLang->code }}</p>
+</div>
+@endif
+
 <style>
 .menu-category {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -309,6 +323,78 @@
 </style>
 
 <script>
+// Set current product type for this page
+window.currentProductType = 'burgers';
+
+// Store addons data globally so modal can access it
+window.currentAddons = @json($addons);
+
+console.log('Addons data loaded:', window.currentAddons);
+console.log('Addons data type:', typeof window.currentAddons);
+console.log('Addons data keys:', Object.keys(window.currentAddons || {}));
+
+function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
+    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
+    
+    // Store product information
+    window.currentProduct = {
+        id: productId,
+        name: productName,
+        price: price,
+        type: type,
+        hasMeat: hasMeat,
+        isMenu: isMenu
+    };
+    
+    // Update current product type and menu status for modal
+    if (typeof window.currentCustomizationOptions !== 'undefined') {
+        window.currentCustomizationOptions.productType = 'burgers';
+        window.currentCustomizationOptions.isMenu = isMenu;
+    }
+    
+    // IMPORTANT: Set addons data before opening modal
+    if (window.currentAddons) {
+        console.log('Setting addons data for modal:', window.currentAddons);
+    } else {
+        console.error('No addons data available!');
+        console.log('Available window variables:', Object.keys(window).filter(key => key.includes('addon')));
+    }
+    
+    // Set modal data attributes
+    $('#customizationModal').modal('show');
+    
+    // Update modal content immediately
+    $('#modalProductName').text(productName);
+    $('#modalProductType').text(type);
+    $('#modalProductPrice').text(price + '€');
+    
+    // Trigger modal show event to update sections
+    setTimeout(() => {
+        $('#customizationModal').trigger('show.bs.modal', [{
+            relatedTarget: {
+                dataset: {
+                    productType: 'burgers',
+                    productName: productName,
+                    productPrice: price,
+                    menuType: isMenu
+                }
+            }
+        }]);
+    }, 100);
+}
+
+function updateModalSections(addons, productType, isMenu) {
+    console.log('Updating modal sections with addons:', addons);
+    
+    // Store addons data globally for modal to use
+    window.currentAddons = addons;
+    
+    // Log what we're passing to modal
+    console.log('Current addons stored for modal:', window.currentAddons);
+    console.log('Product type:', productType);
+    console.log('Is menu:', isMenu);
+}
+
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function
     // You can keep your existing implementation here
@@ -317,6 +403,102 @@ function addToCart(url, variant, quantity, extras) {
     // For now, redirect to the cart route
     window.location.href = url;
 }
+
+// Add to cart with customization
+window.addToCartWithCustomization = function(customizationOptions) {
+    console.log('=== ADD TO CART WITH CUSTOMIZATION ===');
+    console.log('Customization options received:', customizationOptions);
+    
+    // Get current product information
+    if (!window.currentProduct) {
+        console.error('No current product information available');
+        console.log('Available window variables:', Object.keys(window).filter(key => key.includes('current')));
+        return;
+    }
+    
+    const product = window.currentProduct;
+    console.log('Current product:', product);
+    
+    // Validate customization options
+    if (!customizationOptions || !customizationOptions.addons) {
+        console.error('Invalid customization options:', customizationOptions);
+        return;
+    }
+    
+    console.log('Addons collected:', customizationOptions.addons);
+    
+    // Prepare data for backend
+    const cartData = {
+        product_id: product.id,
+        quantity: customizationOptions.quantity || 1,
+        customizations: JSON.stringify({
+            productName: product.name,
+            productType: product.type,
+            price: product.price,
+            quantity: customizationOptions.quantity || 1,
+            meatChoice: customizationOptions.addons?.meat || null,
+            vegetables: customizationOptions.addons?.vegetables || [],
+            sauces: customizationOptions.addons?.sauces || [],
+            drinks: customizationOptions.addons?.drinks || [],
+            extras: customizationOptions.addons?.extras || []
+        }),
+        _token: $('meta[name="csrf-token"]').attr('content')
+    };
+    
+    console.log('Cart data prepared:', cartData);
+    console.log('CSRF token:', $('meta[name="csrf-token"]').attr('content'));
+    
+    // Send POST request to add to cart
+    $.ajax({
+        url: '/add-to-cart/' + product.id,
+        method: 'POST',
+        data: cartData,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            console.log('=== ADD TO CART SUCCESS ===');
+            console.log('Response:', response);
+            
+            if (response.success) {
+                // Show success message
+                if (typeof toastr !== 'undefined') {
+                    toastr.success('Produit ajouté au panier avec succès!');
+                } else {
+                    alert('Produit ajouté au panier avec succès!');
+                }
+                
+                // Redirect to cart page
+                if (response.redirect) {
+                    window.location.href = response.redirect;
+                } else {
+                    window.location.href = '/cart';
+                }
+            } else {
+                // Show error message
+                if (typeof toastr !== 'undefined') {
+                    toastr.error(response.message || 'Erreur lors de l\'ajout au panier');
+                } else {
+                    alert(response.message || 'Erreur lors de l\'ajout au panier');
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('=== ADD TO CART ERROR ===');
+            console.error('Error:', error);
+            console.error('Status:', status);
+            console.error('Response:', xhr.responseText);
+            console.error('Status code:', xhr.status);
+            
+            // Show error message
+            if (typeof toastr !== 'undefined') {
+                toastr.error('Erreur lors de l\'ajout au panier');
+            } else {
+                alert('Erreur lors de l\'ajout au panier');
+            }
+        }
+    });
+};
 </script>
 
 @endsection

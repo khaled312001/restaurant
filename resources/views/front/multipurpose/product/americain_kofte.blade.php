@@ -300,6 +300,51 @@
 </style>
 
 <script>
+// Set current product type for this page
+window.currentProductType = 'sandwiches';
+
+function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
+    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
+    
+    // Set modal data attributes
+    $('#customizationModal').modal('show');
+    
+    // Update modal content immediately
+    $('#modalProductName').text(productName);
+    $('#modalProductType').text(type);
+    $('#modalProductPrice').text(price + '€');
+    
+    // Store product information
+    window.currentProduct = {
+        id: productId,
+        name: productName,
+        price: price,
+        type: type,
+        hasMeat: hasMeat,
+        isMenu: isMenu
+    };
+    
+    // Update current product type and menu status for modal
+    if (typeof window.currentCustomizationOptions !== 'undefined') {
+        window.currentCustomizationOptions.productType = 'sandwiches';
+        window.currentCustomizationOptions.isMenu = isMenu;
+    }
+    
+    // Trigger modal show event to update sections
+    setTimeout(() => {
+        $('#customizationModal').trigger('show.bs.modal', [{
+            relatedTarget: {
+                dataset: {
+                    productType: 'sandwiches',
+                    productName: productName,
+                    productPrice: price,
+                    menuType: isMenu
+                }
+            }
+        }]);
+    }, 100);
+}
+
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function
     // You can keep your existing implementation here
@@ -308,6 +353,22 @@ function addToCart(url, variant, quantity, extras) {
     // For now, redirect to the cart route
     window.location.href = url;
 }
+
+// Add to cart with customization
+window.addToCartWithCustomization = function(customizationOptions) {
+    console.log('Adding to cart with customization:', customizationOptions);
+    
+    // Here you would typically send the data to your backend
+    // For now, just show a success message
+    if (typeof toastr !== 'undefined') {
+        toastr.success('Produit ajouté au panier avec succès!');
+    } else {
+        alert('Produit ajouté au panier avec succès!');
+    }
+    
+    // Close modal
+    $('#customizationModal').modal('hide');
+};
 </script>
 
 @endsection

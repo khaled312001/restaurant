@@ -21,6 +21,7 @@ use App\Models\BasicSetting as BS;
 use App\Models\BasicExtended as BE;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -30,13 +31,33 @@ class ProductController extends Controller
         $this->middleware('setlang');
     }
 
-    public function product(Request $request)
+    /**
+     * Get current language with proper fallback logic
+     */
+    private function getCurrentLanguage()
     {
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
+        
+        // If no default language is set or language not found, get the first available language
+        if (!$currentLang) {
+            $currentLang = Language::first();
+        }
+        
+        // If still no language found, abort with error
+        if (!$currentLang) {
+            \abort(500, 'No language configured');
+        }
+        
+        return $currentLang;
+    }
+
+    public function product(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
 
         $lang_id = $currentLang->id;
@@ -76,11 +97,7 @@ class ProductController extends Controller
 
     public function sandwichesMenus(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
@@ -90,164 +107,148 @@ class ProductController extends Controller
 
     public function kebabGalette(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for galettes (includes meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('galettes');
+        $data['productType'] = 'galettes';
 
         return view('front.multipurpose.product.kebab_galette', $data);
     }
 
     public function americainKofte(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for sandwiches (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('sandwiches');
+        $data['productType'] = 'sandwiches';
 
         return view('front.multipurpose.product.americain_kofte', $data);
     }
 
     public function tacos(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for tacos (includes meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('tacos');
+        $data['productType'] = 'tacos';
 
         return view('front.multipurpose.product.tacos', $data);
     }
 
     public function burgers(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
+        
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for burgers (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('burgers');
+        $data['productType'] = 'burgers';
 
         return view('front.multipurpose.product.burgers', $data);
     }
 
     public function panini(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
+        
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for panini (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('panini');
+        $data['productType'] = 'panini';
 
         return view('front.multipurpose.product.panini', $data);
     }
 
     public function assiettes(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
+        
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for assiettes (only sauces)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('assiettes');
+        $data['productType'] = 'assiettes';
 
         return view('front.multipurpose.product.assiettes', $data);
     }
 
     public function menusEnfant(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
+        
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for menus enfant (vegetables, sauces, drinks)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('menus_enfant');
+        $data['productType'] = 'menus_enfant';
 
         return view('front.multipurpose.product.menus_enfant', $data);
     }
 
     public function salade(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
+        $currentLang = $this->getCurrentLanguage();
+        
+        // If no default language is set or language not found, get the first available language
+        if (!$currentLang) {
+            $currentLang = Language::first();
         }
+        
+        // If still no language found, abort with error
+        if (!$currentLang) {
+            abort(500, 'No language configured');
+        }
+        
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
-        // Get addons for salade (sauces, optional vegetables)
+        // Get addons for salade (sauces required, vegetables optional)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('salade');
+        $data['productType'] = 'salade';
 
         return view('front.multipurpose.product.salade', $data);
     }
 
     public function nosBox(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
         // Get addons for nos box (vegetables, sauces, drinks)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('nos_box');
+        $data['productType'] = 'nos_box';
 
         return view('front.multipurpose.product.nos_box', $data);
     }
 
     public function productDetails($slug, $id)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
 
         Session::put('link', route('front.product.details', ['slug' => $slug, 'id' => $id]));
 
@@ -262,11 +263,7 @@ class ProductController extends Controller
 
     public function items(Request $request)
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
         $data['currentLang'] = $currentLang;
         $lang_id = $currentLang->id;
 
@@ -331,11 +328,7 @@ class ProductController extends Controller
 
     public function cart()
     {
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
 
         if (Session::has('cart')) {
             $cart = Session::get('cart');
@@ -408,18 +401,26 @@ class ProductController extends Controller
             $customizations = $request->input('customizations');
             $quantity = (int)$request->input('quantity', 1);
             
+            \Log::info('POST request received for addToCart');
+            \Log::info('Raw customizations:', $customizations);
+            \Log::info('Quantity:', $quantity);
+            
             if ($customizations) {
                 $customizationData = json_decode($customizations, true);
+                \Log::info('Decoded customizations:', $customizationData);
+                
                 $id = (int)$id;
                 $qty = $quantity;
                 $total = 0;
                 $variant = [];
                 $addons = [];
             } else {
+                \Log::info('No customizations found, falling back to GET logic');
                 // Fallback to GET logic
                 return $this->addToCartGet($id);
             }
         } else {
+            \Log::info('No POST request, using GET logic');
             // Check if this is a simple product addition or complex one
             if (strpos($id, ',,,') !== false) {
                 // Complex product with variants/addons
@@ -513,6 +514,7 @@ class ProductController extends Controller
             
             // Debug: Log the cart item with customizations
             \Log::info('Cart item with customizations:', $cartItem);
+            \Log::info('Customization data received:', $customizationData);
             
             // Prepare addons array for database storage
             $allAddons = [];
@@ -561,11 +563,29 @@ class ProductController extends Controller
                 }
             }
             
+            // Add extras
+            if (!empty($customizationData['extras']) && is_array($customizationData['extras'])) {
+                foreach ($customizationData['extras'] as $extra) {
+                    $allAddons[] = [
+                        'name' => $extra,
+                        'category' => 'extras',
+                        'price' => 0.00,
+                        'type' => 'extra'
+                    ];
+                }
+            }
+            
+            // IMPORTANT: Add addons to cart item so they appear in cart
+            $cartItem["addons"] = $allAddons;
+            
+            \Log::info('All addons prepared:', $allAddons);
+            \Log::info('Cart item after adding addons:', $cartItem);
+            
             // Save customization to database
             try {
                 $customization = new \App\Models\Customization();
                 $customization->product_name = $customizationData['productName'] ?? $product->title;
-                $customization->product_type = $customizationData['type'] ?? 'Product';
+                $customization->product_type = $customizationData['productType'] ?? 'Product';
                 $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? $product->current_price);
                 $customization->quantity = $customizationData['quantity'] ?? $qty;
                 $customization->meat_choice = $customizationData['meatChoice'] ?? null;
@@ -577,6 +597,8 @@ class ProductController extends Controller
                 
                 // Store customization ID in cart item
                 $cartItem["customization_id"] = $customization->id;
+                
+                \Log::info('Customization saved to database with ID:', $customization->id);
             } catch (\Exception $e) {
                 // Log error but continue with cart
                 \Log::error('Failed to save customization: ' . $e->getMessage());
@@ -928,11 +950,7 @@ class ProductController extends Controller
             $request->merge(['type' => 'guest']);
         }
 
-        if (session()->has('lang')) {
-            $currentLang = Language::where('code', session()->get('lang'))->first();
-        } else {
-            $currentLang = Language::where('is_default', 1)->first();
-        }
+        $currentLang = $this->getCurrentLanguage();
 
         // التأكد من وجود لغة
         if (!$currentLang) {

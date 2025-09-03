@@ -119,7 +119,13 @@
                                                     @php
                                                         $customizations = $item['customizations'];
                                                         
-                                                        // Try to get addons from database if customization_id exists
+                                                        // First, try to get addons from cart item directly
+                                                        $cartAddons = [];
+                                                        if (isset($item['addons']) && is_array($item['addons'])) {
+                                                            $cartAddons = $item['addons'];
+                                                        }
+                                                        
+                                                        // Then, try to get addons from database if customization_id exists
                                                         $dbAddons = [];
                                                         if (isset($item['customization_id'])) {
                                                             try {
@@ -133,8 +139,15 @@
                                                             }
                                                         }
                                                         
-                                                        // Use database addons if available, otherwise fallback to session data
-                                                        $allAddons = !empty($dbAddons) ? $dbAddons : [];
+                                                        // Use cart addons if available, otherwise fallback to database addons
+                                                        $allAddons = !empty($cartAddons) ? $cartAddons : $dbAddons;
+                                                        
+                                                        // Debug: Log what we found
+                                                        if (config('app.debug')) {
+                                                            echo "<!-- Debug: Cart addons: " . json_encode($cartAddons) . " -->";
+                                                            echo "<!-- Debug: DB addons: " . json_encode($dbAddons) . " -->";
+                                                            echo "<!-- Debug: Final addons: " . json_encode($allAddons) . " -->";
+                                                        }
                                                         
                                                         // Group addons by category
                                                         $groupedAddons = [];
@@ -319,57 +332,7 @@
 <script>
     "use strict";
     
-    // Wait for jQuery to be loaded
-    function waitForJQuery(callback) {
-        if (typeof jQuery !== 'undefined') {
-            callback();
-        } else {
-            setTimeout(function() {
-                waitForJQuery(callback);
-            }, 100);
-        }
-    }
-    
-    waitForJQuery(function() {
-        // Wait for DOM to be fully loaded
-        $(document).ready(function() {
-            console.log('Cart page JavaScript loaded');
-            console.log('jQuery version:', $.fn.jquery);
-            
-            // Show alert to confirm JavaScript is working
-            alert('JavaScript is working! Cart page loaded successfully.');
-            
-            // Initialize event handlers
-            initializeCartHandlers();
-            
-            // Additional debug
-            console.log('DOM ready, checking elements...');
-            console.log('Remove buttons:', $('.remove-item').length);
-            console.log('Cart items:', $('.cart-item').length);
-        });
-    });
-    
-    function initializeCartHandlers() {
-        console.log('Initializing cart handlers...');
-        
-        // Debug: Check if elements exist
-        console.log('Remove buttons found:', $('.remove-item').length);
-        console.log('Quantity inputs found:', $('.qty-input').length);
-        console.log('Update cart button found:', $('#cartUpdate').length);
-        
-        // Debug: Show all remove buttons
-        $('.remove-item').each(function(index) {
-            console.log(`Remove button ${index}:`, {
-                element: this,
-                key: $(this).data('key'),
-                text: $(this).text().trim(),
-                classes: $(this).attr('class')
-            });
-        });
-        
-        // Show alert with button count
-        alert(`Found ${$('.remove-item').length} remove buttons`);
-        
+    $(document).ready(function() {
         // Handle quantity changes
         $(document).on('change', '.qty-input', function() {
             let qty = parseInt($(this).val());
@@ -380,36 +343,18 @@
             updateCartItem($(this).data('key'), qty);
         });
         
-        // Handle remove item - using event delegation
+        // Handle remove item
         $(document).on('click', '.remove-item', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            
             let key = $(this).data('key');
-            console.log('Remove item clicked for key:', key);
-            console.log('Button element:', this);
-            console.log('Button data:', $(this).data());
-            
-            if (confirm('Êtes-vous sûr de vouloir supprimer cet article ?')) {
-                removeCartItem(key);
-            }
+            removeCartItem(key);
         });
         
         // Handle update cart button
         $(document).on('click', '#cartUpdate', function() {
             updateCart();
         });
-        
-        console.log('Cart handlers initialized');
-        
-        // Test click event
-        setTimeout(function() {
-            console.log('Testing click events...');
-            $('.remove-item').each(function(index) {
-                console.log(`Remove button ${index}:`, $(this).data('key'), this);
-            });
-        }, 1000);
-    }
+    });
     
     function updateCartItem(key, qty) {
         // Update the cart item quantity locally first
@@ -440,68 +385,25 @@
     }
     
     function removeCartItem(key) {
-        console.log('Removing item with key:', key);
-        alert(`Attempting to remove item with key: ${key}`);
-        
-        // Find the button and show loading state
         let button = $(`.remove${key} .remove-item`);
-        if (button.length === 0) {
-            console.error('Button not found for key:', key);
-            alert('Erreur: bouton non trouvé');
-            return;
-        }
-        
         button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Suppression...');
         
-        // Make AJAX request
         $.ajax({
             url: '{{ route("cart.item.remove", "") }}/' + key,
             type: 'GET',
             dataType: 'json',
-            timeout: 10000, // 10 second timeout
             success: function(response) {
-                console.log('Remove response:', response);
                 if (response && response.message) {
-                    // Show success message
-                    if (typeof toastr !== 'undefined') {
-                        toastr.success(response.message);
-                    } else {
-                        alert(response.message);
-                    }
-                    
                     // Reload page after short delay
                     setTimeout(function() {
                         location.reload();
                     }, 1000);
                 } else {
-                    console.error('Invalid response format:', response);
                     button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
-                    alert('Réponse invalide du serveur');
                 }
             },
             error: function(xhr, status, error) {
-                console.error('Remove error:', error);
-                console.error('Status:', status);
-                console.error('Response:', xhr.responseText);
-                
-                // Reset button state
                 button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
-                
-                // Show error message
-                let errorMsg = 'Erreur lors de la suppression. Veuillez réessayer.';
-                if (status === 'timeout') {
-                    errorMsg = 'Délai d\'attente dépassé. Veuillez réessayer.';
-                } else if (xhr.status === 404) {
-                    errorMsg = 'Route non trouvée. Veuillez contacter l\'administrateur.';
-                } else if (xhr.status === 500) {
-                    errorMsg = 'Erreur serveur. Veuillez réessayer plus tard.';
-                }
-                
-                if (typeof toastr !== 'undefined') {
-                    toastr.error(errorMsg);
-                } else {
-                    alert(errorMsg);
-                }
             }
         });
     }
@@ -525,7 +427,7 @@
                 }
             },
             error: function() {
-                alert('Erreur lors de la mise à jour du panier');
+                // Handle error silently
             }
         });
     }

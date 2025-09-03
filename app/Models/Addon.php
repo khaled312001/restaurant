@@ -55,48 +55,77 @@ class Addon extends Model
     const PRODUCT_ADDON_RULES = [
         'sandwiches' => [
             'required' => ['vegetables', 'sauces'],
-            'optional' => ['drinks'],
-            'excluded' => ['meat']
+            'optional' => [],
+            'excluded' => ['meat', 'drinks', 'extras']
         ],
         'tacos' => [
             'required' => ['meat', 'vegetables', 'sauces'],
-            'optional' => ['drinks'],
-            'excluded' => []
+            'optional' => [],
+            'excluded' => ['drinks', 'extras']
         ],
         'galettes' => [
             'required' => ['meat', 'vegetables', 'sauces'],
-            'optional' => ['drinks'],
-            'excluded' => []
+            'optional' => [],
+            'excluded' => ['drinks', 'extras']
         ],
         'burgers' => [
             'required' => ['vegetables', 'sauces'],
-            'optional' => ['drinks'],
-            'excluded' => ['meat']
+            'optional' => [],
+            'excluded' => ['meat', 'drinks', 'extras']
         ],
         'panini' => [
             'required' => ['vegetables', 'sauces'],
-            'optional' => ['drinks'],
-            'excluded' => ['meat']
+            'optional' => [],
+            'excluded' => ['meat', 'drinks', 'extras']
         ],
         'assiettes' => [
             'required' => ['sauces'],
             'optional' => [],
-            'excluded' => ['meat', 'vegetables', 'drinks']
+            'excluded' => ['meat', 'vegetables', 'drinks', 'extras']
         ],
         'menus_enfant' => [
             'required' => ['vegetables', 'sauces', 'drinks'],
             'optional' => [],
-            'excluded' => ['meat']
+            'excluded' => ['meat', 'extras']
         ],
         'salade' => [
             'required' => ['sauces'],
             'optional' => ['vegetables'],
-            'excluded' => ['meat', 'drinks']
+            'excluded' => ['meat', 'drinks', 'extras']
         ],
         'nos_box' => [
             'required' => ['vegetables', 'sauces', 'drinks'],
             'optional' => [],
-            'excluded' => ['meat']
+            'excluded' => ['meat', 'extras']
+        ]
+    ];
+
+    // قواعد الإضافات للقوائم (menus) - تشمل المشروبات
+    const MENU_ADDON_RULES = [
+        'tacos_menu' => [
+            'required' => ['meat', 'vegetables', 'sauces', 'drinks'],
+            'optional' => [],
+            'excluded' => ['extras']
+        ],
+        'galettes_menu' => [
+            'required' => ['meat', 'vegetables', 'sauces', 'drinks'],
+            'optional' => [],
+            'excluded' => ['extras']
+        ],
+        'sandwiches_menu' => [
+            'required' => ['vegetables', 'sauces', 'drinks'],
+            'optional' => [],
+            'excluded' => ['meat', 'extras']
+        ],
+        'burgers_menu' => [
+            'required' => ['vegetables', 'sauces', 'drinks'],
+            'optional' => [],
+            'excluded' => ['meat', 'extras']
+        ],
+        'panini_menu' => [
+            'required' => ['vegetables', 'sauces', 'drinks'],
+            'optional' => [],
+            'excluded' => ['meat', 'extras']
         ]
     ];
 
@@ -155,6 +184,66 @@ class Addon extends Model
     public static function getAddonsByProductType($productType)
     {
         $rules = self::PRODUCT_ADDON_RULES[$productType] ?? [];
+        $addons = self::active()->get();
+        $grouped = [];
+        
+        foreach (self::CATEGORIES as $category => $label) {
+            // تجاهل الفئات المستبعدة
+            if (in_array($category, $rules['excluded'] ?? [])) {
+                continue;
+            }
+            
+            $categoryAddons = $addons->where('category', $category);
+            
+            // تصفية حسب نوع المنتج
+            $categoryAddons = $categoryAddons->filter(function($addon) use ($productType) {
+                return empty($addon->product_types) || in_array($productType, $addon->product_types);
+            });
+            
+            if ($categoryAddons->count() > 0) {
+                $grouped[$category] = [
+                    'label' => $label,
+                    'items' => $categoryAddons,
+                    'required' => in_array($category, $rules['required'] ?? []),
+                    'optional' => in_array($category, $rules['optional'] ?? [])
+                ];
+            }
+        }
+        
+        return $grouped;
+    }
+
+    // الحصول على الإضافات حسب نوع المنتج والقائمة
+    public static function getAddonsByProductTypeAndMenu($productType, $isMenu = false)
+    {
+        $rules = [];
+        
+        if ($isMenu) {
+            // للقوائم الكاملة
+            switch ($productType) {
+                case 'tacos':
+                    $rules = self::MENU_ADDON_RULES['tacos_menu'];
+                    break;
+                case 'galettes':
+                    $rules = self::MENU_ADDON_RULES['galettes_menu'];
+                    break;
+                case 'sandwiches':
+                    $rules = self::MENU_ADDON_RULES['sandwiches_menu'];
+                    break;
+                case 'burgers':
+                    $rules = self::MENU_ADDON_RULES['burgers_menu'];
+                    break;
+                case 'panini':
+                    $rules = self::MENU_ADDON_RULES['panini_menu'];
+                    break;
+                default:
+                    $rules = self::PRODUCT_ADDON_RULES[$productType] ?? [];
+            }
+        } else {
+            // للمنتجات الفردية
+            $rules = self::PRODUCT_ADDON_RULES[$productType] ?? [];
+        }
+        
         $addons = self::active()->get();
         $grouped = [];
         

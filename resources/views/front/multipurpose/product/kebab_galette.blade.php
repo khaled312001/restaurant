@@ -47,11 +47,11 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(127, 'KEBAB', '7,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <button onclick="openCustomizationModal(127, 'KEBAB', '7,00', 'Seul', 'kebab', false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
                                 </button>
-                                <button onclick="openCustomizationModal(127, 'KEBAB', '10,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                <button onclick="openCustomizationModal(127, 'KEBAB', '10,50', 'Menu', 'kebab', true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
                                 </button>
@@ -63,11 +63,11 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '12,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '12,00', 'Seul', 'kebab', false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
                                 </button>
-                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '15,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                <button onclick="openCustomizationModal(128, 'MAXI KEBAB', '15,00', 'Menu', 'kebab', true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
                                 </button>
@@ -79,11 +79,11 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '7,50', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '7,50', 'Seul', 'galette', false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
                                 </button>
-                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '10,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                <button onclick="openCustomizationModal(129, 'GALETTE (VIANDE AU CHOIX)', '10,50', 'Menu', 'galette', true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
                                 </button>
@@ -95,11 +95,11 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '12,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '12,00', 'Seul', 'galette', false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
                                 </button>
-                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '15,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                <button onclick="openCustomizationModal(130, 'MAXI GALETTE (VIANDE AU CHOIX)', '15,00', 'Menu', 'galette', true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
                                 </button>
@@ -331,6 +331,78 @@
 </style>
 
 <script>
+// Set current product type for this page
+window.currentProductType = '{{ $productType }}';
+
+// Store addons data globally so modal can access it
+window.currentAddons = @json($addons);
+
+console.log('Addons data loaded:', window.currentAddons);
+console.log('Addons data type:', typeof window.currentAddons);
+console.log('Addons data keys:', Object.keys(window.currentAddons || {}));
+
+function openCustomizationModal(productId, productName, price, type, productSubType, isMenu) {
+    console.log('Opening modal for:', { productId, productName, price, type, productSubType, isMenu });
+    
+    // Set modal data attributes
+    $('#customizationModal').modal('show');
+    
+    // Update modal content immediately
+    $('#modalProductName').text(productName);
+    $('#modalProductType').text(type);
+    $('#modalProductPrice').text(price + '€');
+    
+    // Store product information
+    window.currentProduct = {
+        id: productId,
+        name: productName,
+        price: price,
+        type: type,
+        productSubType: productSubType,
+        isMenu: isMenu
+    };
+    
+    // Determine which sections to show based on product subtype
+    let sectionsToShow = [];
+    
+    if (productSubType === 'kebab') {
+        // KEBAB: Only vegetables and sauces (no meat choice)
+        sectionsToShow = ['vegetables', 'sauces'];
+        if (isMenu) {
+            sectionsToShow.push('drinks'); // Add drinks for menu
+        }
+    } else if (productSubType === 'galette') {
+        // GALETTE: Meat choice + vegetables + sauces
+        sectionsToShow = ['meat', 'vegetables', 'sauces'];
+        if (isMenu) {
+            sectionsToShow.push('drinks'); // Add drinks for menu
+        }
+    }
+    
+    // Update current product type and menu status for modal
+    if (typeof window.currentCustomizationOptions !== 'undefined') {
+        window.currentCustomizationOptions.productType = '{{ $productType }}';
+        window.currentCustomizationOptions.isMenu = isMenu;
+        window.currentCustomizationOptions.sectionsToShow = sectionsToShow;
+    }
+    
+    // Trigger modal show event to update sections
+    setTimeout(() => {
+        $('#customizationModal').trigger('show.bs.modal', [{
+            relatedTarget: {
+                dataset: {
+                    productType: '{{ $productType }}',
+                    productName: productName,
+                    productPrice: price,
+                    menuType: isMenu,
+                    productSubType: productSubType,
+                    sectionsToShow: sectionsToShow
+                }
+            }
+        }]);
+    }, 100);
+}
+
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function
     // You can keep your existing implementation here
@@ -339,6 +411,102 @@ function addToCart(url, variant, quantity, extras) {
     // For now, redirect to the cart route
     window.location.href = url;
 }
+
+// Add to cart with customization
+window.addToCartWithCustomization = function(customizationOptions) {
+    console.log('=== ADD TO CART WITH CUSTOMIZATION ===');
+    console.log('Customization options received:', customizationOptions);
+    
+    // Get current product information
+    if (!window.currentProduct) {
+        console.error('No current product information available');
+        console.log('Available window variables:', Object.keys(window).filter(key => key.includes('current')));
+        return;
+    }
+    
+    const product = window.currentProduct;
+    console.log('Current product:', product);
+    
+    // Validate customization options
+    if (!customizationOptions || !customizationOptions.addons) {
+        console.error('Invalid customization options:', customizationOptions);
+        return;
+    }
+    
+    console.log('Addons collected:', customizationOptions.addons);
+    
+    // Prepare data for backend
+    const cartData = {
+        product_id: product.id,
+        quantity: customizationOptions.quantity || 1,
+        customizations: JSON.stringify({
+            productName: product.name,
+            productType: product.type,
+            price: product.price,
+            quantity: customizationOptions.quantity || 1,
+            meatChoice: customizationOptions.addons?.meat || null,
+            vegetables: customizationOptions.addons?.vegetables || [],
+            sauces: customizationOptions.addons?.sauces || [],
+            drinks: customizationOptions.addons?.drinks || [],
+            extras: customizationOptions.addons?.extras || []
+        }),
+        _token: $('meta[name="csrf-token"]').attr('content')
+    };
+    
+    console.log('Cart data prepared:', cartData);
+    console.log('CSRF token:', $('meta[name="csrf-token"]').attr('content'));
+    
+    // Send POST request to add to cart
+    $.ajax({
+        url: '/add-to-cart/' + product.id,
+        method: 'POST',
+        data: cartData,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            console.log('=== ADD TO CART SUCCESS ===');
+            console.log('Response:', response);
+            
+            if (response.success) {
+                // Show success message
+                if (typeof toastr !== 'undefined') {
+                    toastr.success('Produit ajouté au panier avec succès!');
+                } else {
+                    alert('Produit ajouté au panier avec succès!');
+                }
+                
+                // Redirect to cart page
+                if (response.redirect) {
+                    window.location.href = response.redirect;
+                } else {
+                    window.location.href = '/cart';
+                }
+            } else {
+                // Show error message
+                if (typeof toastr !== 'undefined') {
+                    toastr.error(response.message || 'Erreur lors de l\'ajout au panier');
+                } else {
+                    alert(response.message || 'Erreur lors de l\'ajout au panier');
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('=== ADD TO CART ERROR ===');
+            console.error('Error:', error);
+            console.error('Status:', status);
+            console.error('Response:', xhr.responseText);
+            console.error('Status code:', xhr.status);
+            
+            // Show error message
+            if (typeof toastr !== 'undefined') {
+                toastr.error('Erreur lors de l\'ajout au panier');
+            } else {
+                alert('Erreur lors de l\'ajout au panier');
+            }
+        }
+    });
+};
 </script>
 
 @endsection 

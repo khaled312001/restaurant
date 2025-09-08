@@ -455,51 +455,66 @@
         return true;
     }
     
-    // Handle form submission
+    // Handle form submission from button click
     $("#placeOrderBtn").click(function(e){
         e.preventDefault();
-        
-        var that = $(this);
+        submitCheckout($(this));
+    });
+
+    // Handle direct form submission (e.g., Enter key)
+    $("#payment").on('submit', function(e){
+        e.preventDefault();
+        submitCheckout($("#placeOrderBtn"));
+    });
+
+    function ensureGatewaySelectedAndSetAction() {
         var selectedGateway = $("input[name='gateway']:checked");
-        // S'assurer que l'action du formulaire correspond à la passerelle choisie
-        if (selectedGateway && selectedGateway.length) {
+        if (!selectedGateway.length) {
+            var first = $("input[name='gateway']").first();
+            if (first.length) {
+                first.prop('checked', true);
+                selectedGateway = first;
+            }
+        }
+        if (selectedGateway.length) {
             var actionUrl = selectedGateway.data('action');
             if (actionUrl) {
                 $("#payment").attr('action', actionUrl);
             }
         }
-        // Si aucune passerelle n'est choisie, empêcher la soumission
-        if (!selectedGateway || !selectedGateway.length) {
+        return selectedGateway.length > 0;
+    }
+
+    function submitCheckout(triggerBtn) {
+        var hasGateway = ensureGatewaySelectedAndSetAction();
+        if (!hasGateway) {
             alert('Veuillez choisir une passerelle de paiement.');
             return;
         }
-        
-        // Prevent multiple clicks
-        if (that.attr('disabled')) {
+
+        if (triggerBtn && triggerBtn.attr('disabled')) {
             return;
         }
-        
-        // Refresh CSRF token before submission to prevent 419 error
+
         refreshCsrfToken().then(function() {
-            // Validate the token before proceeding
             if (!validateCsrfToken()) {
                 alert('Invalid session. Please refresh the page and try again.');
                 location.reload();
                 return;
             }
-            
-            // Soumission directe (hors ligne)
-            that.attr('disabled', "true");
-            that.text("Traitement...");
-            that.css("color", "black");
-            
-            $("#payment").submit();
-        }).catch(function(error) {
-            // If CSRF refresh fails, try to submit anyway
+
+            if (triggerBtn && triggerBtn.length) {
+                triggerBtn.attr('disabled', 'true');
+                triggerBtn.text('Traitement...');
+                triggerBtn.css('color', 'black');
+            }
+
+            $("#payment")[0].submit();
+        }).catch(function() {
             alert('Session expired. Please refresh the page and try again.');
             location.reload();
         });
-    });
+    }
     
     // Mettre à jour l'action du formulaire quand l'utilisateur change de passerelle
     $(document).on('change', "input[name='gateway']", function(){
@@ -511,13 +526,7 @@
     
     // Initialiser l'action du formulaire avec la passerelle pré-sélectionnée, le cas échéant
     $(function(){
-        var preselected = $("input[name='gateway']:checked");
-        if (preselected && preselected.length) {
-            var actionUrl = preselected.data('action');
-            if (actionUrl) {
-                $("#payment").attr('action', actionUrl);
-            }
-        }
+        ensureGatewaySelectedAndSetAction();
     });
     
     // Function to handle image loading errors

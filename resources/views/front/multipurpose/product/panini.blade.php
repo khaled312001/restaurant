@@ -311,6 +311,7 @@
 <script>
 // Set current product type for this page
 window.currentProductType = 'panini';
+window.currentAddons = @json($addons);
 
 function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
     console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });

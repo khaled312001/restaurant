@@ -24,6 +24,7 @@
 
 <!-- Menu Section -->
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
+<script>window.currentProductType = 'nos_box'; window.currentAddons = @json($addons ?? []);</script>
     <div class="container">
         <div class="row">
             <!-- Left Side - Menu Items -->

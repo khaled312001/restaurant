@@ -93,6 +93,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                        $total = 0; // Initialize total variable
+                                        @endphp
                                         @foreach ($cart as $key => $item)
                                         @php
                                         $id = $item["id"];
@@ -108,9 +111,19 @@
                                             </td>
                                             <td class="customizations">
                                                 <div class="customization-details">
-                                                    @if(isset($item['customizations']))
+                                                    @if(isset($item['customizations']) || isset($item['addons']))
                                                         @php
-                                                            $customizations = $item['customizations'];
+                                                            $customizations = $item['customizations'] ?? [];
+                                                            
+                                                            // If customizations is a JSON string, decode it
+                                                            if (is_string($customizations)) {
+                                                                $customizations = json_decode($customizations, true);
+                                                            }
+                                                            
+                                                            // If no customizations but we have addons directly, use them
+                                                            if (empty($customizations) && isset($item['addons']) && !empty($item['addons'])) {
+                                                                $customizations = ['addons_direct' => $item['addons']];
+                                                            }
                                                             
                                                             // Try to get addons from database if customization_id exists
                                                             $dbAddons = [];
@@ -126,8 +139,83 @@
                                                                 }
                                                             }
                                                             
-                                                            // Use database addons if available, otherwise fallback to session data
-                                                            $allAddons = !empty($dbAddons) ? $dbAddons : [];
+                                                            // First try to get addons from cart item directly
+                                                            $cartAddons = [];
+                                                            if (isset($item['addons']) && is_array($item['addons'])) {
+                                                                $cartAddons = $item['addons'];
+                                                            }
+                                                            
+                                                            // Use cart addons if available, otherwise database addons
+                                                            $allAddons = !empty($cartAddons) ? $cartAddons : (!empty($dbAddons) ? $dbAddons : []);
+                                                            
+                                                            // If still no addons, try to construct from customizations data
+                                                            if (empty($allAddons) && is_array($customizations)) {
+                                                                $constructedAddons = [];
+                                                                
+                                                                // Add meat choice
+                                                                if (!empty($customizations['meatChoice'])) {
+                                                                    $constructedAddons[] = [
+                                                                        'name' => $customizations['meatChoice'],
+                                                                        'category' => 'meat',
+                                                                        'price' => 0
+                                                                    ];
+                                                                }
+                                                                
+                                                                // Add vegetables
+                                                                if (!empty($customizations['vegetables']) && is_array($customizations['vegetables'])) {
+                                                                    foreach ($customizations['vegetables'] as $vegetable) {
+                                                                        $constructedAddons[] = [
+                                                                            'name' => $vegetable,
+                                                                            'category' => 'vegetables',
+                                                                            'price' => 0
+                                                                        ];
+                                                                    }
+                                                                }
+                                                                
+                                                                // Add drinks
+                                                                if (!empty($customizations['drinks']) && is_array($customizations['drinks'])) {
+                                                                    foreach ($customizations['drinks'] as $drink) {
+                                                                        $constructedAddons[] = [
+                                                                            'name' => $drink,
+                                                                            'category' => 'drinks',
+                                                                            'price' => 0
+                                                                        ];
+                                                                    }
+                                                                }
+                                                                
+                                                                // Add drink choice (backward compatibility)
+                                                                if (!empty($customizations['drinkChoice'])) {
+                                                                    $constructedAddons[] = [
+                                                                        'name' => $customizations['drinkChoice'],
+                                                                        'category' => 'drinks',
+                                                                        'price' => 0
+                                                                    ];
+                                                                }
+                                                                
+                                                                // Add sauces
+                                                                if (!empty($customizations['sauces']) && is_array($customizations['sauces'])) {
+                                                                    foreach ($customizations['sauces'] as $sauce) {
+                                                                        $constructedAddons[] = [
+                                                                            'name' => $sauce,
+                                                                            'category' => 'sauces',
+                                                                            'price' => 0
+                                                                        ];
+                                                                    }
+                                                                }
+                                                                
+                                                                // Add extras
+                                                                if (!empty($customizations['extras']) && is_array($customizations['extras'])) {
+                                                                    foreach ($customizations['extras'] as $extra) {
+                                                                        $constructedAddons[] = [
+                                                                            'name' => $extra,
+                                                                            'category' => 'extras',
+                                                                            'price' => 0
+                                                                        ];
+                                                                    }
+                                                                }
+                                                                
+                                                                $allAddons = $constructedAddons;
+                                                            }
                                                             
                                                             // Group addons by category
                                                             $groupedAddons = [];
@@ -294,10 +382,43 @@
 <script>
     // Initialize Stripe with proper error handling
     let stripe;
-    try {
-        stripe = Stripe('{{ $stripe->information->stripe_key ?? "" }}');
+    let elements;
+    let card;
+    let stripeKey = '{{ $stripe->information->stripe_key ?? "" }}';
+    console.log('Stripe key available:', stripeKey ? 'Yes' : 'No');
+    
+    if (stripeKey && stripeKey.trim() !== '') {
+        try {
+            stripe = Stripe(stripeKey);
+            elements = stripe.elements();
+            
+            // Create an instance of the card Element
+            card = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px',
+                        color: '#424770',
+                        '::placeholder': {
+                            color: '#aab7c4',
+                        },
+                    },
+                    invalid: {
+                        color: '#9e2146',
+                    },
+                },
+            });
+            
+            // Add an instance of the card Element into the `card-element` div
+            if (document.getElementById('card-element')) {
+                card.mount('#card-element');
+            }
+            
+            console.log('Stripe initialized successfully');
     } catch (error) {
         console.error('Stripe initialization error:', error);
+        }
+    } else {
+        console.warn('Stripe key not configured - Stripe payments will not be available');
     }
     
     // Function to refresh CSRF token

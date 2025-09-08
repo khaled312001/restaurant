@@ -1,0 +1,115 @@
+﻿@section('script')
+<script>
+    "use strict";
+    
+    $(document).ready(function() {
+        // Handle quantity changes
+        $(document).on('change', '.qty-input', function() {
+            let qty = parseInt($(this).val());
+            if (qty < 1) {
+                $(this).val(1);
+                qty = 1;
+            }
+            updateCartItem($(this).data('key'), qty);
+        });
+        
+        // Handle remove item
+        $(document).on('click', '.remove-item', function(e) {
+            e.preventDefault();
+            let key = $(this).data('key');
+            removeCartItem(key);
+        });
+        
+        // Handle update cart button
+        $(document).on('click', '#cartUpdate', function() {
+            updateCart();
+        });
+    });
+    
+    function updateCartItem(key, qty) {
+        // Update the cart item quantity locally first
+        let row = $(`tr.remove${key}`);
+        let unitPrice = parseFloat(row.find('.unit-price').text().replace(/[^\d.-]/g, ''));
+        let newTotal = unitPrice * qty;
+        row.find('.item-total').text('' + newTotal.toFixed(2));
+        
+        // Update cart totals
+        updateCartTotals();
+    }
+    
+    function updateCartTotals() {
+        let total = 0;
+        let count = 0;
+        
+        $('.item-total').each(function() {
+            let itemTotal = parseFloat($(this).text().replace(/[^\d.-]/g, ''));
+            total += itemTotal;
+        });
+        
+        $('.qty-input').each(function() {
+            count += parseInt($(this).val());
+        });
+        
+        $('.cart-item-view').text(count);
+        $('.cart-total-view').text(total.toFixed(2));
+    }
+    
+    function removeCartItem(key) {
+        let button = $(`tr.remove${key} .remove-item`);
+        button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Suppression...');
+        
+        $.ajax({
+            url: '{{ route("cart.item.remove", ":id") }}'.replace(':id', key),
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.success) {
+                    // Remove the row from the table
+                    $(`tr.remove${key}`).fadeOut(300, function() {
+                        $(this).remove();
+                        updateCartTotals();
+                    });
+                } else if (response && response.message) {
+                    // Show error message
+                    alert(response.message);
+                    button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
+                } else {
+                    // Fallback: reload page
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1000);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error removing cart item:', error);
+                button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
+                alert('Erreur lors de la suppression de l\'article');
+            }
+        });
+    }
+    
+    function updateCart() {
+        let qtys = [];
+        $('.qty-input').each(function() {
+            qtys.push($(this).val());
+        });
+        
+        $.ajax({
+            url: '{{ route("cart.update") }}',
+            type: 'POST',
+            data: {
+                qty: qtys,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                if (response.message) {
+                    location.reload();
+                }
+            },
+            error: function() {
+                // Handle error silently
+            }
+        });
+    }
+</script>
+@endsection

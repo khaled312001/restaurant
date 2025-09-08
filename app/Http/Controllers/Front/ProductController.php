@@ -334,7 +334,7 @@ class ProductController extends Controller
             $cart = Session::get('cart');
             
             // Debug: Log cart contents
-            \Log::info('Cart contents:', $cart);
+            \Log::info('Cart contents', ['cart' => $cart]);
             
             // Validate and clean cart data
             if (is_array($cart)) {
@@ -353,7 +353,7 @@ class ProductController extends Controller
                     }
                     
                     // Debug: Log each cart item
-                    \Log::info('Cart item ' . $key . ':', $item);
+                    \Log::info('Cart item ' . $key, ['item' => $item]);
                     
                     // Recalculate total to ensure accuracy
                     $itemTotal = (float)$item['product_price'];
@@ -391,23 +391,29 @@ class ProductController extends Controller
         return view('front.multipurpose.product.cart', compact('cart'));
     }
 
-    public function addToCart($id, Request $request = null)
+    public function addToCart($id, Request $request)
     {
         $cart = Session::get('cart');
         $customizationData = null; // Initialize customizationData
 
+        // Debug logging
+        \Log::info('AddToCart called with method: ' . ($request ? $request->method() : 'null'));
+        \Log::info('Has customizations: ' . ($request && $request->has('customizations') ? 'yes' : 'no'));
+        \Log::info('Request data', $request ? $request->all() : []);
+
         // Check if this is a POST request with customization data
-        if ($request && $request->isMethod('post')) {
+        if ($request && ($request->isMethod('post') || $request->has('customizations'))) {
             $customizations = $request->input('customizations');
             $quantity = (int)$request->input('quantity', 1);
             
             \Log::info('POST request received for addToCart');
-            \Log::info('Raw customizations:', $customizations);
-            \Log::info('Quantity:', $quantity);
+            \Log::info('Raw customizations', ['customizations' => $customizations]);
+            \Log::info('Quantity', ['quantity' => $quantity]);
+            \Log::info('All POST data', $request->all());
             
             if ($customizations) {
                 $customizationData = json_decode($customizations, true);
-                \Log::info('Decoded customizations:', $customizationData);
+                \Log::info('Decoded customizations', ['customizationData' => $customizationData]);
                 
                 $id = (int)$id;
                 $qty = $quantity;
@@ -502,7 +508,7 @@ class ProductController extends Controller
             "name" => $product->title,
             "qty" => (int)$qty,
             "variations" => $variant,
-            "addons" => $addons,
+            "addons" => [], // Initialize as empty, will be filled with customizations if available
             "product_price" => (float)$product->current_price,
             "total" => $calculatedTotal,
             "photo" => $product->feature_image
@@ -513,8 +519,8 @@ class ProductController extends Controller
             $cartItem["customizations"] = $customizationData;
             
             // Debug: Log the cart item with customizations
-            \Log::info('Cart item with customizations:', $cartItem);
-            \Log::info('Customization data received:', $customizationData);
+            \Log::info('Cart item with customizations', ['cartItem' => $cartItem]);
+            \Log::info('Customization data received', ['customizationData' => $customizationData]);
             
             // Prepare addons array for database storage
             $allAddons = [];
@@ -541,7 +547,19 @@ class ProductController extends Controller
                 }
             }
             
-            // Add drink choice
+            // Add drinks (multiple selections possible)
+            if (!empty($customizationData['drinks']) && is_array($customizationData['drinks'])) {
+                foreach ($customizationData['drinks'] as $drink) {
+                    $allAddons[] = [
+                        'name' => $drink,
+                        'category' => 'drinks',
+                        'price' => 0.00,
+                        'type' => 'drink'
+                    ];
+                }
+            }
+            
+            // Backward compatibility for single drink choice
             if (!empty($customizationData['drinkChoice'])) {
                 $allAddons[] = [
                     'name' => $customizationData['drinkChoice'],
@@ -578,8 +596,8 @@ class ProductController extends Controller
             // IMPORTANT: Add addons to cart item so they appear in cart
             $cartItem["addons"] = $allAddons;
             
-            \Log::info('All addons prepared:', $allAddons);
-            \Log::info('Cart item after adding addons:', $cartItem);
+            \Log::info('All addons prepared', ['allAddons' => $allAddons]);
+            \Log::info('Cart item after adding addons', ['cartItem' => $cartItem]);
             
             // Save customization to database
             try {
@@ -598,15 +616,22 @@ class ProductController extends Controller
                 // Store customization ID in cart item
                 $cartItem["customization_id"] = $customization->id;
                 
-                \Log::info('Customization saved to database with ID:', $customization->id);
+                \Log::info('Customization saved to database with ID: ' . $customization->id);
             } catch (\Exception $e) {
                 // Log error but continue with cart
                 \Log::error('Failed to save customization: ' . $e->getMessage());
             }
+        } else {
+            // If no customizations, use the old addons system for backward compatibility
+            $cartItem["addons"] = $addons;
+            
+            \Log::info('No customizations, using old addons', ['addons' => $addons]);
         }
 
         // Debug: Log the final cart item before saving
-        \Log::info('Final cart item to be saved:', $cartItem);
+        \Log::info('Final cart item to be saved', ['cartItem' => $cartItem]);
+        \Log::info('Addons in final cart item: ' . json_encode($cartItem['addons'] ?? []));
+        \Log::info('Customizations in final cart item: ' . json_encode($cartItem['customizations'] ?? []));
 
         // if cart is empty then this the first product
         if (!$cart) {
@@ -624,7 +649,11 @@ class ProductController extends Controller
                     'redirect' => url('/cart')
                 ]);
             }
-            return response()->json(['message' => 'Product added to cart successfully!']);
+            return response()->json([
+                'success' => true,
+                'message' => 'Product added to cart successfully!',
+                'redirect' => url('/cart')
+            ]);
         }
 
         // if cart not empty then check if this product (with same variation and customizations) exist then increment quantity
@@ -675,7 +704,11 @@ class ProductController extends Controller
                         'redirect' => url('/cart')
                     ]);
                 }
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Product added to cart successfully!',
+                    'redirect' => url('/cart')
+                ]);
             }
         }
 
@@ -685,14 +718,18 @@ class ProductController extends Controller
         Session::put('cart', $cart);
         Session::save();
 
-        if ($request && $request->isMethod('post')) {
+        if ($request && ($request->isMethod('post') || $request->has('customizations'))) {
             return response()->json([
                 'success' => true,
                 'message' => 'Product added to cart successfully!',
                 'redirect' => url('/cart')
             ]);
         }
-        return response()->json(['message' => 'Product added to cart successfully!']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Product added to cart successfully!',
+            'redirect' => url('/cart')
+        ]);
     }
 
     // Helper method for GET requests (original logic)
@@ -792,7 +829,11 @@ class ProductController extends Controller
 
             Session::put('cart', $cart);
             Session::save();
-            return response()->json(['message' => 'Product added to cart successfully!']);
+            return response()->json([
+                'success' => true,
+                'message' => 'Product added to cart successfully!',
+                'redirect' => url('/cart')
+            ]);
         }
 
         // if cart not empty then check if this product (with same variation) exist then increment quantity
@@ -823,7 +864,11 @@ class ProductController extends Controller
                 $cart[$key]['total'] = $itemTotal * $cart[$key]['qty'];
                 Session::put('cart', $cart);
                 Session::save();
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Product added to cart successfully!',
+                    'redirect' => url('/cart')
+                ]);
             }
         }
 

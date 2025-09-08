@@ -59,7 +59,8 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
     Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
     Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
-    Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->name('cart.item.remove');
+    Route::get('/cart/item/remove/{id}', 'Front\\ProductController@cartitemremove')->name('cart.item.remove');
+    Route::get('/cart/clear', 'Front\\ProductController@clearCart')->name('cart.clear');
     Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');
     Route::get('/checkout/{slug}', 'Front\ProductController@Prdouctcheckout')->name('front.product.checkout');
     Route::get('/timeframes', 'Front\ProductController@timeframes')->name('front.timeframes');
@@ -976,4 +977,4 @@ Route::fallback(function () {
     return view('errors.404');
 });
 
-
+Route::get('/cart/clear', 'Front\ProductController@clearCart')->name('cart.clear');

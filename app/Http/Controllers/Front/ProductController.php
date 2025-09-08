@@ -334,21 +334,30 @@ class ProductController extends Controller
             $cart = Session::get('cart');
             
             // Debug: Log cart contents
+            \Log::info("Cart keys: " . implode(", ", array_keys($cart)));
             \Log::info('Cart contents', ['cart' => $cart]);
             
             // Validate and clean cart data
             if (is_array($cart)) {
+                $validItems = [];
+                
                 foreach ($cart as $key => $item) {
+                    // Skip items with invalid keys (numeric keys that shouldn't exist)
+                    if (is_numeric($key) && $key == 0) {
+                        \Log::warning("Skipping cart item with invalid key: {$key}", ['item' => $item]);
+                        continue;
+                    }
+                    
                     // Ensure all required fields exist
                     if (!isset($item['id']) || !isset($item['name']) || !isset($item['qty']) || !isset($item['total'])) {
-                        unset($cart[$key]);
+                        \Log::warning("Cart item {$key} missing required fields", ['item' => $item]);
                         continue;
                     }
                     
                     // Validate product exists
                     $product = Product::find($item['id']);
                     if (!$product) {
-                        unset($cart[$key]);
+                        \Log::warning("Cart item {$key} references non-existent product", ['item' => $item]);
                         continue;
                     }
                     
@@ -377,8 +386,12 @@ class ProductController extends Controller
                     }
                     
                     // Update total
-                    $cart[$key]['total'] = $itemTotal * (int)$item['qty'];
+                    $item['total'] = $itemTotal * (int)$item['qty'];
+                    $validItems[$key] = $item;
                 }
+                
+                // Replace cart with only valid items, preserving original keys
+                $cart = $validItems;
                 
                 // Save cleaned cart
                 Session::put('cart', $cart);
@@ -388,7 +401,13 @@ class ProductController extends Controller
             $cart = null;
         }
         
-        return view('front.multipurpose.product.cart', compact('cart'));
+        // Get basic settings and extended settings
+        $bs = $currentLang->basic_setting;
+        $be = $currentLang->basic_extended;
+        $rtl = $currentLang->rtl ?? 0;
+        $activeTheme = $currentLang->basic_setting->theme ?? 'multipurpose';
+        
+        return view('front.multipurpose.product.cart', compact('cart', 'bs', 'be', 'rtl', 'activeTheme', 'currentLang'));
     }
 
     public function addToCart($id, Request $request)
@@ -501,6 +520,9 @@ class ProductController extends Controller
         
         $cart = Session::get('cart');
         $ckey = uniqid();
+        
+        // Ensure cart key is always a string
+        $ckey = (string)$ckey;
 
         // Prepare cart item data
         $cartItem = [
@@ -810,6 +832,9 @@ class ProductController extends Controller
         
         $cart = Session::get('cart');
         $ckey = uniqid();
+        
+        // Ensure cart key is always a string
+        $ckey = (string)$ckey;
 
         // if cart is empty then this the first product
         if (!$cart) {
@@ -952,7 +977,11 @@ class ProductController extends Controller
                 $cart = Session::get('cart');
                 
                 if (isset($cart[$id])) {
-                    unset($cart[$id]);
+                    // Use array_filter to preserve original keys instead of unset
+                    $cart = array_filter($cart, function($key) use ($id) {
+                        return $key !== $id;
+                    }, ARRAY_FILTER_USE_KEY);
+                    
                     Session::put('cart', $cart);
                     Session::save();
                     
@@ -986,6 +1015,17 @@ class ProductController extends Controller
         }
     }
 
+
+    public function clearCart()
+    {
+        Session::forget('cart');
+        Session::save();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Cart cleared successfully'
+        ]);
+    }
 
     public function checkout(Request $request)
     {

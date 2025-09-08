@@ -1,5 +1,5 @@
 <!-- Customization Modal -->
-<div class="modal fade" id="customizationModal" tabindex="-1" role="dialog" aria-labelledby="customizationModalLabel" aria-hidden="true">
+<div class="modal fade" id="customizationModal" tabindex="-1" role="dialog" aria-labelledby="customizationModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="border-radius: 20px; border: none;">
             <div class="modal-header" style="background: linear-gradient(45deg, #f39c12, #e67e22); border-radius: 20px 20px 0 0; border: none;">
@@ -23,7 +23,7 @@
                 <!-- Dynamic Addons Sections -->
                 <div id="dynamicAddonsContainer">
                     <!-- Sections will be created dynamically by JavaScript -->
-                            </div>
+                </div>
 
                 <!-- Quantity Section -->
                 <div class="quantity-section" style="text-align: center; margin-bottom: 25px;">

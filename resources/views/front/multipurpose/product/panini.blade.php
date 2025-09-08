@@ -1,4 +1,4 @@
-{{-- eslint-disable --}}
+d{{-- eslint-disable --}}
 @extends('front.layout')
 @section('content')
 
@@ -317,7 +317,11 @@ function openCustomizationModal(productId, productName, price, type, hasMeat, is
     console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
     
     // Set modal data attributes
-    $('#customizationModal').modal('show');
+    $('#customizationModal').modal({
+        backdrop: 'static',
+        keyboard: false,
+        focus: true
+    });
     
     // Update modal content immediately
     $('#modalProductName').text(productName);
@@ -339,6 +343,25 @@ function openCustomizationModal(productId, productName, price, type, hasMeat, is
         window.currentCustomizationOptions.productType = 'panini';
         window.currentCustomizationOptions.isMenu = isMenu;
     }
+    
+    // Show modal and handle focus properly
+    $('#customizationModal').modal('show');
+    
+    // Ensure proper focus management after modal is shown
+    $('#customizationModal').on('shown.bs.modal', function() {
+        // Remove aria-hidden and ensure proper focus
+        $(this).removeAttr('aria-hidden');
+        $(this).attr('aria-hidden', 'false');
+        
+        // Focus on the first focusable element
+        $(this).find('input, button, select, textarea').first().focus();
+    });
+    
+    // Handle modal hide event
+    $('#customizationModal').on('hidden.bs.modal', function() {
+        // Reset aria-hidden when modal is hidden
+        $(this).attr('aria-hidden', 'true');
+    });
     
     // Trigger modal show event to update sections
     setTimeout(() => {
@@ -379,6 +402,38 @@ window.addToCartWithCustomization = function(customizationOptions) {
     // Close modal
     $('#customizationModal').modal('hide');
 };
+
+// Handle modal events for proper accessibility
+$(document).ready(function() {
+    // Handle modal show event
+    $('#customizationModal').on('show.bs.modal', function() {
+        // Ensure modal is properly configured
+        $(this).removeAttr('aria-hidden');
+        $(this).attr('aria-hidden', 'false');
+    });
+    
+    // Handle modal shown event
+    $('#customizationModal').on('shown.bs.modal', function() {
+        // Focus on the first focusable element
+        const firstFocusable = $(this).find('input, button, select, textarea').first();
+        if (firstFocusable.length) {
+            firstFocusable.focus();
+        }
+    });
+    
+    // Handle modal hide event
+    $('#customizationModal').on('hide.bs.modal', function() {
+        // Reset aria-hidden when modal is being hidden
+        $(this).attr('aria-hidden', 'true');
+    });
+    
+    // Handle modal hidden event
+    $('#customizationModal').on('hidden.bs.modal', function() {
+        // Clean up any focus issues
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    });
+});
 </script>
 
 @endsection 

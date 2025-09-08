@@ -16,10 +16,9 @@ function totalPrice(qty) {
 
     let total = parseFloat(pprice) + parseFloat(vprice);
 
+    // Addons are free per business rules; ignore addon prices
     if ($addons.length > 0) {
-        $addons.each(function () {
-            total += parseFloat($(this).data('price'));
-        });
+        // no-op
     }
 
     total = total.toFixed(2) * parseInt(qty);

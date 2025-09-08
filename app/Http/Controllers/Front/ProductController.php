@@ -525,13 +525,9 @@ class ProductController extends Controller
             }
         }
         
-        // Add addons price
+        // Addons are always free per business rules; ignore addon prices entirely
         if (is_array($addons)) {
-            foreach ($addons as $addon) {
-                if (is_array($addon) && array_key_exists('price', $addon)) {
-                    $calculatedTotal += (float)$addon["price"];
-                }
-            }
+            // Intentionally no-op to enforce free addons
         }
         
         // Multiply by quantity
@@ -725,14 +721,7 @@ class ProductController extends Controller
                     }
                 }
                 
-                // Add addons price
-                if (is_array($existingCartItem["addons"])) {
-                    foreach ($existingCartItem["addons"] as $addon) {
-                        if (is_array($addon) && array_key_exists('price', $addon)) {
-                            $itemTotal += (float)$addon["price"];
-                        }
-                    }
-                }
+                // Addons are free; do not add any addon price
                 
                 $cart[$key]['total'] = $itemTotal * $cart[$key]['qty'];
                 Session::put('cart', $cart);
@@ -837,13 +826,9 @@ class ProductController extends Controller
             }
         }
         
-        // Add addons price
+        // Addons are always free per business rules; ignore addon prices entirely
         if (is_array($addons)) {
-            foreach ($addons as $addon) {
-                if (is_array($addon) && array_key_exists('price', $addon)) {
-                    $calculatedTotal += (float)$addon["price"];
-                }
-            }
+            // Intentionally no-op to enforce free addons
         }
         
         // Multiply by quantity
@@ -896,14 +881,7 @@ class ProductController extends Controller
                     }
                 }
                 
-                // Add addons price
-                if (is_array($cartItem["addons"])) {
-                    foreach ($cartItem["addons"] as $addon) {
-                        if (is_array($addon) && array_key_exists('price', $addon)) {
-                            $itemTotal += (float)$addon["price"];
-                        }
-                    }
-                }
+                // Addons are free; do not add any addon price
                 
                 $cart[$key]['total'] = $itemTotal * $cart[$key]['qty'];
                 Session::put('cart', $cart);

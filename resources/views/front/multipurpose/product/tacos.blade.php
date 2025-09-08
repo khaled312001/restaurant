@@ -366,18 +366,50 @@ function addToCart(url, variant, quantity, extras) {
 
 // Add to cart with customization
 window.addToCartWithCustomization = function(customizationOptions) {
-    console.log('Adding to cart with customization:', customizationOptions);
+    console.log('=== ADD TO CART WITH CUSTOMIZATION ===');
+    console.log('Customization options received:', customizationOptions);
     
-    // Here you would typically send the data to your backend
-    // For now, just show a success message
-    if (typeof toastr !== 'undefined') {
-        toastr.success('Produit ajouté au panier avec succès!');
-    } else {
-        alert('Produit ajouté au panier avec succès!');
+    if (!window.currentProduct) {
+        console.error('No current product information available');
+        return;
     }
-    
-    // Close modal
-    $('#customizationModal').modal('hide');
+    const product = window.currentProduct;
+    if (!customizationOptions || !customizationOptions.addons) {
+        console.error('Invalid customization options:', customizationOptions);
+        return;
+    }
+    const cartData = {
+        product_id: product.id,
+        quantity: customizationOptions.quantity || 1,
+        customizations: JSON.stringify({
+            productName: product.name,
+            productType: product.type,
+            price: product.price,
+            quantity: customizationOptions.quantity || 1,
+            meatChoice: customizationOptions.addons?.meat || null,
+            vegetables: customizationOptions.addons?.vegetables || [],
+            sauces: customizationOptions.addons?.sauces || [],
+            drinks: customizationOptions.addons?.drinks || [],
+            extras: customizationOptions.addons?.extras || []
+        }),
+        _token: $('meta[name="csrf-token"]').attr('content')
+    };
+    $.ajax({
+        url: '/add-to-cart/' + product.id,
+        method: 'POST',
+        data: cartData,
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        success: function(response) {
+            if (response && response.success) {
+                window.location.href = response.redirect || '/cart';
+            } else {
+                if (typeof toastr !== 'undefined') { toastr.error(response.message || 'Erreur lors de l\'ajout au panier'); }
+            }
+        },
+        error: function() {
+            if (typeof toastr !== 'undefined') { toastr.error('Erreur lors de l\'ajout au panier'); }
+        }
+    });
 };
 </script>
 

@@ -334,30 +334,22 @@ class ProductController extends Controller
             $cart = Session::get('cart');
             
             // Debug: Log cart contents
-            \Log::info("Cart keys: " . implode(", ", array_keys($cart)));
+        \Log::info("Cart keys: " . implode(", ", array_keys($cart)));
             \Log::info('Cart contents', ['cart' => $cart]);
             
             // Validate and clean cart data
             if (is_array($cart)) {
-                $validItems = [];
-                
                 foreach ($cart as $key => $item) {
-                    // Skip items with invalid keys (numeric keys that shouldn't exist)
-                    if (is_numeric($key) && $key == 0) {
-                        \Log::warning("Skipping cart item with invalid key: {$key}", ['item' => $item]);
-                        continue;
-                    }
-                    
                     // Ensure all required fields exist
                     if (!isset($item['id']) || !isset($item['name']) || !isset($item['qty']) || !isset($item['total'])) {
-                        \Log::warning("Cart item {$key} missing required fields", ['item' => $item]);
+                        unset($cart[$key]);
                         continue;
                     }
                     
                     // Validate product exists
                     $product = Product::find($item['id']);
                     if (!$product) {
-                        \Log::warning("Cart item {$key} references non-existent product", ['item' => $item]);
+                        unset($cart[$key]);
                         continue;
                     }
                     
@@ -386,12 +378,8 @@ class ProductController extends Controller
                     }
                     
                     // Update total
-                    $item['total'] = $itemTotal * (int)$item['qty'];
-                    $validItems[$key] = $item;
+                    $cart[$key]['total'] = $itemTotal * (int)$item['qty'];
                 }
-                
-                // Replace cart with only valid items, preserving original keys
-                $cart = $validItems;
                 
                 // Save cleaned cart
                 Session::put('cart', $cart);
@@ -465,7 +453,38 @@ class ProductController extends Controller
             }
         }
 
-        $product = Product::findOrFail($id);
+        // Try to resolve product by ID first; if not found, try by provided name
+        try {
+            $product = Product::findOrFail($id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            $fallbackTitle = null;
+            if ($customizationData && isset($customizationData['productName'])) {
+                $fallbackTitle = $customizationData['productName'];
+            } elseif ($request) {
+                $raw = $request->input('customizations');
+                if ($raw) {
+                    $decoded = json_decode($raw, true);
+                    if (json_last_error() === JSON_ERROR_NONE && isset($decoded['productName'])) {
+                        $fallbackTitle = $decoded['productName'];
+                    }
+                }
+            }
+
+            if ($fallbackTitle) {
+                $product = Product::where('title', $fallbackTitle)->first();
+            } else {
+                $product = null;
+            }
+
+            if (!$product) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Product not found',
+                ], 404);
+            }
+            // If we found by title, normalize $id
+            $id = (int)$product->id;
+        }
         // validations
         if ($qty < 1) {
             return response()->json(['error' => 'Quantity must be 1 or more than 1.']);
@@ -976,29 +995,43 @@ class ProductController extends Controller
             if ($id !== null) {
                 $cart = Session::get('cart');
                 
+                // Normalize id to string to match how keys are stored
+                $originalId = $id;
+                $id = (string)$id;
+                
+                // If item exists by exact key or by integer product id, remove directly
                 if (isset($cart[$id])) {
-                    // Use array_filter to preserve original keys instead of unset
-                    $cart = array_filter($cart, function($key) use ($id) {
-                        return $key !== $id;
-                    }, ARRAY_FILTER_USE_KEY);
-                    
+                    unset($cart[$id]);
+                } elseif (isset($cart[(int)$originalId])) {
+                    unset($cart[(int)$originalId]);
+                } else {
+                    // If direct key not found but a numeric index was provided, map index to actual key
+                    if (is_array($cart) && is_numeric($originalId)) {
+                        $index = (int)$originalId;
+                        $keys = array_keys($cart);
+                        if (array_key_exists($index, $keys)) {
+                            $id = (string)$keys[$index];
+                            if (isset($cart[$id])) {
+                                unset($cart[$id]);
+                            }
+                        }
+                    }
+                }
+                
+                if (is_array($cart)) {
                     Session::put('cart', $cart);
                     Session::save();
-                    
-                    \Log::info("Cart item removed successfully. ID: {$id}");
-                    
-                    return response()->json([
-                        'success' => true,
-                        'message' => 'Article supprimé avec succès',
-                        'cart_count' => count($cart)
-                    ]);
-                } else {
-                    \Log::warning("Cart item not found for removal. ID: {$id}");
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Article non trouvé dans le panier'
-                    ], 404);
                 }
+                
+                if (!empty($cart)) {
+                    \Log::info("Cart item removal attempt completed. Provided: {$originalId}");
+                }
+                
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Article supprimé avec succès',
+                    'cart_count' => is_array($cart) ? count($cart) : 0
+                ]);
             } else {
                 \Log::error("Invalid ID provided for cart item removal");
                 return response()->json([
@@ -1007,10 +1040,10 @@ class ProductController extends Controller
                 ], 400);
             }
         } catch (\Exception $e) {
-            \Log::error("Error removing cart item: " . $e->getMessage());
+            \Log::error("Cart item removal failed: " . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Erreur lors de la suppression: ' . $e->getMessage()
+                'message' => 'Une erreur s\'est produite'
             ], 500);
         }
     }

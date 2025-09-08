@@ -48,7 +48,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">MENU ENFANT</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 120) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(120, 'MENU ENFANT', '8,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -70,7 +70,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 120) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(120, 'MENU ENFANT', '8,50', 'Menu', false, true)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -82,7 +82,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BURGER + FRITES</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 121) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(121, 'BURGER + FRITES', '9,00', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -104,7 +104,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 121) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(121, 'BURGER + FRITES', '9,00', 'Menu', false, true)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -116,7 +116,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">NUGGETS + FRITES</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 122) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(122, 'NUGGETS + FRITES', '8,00', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -138,7 +138,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 122) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(122, 'NUGGETS + FRITES', '8,00', 'Menu', false, true)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -150,7 +150,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">VIANDE KEBAB + FRITES</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 123) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(123, 'VIANDE KEBAB + FRITES', '9,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -172,7 +172,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 123) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(123, 'VIANDE KEBAB + FRITES', '9,50', 'Menu', false, true)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -200,7 +200,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">COMPOTE + CAPRISUN + JOUET</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">3,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 124) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(124, 'COMPOTE + CAPRISUN + JOUET', '3,50', 'Dessert', false, false)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -222,7 +222,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 124) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(124, 'COMPOTE + CAPRISUN + JOUET', '3,50', 'Dessert', false, false)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -234,7 +234,7 @@
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GLACE VANILLE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">2,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 125) }}')" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(125, 'GLACE VANILLE', '2,50', 'Dessert', false, false)" class="btn btn-warning btn-sm" style="background: #e91e63; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -256,7 +256,7 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <button onclick="addToCartSimple('{{ route('add.cart', 125) }}')" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(125, 'GLACE VANILLE', '2,50', 'Dessert', false, false)" class="btn btn-warning" style="background: #e91e63; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>

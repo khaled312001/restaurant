@@ -1,4 +1,4 @@
-d{{-- eslint-disable --}}
+{{-- eslint-disable --}}
 @extends('front.layout')
 @section('content')
 
@@ -317,11 +317,7 @@ function openCustomizationModal(productId, productName, price, type, hasMeat, is
     console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
     
     // Set modal data attributes
-    $('#customizationModal').modal({
-        backdrop: 'static',
-        keyboard: false,
-        focus: true
-    });
+    $('#customizationModal').modal('show');
     
     // Update modal content immediately
     $('#modalProductName').text(productName);
@@ -343,25 +339,6 @@ function openCustomizationModal(productId, productName, price, type, hasMeat, is
         window.currentCustomizationOptions.productType = 'panini';
         window.currentCustomizationOptions.isMenu = isMenu;
     }
-    
-    // Show modal and handle focus properly
-    $('#customizationModal').modal('show');
-    
-    // Ensure proper focus management after modal is shown
-    $('#customizationModal').on('shown.bs.modal', function() {
-        // Remove aria-hidden and ensure proper focus
-        $(this).removeAttr('aria-hidden');
-        $(this).attr('aria-hidden', 'false');
-        
-        // Focus on the first focusable element
-        $(this).find('input, button, select, textarea').first().focus();
-    });
-    
-    // Handle modal hide event
-    $('#customizationModal').on('hidden.bs.modal', function() {
-        // Reset aria-hidden when modal is hidden
-        $(this).attr('aria-hidden', 'true');
-    });
     
     // Trigger modal show event to update sections
     setTimeout(() => {
@@ -389,51 +366,51 @@ function addToCart(url, variant, quantity, extras) {
 
 // Add to cart with customization
 window.addToCartWithCustomization = function(customizationOptions) {
-    console.log('Adding to cart with customization:', customizationOptions);
+    console.log('=== ADD TO CART WITH CUSTOMIZATION ===');
+    console.log('Customization options received:', customizationOptions);
     
-    // Here you would typically send the data to your backend
-    // For now, just show a success message
-    if (typeof toastr !== 'undefined') {
-        toastr.success('Produit ajouté au panier avec succès!');
-    } else {
-        alert('Produit ajouté au panier avec succès!');
+    if (!window.currentProduct) {
+        console.error('No current product information available');
+        return;
     }
-    
-    // Close modal
-    $('#customizationModal').modal('hide');
-};
-
-// Handle modal events for proper accessibility
-$(document).ready(function() {
-    // Handle modal show event
-    $('#customizationModal').on('show.bs.modal', function() {
-        // Ensure modal is properly configured
-        $(this).removeAttr('aria-hidden');
-        $(this).attr('aria-hidden', 'false');
-    });
-    
-    // Handle modal shown event
-    $('#customizationModal').on('shown.bs.modal', function() {
-        // Focus on the first focusable element
-        const firstFocusable = $(this).find('input, button, select, textarea').first();
-        if (firstFocusable.length) {
-            firstFocusable.focus();
+    const product = window.currentProduct;
+    if (!customizationOptions || !customizationOptions.addons) {
+        console.error('Invalid customization options:', customizationOptions);
+        return;
+    }
+    const cartData = {
+        product_id: product.id,
+        quantity: customizationOptions.quantity || 1,
+        customizations: JSON.stringify({
+            productName: product.name,
+            productType: product.type,
+            price: product.price,
+            quantity: customizationOptions.quantity || 1,
+            meatChoice: customizationOptions.addons?.meat || null,
+            vegetables: customizationOptions.addons?.vegetables || [],
+            sauces: customizationOptions.addons?.sauces || [],
+            drinks: customizationOptions.addons?.drinks || [],
+            extras: customizationOptions.addons?.extras || []
+        }),
+        _token: $('meta[name="csrf-token"]').attr('content')
+    };
+    $.ajax({
+        url: '/add-to-cart/' + product.id,
+        method: 'POST',
+        data: cartData,
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        success: function(response) {
+            if (response && response.success) {
+                window.location.href = response.redirect || '/cart';
+            } else {
+                if (typeof toastr !== 'undefined') { toastr.error(response.message || 'Erreur lors de l\'ajout au panier'); }
+            }
+        },
+        error: function() {
+            if (typeof toastr !== 'undefined') { toastr.error('Erreur lors de l\'ajout au panier'); }
         }
     });
-    
-    // Handle modal hide event
-    $('#customizationModal').on('hide.bs.modal', function() {
-        // Reset aria-hidden when modal is being hidden
-        $(this).attr('aria-hidden', 'true');
-    });
-    
-    // Handle modal hidden event
-    $('#customizationModal').on('hidden.bs.modal', function() {
-        // Clean up any focus issues
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-    });
-});
+};
 </script>
 
 @endsection 

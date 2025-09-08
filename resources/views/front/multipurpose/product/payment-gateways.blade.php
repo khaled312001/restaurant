@@ -1,132 +1,28 @@
-{{-- Start: Paypal Area --}}
-@if ($paypal->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="paypal" data-tabid="paypal" data-action="{{route('product.paypal.submit')}}">
-                <span>{{__('Paypal')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Paypal Area --}}
+{{-- Online gateways disabled on request --}}
 
 
-{{-- Start: Stripe Area --}}
-@if ($stripe->status == 1)
-<div class="option-block">
-    <div class="checkbox">
-        <label>
-            <input name="gateway" class="input-check" type="radio" value="stripe" data-tabid="stripe" data-action="{{route('product.stripe.submit')}}">
-            <span>{{__('Visa/Mastercard')}}</span>
-        </label>
-    </div>
-</div>
-
-<div class="row gateway-details" id="tab-stripe">
-    <div class="col-12">
-        <div id="card-element" class="form-control">
-            <!-- Stripe Elements will create input elements here -->
-        </div>
-        <div id="card-errors" class="text-danger mt-2" role="alert"></div>
-        
-        <div class="mt-3">
-            <small class="text-muted">
-                <i class="fas fa-lock"></i> Your payment information is secure and encrypted by Stripe.
-            </small>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Stripe Area --}}
+{{-- Stripe disabled --}}
 
 
 
-{{-- Start: Paystack Area --}}
-@if ($paystackData->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="paystack" data-tabid="paystack" data-action="{{route('product.paystack.submit')}}">
-                <span>{{__('Paystack')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Paystack Area --}}
+{{-- Paystack disabled --}}
 
 
 
 
-{{-- Start: Flutterwave Area --}}
-@if ($flutterwave->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="flutterwave" data-tabid="flutterwave" data-action="{{route('product.flutterwave.submit')}}">
-                <span>{{__('Flutterwave')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Flutterwave Area --}}
+{{-- Flutterwave disabled --}}
 
 
 
-{{-- Start: Razorpay Area --}}
-@if ($razorpay->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="razorpay" data-tabid="razorpay" data-action="{{route('product.razorpay.submit')}}">
-                <span>{{__('Razorpay')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Razorpay Area --}}
+{{-- Razorpay disabled --}}
 
 
 
-{{-- Start: Instamojo Area --}}
-@if ($instamojo->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="instamojo" data-tabid="instamojo" data-action="{{route('product.instamojo.submit')}}">
-                <span>{{__('Instamojo')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Instamojo Area --}}
+{{-- Instamojo disabled --}}
 
 
 
-{{-- Start: Paytm Area --}}
-@if ($paytm->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="paytm" data-tabid="paytm" data-action="{{route('product.paytm.submit')}}">
-                <span>{{__('Paytm')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Paytm Area --}}
+{{-- Paytm disabled --}}
 
 
 
@@ -178,38 +74,12 @@
 
 
 
-{{-- Start: Mollie Payment Area --}}
-@if ($mollie->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="mollie" data-tabid="mollie" data-action="{{route('product.mollie.submit')}}">
-                <span>{{__('Mollie')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End: Mollie Payment Area --}}
+{{-- Mollie disabled --}}
 
 
 
 
-{{-- Start:Mercadopago Area --}}
-@if ($mercadopago->status == 1)
-<div class="option-block">
-    <div class="radio-block">
-        <div class="checkbox">
-            <label>
-                <input name="gateway" type="radio" class="input-check" value="mercadopago" data-tabid="mercadopago" data-action="{{route('product.mercadopago.submit')}}">
-                <span>{{__('Mercadopago')}}</span>
-            </label>
-        </div>
-    </div>
-</div>
-@endif
-{{-- End:Mercadopago Area --}}
+{{-- Mercadopago disabled --}}
 
 
 

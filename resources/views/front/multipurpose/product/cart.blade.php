@@ -75,12 +75,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        // Debug: Log cart keys for debugging
-                                        if (config('app.debug')) {
-                                            echo "<!-- Debug: Cart keys: " . implode(", ", array_keys($cart)) . " -->";
-                                        }
-                                    @endphp
                                     @foreach($cart as $key => $item)
                                     @php
                                         $id = $item["id"];
@@ -412,18 +406,6 @@
                                         <span>{{__('Update Cart')}}</span>
                                     </button>
                                 </div>
-                                @if(config('app.debug'))
-                                <div class="update-cart float-right d-inline-block ml-2">
-                                    <button class="btn btn-warning btn-sm" onclick="showCartDebug()" type="button">
-                                        <span>Debug Cart</span>
-                                    </button>
-                                </div>
-                                <div class="update-cart float-right d-inline-block ml-2">
-                                    <button class="btn btn-danger btn-sm" onclick="clearCartDebug()" type="button">
-                                        <span>Clear Cart</span>
-                                    </button>
-                                </div>
-                                @endif
                             </div>
                         </div>
                     @else
@@ -450,13 +432,13 @@
     "use strict";
     
     $(document).ready(function() {
-        // Clean up any invalid cart items on page load
-        cleanupInvalidCartItems();
-        
-        // Handle quantity change
+        // Handle quantity changes
         $(document).on('change', '.qty-input', function() {
-            let key = $(this).data('key');
-            let qty = $(this).val();
+            let qty = parseInt($(this).val());
+            if (qty < 1) {
+                $(this).val(1);
+                qty = 1;
+            }
             updateCartItem($(this).data('key'), qty);
         });
         
@@ -464,6 +446,10 @@
         $(document).on('click', '.remove-item', function(e) {
             e.preventDefault();
             let key = $(this).data('key');
+            // Ensure key is treated as a string (e.g., "0" stays valid)
+            if (key !== undefined && key !== null) {
+                key = String(key);
+            }
             removeCartItem(key);
         });
         
@@ -472,21 +458,6 @@
             updateCart();
         });
     });
-    
-    function cleanupInvalidCartItems() {
-        // Check for any cart items with invalid keys and remove them from DOM
-        $('.remove-item').each(function() {
-            let key = $(this).data('key');
-            let keyStr = String(key);
-            
-            // Remove items with invalid keys
-            if (!keyStr || keyStr === "" || keyStr === "null" || keyStr === "undefined" || 
-                keyStr === "0" || keyStr.length < 10 || !/^[a-zA-Z0-9]+$/.test(keyStr)) {
-                console.log("Removing invalid cart item with key:", keyStr);
-                $(this).closest('tr').remove();
-            }
-        });
-    }
     
     function updateCartItem(key, qty) {
         // Update the cart item quantity locally first
@@ -517,69 +488,30 @@
     }
     
     function removeCartItem(key) {
-        // Convert key to string and validate
-        let keyStr = String(key);
-        
-        console.log("Attempting to remove cart item with key:", keyStr);
-        console.log("Available cart rows:", $('.remove-item').length);
-        console.log("Looking for row with class: remove" + keyStr);
-        
-        // Prevent removal of invalid keys (empty, null, undefined, or numeric keys that shouldn't exist)
-        if (!keyStr || keyStr === "" || keyStr === "null" || keyStr === "undefined" || keyStr === "0") {
+        // Prevent removal of invalid keys (allow "0")
+        if (key === undefined || key === null || key === "") {
             console.error("Invalid cart key:", key);
-            console.log("Skipping removal of invalid key:", keyStr);
             return;
         }
-        
-        // Additional validation: check if key looks like a valid uniqid (should be alphanumeric and longer than 10 chars)
-        if (keyStr.length < 10 || !/^[a-zA-Z0-9]+$/.test(keyStr)) {
-            console.error("Invalid cart key format:", key);
-            console.log("Skipping removal of invalid key format:", keyStr);
-            return;
-        }
-        
-        // Check if the cart item actually exists before attempting removal
-        let cartRow = $(`.remove${keyStr}`);
-        console.log("Found cart row elements:", cartRow.length);
-        
-        if (cartRow.length === 0) {
-            console.error("Cart item not found for key:", key);
-            console.log("Available cart item classes:", $('[class*="remove"]').map(function() { return this.className; }).get());
-            console.log("Skipping removal - item not found in DOM");
-            return;
-        }
-        
-        let button = cartRow.find('.remove-item');
-        if (button.length === 0) {
-            console.error("Remove button not found for key:", key);
-            console.log("Skipping removal - button not found");
-            return;
-        }
-        
-        console.log("Proceeding with removal for key:", keyStr);
+        let button = $(`.remove${key} .remove-item`);
         button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Suppression...');
         
         $.ajax({
-            url: '{{ route("cart.item.remove", ":key") }}'.replace(':key', keyStr),
+            url: '{{ route("cart.item.remove", ":key") }}'.replace(':key', encodeURIComponent(key)),
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-                console.log("Remove response:", response);
-                if (response && response.success) {
-                    console.log("Item removed successfully");
+                if (response && response.message) {
                     // Reload page after short delay
                     setTimeout(function() {
                         location.reload();
-                    }, 500);
+                    }, 1000);
                 } else {
                     button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
-                    console.error("Remove failed:", response.message || 'Erreur lors de la suppression');
                 }
             },
             error: function(xhr, status, error) {
-                console.error('AJAX Error:', xhr.responseText);
                 button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
-                console.error('Erreur de connexion lors de la suppression');
             }
         });
     }
@@ -607,30 +539,6 @@
             }
         });
     }
-
-    // Debug function to clear cart (can be called from browser console)
-    window.clearCartDebug = function() {
-        if (confirm('Voulez-vous vider le panier pour déboguer?')) {
-            $.ajax({
-                url: '{{ route("cart.clear") }}',
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    console.log('Cart cleared:', response);
-                    location.reload();
-                },
-                error: function() {
-                    console.error('Failed to clear cart');
-                }
-            });
-        }
-    };
-    
-    // Debug function to show cart data
-    window.showCartDebug = function() {
-        console.log('Cart data:', @json($cart ?? []));
-        console.log('Cart keys:', Object.keys(@json($cart ?? [])));
-    };
 </script>
 <!-- Temporarily disabled to avoid conflicts -->
 <!-- <script src="{{asset('assets/front/js/jquery.ui.js')}}"></script> -->

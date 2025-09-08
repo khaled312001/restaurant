@@ -54,7 +54,7 @@
                                     <option value="seul">Seul (8,50€)</option>
                                     <option value="menu">Menu (11,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 153) }}', 'product-type-153')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(153, 'SALADE CÉSAR', document.getElementById('product-type-153').value === 'menu' ? '11,50' : '8,50', document.getElementById('product-type-153').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-153').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -85,7 +85,7 @@
                                     <option value="seul">Seul (8,50€)</option>
                                     <option value="menu">Menu (11,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 153) }}', 'product-type-mobile-153')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(153, 'SALADE CÉSAR', document.getElementById('product-type-mobile-153').value === 'menu' ? '11,50' : '8,50', document.getElementById('product-type-mobile-153').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-153').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -102,7 +102,7 @@
                                     <option value="seul">Seul (9,00€)</option>
                                     <option value="menu">Menu (12,00€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 154) }}', 'product-type-154')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(154, 'SALADE NIÇOISE', document.getElementById('product-type-154').value === 'menu' ? '12,00' : '9,00', document.getElementById('product-type-154').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-154').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -133,7 +133,7 @@
                                     <option value="seul">Seul (9,00€)</option>
                                     <option value="menu">Menu (12,00€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 154) }}', 'product-type-mobile-154')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(154, 'SALADE NIÇOISE', document.getElementById('product-type-mobile-154').value === 'menu' ? '12,00' : '9,00', document.getElementById('product-type-mobile-154').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-154').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -150,7 +150,7 @@
                                     <option value="seul">Seul (7,50€)</option>
                                     <option value="menu">Menu (10,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 155) }}', 'product-type-155')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(155, 'SALADE VÉGÉTARIENNE', document.getElementById('product-type-155').value === 'menu' ? '10,50' : '7,50', document.getElementById('product-type-155').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-155').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -181,7 +181,7 @@
                                     <option value="seul">Seul (7,50€)</option>
                                     <option value="menu">Menu (10,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 155) }}', 'product-type-mobile-155')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(155, 'SALADE VÉGÉTARIENNE', document.getElementById('product-type-mobile-155').value === 'menu' ? '10,50' : '7,50', document.getElementById('product-type-mobile-155').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-155').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>
@@ -198,7 +198,7 @@
                                     <option value="seul">Seul (9,50€)</option>
                                     <option value="menu">Menu (12,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 114) }}', 'product-type-114')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <button onclick="openCustomizationModal(114, 'SALADE FALAFEL', document.getElementById('product-type-114').value === 'menu' ? '12,50' : '9,50', document.getElementById('product-type-114').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-114').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
                                     Commander
                                 </button>
@@ -229,7 +229,7 @@
                                     <option value="seul">Seul (9,50€)</option>
                                     <option value="menu">Menu (12,50€)</option>
                                 </select>
-                                <button onclick="addToCartWithType('{{ route('add.cart', 114) }}', 'product-type-mobile-114')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <button onclick="openCustomizationModal(114, 'SALADE FALAFEL', document.getElementById('product-type-mobile-114').value === 'menu' ? '12,50' : '9,50', document.getElementById('product-type-mobile-114').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-114').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
                                     <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                                     Commander
                                 </button>

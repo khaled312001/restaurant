@@ -230,17 +230,27 @@ var pprice = 0.00;
 
 function addToCartWithType(url, selectId) {
     const select = document.getElementById(selectId);
-    const quantity = parseInt(select.value);
+    const pieces = parseInt(select.value, 10) || 5;
     
-    // Get the product price from the select option
+    // Extract product id from url tail
+    const matches = url.match(/add-to-cart\/(\d+)/);
+    const productId = matches ? parseInt(matches[1], 10) : 0;
+    
+    // Determine unit price from option label
     const optionText = select.options[select.selectedIndex].text;
-    const priceMatch = optionText.match(/€([\d.]+)/);
-    if (priceMatch) {
-        pprice = parseFloat(priceMatch[1]);
+    const euroMatch = optionText.match(/([\d]+,[\d]{2})€/);
+    let total = 0;
+    if (euroMatch) {
+        total = parseFloat(euroMatch[1].replace(',', '.'));
     }
     
-    // Add to cart with quantity
-    addToCart(url, [], quantity, []);
+    // Compose complex id for GET handler: id,,,qty,,,total,,,variant_json,,,addons_json
+    const variantJson = encodeURIComponent(JSON.stringify({}));
+    const addonsJson = encodeURIComponent(JSON.stringify([]));
+    const complexId = `${productId},,,${pieces},,,${total},,,${variantJson},,,${addonsJson}`;
+    
+    // Call existing addToCart GET route with complex id so backend computes correctly
+    window.location.href = '/add-to-cart/' + complexId;
 }
 
 function addToCartSimple(url) {

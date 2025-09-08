@@ -88,12 +88,21 @@ Route::get('/{slug}/{id}/item', 'Front\ProductController@productDetails')->name(
 Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
 Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
 Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
-Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->name('cart.item.remove');
+Route::get('/cart/item/remove/{id}', 'Front\\ProductController@cartitemremove')->name('cart.item.remove');
 Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');
 Route::get('/checkout/{slug}', 'Front\ProductController@Prdouctcheckout')->name('front.product.checkout');
+Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
+Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
+Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
+Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->name('cart.item.remove');
+// Déduplicated: la définition de front.checkout existe déjà plus haut dans le groupe setlang
+// Route::get('/checkout', 'Front\\ProductController@checkout')->name('front.checkout');
+// Route::get('/checkout/{slug}', 'Front\\ProductController@Prdouctcheckout')->name('front.product.checkout');
 
 // CHECKOUT SECTION
 Route::get('/product/{orderNum}/payment/return', 'Payment\Product\PaymentController@payreturn')->name('product.payment.return');
+// Simple checkout confirmation page (renommé pour éviter le conflit de chemin)
+Route::get('/checkout/confirm', 'Payment\Product\PaymentController@simpleCheckoutConfirm')->name('checkout.confirm');
 Route::get('/product/payment/cancle', 'Payment\Product\PaymentController@paycancle')->name('product.payment.cancle');
 // paypal routes
 Route::post('/product/paypal/submit', 'Payment\Product\PaypalController@store')->name('product.paypal.submit');

@@ -377,17 +377,30 @@
 
 
 @section('script')
-<!-- Include Stripe.js -->
-<script src="https://js.stripe.com/v3/"></script>
+<!-- Stripe disabled: removing external Stripe.js include -->
 <script>
     // Initialize Stripe with proper error handling
+    @php
+        $stripeInfo = [];
+        try {
+            if (isset($stripe) && isset($stripe->information)) {
+                $stripeInfo = is_array($stripe->information)
+                    ? $stripe->information
+                    : (json_decode($stripe->information, true) ?: []);
+            }
+        } catch (\Throwable $e) {
+            $stripeInfo = [];
+        }
+        $stripePublishableKey = $stripeInfo['key'] ?? ($stripeInfo['stripe_key'] ?? '');
+        $stripeEnabled = isset($stripe) && isset($stripe->status) && (int) $stripe->status === 1;
+    @endphp
     let stripe;
     let elements;
     let card;
-    let stripeKey = '{{ $stripe->information->stripe_key ?? "" }}';
-    console.log('Stripe key available:', stripeKey ? 'Yes' : 'No');
-    
-    if (stripeKey && stripeKey.trim() !== '') {
+    let stripeKey = '{{ $stripePublishableKey }}';
+    let stripeIsEnabled = {{ $stripeEnabled ? 'true' : 'false' }};
+    // Stripe disabled
+    if (false && stripeIsEnabled && stripeKey && stripeKey.trim() !== '') {
         try {
             stripe = Stripe(stripeKey);
             elements = stripe.elements();
@@ -417,8 +430,6 @@
     } catch (error) {
         console.error('Stripe initialization error:', error);
         }
-    } else {
-        console.warn('Stripe key not configured - Stripe payments will not be available');
     }
     
     // Function to refresh CSRF token
@@ -449,7 +460,19 @@
         e.preventDefault();
         
         var that = $(this);
-        var selectedGateway = $("input[name='gateway']:checked").val();
+        var selectedGateway = $("input[name='gateway']:checked");
+        // S'assurer que l'action du formulaire correspond à la passerelle choisie
+        if (selectedGateway && selectedGateway.length) {
+            var actionUrl = selectedGateway.data('action');
+            if (actionUrl) {
+                $("#payment").attr('action', actionUrl);
+            }
+        }
+        // Si aucune passerelle n'est choisie, empêcher la soumission
+        if (!selectedGateway || !selectedGateway.length) {
+            alert('Veuillez choisir une passerelle de paiement.');
+            return;
+        }
         
         // Prevent multiple clicks
         if (that.attr('disabled')) {
@@ -465,78 +488,36 @@
                 return;
             }
             
-            if (selectedGateway === 'stripe') {
-                // Check if Stripe is properly initialized
-                if (!stripe) {
-                    alert('Payment system not ready. Please refresh the page and try again.');
-                    return;
-                }
-                
-                // Handle Stripe payment
-                that.attr('disabled', "true");
-                that.text("Processing...");
-                that.css("color", "black");
-                
-                // Clear previous errors
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = '';
-                errorElement.style.display = 'none';
-                
-                // Create token only once
-                stripe.createToken(card).then(function(result) {
-                    if (result.error) {
-                        // Inform the user if there was an error
-                        errorElement.textContent = result.error.message;
-                        errorElement.style.display = 'block';
-                        that.removeAttr('disabled');
-                        that.text("Place Order");
-                        that.css("color", "");
-                    } else {
-                        // Send the token to your server
-                        var form = document.getElementById('payment');
-                        var hiddenInput = document.createElement('input');
-                        hiddenInput.setAttribute('type', 'hidden');
-                        hiddenInput.setAttribute('name', 'stripeToken');
-                        hiddenInput.setAttribute('value', result.token.id);
-                        form.appendChild(hiddenInput);
-                        
-                        // Disable the form to prevent multiple submissions
-                        var formInputs = form.querySelectorAll('input, button, select, textarea');
-                        formInputs.forEach(function(input) {
-                            input.setAttribute('disabled', 'disabled');
-                        });
-                        
-                        // Submit the form
-                        form.submit();
-                    }
-                }).catch(function(error) {
-                    console.error('Token creation error:', error);
-                    errorElement.textContent = 'Payment processing failed. Please try again.';
-                    errorElement.style.display = 'block';
-                    that.removeAttr('disabled');
-                    that.text("Place Order");
-                    that.css("color", "");
-                });
-            } else {
-                // Handle other payment methods
-                that.attr('disabled', "true");
-                that.text("Processing...");
-                that.css("color", "black");
-                
-                // Disable the form to prevent multiple submissions
-                var form = document.getElementById('payment');
-                var formInputs = form.querySelectorAll('input, button, select, textarea');
-                formInputs.forEach(function(input) {
-                    input.setAttribute('disabled', 'disabled');
-                });
-                
-                $("#payment").submit();
-            }
+            // Soumission directe (hors ligne)
+            that.attr('disabled', "true");
+            that.text("Traitement...");
+            that.css("color", "black");
+            
+            $("#payment").submit();
         }).catch(function(error) {
             // If CSRF refresh fails, try to submit anyway
             alert('Session expired. Please refresh the page and try again.');
             location.reload();
         });
+    });
+    
+    // Mettre à jour l'action du formulaire quand l'utilisateur change de passerelle
+    $(document).on('change', "input[name='gateway']", function(){
+        var actionUrl = $(this).data('action');
+        if (actionUrl) {
+            $("#payment").attr('action', actionUrl);
+        }
+    });
+    
+    // Initialiser l'action du formulaire avec la passerelle pré-sélectionnée, le cas échéant
+    $(function(){
+        var preselected = $("input[name='gateway']:checked");
+        if (preselected && preselected.length) {
+            var actionUrl = preselected.data('action');
+            if (actionUrl) {
+                $("#payment").attr('action', actionUrl);
+            }
+        }
     });
     
     // Function to handle image loading errors

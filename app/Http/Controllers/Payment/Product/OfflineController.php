@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Payment\Product;
 
 use Illuminate\Http\Request;
-use App\Models\BasicExtended;
 use App\Models\BasicSetting;
-use App\Models\PaymentGateway;
 use App\Models\PostalCode;
-use App\Models\ProductOrder;
 use App\Models\ShippingCharge;
-use Str;
-use Session;
+use App\Models\OfflineGateway;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 
 class OfflineController extends PaymentController
 {
@@ -18,6 +16,16 @@ class OfflineController extends PaymentController
     {
         if($this->orderValidation($request)) {
             return $this->orderValidation($request);
+        }
+
+        // Récupérer la passerelle hors ligne sélectionnée
+        $ogateway = OfflineGateway::findOrFail($gatewayid);
+
+        // Valider et préparer le reçu si requis par la passerelle
+        if ($ogateway->is_receipt == 1) {
+            $request->validate([
+                'receipt' => 'required|file|mimes:jpg,jpeg,png|max:5120',
+            ]);
         }
 
         $bs = BasicSetting::select('postal_code')->firstOrFail();
@@ -55,12 +63,29 @@ class OfflineController extends PaymentController
         // save ordered items
         $this->saveOrderItem($order_id);
 
+        // Définir la méthode sur le nom de la passerelle hors ligne
+        $order->method = $ogateway->name ?? 'offline';
+
+        // Enregistrer le reçu si fourni
+        if ($request->hasFile('receipt')) {
+            $file = $request->file('receipt');
+            $ext = $file->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $ext;
+            $destination = public_path('assets/front/receipt');
+            if (!is_dir($destination)) {
+                @mkdir($destination, 0775, true);
+            }
+            $file->move($destination, $filename);
+            $order->receipt = $filename;
+        }
+
         $order->payment_status = 'Pending';
         $order->order_status = 'Pending';
         $order->save();
 
+        Session::put('last_order_id', $order->id);
         Session::forget('cart');
         
-        return redirect()->route('product.payment.return', $order->order_number);
+        return redirect()->route('checkout.confirm');
     }
 } 

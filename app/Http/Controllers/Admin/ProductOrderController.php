@@ -46,7 +46,27 @@ class ProductOrderController extends Controller
         })->when($completed, function ($query, $completed) {
             return $query->where('completed', $completed);
         })->when($orderDate, function ($query, $orderDate) {
-            return $query->whereDate('created_at', Carbon::parse($orderDate));
+            // Supporte plusieurs formats de date et ignore le filtre si invalide
+            $parsed = null;
+            foreach (["d/m/Y", "m/d/Y", "Y-m-d"] as $format) {
+                try {
+                    $parsed = Carbon::createFromFormat($format, $orderDate);
+                    break;
+                } catch (\Exception $e) {
+                    $parsed = null;
+                }
+            }
+            if (!$parsed) {
+                try {
+                    $parsed = Carbon::parse($orderDate);
+                } catch (\Exception $e) {
+                    $parsed = null;
+                }
+            }
+            if ($parsed) {
+                return $query->whereDate('created_at', $parsed);
+            }
+            return $query;
         })->when($deliveryDate, function ($query, $deliveryDate) {
             return $query->where('delivery_date', $deliveryDate);
         })

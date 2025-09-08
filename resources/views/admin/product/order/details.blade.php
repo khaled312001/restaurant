@@ -15,13 +15,13 @@
     <div class="page-header-content">
         <div class="page-title">
             <h4 class="page-title">{{__('Order Details')}}</h4>
-            @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
+            @if($order->orderitems->where('customizations', '!=', null)->count() > 0)
                 <div class="mt-2">
                     <a href="{{ route('admin.customizations.order', $order->id) }}" 
                        class="btn btn-warning btn-sm">
                         <i class="fas fa-cogs"></i>
                         {{ __('View Customizations') }}
-                        <span class="badge badge-light">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                        <span class="badge badge-light">{{ $order->orderitems->where('customizations', '!=', null)->count() }}</span>
                     </a>
                 </div>
             @endif
@@ -91,11 +91,11 @@
                     </div>
                     <div class="col-lg-6">
                         @if(strtolower($order->serving_method) == 'on_table')
-                            {{__('On Table')}}
+                            {{__('Sur place')}}
                         @elseif(strtolower($order->serving_method) == 'home_delivery')
-                            {{__('Home Delivery')}}
+                            {{__('Livraison à domicile')}}
                         @elseif(strtolower($order->serving_method) == 'pick_up')
-                            {{__('Pick up')}}
+                            {{__('Retrait')}}
                         @endif
                     </div>
                 </div>
@@ -581,7 +581,7 @@
                             @endforeach
                           @endif
                           @php
-                              $customizations = json_decode($item->customizations, true);
+                              $customizations = is_string($item->customizations) ? json_decode($item->customizations, true) : $item->customizations;
                           @endphp
                           @if (!empty($customizations))
                             <br><strong class="mr-3">{{__("Customizations")}}:</strong><br>
@@ -607,6 +607,22 @@
                                 <span class="text-capitalize">{{__("Sauces")}}:</span> 
                                 @foreach ($customizations['sauces'] as $sauce)
                                     {{ucfirst(str_replace('-', ' ', $sauce))}}
+                                    @if (!$loop->last), @endif
+                                @endforeach
+                                <br>
+                            @endif
+                            @if (!empty($customizations['extras']) && is_array($customizations['extras']))
+                                <span class="text-capitalize">{{__("Extras")}}:</span> 
+                                @foreach ($customizations['extras'] as $extra)
+                                    {{ucfirst(str_replace('-', ' ', is_array($extra) ? ($extra['name'] ?? '') : $extra))}}
+                                    @if (!$loop->last), @endif
+                                @endforeach
+                                <br>
+                            @endif
+                            @if (!empty($customizations['addons_direct']) && is_array($customizations['addons_direct']))
+                                <span class="text-capitalize">{{__("Add On's")}}:</span> 
+                                @foreach ($customizations['addons_direct'] as $a)
+                                    {{ucfirst(str_replace('-', ' ', is_array($a) ? ($a['name'] ?? '') : $a))}}
                                     @if (!$loop->last), @endif
                                 @endforeach
                             @endif

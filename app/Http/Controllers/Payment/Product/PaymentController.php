@@ -39,6 +39,19 @@ class PaymentController extends Controller
         return view('front.success', compact('order'));
     }
 
+    public function simpleCheckoutConfirm(Request $request)
+    {
+        $orderId = session('last_order_id');
+        if (!$orderId) {
+            return redirect()->route('front.index');
+        }
+        $order = ProductOrder::find($orderId);
+        if (!$order) {
+            return redirect()->route('front.index');
+        }
+        return view('front.multipurpose.product.success', ['order' => $order, 'orderNum' => $order->order_number]);
+    }
+
     public function paycancle()
     {
         return redirect()->route('front.index')->with('error', 'Payment cancelled');
@@ -97,19 +110,43 @@ class PaymentController extends Controller
         $order = new ProductOrder();
         $order->order_number = 'ORD-' . Str::random(8) . time();
         $order->user_id = auth()->check() ? auth()->id() : null;
+        // Source de la commande (ex: website)
+        if (isset($request->ordered_from) && !empty($request->ordered_from)) {
+            $order->type = $request->ordered_from;
+        }
         $order->billing_fname = $request->billing_fname;
         $order->billing_lname = $request->billing_lname;
         $order->billing_email = $request->billing_email;
+        $order->billing_country_code = $request->billing_country_code;
         $order->billing_number = $request->billing_number;
         $order->billing_address = $request->billing_address;
         $order->billing_city = $request->billing_city;
         $order->billing_country = $request->billing_country;
         $order->billing_zip = $request->billing_zip;
         $order->serving_method = $request->serving_method;
+        // Champs de retrait si fournis
+        if ($request->serving_method === 'pick_up') {
+            if (isset($request->pick_up_date)) {
+                $order->pick_up_date = $request->pick_up_date;
+            }
+            if (isset($request->pick_up_time)) {
+                $order->pick_up_time = $request->pick_up_time;
+            }
+        }
         $order->shipping_charge = $shipping ? $shipping->charge : 0;
         $order->total = $total;
         $order->txnid = $txnId;
         $order->charge_id = $chargeId;
+        // Notes de commande
+        if (isset($request->order_notes)) {
+            $order->order_notes = $request->order_notes;
+        }
+        // Déduire la méthode si connue (sera éventuellement surchargée par les contrôleurs spécifiques)
+        if (isset($request->method) && !empty($request->method)) {
+            $order->method = $request->method;
+        } elseif (isset($request->gateway) && !empty($request->gateway)) {
+            $order->method = 'offline';
+        }
         $order->payment_status = 'Pending';
         $order->order_status = 'Pending';
         $order->save();

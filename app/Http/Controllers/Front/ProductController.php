@@ -243,6 +243,22 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('nos_box');
         $data['productType'] = 'nos_box';
 
+        // Load products for 'Nos Box' category
+        $nosBoxCategory = Pcategory::where('status', 1)
+            ->where('language_id', $currentLang->id)
+            ->where('name', 'Nos Box')
+            ->first();
+
+        if ($nosBoxCategory) {
+            $data['products'] = Product::where('language_id', $currentLang->id)
+                ->where('status', 1)
+                ->where('category_id', $nosBoxCategory->id)
+                ->orderBy('id', 'desc')
+                ->get();
+        } else {
+            $data['products'] = collect();
+        }
+
         return view('front.multipurpose.product.nos_box', $data);
     }
 

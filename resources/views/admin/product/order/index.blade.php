@@ -149,7 +149,7 @@
                             <th scope="col">Completed</th>
                             <th scope="col">Gateway</th>
                             <th scope="col">Time</th>
-                            <th scope="col">Customizations</th>
+                            <th scope="col">Details</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -263,16 +263,10 @@
                               <td>
                                   {{$order->created_at}}
                               </td>
-
                               <td>
-                                @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
-                                  <a class="btn btn-warning btn-sm" href="{{route('admin.customizations.order',$order->id)}}">
-                                    <i class="fas fa-cogs"></i> Customizations
-                                    <span class="badge badge-light">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                                  <a href="{{route('admin.product.details',$order->id)}}" class="btn btn-info btn-sm">
+                                      <i class="fas fa-eye"></i> View Details
                                   </a>
-                                @else
-                                  <span class="text-muted">No customizations</span>
-                                @endif
                               </td>
                               <td>
                                 <div class="dropdown">
@@ -280,8 +274,6 @@
                                       Actions
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <a class="dropdown-item" href="{{route('admin.product.details',$order->id)}}">Details</a>
-
                                       @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
                                       <a class="dropdown-item" href="{{route('admin.customizations.order',$order->id)}}">
                                         <i class="fas fa-cogs text-warning"></i> Customizations

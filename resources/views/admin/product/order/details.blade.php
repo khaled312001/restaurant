@@ -233,6 +233,8 @@
                                  $badge = 'white';
                              } elseif($order->order_status == 'served') {
                                  $badge = 'light';
+                             } else {
+                                 $badge = 'default';
                              }
                          @endphp
 
@@ -472,6 +474,16 @@
                             </div>
                         </div>
                     @endif
+                    @if (!empty($order->billing_zip))
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <strong>{{__('ZIP Code')}} :</strong>
+                            </div>
+                            <div class="col-lg-6">
+                                {{convertUtf8($order->billing_zip)}}
+                            </div>
+                        </div>
+                    @endif
 
                     @if ($order->serving_method == 'on_table')
                         @if (!empty($order->table_number))
@@ -539,7 +551,6 @@
                 <thead>
                    <tr>
                       <th>#</th>
-                      <th>{{__('Product')}}</th>
                       <th>{{__('Product Title')}}</th>
                       <th>{{__('Price')}}</th>
                       <th>{{__('Quantity')}}</th>
@@ -550,7 +561,6 @@
                    @foreach ($order->orderitems as $key => $item)
                    <tr>
                       <td>{{$key+1}}</td>
-                      <td><img src="{{asset('assets/front/img/product/featured/'.$item->image)}}" alt="product" width="100"></td>
                       <td>
                           <strong class="mr-3">{{$item->title}}</strong>
                           <br>

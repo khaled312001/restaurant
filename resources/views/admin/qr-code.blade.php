@@ -125,14 +125,48 @@
 
                       <select name="type" class="form-control" onchange="generateQr()">
 
-                          <option value="default" {{$be->qr_type == 'default' ? 'selected' : ''}}>Default</option>
-                          <option value="image" {{$be->qr_type == 'image' ? 'selected' : ''}}>Image</option>
+                          <option value="default" {{$be->qr_type == 'default' ? 'selected' : ''}}>Default (with Logo)</option>
+                          <option value="image" {{$be->qr_type == 'image' ? 'selected' : ''}}>Custom Image</option>
                           <option value="text" {{$be->qr_type == 'text' ? 'selected' : ''}}>Text</option>
 
                       </select>
 
                   </div>
 
+                  <div id="type-default" class="types">
+                      <div class="form-group">
+                        <div class="col-12 mb-2">
+                          <label><strong>Current Logo</strong></label>
+                        </div>
+                        <div class="col-md-12 showImage mb-3">
+                          @if($bs && $bs->logo)
+                            <img src="{{asset('assets/front/img/' . $bs->logo)}}" alt="Current Logo" class="img-thumbnail qr" style="max-width: 200px;">
+                          @else
+                            <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="No Logo" class="img-thumbnail qr">
+                          @endif
+                        </div>
+                        <p class="text-info">The QR code will automatically include your current logo as overlay.</p>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="">Logo Size</label>
+                          <input class="form-control p-0 range-slider" name="image_size" type="range" min="1" max="20" value="{{$be->qr_inserted_image_size ?? 15}}" onchange="generateQr()">
+                          <span class="text-white size-text float-right d-block">{{$be->qr_inserted_image_size ?? 15}}</span>
+                          <p class="mb-0 text-warning">If the QR Code cannot be scanned, then reduce this size</p>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="">Logo Horizontal Position</label>
+                          <input class="form-control p-0 range-slider" name="image_x" type="range" min="0" max="100" value="{{$be->qr_inserted_image_x ?? 50}}" onchange="generateQr()">
+                          <span class="text-white size-text float-right">{{$be->qr_inserted_image_x ?? 50}}</span>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="">Logo Vertical Position</label>
+                          <input class="form-control p-0 range-slider" name="image_y" type="range" min="0" max="100" value="{{$be->qr_inserted_image_y ?? 50}}" onchange="generateQr()">
+                          <span class="text-white size-text float-right">{{$be->qr_inserted_image_y ?? 50}}</span>
+                      </div>
+                  </div>
 
                   <div id="type-image" class="types">
                       <div class="form-group">
@@ -364,6 +398,14 @@
           fd.append('image_x', $("input[name='image_x']").val());
 
           fd.append('image_y', $("input[name='image_y']").val());
+          
+          // Add default values for default type (with logo)
+          if ($("select[name='type']").val() == 'default') {
+            fd.append('image_size', $("input[name='image_size']").val());
+            fd.append('image_x', $("input[name='image_x']").val());
+            fd.append('image_y', $("input[name='image_y']").val());
+          }
+          
           if ($("select[name='type']").val() == 'text') {
             $("#text-size").text($("input[name='text']").val());
             let fontSize = ($("input[name='size']").val() * $("input[name='text_size']").val()) / 100;

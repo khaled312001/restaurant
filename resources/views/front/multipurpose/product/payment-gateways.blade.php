@@ -111,8 +111,8 @@
 
             @if ($ogateway->is_receipt == 1)
                 <div class="col-12 mb-4">
-                    <label for="" class="d-block">{{__('Receipt')}} **</label>
-                    <input type="file" name="receipt">
+                    <label for="receipt_{{ $ogateway->id }}" class="d-block">{{__('Receipt')}} **</label>
+                    <input type="file" name="receipt" id="receipt_{{ $ogateway->id }}" accept=".jpg,.jpeg,.png" class="form-control">
                     <p class="mb-0 text-warning">** {{__('Receipt image must be .jpg / .jpeg / .png')}}</p>
                 </div>
             @endif

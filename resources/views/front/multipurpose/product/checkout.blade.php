@@ -1143,3 +1143,38 @@
     outline-offset: 2px;
 }
 </style>
+
+<script>
+// File validation for receipt upload
+document.addEventListener('DOMContentLoaded', function() {
+    const receiptInputs = document.querySelectorAll('input[name="receipt"]');
+    
+    receiptInputs.forEach(function(input) {
+        input.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                const maxSize = 5 * 1024 * 1024; // 5MB
+                
+                if (!allowedTypes.includes(file.type)) {
+                    alert('{{ __("Please select a valid image file (.jpg, .jpeg, .png)") }}');
+                    e.target.value = '';
+                    return;
+                }
+                
+                if (file.size > maxSize) {
+                    alert('{{ __("File size must be less than 5MB") }}');
+                    e.target.value = '';
+                    return;
+                }
+                
+                // Show file name
+                const label = e.target.previousElementSibling;
+                if (label) {
+                    label.textContent = '{{ __("Receipt") }} ** - ' + file.name;
+                }
+            }
+        });
+    });
+});
+</script>

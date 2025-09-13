@@ -241,7 +241,7 @@
           @elseif(request()->is('admin/customizations/*')) active @endif">
                     <a href="{{ route('admin.customizations.index') }}">
                         <i class="fas fa-cogs" style="color: #f39c12;"></i>
-                        <p>{{ __('Customizations') }}</p>
+                        <p>Add-ons & Personnalisations</p>
                     </a>
                 </li>
 

@@ -4,88 +4,135 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Customization;
-use App\Models\OrderItem;
+use App\Models\Addon;
+use Illuminate\Support\Facades\Validator;
 
 class CustomizationController extends Controller
 {
     public function index()
     {
-        // Get customizations from the customizations table
-        $customizations = Customization::with(['orderItem'])
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $addons = Addon::orderBy('category')->orderBy('sort_order')->get();
+        $groupedAddons = [];
+        
+        foreach (Addon::CATEGORIES as $category => $label) {
+            $groupedAddons[$category] = [
+                'label' => $label,
+                'items' => $addons->where('category', $category)
+            ];
+        }
+        
+        return view('admin.customizations.index', compact('groupedAddons', 'addons'));
+    }
 
-        // Get customizations from order_items table (JSON format)
-        $orderItemsWithCustomizations = \App\Models\OrderItem::whereNotNull('customizations')
-            ->where('customizations', '!=', '')
-            ->with('order')
-            ->get();
+    public function create()
+    {
+        $categories = Addon::CATEGORIES;
+        $productTypes = Addon::PRODUCT_TYPES;
+        return view('admin.customizations.create', compact('categories', 'productTypes'));
+    }
 
-        // Transform order items with JSON customizations to match the view structure
-        $jsonCustomizations = collect();
-        foreach ($orderItemsWithCustomizations as $orderItem) {
-            $customizationData = json_decode($orderItem->customizations, true);
-            if ($customizationData) {
-                $jsonCustomizations->push((object) [
-                    'id' => 'json_' . $orderItem->id,
-                    'product_name' => $orderItem->product->name ?? 'Unknown Product',
-                    'product_type' => 'Order Item',
-                    'price' => $orderItem->price ?? 0,
-                    'quantity' => $orderItem->quantity ?? 1,
-                    'meat_choice' => $customizationData['meatChoice'] ?? null,
-                    'vegetables' => $customizationData['vegetables'] ?? [],
-                    'drink_choice' => $customizationData['drinkChoice'] ?? null,
-                    'sauces' => $customizationData['sauces'] ?? [],
-                    'addons' => $customizationData['addons'] ?? [],
-                    'created_at' => $orderItem->created_at,
-                    'orderItem' => $orderItem,
-                    'is_json' => true
-                ]);
-            }
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|in:' . implode(',', array_keys(Addon::CATEGORIES)),
+            'price' => 'required|numeric|min:0',
+            'icon' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean',
+            'sort_order' => 'nullable|integer|min:0',
+            'product_types' => 'nullable|array',
+            'product_types.*' => 'string|in:' . implode(',', array_keys(Addon::PRODUCT_TYPES))
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Combine both sources and sort by creation date
-        $allCustomizations = $customizations->concat($jsonCustomizations)
-            ->sortByDesc('created_at');
+        Addon::create($request->all());
 
-        // Paginate manually since we have a collection
-        $perPage = 20;
-        $currentPage = request()->get('page', 1);
-        $pagedData = $allCustomizations->forPage($currentPage, $perPage);
-        
-        $customizations = new \Illuminate\Pagination\LengthAwarePaginator(
-            $pagedData,
-            $allCustomizations->count(),
-            $perPage,
-            $currentPage,
-            ['path' => request()->url(), 'query' => request()->query()]
-        );
-
-        return view('admin.customizations.index', compact('customizations'));
+        return redirect()->route('admin.customizations.index')
+            ->with('success', 'Addon created successfully!');
     }
 
     public function show($id)
     {
-        $customization = Customization::findOrFail($id);
-        return view('admin.customizations.show', compact('customization'));
+        $addon = Addon::findOrFail($id);
+        return view('admin.customizations.show', compact('addon'));
     }
 
-    public function orderCustomizations($orderId)
+    public function edit($id)
     {
-        $orderItems = OrderItem::where('order_id', $orderId)
-            ->whereHas('customization')
-            ->with('customization')
-            ->get();
+        $addon = Addon::findOrFail($id);
+        $categories = Addon::CATEGORIES;
+        $productTypes = Addon::PRODUCT_TYPES;
+        return view('admin.customizations.edit', compact('addon', 'categories', 'productTypes'));
+    }
 
-        return view('admin.customizations.order', compact('orderItems', 'orderId'));
+    public function update(Request $request, $id)
+    {
+        $addon = Addon::findOrFail($id);
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|in:' . implode(',', array_keys(Addon::CATEGORIES)),
+            'price' => 'required|numeric|min:0',
+            'icon' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean',
+            'sort_order' => 'nullable|integer|min:0',
+            'product_types' => 'nullable|array',
+            'product_types.*' => 'string|in:' . implode(',', array_keys(Addon::PRODUCT_TYPES))
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $addon->update($request->all());
+
+        return redirect()->route('admin.customizations.index')
+            ->with('success', 'Addon updated successfully!');
     }
 
     public function destroy($id)
     {
-        $customization = Customization::findOrFail($id);
-        $customization->delete();
+        $addon = Addon::findOrFail($id);
+        $addon->delete();
 
-        return redirect()->back()->with('success', 'Customization deleted successfully');
+        return redirect()->route('admin.customizations.index')
+            ->with('success', 'Addon deleted successfully!');
+    }
+
+    public function toggleStatus($id)
+    {
+        $addon = Addon::findOrFail($id);
+        $addon->is_active = !$addon->is_active;
+        $addon->save();
+
+        return response()->json([
+            'success' => true,
+            'is_active' => $addon->is_active,
+            'message' => 'Addon status updated successfully!'
+        ]);
+    }
+
+    public function updateSortOrder(Request $request)
+    {
+        $request->validate([
+            'addons' => 'required|array',
+            'addons.*.id' => 'required|exists:addons,id',
+            'addons.*.sort_order' => 'required|integer|min:0'
+        ]);
+
+        foreach ($request->addons as $addonData) {
+            Addon::where('id', $addonData['id'])
+                ->update(['sort_order' => $addonData['sort_order']]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Sort order updated successfully!'
+        ]);
     }
 }

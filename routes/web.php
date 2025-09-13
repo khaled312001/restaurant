@@ -964,17 +964,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/qr-code/generate', 'Admin\QrController@generate')->name('admin.qrcode.generate');
     });
 
-    // Admin Customizations Routes (no permission required - accessible to all admins)
-    Route::resource('customizations', 'Admin\CustomizationController')->names([
-        'index' => 'admin.customizations.index',
-        'create' => 'admin.customizations.create',
-        'store' => 'admin.customizations.store',
-        'show' => 'admin.customizations.show',
-        'edit' => 'admin.customizations.edit',
-        'update' => 'admin.customizations.update',
-        'destroy' => 'admin.customizations.destroy'
-    ]);
-    Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('admin.customizations.order');
+// Admin Customizations Routes (no permission required - accessible to all admins)
+Route::resource('customizations', 'Admin\CustomizationController')->names([
+    'index' => 'admin.customizations.index',
+    'create' => 'admin.customizations.create',
+    'store' => 'admin.customizations.store',
+    'show' => 'admin.customizations.show',
+    'edit' => 'admin.customizations.edit',
+    'update' => 'admin.customizations.update',
+    'destroy' => 'admin.customizations.destroy'
+]);
+Route::get('orders/{orderId}/customizations', 'Admin\CustomizationController@orderCustomizations')->name('admin.customizations.order');
+Route::post('customizations/{id}/toggle-status', 'Admin\CustomizationController@toggleStatus')->name('admin.customizations.toggle-status');
+Route::post('customizations/update-sort-order', 'Admin\CustomizationController@updateSortOrder')->name('admin.customizations.update-sort-order');
 
 });
 

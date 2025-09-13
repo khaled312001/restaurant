@@ -240,30 +240,7 @@
                     </div>
                 </div>
 
-                <!-- Information Section -->
-                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                    <h2 style="color: #27ae60; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        INFORMATIONS IMPORTANTES
-                    </h2>
-                    
-                    <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-leaf" style="font-size: 2.5rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Salades Fraîches</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Toutes nos salades sont préparées avec des ingrédients frais et de saison</p>
-                        </div>
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-heart" style="font-size: 2.5rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Options Végétariennes</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Des salades végétariennes délicieuses et équilibrées</p>
-                        </div>
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center;">
-                            <i class="fas fa-utensils" style="font-size: 2.5rem; color: #27ae60; margin-bottom: 15px; display: block;"></i>
-                            <h4 style="color: white; margin-bottom: 10px;">Accompagnements</h4>
-                            <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Pain complet et sauces maison disponibles</p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

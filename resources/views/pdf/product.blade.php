@@ -89,6 +89,12 @@
                                         <span>{{$be->base_currency_text_position == 'left' ? $be->base_currency_text : ''}}</span>  {{$order->total}} <span>{{$be->base_currency_text_position == 'right' ? $be->base_currency_text : ''}}</span>
                                     </td>
                                   </tr>
+                                  @if (!empty($order->order_notes))
+                                  <tr>
+                                    <th scope="row">Order Notes:</th>
+                                    <td>{{$order->order_notes}}</td>
+                                  </tr>
+                                  @endif
                                 </tbody>
                             </table>
                         </div>

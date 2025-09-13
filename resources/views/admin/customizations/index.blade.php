@@ -6,108 +6,93 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Customizations Management</h3>
+                    <h3 class="card-title">
+                        <i class="fas fa-plus-circle"></i> Gestion des Add-ons et Personnalisations
+                    </h3>
                     <div class="card-tools">
-                        <span class="badge badge-primary">{{ $customizations->total() }} Total</span>
+                        <a href="{{ route('admin.customizations.create') }}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Ajouter un Add-on
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Product</th>
-                                    <th>Type</th>
-                                    <th>Meat Choice</th>
-                                    <th>Vegetables</th>
-                                    <th>Drink</th>
-                                    <th>Sauces</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Created</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($customizations as $customization)
-                                <tr>
-                                    <td>{{ $customization->id }}</td>
-                                    <td>
-                                        <strong>{{ $customization->product_name }}</strong>
-                                        @if($customization->orderItem)
-                                            @if(isset($customization->is_json) && $customization->is_json)
-                                                <br><small class="text-muted">Order: #{{ $customization->orderItem->product_order_id }}</small>
-                                            @else
-                                                <br><small class="text-muted">Order: #{{ $customization->orderItem->order_id ?? $customization->orderItem->product_order_id }}</small>
-                                            @endif
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-info">{{ $customization->product_type }}</span>
-                                    </td>
-                                    <td>
-                                        @if($customization->meat_choice)
-                                            <span class="badge badge-danger">{{ ucfirst($customization->meat_choice) }}</span>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($customization->vegetables && count($customization->vegetables) > 0)
-                                            <span class="badge badge-success">{{ $customization->vegetables_text }}</span>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($customization->drink_choice)
-                                            <span class="badge badge-primary">{{ $customization->drink_text }}</span>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($customization->sauces && count($customization->sauces) > 0)
-                                            <span class="badge badge-warning">{{ $customization->sauces_text }}</span>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-secondary">{{ $customization->quantity }}</span>
-                                    </td>
-                                    <td>
-                                        <strong>€{{ number_format($customization->price, 2) }}</strong>
-                                    </td>
-                                    <td>
-                                        <small>{{ $customization->created_at->format('d/m/Y H:i') }}</small>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            @if(!isset($customization->is_json) || !$customization->is_json)
-                                                <a href="{{ route('admin.customizations.show', $customization->id) }}" 
-                                                   class="btn btn-sm btn-info">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <button type="button" class="btn btn-sm btn-danger" 
-                                                        onclick="deleteCustomization({{ $customization->id }})">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            @else
-                                                <span class="text-muted">View in Order</span>
-                                            @endif
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @foreach($groupedAddons as $category => $data)
+                        @if($data['items']->count() > 0)
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-tags"></i> {{ $data['label'] }}
+                                    <span class="badge badge-light">{{ $data['items']->count() }}</span>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    @foreach($data['items'] as $addon)
+                                    <div class="col-md-6 col-lg-4 mb-3">
+                                        <div class="card h-100 {{ $addon->is_active ? 'border-success' : 'border-secondary' }}">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <h5 class="card-title mb-0">{{ $addon->name }}</h5>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button class="btn btn-outline-{{ $addon->is_active ? 'success' : 'secondary' }} btn-sm" 
+                                                                onclick="toggleStatus({{ $addon->id }})">
+                                                            <i class="fas fa-{{ $addon->is_active ? 'check' : 'times' }}"></i>
+                                                        </button>
+                                                        <a href="{{ route('admin.customizations.edit', $addon->id) }}" 
+                                                           class="btn btn-outline-primary btn-sm">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <button class="btn btn-outline-danger btn-sm" 
+                                                                onclick="deleteAddon({{ $addon->id }})">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="mb-2">
+                                                    <span class="badge badge-info">€{{ number_format($addon->price, 2) }}</span>
+                                                    @if($addon->sort_order)
+                                                        <span class="badge badge-secondary">Ordre: {{ $addon->sort_order }}</span>
+                                                    @endif
+                                                </div>
+                                                
+                                                @if($addon->description)
+                                                <p class="card-text text-muted small">{{ $addon->description }}</p>
+                                                @endif
+                                                
+                                                @if($addon->product_types && count($addon->product_types) > 0)
+                                                <div class="mb-2">
+                                                    <small class="text-muted">Types de produits:</small><br>
+                                                    @foreach($addon->product_types as $type)
+                                                        <span class="badge badge-light">{{ \App\Models\Addon::PRODUCT_TYPES[$type] ?? $type }}</span>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                                                
+                                                @if($addon->icon)
+                                                <div class="mb-2">
+                                                    <i class="{{ $addon->icon }}"></i>
+                                                </div>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="d-flex justify-content-center">
-                        {{ $customizations->links() }}
-                    </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -119,20 +104,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Confirm Delete</h5>
+                <h5 class="modal-title">Confirmer la suppression</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this customization?
+                Êtes-vous sûr de vouloir supprimer cet add-on ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <form id="deleteForm" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
             </div>
         </div>
@@ -143,8 +128,8 @@
 
 @section('scripts')
 <script>
-function deleteCustomization(id) {
-    if (confirm('Are you sure you want to delete this customization?')) {
+function deleteAddon(id) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cet add-on ?')) {
         fetch(`/admin/customizations/${id}`, {
             method: 'DELETE',
             headers: {
@@ -156,6 +141,21 @@ function deleteCustomization(id) {
             }
         });
     }
+}
+
+function toggleStatus(id) {
+    fetch(`/admin/customizations/${id}/toggle-status`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        }
+    });
 }
 </script>
 @endsection 

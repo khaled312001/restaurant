@@ -1725,6 +1725,12 @@ class ProductController extends Controller
                 }
             }
             
+            // Handle customizations
+            $customizations = null;
+            if (isset($data['customizations']) && !empty($data['customizations'])) {
+                $customizations = $data['customizations'];
+            }
+            
             // Create cart item
             $cartItem = [
                 'id' => $data['product_id'],
@@ -1735,6 +1741,7 @@ class ProductController extends Controller
                 'product_type' => $data['product_type'] ?? 'seul',
                 'addons' => $addonsArray,
                 'addons_total' => $addonsTotal,
+                'customizations' => $customizations,
                 'customized' => true
             ];
             

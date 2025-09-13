@@ -263,6 +263,18 @@ window.addToCartWithAddons = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const productType = urlParams.get('type') || 'seul';
     
+    // Create customizations data
+    const customizations = {
+        productName: '{{ $product->name }}',
+        type: productType,
+        price: baseProductPrice + addonTotalPrice,
+        quantity: 1,
+        meatChoice: selectedAddons.meat ? Object.values(selectedAddons.meat).map(addon => addon.name).join(', ') : null,
+        vegetables: selectedAddons.vegetables ? Object.values(selectedAddons.vegetables).map(addon => addon.name) : [],
+        drinkChoice: selectedAddons.drinks ? Object.values(selectedAddons.drinks).map(addon => addon.name).join(', ') : null,
+        sauces: selectedAddons.sauces ? Object.values(selectedAddons.sauces).map(addon => addon.name) : []
+    };
+    
     // Create cart data
     const cartData = {
         product_id: {{ $product->id }},
@@ -270,6 +282,7 @@ window.addToCartWithAddons = function() {
         product_price: {{ $product->price }},
         product_type: productType,
         addons: selectedAddons,
+        customizations: customizations,
         total_price: baseProductPrice + addonTotalPrice,
         _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };

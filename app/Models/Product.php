@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -25,29 +28,30 @@ class Product extends Model
         'rating',
         'status',
         'is_feature',
+        'is_special',
     ];
 
-    public function category()
+    public function category(): BelongsTo
     {
-        return $this->hasOne('App\Models\Pcategory', 'id', 'category_id');
+        return $this->belongsTo(Pcategory::class, 'category_id', 'id');
     }
 
-    public function subcategory()
+    public function subcategory(): BelongsTo
     {
-        return $this->belongsTo(PsubCategory::class, 'id', 'subcategory_id');
+        return $this->belongsTo(PsubCategory::class, 'subcategory_id', 'id');
     }
 
-    public function product_reviews()
+    public function product_reviews(): HasMany
     {
         return $this->hasMany('App\Models\ProductReview');
     }
 
-    public function product_images()
+    public function product_images(): HasMany
     {
         return $this->hasMany('App\Models\ProductImage');
     }
 
-    public function language()
+    public function language(): BelongsTo
     {
         return $this->belongsTo('App\Models\Language');
     }
@@ -55,24 +59,24 @@ class Product extends Model
     /**
      * Get price based on type (seul or menu)
      */
-    public function getPriceByType($type = 'seul')
+    public function getPriceByType($type = 'seul'): float
     {
         if ($type === 'menu' && $this->price_menu) {
-            return $this->price_menu;
+            return (float) $this->price_menu;
         }
         
         if ($type === 'seul' && $this->price_seul) {
-            return $this->price_seul;
+            return (float) $this->price_seul;
         }
         
         // Fallback to current_price if specific prices not set
-        return $this->current_price;
+        return (float) $this->current_price;
     }
 
     /**
      * Get product by type
      */
-    public static function getByType($productType)
+    public static function getByType($productType): ?self
     {
         return self::where('product_type', $productType)->first();
     }

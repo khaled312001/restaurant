@@ -25,7 +25,8 @@ class ProductController extends Controller
         $lang = Language::where('code', $request->language)->first();
 
         $lang_id = $lang->id;
-        $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+        $data['products'] = Product::with(['category', 'subcategory'])->where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+        $data['categories'] = Pcategory::where('status', 1)->where('language_id', $lang_id)->get();
         $data['lang_id'] = $lang_id;
         return view('admin.product.index', $data);
     }

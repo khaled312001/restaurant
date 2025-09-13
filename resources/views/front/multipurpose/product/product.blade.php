@@ -36,8 +36,15 @@
                         <span>Découvrez notre carte
                             <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
                         <h1 class="title">Choisissez parmi nos délicieuses catégories King Kebab</h1>
-                        <p class="text">Explorez notre sélection complète de <strong>48 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure. Depuis 20 ans, King Kebab Le Pouzin vous propose les meilleures spécialités turques et orientales.</p>
-                        <p class="text highlight-text">✨ 48 plats halal disponibles au total ✨</p>
+                        <p class="text">Explorez notre sélection complète de <strong>64 plats halal authentiques</strong> préparés avec des ingrédients frais et de qualité supérieure. Depuis 20 ans, King Kebab Le Pouzin vous propose les meilleures spécialités turques et orientales.</p>
+                        <div class="total-count-highlight">
+                            <div class="highlight-content">
+                                <i class="fas fa-utensils"></i>
+                                <span class="count-number">64</span>
+                                <span class="count-text">plats halal disponibles au total</span>
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,13 +114,13 @@
                                             <i class="fas fa-utensils"></i>
                                             @switch($category->name)
                                                 @case('Sandwichs')
-                                                    8 plats disponibles
-                                                    @break
-                                                @case('Menus')
                                                     22 plats disponibles
                                                     @break
+                                                @case('Menus')
+                                                    16 plats disponibles
+                                                    @break
                                                 @case('Assiettes')
-                                                    2 plats disponibles
+                                                    10 plats disponibles
                                                     @break
                                                 @case('Menus Enfant')
                                                     4 plats disponibles
@@ -122,7 +129,7 @@
                                                     4 plats disponibles
                                                     @break
                                                 @case('Nos Box')
-                                                    4 plats disponibles
+                                                    8 plats disponibles
                                                     @break
                                                 @case('Panini')
                                                     4 plats disponibles
@@ -253,17 +260,31 @@
 
     <style>
         .nos-menus-area {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+        
+        .nos-menus-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ff6b35" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23f7931e" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%231976d2" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%231976d2" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23ff6b35" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            pointer-events: none;
         }
         
         .category-card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid #e9ecef;
             position: relative;
+            backdrop-filter: blur(10px);
         }
         
         .card-link {
@@ -279,14 +300,32 @@
         }
         
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 107, 53, 0.05) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .category-card:hover::before {
+            opacity: 1;
         }
         
         .category-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
             position: relative;
+            border-radius: 20px 20px 0 0;
         }
         
         .category-image img {
@@ -337,12 +376,31 @@
         }
         
         .meal-count {
-            background: #e3f2fd;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             color: #1976d2;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(25, 118, 210, 0.2);
+            border: 2px solid rgba(25, 118, 210, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .meal-count::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .meal-count:hover::before {
+            left: 100%;
         }
         
         .meal-count i {
@@ -355,26 +413,109 @@
         
         .view-menu-btn {
             display: inline-block;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8a65 100%);
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .view-menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
         }
         
         .view-menu-btn:hover {
-            background: linear-gradient(45deg, #e55a2b, #e0851a);
+            background: linear-gradient(135deg, #e55a2b 0%, #e0851a 50%, #ff7043 100%);
             color: white;
             text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        .view-menu-btn:hover::before {
+            left: 100%;
         }
         
         .view-menu-btn i {
             margin-right: 0.5rem;
+        }
+        
+        .total-count-highlight {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .highlight-content {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8a65 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        .highlight-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        .count-number {
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .count-text {
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-content i {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
         
         .menu-info-card {

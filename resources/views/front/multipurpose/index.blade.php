@@ -8,6 +8,292 @@
 
 @section('style')
 <style>
+/* Enhanced Category Cards Styles */
+.nos-menus-area {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.nos-menus-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ff6b35" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ff6b35" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ff6b35" opacity="0.05"/><circle cx="10" cy="60" r="0.5" fill="%23ff6b35" opacity="0.05"/><circle cx="90" cy="40" r="0.5" fill="%23ff6b35" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.nos-menus-area .container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-badge {
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.total-meals-badge {
+    background: white;
+    color: #ff6b35;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ff6b35;
+}
+
+.total-meals-badge i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.category-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    position: relative;
+    height: 100%;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 165, 0, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.category-card:hover::before {
+    opacity: 1;
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #ff6b35;
+}
+
+.category-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.8) 0%, rgba(255, 165, 0, 0.8) 100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.category-card:hover .category-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    color: white;
+    font-size: 2rem;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.category-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #ff6b35;
+    font-size: 4rem;
+}
+
+.category-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 3;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    flex: 1;
+}
+
+.category-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.category-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    min-height: 3rem;
+}
+
+.category-stats {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.meal-count {
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    color: #1976d2;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(25, 118, 210, 0.2);
+}
+
+.meal-count i {
+    margin-right: 6px;
+    color: #ff6b35;
+}
+
+.category-actions {
+    text-align: center;
+}
+
+.view-menu-btn {
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.view-menu-btn:hover {
+    background: linear-gradient(45deg, #ffa500, #ff6b35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.view-menu-btn i {
+    font-size: 1rem;
+}
+
+/* Enhanced Info Section */
+.enhanced-info-section {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.enhanced-info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+}
+
+.info-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #ff6b35, #ffa500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
 /* Testimonial Styles */
 .testimonial-area {
     background: #f8f9fa;
@@ -562,34 +848,75 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="section-title text-center">
-                        <span>Découvrez notre carte
+                        <span class="section-badge">Découvrez notre carte
                             <img class="lazy" data-src="{{ asset('assets/front/img/title-icon.png') }}" alt=""></span>
                         <h3 class="title">Choisissez parmi nos délicieuses catégories</h3>
                         <p class="text">Explorez notre sélection complète de plats préparés avec des ingrédients frais et de qualité</p>
-                        <p class="text" style="font-size: 1.1rem; font-weight: 600; color: #ff6b35; margin-top: 10px;">48 plats disponibles au total</p>
+                        <div class="total-count-highlight">
+                            <div class="highlight-content">
+                                <i class="fas fa-utensils"></i>
+                                <span class="count-number">64</span>
+                                <span class="count-text">plats halal disponibles au total</span>
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                @foreach ($categories as $category)
+                @foreach ($categories as $index => $category)
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="category-card h-100">
+                        <div class="category-card h-100 wow fadeInUp" data-wow-delay="{{ ($index * 0.1) + 0.2 }}s">
                             <div class="category-image">
                                 @if (!empty($category->image))
-                                    <img class="lazy wow fadeIn" 
+                                    <img class="lazy" 
                                          data-src="{{ asset('assets/front/img/category/' . $category->image) }}"
-                                         data-wow-delay=".3s" 
                                          alt="{{ convertUtf8($category->name) }}">
                                 @else
                                     <div class="category-placeholder">
                                         <i class="flaticon-burger"></i>
                                     </div>
                                 @endif
+                                <div class="category-overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="category-content">
-                                <h4 class="category-title">{{ convertUtf8($category->name) }}</h4>
+                                <div class="category-header">
+                                    <h4 class="category-title">{{ convertUtf8($category->name) }}</h4>
+                                    <div class="category-icon">
+                                        @switch($category->name)
+                                            @case('Assiettes')
+                                                <i class="fas fa-drumstick-bite"></i>
+                                                @break
+                                            @case('Sandwichs')
+                                                <i class="fas fa-hamburger"></i>
+                                                @break
+                                            @case('Menus')
+                                                <i class="fas fa-utensils"></i>
+                                                @break
+                                            @case('Salade')
+                                                <i class="fas fa-leaf"></i>
+                                                @break
+                                            @case('Menus Enfant')
+                                                <i class="fas fa-child"></i>
+                                                @break
+                                            @case('Nos Box')
+                                                <i class="fas fa-box"></i>
+                                                @break
+                                            @case('Panini')
+                                                <i class="fas fa-bread-slice"></i>
+                                                @break
+                                            @default
+                                                <i class="fas fa-utensils"></i>
+                                        @endswitch
+                                    </div>
+                                </div>
+                                
                                 <p class="category-description">
                                     @switch($category->name)
                                         @case('Assiettes')
@@ -620,13 +947,13 @@
                                         <i class="fas fa-utensils"></i>
                                         @switch($category->name)
                                             @case('Sandwichs')
-                                                8 plats disponibles
+                                                22 plats disponibles
                                                 @break
                                             @case('Menus')
-                                                26 plats disponibles
+                                                16 plats disponibles
                                                 @break
                                             @case('Assiettes')
-                                                2 plats disponibles
+                                                10 plats disponibles
                                                 @break
                                             @case('Menus Enfant')
                                                 4 plats disponibles
@@ -635,7 +962,7 @@
                                                 4 plats disponibles
                                                 @break
                                             @case('Nos Box')
-                                                4 plats disponibles
+                                                8 plats disponibles
                                                 @break
                                             @case('Panini')
                                                 4 plats disponibles
@@ -650,42 +977,42 @@
                                     @if($category->name === 'Sandwichs')
                                         <a href="{{ route('front.sandwiches') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Menus')
                                         <a href="{{ route('front.menus') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Assiettes')
                                         <a href="{{ route('front.assiettes') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Menus Enfant')
                                         <a href="{{ route('front.menusEnfant') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Salade')
                                         <a href="{{ route('front.salade') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Nos Box')
                                         <a href="{{ route('front.nosBox') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @elseif($category->name === 'Panini')
                                         <a href="{{ route('front.panini') }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @else
                                         <a href="{{ route('front.product', ['category_id' => $category->id]) }}" class="view-menu-btn">
                                             <i class="fas fa-eye"></i>
-                                            Voir le menu
+                                            <span>Voir le menu</span>
                                         </a>
                                     @endif
                                 </div>
@@ -1003,6 +1330,156 @@
         line-height: 1;
     }
 
+    /* Responsive Design for Category Cards */
+    @media (max-width: 768px) {
+        .nos-menus-area {
+            padding: 60px 0;
+        }
+        
+        .category-card {
+            margin-bottom: 2rem;
+        }
+        
+        .category-image {
+            height: 180px;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-title {
+            font-size: 1.3rem;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+        
+        .view-menu-btn {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+        
+        .enhanced-info-section {
+            padding: 2rem 1.5rem;
+        }
+        
+        .info-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .section-badge {
+            font-size: 12px;
+            padding: 6px 15px;
+        }
+        
+        .total-meals-badge {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+        
+        .category-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+        }
+        
+        .category-description {
+            font-size: 0.9rem;
+            min-height: 2.5rem;
+        }
+        
+        .meal-count {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+        }
+    }
+
+    /* Animation Enhancements */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .wow.fadeInUp {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Hover Effects for Better UX */
+    .category-card:hover .category-icon {
+        transform: rotate(360deg);
+        transition: transform 0.6s ease;
+    }
+
+    .category-card:hover .meal-count {
+        background: linear-gradient(45deg, #ff6b35, #ffa500);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    /* Loading Animation */
+    .category-card {
+        animation: slideInUp 0.6s ease-out;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Enhanced Section Title */
+    .nos-menus-area .section-title .title {
+        background: linear-gradient(45deg, #2c3e50, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .nos-menus-area .section-title .text {
+        color: #6c757d;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Gradient Text Effect */
+    .gradient-text {
+        background: linear-gradient(45deg, #ff6b35, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+        content: "›";
+        font-size: 30px;
+        line-height: 1;
+    }
+
     /* Custom Slick Dots Styles */
     .testimonial-slider .slick-dots {
         bottom: -40px;
@@ -1031,9 +1508,55 @@
         padding: 0;
     }
 
+    /* Custom Pagination Dots Styling */
+    .testimonial-slider .slick-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 40px;
+        list-style: none;
+        padding: 0;
+    }
+
+    .testimonial-slider .slick-dots li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    .testimonial-slider .slick-dots li button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #ff6b35;
+        background: transparent;
+        color: #ff6b35;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-indent: 0;
+        line-height: 1;
+    }
+
+    .testimonial-slider .slick-dots li button:hover {
+        background: #ff6b35;
+        color: white;
+        transform: scale(1.1);
+    }
+
     .testimonial-slider .slick-dots li.slick-active button {
         background: #ff6b35;
+        color: white;
         transform: scale(1.2);
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    .testimonial-slider .slick-dots li button:before {
+        display: none;
     }
 
     @media (max-width: 767px) {
@@ -1082,6 +1605,17 @@
 
         .testimonial-slider .slick-next {
             right: -50px;
+        }
+
+        .testimonial-slider .slick-dots {
+            margin-top: 30px;
+            gap: 8px;
+        }
+
+        .testimonial-slider .slick-dots li button {
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
         }
     }
     </style>
@@ -1177,6 +1711,9 @@
                     autoplay: true,
                     autoplaySpeed: 5000,
                     arrows: true,
+                    customPaging: function(slider, i) {
+                        return '<button type="button" data-role="none">' + (i + 1) + '</button>';
+                    },
                     responsive: [
                         {
                             breakpoint: 1024,
@@ -1332,5 +1869,154 @@
         </section>
     @endif
     <!--====== CONTACT PART ENDS ======-->
+
+    <style>
+        .total-count-highlight {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .highlight-content {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8a65 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        .highlight-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        .count-number {
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .count-text {
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-content i {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #e9ecef;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .meal-count {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1976d2;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(25, 118, 210, 0.2);
+            border: 2px solid rgba(25, 118, 210, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .meal-count::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .meal-count:hover::before {
+            left: 100%;
+        }
+        
+        .view-menu-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff8a65 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .view-menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .view-menu-btn:hover {
+            background: linear-gradient(135deg, #e55a2b 0%, #e0851a 50%, #ff7043 100%);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        .view-menu-btn:hover::before {
+            left: 100%;
+        }
+    </style>
 
 @endsection

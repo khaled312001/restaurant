@@ -102,6 +102,43 @@ class ProductController extends Controller
         $data['bs'] = $currentLang->basic_setting;
         $data['be'] = $currentLang->basic_extended;
 
+        // Get products for each category from database
+        $data['kebabProducts'] = Product::where('product_type', 'galettes')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
+        $data['americainProducts'] = Product::where('product_type', 'sandwiches')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
+        $data['tacosProducts'] = Product::where('product_type', 'tacos')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
+        $data['burgersProducts'] = Product::where('product_type', 'burgers')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
+        $data['paniniProducts'] = Product::where('product_type', 'panini')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
+        $data['assiettesProducts'] = Product::where('product_type', 'assiettes')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->orderBy('id')
+            ->get();
+
         return view('front.multipurpose.product.sandwiches_menus', $data);
     }
 

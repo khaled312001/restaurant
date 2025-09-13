@@ -29,8 +29,8 @@
         <div class="row">
             <!-- Full Width Menu -->
             <div class="col-12">
-                <!-- Main Sandwich Menu -->
-                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <!-- Main Menu -->
+                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #e74c3c; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
                         NOS SANDWICHS
                     </h2>
@@ -46,8 +46,8 @@
                         @foreach($products as $product)
                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; {{ !$loop->last ? 'border-bottom: 1px solid rgba(255,255,255,0.2);' : '' }}">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">{{ strtoupper($product->title) }}</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_seul, 2, ',', '') }}€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_menu, 2, ',', '') }}€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_seul ?? $product->current_price, 2, ',', '') }}€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_menu ?? $product->current_price, 2, ',', '') }}€</span>
                             <div style="text-align: center;">
                                 <a href="{{ route('front.americainKofte.addons') }}?type=seul&product={{ $product->slug }}" class="btn btn-warning btn-sm" style="background: #e74c3c; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
@@ -60,65 +60,6 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>
-                </div>
-
-                <!-- Supplements Menu -->
-                <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                    <h2 style="color: #e74c3c; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
-                        SUPPLEMENTS
-                    </h2>
-                    
-                    <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
-                        <div class="table-header" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e74c3c;">
-                            <span style="color: #e74c3c; font-weight: 600; font-size: 1.1rem;">Article</span>
-                            <span style="color: #e74c3c; font-weight: 600; font-size: 1.1rem;">Prix</span>
-                            <span style="color: #e74c3c; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">2,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCart('{{ route('add.cart', 134) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #e74c3c; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE FRITE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">4,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCart('{{ route('add.cart', 135) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #e74c3c; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PETITE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">5,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCart('{{ route('add.cart', 136) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #e74c3c; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">GRANDE VIANDE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem;">10,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="addToCart('{{ route('add.cart', 137) }}', [], 1, [])" class="btn btn-warning btn-sm" style="background: #e74c3c; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

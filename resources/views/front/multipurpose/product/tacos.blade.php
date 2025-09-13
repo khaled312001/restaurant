@@ -27,8 +27,8 @@
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <!-- Left Side - Menu Items -->
-            <div class="col-lg-8">
+            <!-- Full Width Menu -->
+            <div class="col-12">
                 <!-- Main Tacos Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #27ae60; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
@@ -48,14 +48,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(99, 'TACOS (1 VIANDE)', '8,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.tacos.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(99, 'TACOS (1 VIANDE)', '11,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.tacos.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -64,14 +64,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(100, 'TACOS MIXTE', '10,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.tacos.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(100, 'TACOS MIXTE', '13,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.tacos.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -80,14 +80,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(97, 'MEGA TACOS', '12,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.tacos.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(97, 'MEGA TACOS', '15,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.tacos.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -96,14 +96,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">17,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(98, 'MEGA TACOS MIXTE', '14,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.tacos.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(98, 'MEGA TACOS MIXTE', '17,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.tacos.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -157,52 +157,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side - Food Images and Info -->
-            <div class="col-lg-4">
-                <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Tacos Image -->
-                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #27ae60, #2ecc71); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
-                                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-taco" style="font-size: 5rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(39,174,96,0.3), rgba(39,174,96,0.1)); z-index: 1;"></div>
-                                </div>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(39,174,96,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Tacos Mexicains</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Garnis de viande et légumes</p>
-                    </div>
-
-                    <!-- Information Section -->
-                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                        <h4 style="color: #27ae60; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
-                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
-                            Informations
-                        </h4>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-clock" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">12-18 minutes</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Garnitures fraîches</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Légumes et sauces au choix</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
-                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Viandes variées</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Kebab, steak, poulet, kofte</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -234,8 +188,6 @@
     </div>
 </div>
 
-<!-- Include Customization Modal -->
-@include('front.multipurpose.product.customization_modal')
 
 <style>
 .menu-category {
@@ -309,52 +261,6 @@
 </style>
 
 <script>
-// Set current product type for this page
-window.currentProductType = 'tacos';
-window.currentAddons = @json($addons);
-
-function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
-    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
-    
-    // Set modal data attributes
-    $('#customizationModal').modal('show');
-    
-    // Update modal content immediately
-    $('#modalProductName').text(productName);
-    $('#modalProductType').text(type);
-    $('#modalProductPrice').text(price + '€');
-    
-    // Store product information
-    window.currentProduct = {
-        id: productId,
-        name: productName,
-        price: price,
-        type: type,
-        hasMeat: hasMeat,
-        isMenu: isMenu
-    };
-    
-    // Update current product type and menu status for modal
-    if (typeof window.currentCustomizationOptions !== 'undefined') {
-        window.currentCustomizationOptions.productType = 'tacos';
-        window.currentCustomizationOptions.isMenu = isMenu;
-    }
-    
-    // Trigger modal show event to update sections
-    setTimeout(() => {
-        $('#customizationModal').trigger('show.bs.modal', [{
-            relatedTarget: {
-                dataset: {
-                    productType: 'tacos',
-                    productName: productName,
-                    productPrice: price,
-                    menuType: isMenu
-                }
-            }
-        }]);
-    }, 100);
-}
-
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function
     // You can keep your existing implementation here
@@ -363,54 +269,6 @@ function addToCart(url, variant, quantity, extras) {
     // For now, redirect to the cart route
     window.location.href = url;
 }
-
-// Add to cart with customization
-window.addToCartWithCustomization = function(customizationOptions) {
-    console.log('=== ADD TO CART WITH CUSTOMIZATION ===');
-    console.log('Customization options received:', customizationOptions);
-    
-    if (!window.currentProduct) {
-        console.error('No current product information available');
-        return;
-    }
-    const product = window.currentProduct;
-    if (!customizationOptions || !customizationOptions.addons) {
-        console.error('Invalid customization options:', customizationOptions);
-        return;
-    }
-    const cartData = {
-        product_id: product.id,
-        quantity: customizationOptions.quantity || 1,
-        customizations: JSON.stringify({
-            productName: product.name,
-            productType: product.type,
-            price: product.price,
-            quantity: customizationOptions.quantity || 1,
-            meatChoice: customizationOptions.addons?.meat || null,
-            vegetables: customizationOptions.addons?.vegetables || [],
-            sauces: customizationOptions.addons?.sauces || [],
-            drinks: customizationOptions.addons?.drinks || [],
-            extras: customizationOptions.addons?.extras || []
-        }),
-        _token: $('meta[name="csrf-token"]').attr('content')
-    };
-    $.ajax({
-        url: '/add-to-cart/' + product.id,
-        method: 'POST',
-        data: cartData,
-        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        success: function(response) {
-            if (response && response.success) {
-                window.location.href = response.redirect || '/cart';
-            } else {
-                if (typeof toastr !== 'undefined') { toastr.error(response.message || 'Erreur lors de l\'ajout au panier'); }
-            }
-        },
-        error: function() {
-            if (typeof toastr !== 'undefined') { toastr.error('Erreur lors de l\'ajout au panier'); }
-        }
-    });
-};
 </script>
 
 @endsection

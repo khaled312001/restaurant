@@ -27,8 +27,8 @@
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <!-- Left Side - Menu Items -->
-            <div class="col-lg-8">
+            <!-- Full Width Menu -->
+            <div class="col-12">
                 <!-- Main Salade Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #27ae60; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
@@ -50,14 +50,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,50€</span>
                             <div style="text-align: center;">
-                                <select id="product-type-153" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (8,50€)</option>
-                                    <option value="menu">Menu (11,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(153, 'SALADE CÉSAR', document.getElementById('product-type-153').value === 'menu' ? '11,50' : '8,50', document.getElementById('product-type-153').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-153').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -81,14 +81,14 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <select id="product-type-mobile-153" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
-                                    <option value="seul">Seul (8,50€)</option>
-                                    <option value="menu">Menu (11,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(153, 'SALADE CÉSAR', document.getElementById('product-type-mobile-153').value === 'menu' ? '11,50' : '8,50', document.getElementById('product-type-mobile-153').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-153').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning" style="background: #2ecc71; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -98,14 +98,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,00€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,00€</span>
                             <div style="text-align: center;">
-                                <select id="product-type-154" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (9,00€)</option>
-                                    <option value="menu">Menu (12,00€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(154, 'SALADE NIÇOISE', document.getElementById('product-type-154').value === 'menu' ? '12,00' : '9,00', document.getElementById('product-type-154').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-154').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -129,14 +129,14 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <select id="product-type-mobile-154" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
-                                    <option value="seul">Seul (9,00€)</option>
-                                    <option value="menu">Menu (12,00€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(154, 'SALADE NIÇOISE', document.getElementById('product-type-mobile-154').value === 'menu' ? '12,00' : '9,00', document.getElementById('product-type-mobile-154').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-154').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning" style="background: #2ecc71; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -146,14 +146,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <select id="product-type-155" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (7,50€)</option>
-                                    <option value="menu">Menu (10,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(155, 'SALADE VÉGÉTARIENNE', document.getElementById('product-type-155').value === 'menu' ? '10,50' : '7,50', document.getElementById('product-type-155').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-155').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -177,14 +177,14 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <select id="product-type-mobile-155" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
-                                    <option value="seul">Seul (7,50€)</option>
-                                    <option value="menu">Menu (10,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(155, 'SALADE VÉGÉTARIENNE', document.getElementById('product-type-mobile-155').value === 'menu' ? '10,50' : '7,50', document.getElementById('product-type-mobile-155').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-155').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning" style="background: #2ecc71; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -194,14 +194,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
                             <div style="text-align: center;">
-                                <select id="product-type-114" class="form-control mb-2" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 5px; font-size: 0.9rem; margin-bottom: 8px;">
-                                    <option value="seul">Seul (9,50€)</option>
-                                    <option value="menu">Menu (12,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(114, 'SALADE FALAFEL', document.getElementById('product-type-114').value === 'menu' ? '12,50' : '9,50', document.getElementById('product-type-114').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-114').value === 'menu')" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #27ae60; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #2ecc71; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -225,14 +225,14 @@
                             </div>
                             
                             <div style="text-align: center;">
-                                <select id="product-type-mobile-114" class="form-control mb-3" style="background: rgba(255,255,255,0.9); border: none; border-radius: 10px; padding: 12px; font-size: 1rem; margin-bottom: 15px; width: 100%;">
-                                    <option value="seul">Seul (9,50€)</option>
-                                    <option value="menu">Menu (12,50€)</option>
-                                </select>
-                                <button onclick="openCustomizationModal(114, 'SALADE FALAFEL', document.getElementById('product-type-mobile-114').value === 'menu' ? '12,50' : '9,50', document.getElementById('product-type-mobile-114').value === 'menu' ? 'Menu' : 'Seul', false, document.getElementById('product-type-mobile-114').value === 'menu')" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
-                                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                <a href="{{ route('front.salade.addons') }}?type=seul" class="btn btn-warning" style="background: #27ae60; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.salade.addons') }}?type=menu" class="btn btn-warning" style="background: #2ecc71; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -260,38 +260,6 @@
                             <h4 style="color: white; margin-bottom: 10px;">Accompagnements</h4>
                             <p style="color: white; opacity: 0.9; margin: 0; font-size: 0.9rem;">Pain complet et sauces maison disponibles</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side - Product Cards -->
-            <div class="col-lg-4">
-                <div class="product-cards" style="position: sticky; top: 20px;">
-                    <!-- Salade César Card -->
-                    <div class="product-card" style="margin-bottom: 30px; text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #27ae60, #2ecc71); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
-                                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-leaf" style="font-size: 4rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(39,174,96,0.3), rgba(39,174,96,0.1)); z-index: 1;"></div>
-                                </div>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(39,174,96,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Salade César</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Laitue, parmesan, croûtons</p>
-                    </div>
-
-                    <!-- Salade Falafel Card -->
-                    <div class="product-card" style="text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 200px; background: linear-gradient(45deg, #e74c3c, #c0392b); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                                <i class="fas fa-seedling" style="font-size: 4rem; color: white;"></i>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(39,174,96,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Salade Falafel</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Falafels maison, tahini</p>
                     </div>
                 </div>
             </div>
@@ -364,8 +332,6 @@
 }
 </style>
 
-<!-- Include Customization Modal -->
-@include('front.multipurpose.product.customization_modal')
 
 <!-- JavaScript for cart functionality -->
 <script>
@@ -373,47 +339,6 @@
 window.currentProductType = 'salade';
 window.currentAddons = @json($addons);
 
-function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
-    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
-    
-    // Set modal data attributes
-    $('#customizationModal').modal('show');
-    
-    // Update modal content immediately
-    $('#modalProductName').text(productName);
-    $('#modalProductType').text(type);
-    $('#modalProductPrice').text(price + '€');
-    
-    // Store product information
-    window.currentProduct = {
-        id: productId,
-        name: productName,
-        price: price,
-        type: type,
-        hasMeat: hasMeat,
-        isMenu: isMenu
-    };
-    
-    // Update current product type and menu status for modal
-    if (typeof window.currentCustomizationOptions !== 'undefined') {
-        window.currentCustomizationOptions.productType = 'salade';
-        window.currentCustomizationOptions.isMenu = isMenu;
-    }
-    
-    // Trigger modal show event to update sections
-    setTimeout(() => {
-        $('#customizationModal').trigger('show.bs.modal', [{
-            relatedTarget: {
-                dataset: {
-                    productType: 'salade',
-                    productName: productName,
-                    productPrice: price,
-                    menuType: isMenu
-                }
-            }
-        }]);
-    }, 100);
-}
 
 function addToCartWithType(url, selectId) {
     const select = document.getElementById(selectId);

@@ -27,8 +27,8 @@
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <!-- Left Side - Menu Items -->
-            <div class="col-lg-8">
+            <!-- Full Width Menu -->
+            <div class="col-12">
                 <!-- Main Burgers Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #8e44ad; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
@@ -48,14 +48,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(133, 'CHEESE BURGER', '5,50', 'Seul', false, false)" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(133, 'CHEESE BURGER', '8,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -64,14 +64,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(134, 'DOUBLE CHEESE', '7,50', 'Seul', false, false)" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(134, 'DOUBLE CHEESE', '10,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -80,14 +80,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(135, 'TRIPLE CHEESE', '9,50', 'Seul', false, false)" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(135, 'TRIPLE CHEESE', '12,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
@@ -96,14 +96,14 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(136, 'BURGER SPECIAL', '8,50', 'Seul', false, false)" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(136, 'BURGER SPECIAL', '11,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -157,52 +157,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side - Food Images and Info -->
-            <div class="col-lg-4">
-                <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Burger Image -->
-                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #8e44ad, #9b59b6); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
-                                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-hamburger" style="font-size: 5rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(142,68,173,0.3), rgba(142,68,173,0.1)); z-index: 1;"></div>
-                                </div>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(142,68,173,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Burgers Gourmets</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Viandes fraîches et fromages</p>
-                    </div>
-
-                    <!-- Information Section -->
-                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                        <h4 style="color: #8e44ad; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
-                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
-                            Informations
-                        </h4>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-clock" style="color: #8e44ad; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">10-15 minutes</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Garnitures fraîches</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Légumes et sauces au choix</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
-                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Viandes premium</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Qualité supérieure garantie</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -234,22 +188,7 @@
     </div>
 </div>
 
-<!-- Include Customization Modal -->
-@include('front.multipurpose.product.customization_modal')
 
-<!-- Debug Information (remove in production) -->
-@if(config('app.debug'))
-<div class="debug-info" style="background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 10px; border: 1px solid #dee2e6;">
-    <h5>Debug Info - Addons Data:</h5>
-    <pre>{{ print_r($addons, true) }}</pre>
-    
-    <h5>Debug Info - Product Type:</h5>
-    <p>{{ $productType }}</p>
-    
-    <h5>Debug Info - Current Language:</h5>
-    <p>ID: {{ $currentLang->id }}, Code: {{ $currentLang->code }}</p>
-</div>
-@endif
 
 <style>
 .menu-category {
@@ -333,55 +272,6 @@ console.log('Addons data loaded:', window.currentAddons);
 console.log('Addons data type:', typeof window.currentAddons);
 console.log('Addons data keys:', Object.keys(window.currentAddons || {}));
 
-function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
-    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
-    
-    // Store product information
-    window.currentProduct = {
-        id: productId,
-        name: productName,
-        price: price,
-        type: type,
-        hasMeat: hasMeat,
-        isMenu: isMenu
-    };
-    
-    // Update current product type and menu status for modal
-    if (typeof window.currentCustomizationOptions !== 'undefined') {
-        window.currentCustomizationOptions.productType = 'burgers';
-        window.currentCustomizationOptions.isMenu = isMenu;
-    }
-    
-    // IMPORTANT: Set addons data before opening modal
-    if (window.currentAddons) {
-        console.log('Setting addons data for modal:', window.currentAddons);
-    } else {
-        console.error('No addons data available!');
-        console.log('Available window variables:', Object.keys(window).filter(key => key.includes('addon')));
-    }
-    
-    // Set modal data attributes
-    $('#customizationModal').modal('show');
-    
-    // Update modal content immediately
-    $('#modalProductName').text(productName);
-    $('#modalProductType').text(type);
-    $('#modalProductPrice').text(price + '€');
-    
-    // Trigger modal show event to update sections
-    setTimeout(() => {
-        $('#customizationModal').trigger('show.bs.modal', [{
-            relatedTarget: {
-                dataset: {
-                    productType: 'burgers',
-                    productName: productName,
-                    productPrice: price,
-                    menuType: isMenu
-                }
-            }
-        }]);
-    }, 100);
-}
 
 function updateModalSections(addons, productType, isMenu) {
     console.log('Updating modal sections with addons:', addons);

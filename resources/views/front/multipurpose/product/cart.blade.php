@@ -228,15 +228,6 @@
                                                             $allAddons = $constructedAddons;
                                                         }
                                                         
-                                                        // Debug: Log what we found
-                                                        if (config('app.debug')) {
-                                                            echo "<!-- Debug: Cart item: " . json_encode($item) . " -->";
-                                                            echo "<!-- Debug: Cart addons: " . json_encode($cartAddons) . " -->";
-                                                            echo "<!-- Debug: DB addons: " . json_encode($dbAddons) . " -->";
-                                                            echo "<!-- Debug: Final addons: " . json_encode($allAddons) . " -->";
-                                                            echo "<!-- Debug: Customizations: " . json_encode($customizations) . " -->";
-                                                            echo "<!-- Debug: Has customizations key: " . (isset($item['customizations']) ? 'YES' : 'NO') . " -->";
-                                                        }
                                                         
                                                         // Group addons by category
                                                         $groupedAddons = [];

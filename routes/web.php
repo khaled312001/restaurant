@@ -44,6 +44,17 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/menu/nos-box', 'Front\ProductController@nosBox')->name('front.nosBox');
     Route::get('/menu/panini', 'Front\ProductController@panini')->name('front.panini');
 
+    // Addon selection pages for each category
+    Route::get('/menu/tacos/addons', 'Front\ProductController@tacosAddons')->name('front.tacos.addons');
+    Route::get('/menu/kebab-galette/addons', 'Front\ProductController@kebabGaletteAddons')->name('front.kebabGalette.addons');
+    Route::get('/menu/americain-kofte/addons', 'Front\ProductController@americainKofteAddons')->name('front.americainKofte.addons');
+    Route::get('/menu/burgers/addons', 'Front\ProductController@burgersAddons')->name('front.burgers.addons');
+    Route::get('/menu/panini/addons', 'Front\ProductController@paniniAddons')->name('front.panini.addons');
+    Route::get('/menu/assiettes/addons', 'Front\ProductController@assiettesAddons')->name('front.assiettes.addons');
+    Route::get('/menu/menus-enfant/addons', 'Front\ProductController@menusEnfantAddons')->name('front.menusEnfant.addons');
+    Route::get('/menu/salade/addons', 'Front\ProductController@saladeAddons')->name('front.salade.addons');
+    Route::get('/menu/nos-box/addons', 'Front\ProductController@nosBoxAddons')->name('front.nosBox.addons');
+
     Route::get('/team', 'Front\FrontendController@team')->name('front.team');
     Route::get('/career', 'Front\FrontendController@career')->name('front.career');
     Route::get('/career-details/{slug}/{id}', 'Front\FrontendController@careerdetails')->name('front.careerdetails');
@@ -58,6 +69,7 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/product', 'Front\ProductController@product')->name('front.product');
     Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
     Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
+    Route::post('/add-to-cart-custom', 'Front\ProductController@addToCartCustom')->name('add.cart.custom');
     Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
     Route::get('/cart/item/remove/{id}', 'Front\\ProductController@cartitemremove')->name('cart.item.remove');
     Route::get('/cart/clear', 'Front\\ProductController@clearCart')->name('cart.clear');

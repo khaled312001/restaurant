@@ -1,4 +1,4 @@
-<!-- Customization Modal -->
+<!-- Simple Customization Modal -->
 <div class="modal fade" id="customizationModal" tabindex="-1" role="dialog" aria-labelledby="customizationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="border-radius: 20px; border: none;">
@@ -23,7 +23,7 @@
                 <!-- Dynamic Addons Sections -->
                 <div id="dynamicAddonsContainer">
                     <!-- Sections will be created dynamically by JavaScript -->
-                            </div>
+                </div>
 
                 <!-- Quantity Section -->
                 <div class="quantity-section" style="text-align: center; margin-bottom: 25px;">
@@ -161,60 +161,6 @@ $(document).ready(function() {
 
     function updateQuantityDisplay() {
         $('#quantityDisplay').text(quantity);
-    }
-
-    // Show customization sections based on product type and subtype
-    function showCustomizationSections(productType, menuType = false, productSubType = null, sectionsToShow = null) {
-        console.log('Showing sections for:', productType, 'Menu:', menuType, 'SubType:', productSubType, 'Sections:', sectionsToShow);
-        
-        // Hide all sections initially
-        $('.customization-section').hide();
-        
-        // If specific sections are provided, show only those that exist
-        if (sectionsToShow && Array.isArray(sectionsToShow)) {
-            sectionsToShow.forEach(section => {
-                const sectionElement = $(`#${section}Section`);
-                if (sectionElement.length > 0) {
-                    sectionElement.show();
-                    console.log(`Showing specific section: ${section}Section`);
-                } else {
-                    console.log(`Section not found (skipped): ${section}Section`);
-                }
-            });
-            return;
-        }
-        
-        // Default visibility rules per product type
-        if (productType === 'galettes' || productType === 'tacos') {
-            if (menuType) {
-                $('#meatSection').show();
-                $('#vegetablesSection').show();
-                $('#saucesSection').show();
-                $('#drinksSection').show();
-            } else {
-                $('#meatSection').show();
-                $('#vegetablesSection').show();
-                $('#saucesSection').show();
-            }
-        } else if (productType === 'sandwiches' || productType === 'burgers' || productType === 'panini') {
-            if (menuType) {
-                $('#vegetablesSection').show();
-                $('#saucesSection').show();
-                $('#drinksSection').show();
-            } else {
-                $('#vegetablesSection').show();
-                $('#saucesSection').show();
-            }
-        } else if (productType === 'assiettes') {
-            $('#saucesSection').show();
-        } else if (productType === 'menus_enfant' || productType === 'nos_box') {
-            $('#vegetablesSection').show();
-            $('#saucesSection').show();
-            $('#drinksSection').show();
-        } else if (productType === 'salade') {
-            $('#saucesSection').show();
-            $('#vegetablesSection').show();
-        }
     }
 
     // Create addon sections dynamically
@@ -536,7 +482,7 @@ $(document).ready(function() {
             createAddonSections(window.currentAddons);
         }
 
-        // Only show sections allowed by rules/selection
+        // Show sections based on product type
         showCustomizationSections(productType, menuType, productSubType, sectionsToShow);
             
         // Reset form each time modal opens
@@ -546,6 +492,414 @@ $(document).ready(function() {
     $('#customizationModal').on('hidden.bs.modal', function() {
         resetModalForm();
     });
+
+    // Show customization sections based on product type and subtype
+    window.showCustomizationSections = function(productType, menuType = false, productSubType = null, sectionsToShow = null) {
+        console.log('Showing sections for:', productType, 'Menu:', menuType, 'SubType:', productSubType, 'Sections:', sectionsToShow);
+        
+        // Hide all sections initially
+        $('.customization-section').hide();
+        
+        // If specific sections are provided, show only those that exist
+        if (sectionsToShow && Array.isArray(sectionsToShow)) {
+            sectionsToShow.forEach(section => {
+                const sectionElement = $(`#${section}Section`);
+                if (sectionElement.length > 0) {
+                    sectionElement.show();
+                    console.log(`Showing specific section: ${section}Section`);
+                } else {
+                    console.log(`Section not found (skipped): ${section}Section`);
+                }
+            });
+            return;
+        }
+        
+        // Default visibility rules per product type
+        if (productType === 'galettes' || productType === 'tacos') {
+            if (menuType) {
+                $('#meatSection').show();
+                $('#vegetablesSection').show();
+                $('#saucesSection').show();
+                $('#drinksSection').show();
+            } else {
+                $('#meatSection').show();
+                $('#vegetablesSection').show();
+                $('#saucesSection').show();
+            }
+        } else if (productType === 'sandwiches' || productType === 'burgers' || productType === 'panini') {
+            if (menuType) {
+                $('#vegetablesSection').show();
+                $('#saucesSection').show();
+                $('#drinksSection').show();
+            } else {
+                $('#vegetablesSection').show();
+                $('#saucesSection').show();
+            }
+        } else if (productType === 'assiettes') {
+            $('#saucesSection').show();
+        } else if (productType === 'menus_enfant' || productType === 'nos_box') {
+            $('#vegetablesSection').show();
+            $('#saucesSection').show();
+            $('#drinksSection').show();
+        } else if (productType === 'salade') {
+            $('#saucesSection').show();
+            $('#vegetablesSection').show();
+        }
+    }
+    
+    // Force show all sections immediately - alternative approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt):', section);
+                    });
+                }
+            }
+        }
+    }, 50);
+    
+    // Force show all sections immediately - another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt2):', section);
+                    });
+                }
+            }
+        }
+    }, 100);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt3):', section);
+                    });
+                }
+            }
+        }
+    }, 150);
+    
+    // Force show all sections immediately - final approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt4):', section);
+                    });
+                }
+            }
+        }
+    }, 200);
+    
+    // Force show all sections immediately - ultimate approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt5):', section);
+                    });
+                }
+            }
+        }
+    }, 250);
+    
+    // Force update sections after a short delay
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Showing section after delay 500ms:', section);
+                    });
+                }
+                
+                console.log('Sections updated after delay');
+            }
+        }
+    }, 500);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt6):', section);
+                    });
+                }
+            }
+        }
+    }, 750);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt7):', section);
+                    });
+                }
+            }
+        }
+    }, 1000);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt8):', section);
+                    });
+                }
+            }
+        }
+    }, 1250);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt9):', section);
+                    });
+                }
+            }
+        }
+    }, 1500);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt10):', section);
+                    });
+                }
+            }
+        }
+    }, 1750);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt11):', section);
+                    });
+                }
+            }
+        }
+    }, 2000);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt12):', section);
+                    });
+                }
+            }
+        }
+    }, 2250);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt13):', section);
+                    });
+                }
+            }
+        }
+    }, 2500);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt14):', section);
+                    });
+                }
+            }
+        }
+    }, 2750);
+    
+    // Force show all sections immediately - yet another approach
+    setTimeout(() => {
+        if (typeof window.currentAddons !== 'undefined' && window.currentAddons) {
+            if (typeof window.createAddonSections === 'function') {
+                // Clear existing sections
+                $('#dynamicAddonsContainer').empty();
+                
+                // Create new sections
+                window.createAddonSections(window.currentAddons);
+                
+                // Show only the required sections
+                $('.customization-section').hide();
+                if (window.currentCustomizationOptions && window.currentCustomizationOptions.sectionsToShow) {
+                    window.currentCustomizationOptions.sectionsToShow.forEach(section => {
+                        $(`#${section}Section`).show();
+                        console.log('Force showing section immediately (alt15):', section);
+                    });
+                }
+            }
+        }
+    }, 3000);
 
     // Add CSS for click animation
     $('<style>')
@@ -628,4 +982,4 @@ $(document).ready(function() {
         };
     }
 });
-</script> 
+</script>

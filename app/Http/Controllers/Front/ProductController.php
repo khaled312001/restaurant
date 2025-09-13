@@ -115,6 +115,12 @@ class ProductController extends Controller
         // Get addons for galettes (includes meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('galettes');
         $data['productType'] = 'galettes';
+        
+        // Get galettes products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'galettes')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.kebab_galette', $data);
     }
@@ -173,6 +179,12 @@ class ProductController extends Controller
         // Get addons for panini (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('panini');
         $data['productType'] = 'panini';
+        
+        // Get panini products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'panini')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.panini', $data);
     }
@@ -260,6 +272,310 @@ class ProductController extends Controller
         }
 
         return view('front.multipurpose.product.nos_box', $data);
+    }
+
+    // Addon selection pages for each category
+    public function tacosAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('tacos');
+        $data['productType'] = 'tacos';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('tacos');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'TACOS',
+                'price' => ($type === 'menu') ? 11.50 : 7.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.tacos', $data);
+    }
+
+    public function kebabGaletteAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('galettes');
+        $data['productType'] = 'galettes';
+        
+        // Get type and product from URL parameters
+        $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'kebab-galette');
+        
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'KEBAB GALETTE',
+                'price' => ($type === 'menu') ? 13.50 : 9.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.kebab_galette', $data);
+    }
+
+    public function americainKofteAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('galettes');
+        $data['productType'] = 'galettes';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('galettes');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'AMERICAIN KOFTE',
+                'price' => ($type === 'menu') ? 14.50 : 10.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.americain_kofte', $data);
+    }
+
+    public function burgersAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('burgers');
+        $data['productType'] = 'burgers';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('burgers');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'BURGER',
+                'price' => ($type === 'menu') ? 12.00 : 8.00
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.burgers', $data);
+    }
+
+    public function paniniAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('panini');
+        $data['productType'] = 'panini';
+        
+        // Get type and product from URL parameters
+        $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'panini-3-fromages');
+        
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'PANINI 3 FROMAGES',
+                'price' => ($type === 'menu') ? 9.50 : 6.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.panini', $data);
+    }
+
+    public function assiettesAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('assiettes');
+        $data['productType'] = 'assiettes';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('assiettes');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'ASSIETTE',
+                'price' => ($type === 'menu') ? 16.00 : 12.00
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.assiettes', $data);
+    }
+
+    public function menusEnfantAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('menus_enfant');
+        $data['productType'] = 'menus_enfant';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('menus_enfant');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'MENU ENFANT',
+                'price' => ($type === 'menu') ? 8.50 : 6.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.menus_enfant', $data);
+    }
+
+    public function saladeAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('salade');
+        $data['productType'] = 'salade';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('salade');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'SALADE',
+                'price' => ($type === 'menu') ? 10.50 : 7.50
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.salade', $data);
+    }
+
+    public function nosBoxAddons(Request $request)
+    {
+        $currentLang = $this->getCurrentLanguage();
+        $data['currentLang'] = $currentLang;
+        $data['bs'] = $currentLang->basic_setting;
+        $data['be'] = $currentLang->basic_extended;
+        $data['addons'] = \App\Models\Addon::getAddonsByProductType('nos_box');
+        $data['productType'] = 'nos_box';
+        
+        // Get type from URL parameter (seul or menu)
+        $type = $request->get('type', 'seul');
+        
+        // Get product from database
+        $product = \App\Models\Product::getByType('nos_box');
+        
+        if ($product) {
+            $data['product'] = (object) [
+                'id' => $product->id,
+                'name' => $product->title,
+                'price' => $product->getPriceByType($type)
+            ];
+        } else {
+            // Fallback if no product found in database
+            $data['product'] = (object) [
+                'id' => 1,
+                'name' => 'NOS BOX',
+                'price' => ($type === 'menu') ? 15.00 : 11.00
+            ];
+        }
+        
+        return view('front.multipurpose.product.addons.nos_box', $data);
     }
 
     public function productDetails($slug, $id)
@@ -1300,6 +1616,76 @@ class ProductController extends Controller
             return response()->json(['status' => 'success', 'timeframes' => $timeframes]);
         } else {
             return response()->json(['status' => 'error', 'message' => 'No delivery time frame is available on ' . ucfirst($day)]);
+        }
+    }
+
+    public function addToCartCustom(Request $request)
+    {
+        try {
+            $data = $request->all();
+            
+            // Validate required fields
+            if (!isset($data['product_id']) || !isset($data['product_name']) || !isset($data['product_price'])) {
+                return response()->json(['success' => false, 'message' => 'Missing required product information']);
+            }
+            
+            // Get or create cart
+            $cart = Session::get('cart', []);
+            
+            // Create unique key for this customized product
+            $cartKey = 'custom_' . $data['product_id'] . '_' . $data['product_type'] . '_' . time();
+            
+            // Calculate addons total
+            $addonsTotal = 0;
+            $addonsArray = [];
+            if (isset($data['addons']) && is_array($data['addons'])) {
+                foreach ($data['addons'] as $addon) {
+                    if (isset($addon['price'])) {
+                        $addonsTotal += (float)$addon['price'];
+                        $addonsArray[] = $addon;
+                    }
+                }
+            }
+            
+            // Create cart item
+            $cartItem = [
+                'id' => $data['product_id'],
+                'name' => $data['product_name'],
+                'product_price' => (float)$data['product_price'],
+                'qty' => 1,
+                'total' => (float)$data['total_price'],
+                'product_type' => $data['product_type'] ?? 'seul',
+                'addons' => $addonsArray,
+                'addons_total' => $addonsTotal,
+                'customized' => true
+            ];
+            
+            // Add to cart
+            $cart[$cartKey] = $cartItem;
+            Session::put('cart', $cart);
+            
+            \Log::info('Custom product added to cart', [
+                'product_id' => $data['product_id'],
+                'product_name' => $data['product_name'],
+                'total_price' => $data['total_price'],
+                'addons_count' => count($addonsArray),
+                'cart_key' => $cartKey,
+                'cart_item' => $cartItem
+            ]);
+            
+            // Debug: Log current cart
+            \Log::info('Current cart after adding', ['cart' => Session::get('cart')]);
+            
+            return response()->json([
+                'success' => true, 
+                'message' => 'Product added to cart successfully',
+                'cart_count' => count($cart),
+                'redirect' => url('/cart')
+            ]);
+            
+        } catch (\Exception $e) {
+            \Log::error('Error adding custom product to cart: ' . $e->getMessage());
+            return response()->json(['success' => false, 'message' => 'Error adding product to cart']);
         }
     }
 }

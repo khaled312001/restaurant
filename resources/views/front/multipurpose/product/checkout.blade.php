@@ -21,96 +21,78 @@
 </section>
 <!--====== PAGE TITLE PART ENDS ======-->
 <!--   hero area end    -->
+
     <!--====== CHECKOUT PART START ======-->
     <section class="checkout-area">
         <form action="" method="POST" id="payment" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <div class="row">
-                    <div class="col-12 mb-5">
-                        <div class="table">
-                            <div class="shop-title-box">
-                                <h3>{{ __('Serving Method') }}</h3>
+                <!-- Left Column - Order Details -->
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <!-- Serving Method Section -->
+                    <div class="checkout-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-utensils"></i> {{ __('Serving Method') }}</h3>
                             </div>
-                            <table class="cart-table shipping-method">
-                                <thead class="cart-header">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>{{ __('Method') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <div class="serving-methods">
                                     @foreach ($smethods as $sm)
-                                        @if ($sm->value == 'pick_up')
-                                            <tr>
-                                                <td>
+                                <div class="method-option {{ $sm->value == 'pick_up' ? 'selected' : '' }}">
                                                     <input type="radio" name="serving_method" class="shipping-charge"
-                                                    value="{{$sm->value}}" checked data-gateways="{{$sm->gateways}}">
-                                                </td>
-                                                <td>
-                                                    <p class="mb-1"><strong>{{ __($sm->name) }}</strong></p>
-                                                    <p class="mb-0"><small>{{ __($sm->note) }}</small></p>
-                                                </td>
-                                            </tr>
+                                           value="{{$sm->value}}" {{ $sm->value == 'pick_up' ? 'checked' : '' }} 
+                                           data-gateways="{{$sm->gateways}}" id="method_{{ $sm->value }}">
+                                    <label for="method_{{ $sm->value }}" class="method-label">
+                                        <div class="method-icon">
+                                            @if($sm->value == 'pick_up')
+                                                <i class="fas fa-shopping-bag"></i>
+                                            @elseif($sm->value == 'on_table')
+                                                <i class="fas fa-chair"></i>
+                                            @elseif($sm->value == 'home_delivery')
+                                                <i class="fas fa-truck"></i>
                                         @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        </div>
+                                        <div class="method-info">
+                                            <h4>{{ ucfirst(str_replace('_', ' ', $sm->value)) }}</h4>
+                                            <p>{{ __('Select this option') }}</p>
+                    </div>
+                                    </label>
+                </div>
+                            @endforeach
                         </div>
                     </div>
+
+                    <!-- Order Items Section -->
+                    <div class="checkout-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-shopping-cart"></i> {{ __('Order Items') }}</h3>
                 </div>
-                <input type="hidden" name="ordered_from" value="website">
-                <div class="form-container" id="pick_up">
-                    @include('front.multipurpose.qrmenu.partials.pick_up_form')
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="field-label">{{ __('Order Notes') }} </div>
-                        <div class="field-input">
-                            <textarea name="order_notes" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <!-- Shipping methods section removed since home delivery is not available -->
-                <div id="paymentInputs"></div>
-            </div>
-            <div class="bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <div class="table">
-                                <div class="shop-title-box">
-                                    <h3>{{ __('Order Summary') }}</h3>
-                                </div>
-                                @if (!empty($cart))
-                                <table class="cart-table">
-                                    <thead class="cart-header">
-                                        <tr>
-                                            <th width="70%">{{ __('Product Title') }}</th>
-                                            <th>{{ __('Customizations') }}</th>
-                                            <th>{{ __('Quantity') }}</th>
-                                            <th>{{ __('Total') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $total = 0; // Initialize total variable
-                                        @endphp
-                                        @foreach ($cart as $key => $item)
+                        <div class="order-items">
+                            @if(!empty($cart))
+                                @php $total = 0; @endphp
+                                @foreach($cart as $item)
                                         @php
                                         $id = $item["id"];
                                         $product = App\Models\Product::findOrFail($id);
                                         $total += $item['total'];
                                         @endphp
-                                        <tr class="remove{{ $id }}">
-                                            <td class="prod-title">
-                                                <h4 class="title">{{ $item['name'] }}</h4>
-                                                <p class="base-price">
+                                    <div class="order-item" data-product-id="{{ $id }}">
+                                        <div class="item-image">
+                                            @if($product->feature_image)
+                                                <img src="{{ asset('assets/front/img/products/'.$product->feature_image) }}" alt="{{ $item['name'] }}">
+                                            @else
+                                                <div class="no-image">
+                                                    <i class="fas fa-image"></i>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="item-details">
+                                            <h4 class="item-name">{{ $item['name'] }}</h4>
+                                            <p class="item-price">
                                                     {{__('Base Price')}}: {{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($item['product_price'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}
                                                 </p>
-                                            </td>
-                                            <td class="customizations">
-                                                <div class="customization-details">
+                                            
+                                            <!-- Customizations Display -->
+                                            <div class="customizations">
                                                     @if(isset($item['customizations']) || isset($item['addons']))
                                                         @php
                                                             $customizations = $item['customizations'] ?? [];
@@ -120,101 +102,19 @@
                                                                 $customizations = json_decode($customizations, true);
                                                             }
                                                             
-                                                            // If no customizations but we have addons directly, use them
-                                                            if (empty($customizations) && isset($item['addons']) && !empty($item['addons'])) {
-                                                                $customizations = ['addons_direct' => $item['addons']];
-                                                            }
-                                                            
-                                                            // Try to get addons from database if customization_id exists
-                                                            $dbAddons = [];
-                                                            if (isset($item['customization_id'])) {
+                                                        // Get addons from various sources
+                                                        $allAddons = [];
+                                                        if (isset($item['addons']) && is_array($item['addons'])) {
+                                                            $allAddons = $item['addons'];
+                                                        } elseif (isset($item['customization_id'])) {
                                                                 try {
                                                                     $customizationModel = App\Models\Customization::find($item['customization_id']);
                                                                     if ($customizationModel && $customizationModel->addons) {
-                                                                        $dbAddons = $customizationModel->addons;
+                                                                    $allAddons = $customizationModel->addons;
                                                                     }
                                                                 } catch (Exception $e) {
-                                                                    // Fallback to session data
-                                                                    $dbAddons = [];
-                                                                }
+                                                                $allAddons = [];
                                                             }
-                                                            
-                                                            // First try to get addons from cart item directly
-                                                            $cartAddons = [];
-                                                            if (isset($item['addons']) && is_array($item['addons'])) {
-                                                                $cartAddons = $item['addons'];
-                                                            }
-                                                            
-                                                            // Use cart addons if available, otherwise database addons
-                                                            $allAddons = !empty($cartAddons) ? $cartAddons : (!empty($dbAddons) ? $dbAddons : []);
-                                                            
-                                                            // If still no addons, try to construct from customizations data
-                                                            if (empty($allAddons) && is_array($customizations)) {
-                                                                $constructedAddons = [];
-                                                                
-                                                                // Add meat choice
-                                                                if (!empty($customizations['meatChoice'])) {
-                                                                    $constructedAddons[] = [
-                                                                        'name' => $customizations['meatChoice'],
-                                                                        'category' => 'meat',
-                                                                        'price' => 0
-                                                                    ];
-                                                                }
-                                                                
-                                                                // Add vegetables
-                                                                if (!empty($customizations['vegetables']) && is_array($customizations['vegetables'])) {
-                                                                    foreach ($customizations['vegetables'] as $vegetable) {
-                                                                        $constructedAddons[] = [
-                                                                            'name' => $vegetable,
-                                                                            'category' => 'vegetables',
-                                                                            'price' => 0
-                                                                        ];
-                                                                    }
-                                                                }
-                                                                
-                                                                // Add drinks
-                                                                if (!empty($customizations['drinks']) && is_array($customizations['drinks'])) {
-                                                                    foreach ($customizations['drinks'] as $drink) {
-                                                                        $constructedAddons[] = [
-                                                                            'name' => $drink,
-                                                                            'category' => 'drinks',
-                                                                            'price' => 0
-                                                                        ];
-                                                                    }
-                                                                }
-                                                                
-                                                                // Add drink choice (backward compatibility)
-                                                                if (!empty($customizations['drinkChoice'])) {
-                                                                    $constructedAddons[] = [
-                                                                        'name' => $customizations['drinkChoice'],
-                                                                        'category' => 'drinks',
-                                                                        'price' => 0
-                                                                    ];
-                                                                }
-                                                                
-                                                                // Add sauces
-                                                                if (!empty($customizations['sauces']) && is_array($customizations['sauces'])) {
-                                                                    foreach ($customizations['sauces'] as $sauce) {
-                                                                        $constructedAddons[] = [
-                                                                            'name' => $sauce,
-                                                                            'category' => 'sauces',
-                                                                            'price' => 0
-                                                                        ];
-                                                                    }
-                                                                }
-                                                                
-                                                                // Add extras
-                                                                if (!empty($customizations['extras']) && is_array($customizations['extras'])) {
-                                                                    foreach ($customizations['extras'] as $extra) {
-                                                                        $constructedAddons[] = [
-                                                                            'name' => $extra,
-                                                                            'category' => 'extras',
-                                                                            'price' => 0
-                                                                        ];
-                                                                    }
-                                                                }
-                                                                
-                                                                $allAddons = $constructedAddons;
                                                             }
                                                             
                                                             // Group addons by category
@@ -228,145 +128,62 @@
                                                             }
                                                         @endphp
                                                         
-                                                        <!-- Display all addons grouped by category -->
                                                         @foreach($groupedAddons as $category => $addons)
                                                             @if(count($addons) > 0)
-                                                                <div class="customization-item">
+                                                            <div class="customization-group">
+                                                                <span class="group-label">
                                                                     @switch($category)
-                                                                        @case('meat')
-                                                                            <strong><i class="fas fa-drumstick-bite text-danger"></i> Viande:</strong>
-                                                                            @break
-                                                                        @case('vegetables')
-                                                                            <strong><i class="fas fa-leaf text-success"></i> Légumes:</strong>
-                                                                            @break
-                                                                        @case('drinks')
-                                                                            <strong><i class="fas fa-glass-whiskey text-info"></i> Boisson:</strong>
-                                                                            @break
-                                                                        @case('sauces')
-                                                                            <strong><i class="fas fa-fire text-warning"></i> Sauces:</strong>
-                                                                            @break
-                                                                        @case('extras')
-                                                                            <strong><i class="fas fa-plus text-primary"></i> Suppléments:</strong>
-                                                                            @break
-                                                                        @default
-                                                                            <strong><i class="fas fa-cog text-secondary"></i> {{ ucfirst($category) }}:</strong>
+                                                                        @case('meat') <i class="fas fa-drumstick-bite"></i> {{ __('Meat') }} @break
+                                                                        @case('vegetables') <i class="fas fa-leaf"></i> {{ __('Vegetables') }} @break
+                                                                        @case('drinks') <i class="fas fa-glass-whiskey"></i> {{ __('Drinks') }} @break
+                                                                        @case('sauces') <i class="fas fa-fire"></i> {{ __('Sauces') }} @break
+                                                                        @case('extras') <i class="fas fa-plus"></i> {{ __('Extras') }} @break
+                                                                        @default <i class="fas fa-cog"></i> {{ ucfirst($category) }}
                                                                     @endswitch
-                                                                    
+                                                                </span>
+                                                                <div class="addon-tags">
                                                                     @foreach($addons as $addon)
                                                                         @php
-                                                                            $badgeClass = 'badge-secondary';
-                                                                            switch($category) {
-                                                                                case 'meat': $badgeClass = 'badge-danger'; break;
-                                                                                case 'vegetables': $badgeClass = 'badge-success'; break;
-                                                                                case 'drinks': $badgeClass = 'badge-info'; break;
-                                                                                case 'sauces': $badgeClass = 'badge-warning'; break;
-                                                                                case 'extras': $badgeClass = 'badge-primary'; break;
-                                                                            }
-                                                                            
                                                                             $addonName = $addon['name'] ?? $addon;
                                                                             $addonPrice = $addon['price'] ?? 0;
                                                                             $priceText = $addonPrice > 0 ? " (+" . number_format($addonPrice, 2) . "€)" : "";
                                                                         @endphp
-                                                                        <span class="badge {{ $badgeClass }}">{{ ucfirst(str_replace('-', ' ', $addonName)) }}{{ $priceText }}</span>
+                                                                        <span class="addon-tag">{{ ucfirst(str_replace('-', ' ', $addonName)) }}{{ $priceText }}</span>
                                                                     @endforeach
                                                                 </div>
-                                                            @endif
-                                                        @endforeach
-                                                        
-                                                        <!-- Fallback to old customization data if no database addons -->
-                                                        @if(empty($dbAddons))
-                                                            <!-- Meat Choice -->
-                                                            @if(isset($customizations['meatChoice']) && $customizations['meatChoice'])
-                                                                <div class="customization-item">
-                                                                    <strong><i class="fas fa-drumstick-bite text-danger"></i> Viande:</strong>
-                                                                    <span class="badge badge-primary">{{ ucfirst($customizations['meatChoice']) }}</span>
                                                                 </div>
                                                             @endif
-                                                            
-                                                            <!-- Vegetables -->
-                                                            @if(isset($customizations['vegetables']) && is_array($customizations['vegetables']) && count($customizations['vegetables']) > 0)
-                                                                <div class="customization-item">
-                                                                    <strong><i class="fas fa-leaf text-success"></i> Légumes:</strong>
-                                                                    @foreach($customizations['vegetables'] as $vegetable)
-                                                                        <span class="badge badge-success">{{ ucfirst(str_replace('-', ' ', $vegetable)) }}</span>
                                                                     @endforeach
-                                                                </div>
                                                             @endif
-                                                            
-                                                            <!-- Drinks -->
-                                                            @if(isset($customizations['drinkChoice']) && $customizations['drinkChoice'])
-                                                                <div class="customization-item">
-                                                                    <strong><i class="fas fa-glass-whiskey text-info"></i> Boisson:</strong>
-                                                                    <span class="badge badge-info">{{ ucfirst(str_replace('-', ' ', $customizations['drinkChoice'])) }}</span>
                                                                 </div>
-                                                            @endif
-                                                            
-                                                            <!-- Sauces -->
-                                                            @if(isset($customizations['sauces']) && is_array($customizations['sauces']) && count($customizations['sauces']) > 0)
-                                                                <div class="customization-item">
-                                                                    <strong><i class="fas fa-fire text-warning"></i> Sauces:</strong>
-                                                                    @foreach($customizations['sauces'] as $sauce)
-                                                                        <span class="badge badge-warning">{{ ucfirst(str_replace('-', ' ', $sauce)) }}</span>
-                                                                    @endforeach
                                                                 </div>
-                                                            @endif
-                                                        @endif
-                                                    @else
-                                                        <!-- Fallback to old variations/addons system -->
-                                                        @if (!empty($item["variations"]))
-                                                            <div class="customization-item">
-                                                                <strong><i class="fas fa-cog text-primary"></i> Variations:</strong>
-                                                                @php
-                                                                    $variations = $item["variations"];
-                                                                @endphp
-                                                                @foreach ($variations as $vKey => $variation)
-                                                                    <span class="badge badge-primary">{{str_replace("_"," ",$vKey)}}: {{$variation["name"]}}</span>
-                                                                    @if (!$loop->last) @endif
-                                                                @endforeach    
+                                        <div class="item-quantity">
+                                            <span class="qty-label">{{ __('Qty') }}</span>
+                                            <span class="qty-value">{{ $item['qty'] }}</span>
                                                             </div>
-                                                        @endif
-                                                        
-                                                        @if (!empty($item["addons"]))
-                                                            <div class="customization-item">
-                                                                <strong><i class="fas fa-plus text-success"></i> Suppléments:</strong>
-                                                                @php
-                                                                    $addons = $item["addons"];
-                                                                @endphp
-                                                                @foreach ($addons as $addon)
-                                                                    <span class="badge badge-success">{{$addon["name"]}}</span>
-                                                                    @if (!$loop->last) @endif
-                                                                @endforeach
+                                        <div class="item-total">
+                                            <span class="total-label">{{ __('Total') }}</span>
+                                            <span class="total-value">
+                                                {{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{ number_format($item['total'], 2) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}
+                                            </span>
                                                             </div>
-                                                        @endif
-                                                    @endif
+                                        <input type="hidden" value="{{ $id }}" class="product_id">
                                                 </div>
-                                            </td>
-                                            <td class="quantity">
-                                                <span class="qty-display">{{ $item['qty'] }}</span>
-                                            </td>
-                                            <input type="hidden" value="{{ $id }}" class="product_id">
-                                            <td class="sub-total">
-                                                <span dir="ltr">{{ $be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{ number_format($item['total'], 2) }}{{ $be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : '' }}</span>
-                                            </td>
-                                        </tr>
                                         @endforeach
                                         @else
-                                        <div class="py-5 bg-light text-center">
+                                <div class="empty-cart">
+                                    <i class="fas fa-shopping-cart"></i>
                                             <h5>{{ __('Cart is empty!') }}</h5>
+                                    <a href="{{ route('front.index') }}" class="btn btn-primary">{{ __('Return to Website') }}</a>
                                         </div>
                                         @endif
-                                    </tbody>
-                                </table>
-                                <div class="text-center my-4">
-                                    <a href="{{ route('front.index') }}"
-                                        class="main-btn main-btn-2">{{ __('Return to Website') }}</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 
+                <!-- Right Column - Order Summary -->
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             @include('front.multipurpose.qrmenu.partials.order_total')
-                        </div>
                     </div>
                 </div>
             </div>
@@ -375,63 +192,8 @@
     <!--====== CHECKOUT PART ENDS ======-->
 @endsection
 
-
 @section('script')
-<!-- Stripe disabled: removing external Stripe.js include -->
 <script>
-    // Initialize Stripe with proper error handling
-    @php
-        $stripeInfo = [];
-        try {
-            if (isset($stripe) && isset($stripe->information)) {
-                $stripeInfo = is_array($stripe->information)
-                    ? $stripe->information
-                    : (json_decode($stripe->information, true) ?: []);
-            }
-        } catch (\Throwable $e) {
-            $stripeInfo = [];
-        }
-        $stripePublishableKey = $stripeInfo['key'] ?? ($stripeInfo['stripe_key'] ?? '');
-        $stripeEnabled = isset($stripe) && isset($stripe->status) && (int) $stripe->status === 1;
-    @endphp
-    let stripe;
-    let elements;
-    let card;
-    let stripeKey = '{{ $stripePublishableKey }}';
-    let stripeIsEnabled = {{ $stripeEnabled ? 'true' : 'false' }};
-    // Stripe disabled
-    if (false && stripeIsEnabled && stripeKey && stripeKey.trim() !== '') {
-        try {
-            stripe = Stripe(stripeKey);
-            elements = stripe.elements();
-            
-            // Create an instance of the card Element
-            card = elements.create('card', {
-                style: {
-                    base: {
-                        fontSize: '16px',
-                        color: '#424770',
-                        '::placeholder': {
-                            color: '#aab7c4',
-                        },
-                    },
-                    invalid: {
-                        color: '#9e2146',
-                    },
-                },
-            });
-            
-            // Add an instance of the card Element into the `card-element` div
-            if (document.getElementById('card-element')) {
-                card.mount('#card-element');
-            }
-            
-            console.log('Stripe initialized successfully');
-    } catch (error) {
-        console.error('Stripe initialization error:', error);
-        }
-    }
-    
     // Function to refresh CSRF token
     function refreshCsrfToken() {
         return new Promise(function(resolve, reject) {
@@ -488,7 +250,7 @@
     function submitCheckout(triggerBtn) {
         var hasGateway = ensureGatewaySelectedAndSetAction();
         if (!hasGateway) {
-            alert('Veuillez choisir une passerelle de paiement.');
+            alert('Please select a payment method.');
             return;
         }
 
@@ -505,7 +267,7 @@
 
             if (triggerBtn && triggerBtn.length) {
                 triggerBtn.attr('disabled', 'true');
-                triggerBtn.text('Traitement...');
+                triggerBtn.text('Processing...');
                 triggerBtn.css('color', 'black');
             }
 
@@ -516,7 +278,7 @@
         });
     }
     
-    // Mettre à jour l'action du formulaire quand l'utilisateur change de passerelle
+    // Update form action when user changes payment gateway
     $(document).on('change', "input[name='gateway']", function(){
         var actionUrl = $(this).data('action');
         if (actionUrl) {
@@ -524,272 +286,322 @@
         }
     });
     
-    // Initialiser l'action du formulaire avec la passerelle pré-sélectionnée, le cas échéant
+    // Initialize form action with pre-selected gateway
     $(function(){
         ensureGatewaySelectedAndSetAction();
-    });
-    
-    // Function to handle image loading errors
-    function handleImageError(img) {
-        if (img.naturalWidth < 100 || img.naturalHeight < 100) {
-            img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
-            img.classList.add('placeholder-image');
-        }
-    }
-    
-    // Function to handle checkout image errors specifically
-    function handleCheckoutImageError(img, originalSrc) {
-        // Try to reload the original image first
-        if (img.src !== originalSrc) {
-            img.src = originalSrc;
-            return;
-        }
-        // If that fails, use placeholder
-        img.src = '{{ asset("assets/front/img/placeholder.jpg") }}';
-        img.classList.add('placeholder-image');
-    }
-    
-    // Check all images on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        const images = document.querySelectorAll('.prod-thumb img');
-        images.forEach(function(img) {
-            if (img.complete) {
-                // Check if image loaded successfully
-                if (img.naturalWidth < 100 || img.naturalHeight < 100) {
-                    // Force reload the image
-                    const originalSrc = img.src;
-                    img.src = '';
-                    setTimeout(() => {
-                        img.src = originalSrc;
-                    }, 100);
-                }
-            } else {
-                img.addEventListener('load', function() {
-                    if (this.naturalWidth < 100 || this.naturalHeight < 100) {
-                        // Image loaded but too small
-                    }
-                });
-            }
-            img.addEventListener('error', function() {
-                handleCheckoutImageError(this, this.src);
-            });
-        });
-    });
-
-    // Handle browser security warnings
-    document.addEventListener('DOMContentLoaded', function() {
-        // Monitor for security warnings and hide them
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'childList') {
-                    mutation.addedNodes.forEach(function(node) {
-                        if (node.nodeType === Node.ELEMENT_NODE) {
-                            // Hide security warnings
-                            var warnings = node.querySelectorAll('[data-stripe-security-warning], [data-autofill-warning]');
-                            warnings.forEach(function(warning) {
-                                warning.style.display = 'none';
-                            });
-                            
-                            // Also hide any elements with security-related text
-                            if (node.textContent && (
-                                node.textContent.includes('secure connection') ||
-                                node.textContent.includes('automatic payment methods filling is disabled')
-                            )) {
-                                node.style.display = 'none';
-                            }
-                        }
-                    });
-                }
-            });
-        });
-        
-        // Start observing
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
     });
 </script>
 @include('front.multipurpose.qrmenu.partials.scripts')
 @endsection
 
 <style>
-.placeholder-image {
-    opacity: 0.7;
-    filter: grayscale(100%);
-}
-.prod-thumb img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-/* Stripe Elements Styling */
-#card-element {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: white;
-    min-height: 40px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-#card-element.StripeElement--focus {
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-#card-element.StripeElement--invalid {
-    border-color: #dc3545;
-}
-
-#card-errors {
-    display: none;
-    color: #dc3545;
-    font-size: 14px;
-    margin-top: 8px;
-    padding: 8px;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-}
-
-/* Hide browser security warnings for Stripe */
-#card-element::-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-}
-
-/* Payment method selection styling */
-.option-block {
-    margin-bottom: 15px;
-}
-
-.gateway-details {
-    margin-top: 15px;
-    padding: 20px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-}
-
-/* Form validation styling */
-.field-input input:invalid {
-    border-color: #dc3545;
-}
-
-.field-input input:valid {
-    border-color: #28a745;
-}
-
-.customization-details {
-    padding: 8px;
-}
-
-.customization-item {
-    margin-bottom: 6px;
-    padding: 3px 0;
-}
-
-.customization-item strong {
-    display: inline-block;
-    margin-right: 6px;
-    color: #2c3e50;
-    font-size: 0.85rem;
-}
-
-.customization-item .badge {
-    margin-right: 4px;
-    margin-bottom: 2px;
-    font-size: 0.75rem;
-    padding: 3px 6px;
-}
-
-.badge-primary {
-    background-color: #3498db;
-    color: white;
-}
-
-.badge-success {
-    background-color: #27ae60;
-    color: white;
-}
-
-.badge-info {
-    background-color: #17a2b8;
-    color: white;
-}
-
-.badge-warning {
-    background-color: #f39c12;
-    color: white;
-}
-
-.badge-danger {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.prod-title h4 {
-    margin: 0 0 5px 0;
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.prod-title p {
-    margin: 0;
-    color: #7f8c8d;
-    font-size: 0.85rem;
-}
-
-.quantity .qty-display {
+/* Enhanced Checkout Styles */
+.checkout-area {
+    padding: 60px 0;
     background: #f8f9fa;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #dee2e6;
-    font-weight: 600;
-    color: #2c3e50;
 }
 
-.cart-table th {
-    background-color: #f8f9fa;
-    border-color: #dee2e6;
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 0.9rem;
+.checkout-section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
 }
 
-.cart-table td {
-    vertical-align: middle;
-    border-color: #dee2e6;
-    padding: 12px 8px;
-}
-
-.shop-title-box h3 {
-    color: #2c3e50;
-    font-weight: 600;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+.section-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
     border-bottom: 2px solid #e9ecef;
 }
 
-.main-btn-2 {
-    background: linear-gradient(45deg, #f39c12, #e67e22);
-    border: none;
+.section-header h3 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.section-header i {
+    color: #3498db;
+    margin-right: 10px;
+}
+
+/* Serving Methods */
+.serving-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.method-option {
+    position: relative;
+}
+
+.method-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.method-label {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.method-option.selected .method-label,
+.method-label:hover {
+    border-color: #3498db;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.method-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
     color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.method-info h4 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.method-info p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Order Items */
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
     transition: all 0.3s ease;
 }
 
-.main-btn-2:hover {
-    background: linear-gradient(45deg, #e67e22, #d68910);
+.order-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+
+.item-details {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.item-name {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
+.item-price {
+    color: #7f8c8d;
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+}
+
+.customizations {
+    margin-top: 10px;
+}
+
+.customization-group {
+    margin-bottom: 8px;
+}
+
+.group-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.group-label i {
+    margin-right: 5px;
+    width: 12px;
+}
+
+.addon-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.addon-tag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.item-quantity,
+.item-total {
+    text-align: center;
+    min-width: 80px;
+}
+
+.qty-label,
+.total-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.qty-value,
+.total-value {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.qty-value {
+    background: #3498db;
     color: white;
-    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    min-width: 40px;
+}
+
+.total-value {
+    color: #27ae60;
+    font-size: 1.1rem;
+}
+
+/* Empty Cart */
+.empty-cart {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6c757d;
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #bdc3c7;
+}
+
+.empty-cart h5 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .order-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .item-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .item-details {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .item-quantity,
+    .item-total {
+        margin: 10px 0;
+    }
+    
+    .serving-methods {
+        gap: 10px;
+    }
+    
+    .method-label {
+        padding: 15px;
+    }
+    
+    .method-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation for smooth transitions */
+.order-item,
+.method-label {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+.method-option input[type="radio"]:focus + .method-label {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
 }
 </style>

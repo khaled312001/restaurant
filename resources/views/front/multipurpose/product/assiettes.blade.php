@@ -27,8 +27,8 @@
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <!-- Left Side - Menu Items -->
-            <div class="col-lg-8">
+            <!-- Full Width Menu -->
+            <div class="col-12">
                 <!-- Main Assiettes Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #3498db; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
@@ -37,21 +37,27 @@
                     
                     <div class="menu-table" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px;">
                         <!-- Desktop Header -->
-                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #3498db;">
+                        <div class="table-header desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #3498db;">
                             <span style="color: #3498db; font-weight: 600; font-size: 1.1rem;">Assiette</span>
-                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Prix</span>
+                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Seul</span>
+                            <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Menu</span>
                             <span style="color: #3498db; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KEBAB</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">16,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(102, 'ASSIETTE KEBAB', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #5dade2; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -64,28 +70,42 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
                                 <span style="color: white; font-weight: 600; font-size: 1.1rem;">13,00€</span>
                             </div>
                             
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">16,00€</span>
+                            </div>
+                            
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(102, 'ASSIETTE KEBAB', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
                                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning" style="background: #5dade2; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE GRILLÉE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">14,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">17,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(105, 'ASSIETTE GRILLÉE', '14,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #5dade2; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -98,28 +118,42 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
                                 <span style="color: white; font-weight: 600; font-size: 1.1rem;">14,00€</span>
                             </div>
                             
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">17,00€</span>
+                            </div>
+                            
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(105, 'ASSIETTE GRILLÉE', '14,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
                                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning" style="background: #5dade2; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KOFTE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">16,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(103, 'ASSIETTE KOFTE', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #5dade2; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -132,28 +166,42 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
                                 <span style="color: white; font-weight: 600; font-size: 1.1rem;">13,00€</span>
                             </div>
                             
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">16,00€</span>
+                            </div>
+                            
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(103, 'ASSIETTE KOFTE', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
                                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning" style="background: #5dade2; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE POULET CRÈME</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">13,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">16,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(104, 'ASSIETTE POULET CRÈME', '13,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #5dade2; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -166,28 +214,42 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
                                 <span style="color: white; font-weight: 600; font-size: 1.1rem;">13,00€</span>
                             </div>
                             
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">16,00€</span>
+                            </div>
+                            
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(104, 'ASSIETTE POULET CRÈME', '13,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
                                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning" style="background: #5dade2; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Desktop Layout -->
-                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0;">
+                        <div class="menu-item desktop-only" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center; padding: 15px 0;">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">ASSIETTE KOBANE</h4>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">15,00€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">18,00€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(101, 'ASSIETTE KOBANE', '15,00', 'Assiette', false, false)" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #3498db; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #5dade2; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none;">
+                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                         
@@ -200,16 +262,25 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-                                <span style="color: white; font-size: 0.9rem;">Prix</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Seul</span>
                                 <span style="color: white; font-weight: 600; font-size: 1.1rem;">15,00€</span>
                             </div>
                             
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
+                                <span style="color: white; font-size: 0.9rem;">Menu</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1rem;">18,00€</span>
+                            </div>
+                            
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(101, 'ASSIETTE KOBANE', '15,00', 'Assiette', false, false)" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1rem; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                <a href="{{ route('front.assiettes.addons') }}?type=seul" class="btn btn-warning" style="background: #3498db; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; margin-bottom: 10px; display: block;">
                                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                                    Commander
-                                </button>
+                                    Seul
+                                </a>
+                                <a href="{{ route('front.assiettes.addons') }}?type=menu" class="btn btn-warning" style="background: #5dade2; border: none; color: white; padding: 12px 24px; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-size: 1rem; text-decoration: none; display: block;">
+                                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                                    Menu
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -263,52 +334,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side - Food Images and Info -->
-            <div class="col-lg-4">
-                <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Assiette Image -->
-                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #3498db, #2980b9); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
-                                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-utensils" style="font-size: 5rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(52,152,219,0.3), rgba(52,152,219,0.1)); z-index: 1;"></div>
-                                </div>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(52,152,219,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Assiettes Complètes</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Plats généreux avec accompagnements</p>
-                    </div>
-
-                    <!-- Information Section -->
-                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                        <h4 style="color: #3498db; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
-                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
-                            Informations
-                        </h4>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-clock" style="color: #3498db; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">15-20 minutes</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Accompagnements</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Riz, légumes, sauces</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
-                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Portions généreuses</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Idéal pour les gros appétits</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -340,8 +365,6 @@
     </div>
 </div>
 
-<!-- Include Customization Modal -->
-@include('front.multipurpose.product.customization_modal')
 
 <style>
 .menu-category {
@@ -438,47 +461,6 @@
 window.currentProductType = 'assiettes';
 window.currentAddons = @json($addons);
 
-function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
-    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
-    
-    // Set modal data attributes
-    $('#customizationModal').modal('show');
-    
-    // Update modal content immediately
-    $('#modalProductName').text(productName);
-    $('#modalProductType').text(type);
-    $('#modalProductPrice').text(price + '€');
-    
-    // Store product information
-    window.currentProduct = {
-        id: productId,
-        name: productName,
-        price: price,
-        type: type,
-        hasMeat: hasMeat,
-        isMenu: isMenu
-    };
-    
-    // Update current product type and menu status for modal
-    if (typeof window.currentCustomizationOptions !== 'undefined') {
-        window.currentCustomizationOptions.productType = 'assiettes';
-        window.currentCustomizationOptions.isMenu = isMenu;
-    }
-    
-    // Trigger modal show event to update sections
-    setTimeout(() => {
-        $('#customizationModal').trigger('show.bs.modal', [{
-            relatedTarget: {
-                dataset: {
-                    productType: 'assiettes',
-                    productName: productName,
-                    productPrice: price,
-                    menuType: isMenu
-                }
-            }
-        }]);
-    }, 100);
-}
 
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function

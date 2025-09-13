@@ -99,9 +99,6 @@
                                 <button type="button" class="btn btn-sm btn-outline-primary" onclick="triggerImageRefresh()" title="Refresh product images">
                                     <i class="fas fa-sync-alt"></i> {{ __('Refresh Images') }}
                                 </button>
-                                <button type="button" class="btn btn-sm btn-outline-info" onclick="debugImages()" title="Debug image loading issues">
-                                    <i class="fas fa-bug"></i> {{ __('Debug Images') }}
-                                </button>
                             </div>
                         </div>
 
@@ -398,38 +395,6 @@
             }
         };
         
-        // Function to debug image loading issues
-        window.debugImages = function() {
-            console.log('=== IMAGE DEBUG INFO ===');
-            const images = document.querySelectorAll('.pricing-thumb img');
-            console.log('Total images found:', images.length);
-            
-            images.forEach(function(img, index) {
-                const info = {
-                    index: index + 1,
-                    productId: img.dataset.productId,
-                    src: img.src,
-                    dataSrc: img.dataset.src,
-                    naturalWidth: img.naturalWidth,
-                    naturalHeight: img.naturalHeight,
-                    complete: img.complete,
-                    hasError: img.classList.contains('placeholder-image')
-                };
-                console.log(`Image ${index + 1}:`, info);
-                
-                // Check if image file exists
-                fetch(img.src, { method: 'HEAD' })
-                    .then(response => {
-                        console.log(`Image ${index + 1} fetch result:`, response.status, response.statusText);
-                    })
-                    .catch(error => {
-                        console.error(`Image ${index + 1} fetch error:`, error);
-                    });
-            });
-            
-            // Check browser console for any errors
-            console.log('Check browser console for any image loading errors');
-        };
     </script>
     <script src="{{ asset('assets/front/js/items.js') }}"></script>
     <script src="{{ asset('assets/front/js/image-refresh-helper.js') }}"></script>

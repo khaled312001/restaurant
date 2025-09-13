@@ -19,6 +19,9 @@ class Product extends Model
         'addons',
         'current_price',
         'previous_price',
+        'price_seul',
+        'price_menu',
+        'product_type',
         'rating',
         'status',
         'is_feature',
@@ -47,6 +50,31 @@ class Product extends Model
     public function language()
     {
         return $this->belongsTo('App\Models\Language');
+    }
+
+    /**
+     * Get price based on type (seul or menu)
+     */
+    public function getPriceByType($type = 'seul')
+    {
+        if ($type === 'menu' && $this->price_menu) {
+            return $this->price_menu;
+        }
+        
+        if ($type === 'seul' && $this->price_seul) {
+            return $this->price_seul;
+        }
+        
+        // Fallback to current_price if specific prices not set
+        return $this->current_price;
+    }
+
+    /**
+     * Get product by type
+     */
+    public static function getByType($productType)
+    {
+        return self::where('product_type', $productType)->first();
     }
 
 }

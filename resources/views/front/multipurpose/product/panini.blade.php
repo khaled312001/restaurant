@@ -27,8 +27,8 @@
 <div class="menu-section" style="padding: 80px 0; background: #f8f9fa;">
     <div class="container">
         <div class="row">
-            <!-- Left Side - Menu Items -->
-            <div class="col-lg-8">
+            <!-- Full Width Menu -->
+            <div class="col-12">
                 <!-- Main Panini Menu -->
                 <div class="menu-category" style="background: #2c3e50; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                     <h2 style="color: #f39c12; font-size: 2rem; font-weight: 700; margin-bottom: 25px; text-align: center;">
@@ -48,64 +48,34 @@
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">6,50€</span>
                             <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(137, 'PANINI 3 FROMAGES', '6,50', 'Seul', false, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.panini.addons') }}?type=seul&product=panini-3-fromages" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(137, 'PANINI 3 FROMAGES', '9,50', 'Menu', false, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.panini.addons') }}?type=menu&product=panini-3-fromages" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI VIANDE CHOIX</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,00€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,00€</span>
+                        @foreach($products as $product)
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; {{ !$loop->last ? 'border-bottom: 1px solid rgba(255,255,255,0.2);' : '' }}">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">{{ strtoupper($product->title) }}</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_seul, 2, ',', '') }}€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_menu, 2, ',', '') }}€</span>
                             <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(133, 'PANINI VIANDE CHOIX', '7,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
+                                <a href="{{ route('front.panini.addons') }}?type=seul&product={{ $product->slug }}" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
-                                </button>
-                                <button onclick="openCustomizationModal(133, 'PANINI VIANDE CHOIX', '10,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
+                                </a>
+                                <a href="{{ route('front.panini.addons') }}?type=menu&product={{ $product->slug }}" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
-                                </button>
+                                </a>
                             </div>
                         </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI KEBAB</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                            <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(138, 'PANINI KEBAB', '7,50', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </button>
-                                <button onclick="openCustomizationModal(138, 'PANINI KEBAB', '10,50', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI STEAK</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,00€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,00€</span>
-                            <div style="text-align: center;">
-                                <button onclick="openCustomizationModal(139, 'PANINI STEAK', '8,00', 'Seul', true, false)" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </button>
-                                <button onclick="openCustomizationModal(139, 'PANINI STEAK', '11,00', 'Menu', true, true)" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </button>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -157,52 +127,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side - Food Images and Info -->
-            <div class="col-lg-4">
-                <div class="food-images" style="position: sticky; top: 20px;">
-                    <!-- Panini Image -->
-                    <div class="food-item" style="margin-bottom: 30px; text-align: center;">
-                        <div class="image-container" style="position: relative; margin-bottom: 20px;">
-                            <div class="food-image" style="width: 100%; height: 300px; background: linear-gradient(45deg, #f39c12, #e67e22); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden;">
-                                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-bread-slice" style="font-size: 5rem; color: white; z-index: 2;"></i>
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(243,156,18,0.3), rgba(243,156,18,0.1)); z-index: 1;"></div>
-                                </div>
-                            </div>
-                            <div class="glow-effect" style="position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; background: radial-gradient(circle, rgba(243,156,18,0.3) 0%, transparent 70%); border-radius: 25px; z-index: -1;"></div>
-                        </div>
-                        <h4 style="color: #2c3e50; font-weight: 600; margin: 0;">Panini Grillés</h4>
-                        <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 0.9rem;">Pain grillé et garnitures</p>
-                    </div>
-
-                    <!-- Information Section -->
-                    <div class="info-section" style="background: linear-gradient(45deg, #34495e, #2c3e50); border-radius: 20px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                        <h4 style="color: #f39c12; font-weight: 700; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
-                            <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
-                            Informations
-                        </h4>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-clock" style="color: #f39c12; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Temps de préparation</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">8-12 minutes</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; text-align: center;">
-                            <i class="fas fa-leaf" style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Garnitures fraîches</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Légumes et sauces au choix</p>
-                        </div>
-                        
-                        <div class="info-item" style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; text-align: center;">
-                            <i class="fas fa-star" style="color: #f1c40f; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                            <h5 style="color: white; font-weight: 600; margin: 10px 0; font-size: 1.1rem;">Pain grillé</h5>
-                            <p style="color: #bdc3c7; margin: 0; font-size: 0.9rem;">Croustillant et doré</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -234,8 +158,6 @@
     </div>
 </div>
 
-<!-- Include Customization Modal -->
-@include('front.multipurpose.product.customization_modal')
 
 <style>
 .menu-category {
@@ -313,47 +235,6 @@
 window.currentProductType = 'panini';
 window.currentAddons = @json($addons);
 
-function openCustomizationModal(productId, productName, price, type, hasMeat, isMenu) {
-    console.log('Opening modal for:', { productId, productName, price, type, hasMeat, isMenu });
-    
-    // Set modal data attributes
-    $('#customizationModal').modal('show');
-    
-    // Update modal content immediately
-    $('#modalProductName').text(productName);
-    $('#modalProductType').text(type);
-    $('#modalProductPrice').text(price + '€');
-    
-    // Store product information
-    window.currentProduct = {
-        id: productId,
-        name: productName,
-        price: price,
-        type: type,
-        hasMeat: hasMeat,
-        isMenu: isMenu
-    };
-    
-    // Update current product type and menu status for modal
-    if (typeof window.currentCustomizationOptions !== 'undefined') {
-        window.currentCustomizationOptions.productType = 'panini';
-        window.currentCustomizationOptions.isMenu = isMenu;
-    }
-    
-    // Trigger modal show event to update sections
-    setTimeout(() => {
-        $('#customizationModal').trigger('show.bs.modal', [{
-            relatedTarget: {
-                dataset: {
-                    productType: 'panini',
-                    productName: productName,
-                    productPrice: price,
-                    menuType: isMenu
-                }
-            }
-        }]);
-    }, 100);
-}
 
 function addToCart(url, variant, quantity, extras) {
     // Existing addToCart function

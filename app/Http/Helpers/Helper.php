@@ -289,10 +289,13 @@ if (!function_exists('tax')) {
             $cart = session()->get('cart');
             foreach ($cart as $key => $cartItem) {
                 $product = Product::find($cartItem['id']);
-                $category = $product->category;
-                $cTax = $category->tax;
-
-                $tax += ($cTax * $cartItem['total']) / 100;
+                
+                // Check if product exists and has a category
+                if ($product && $product->category) {
+                    $category = $product->category;
+                    $cTax = $category->tax ?? 0; // Use null coalescing operator to default to 0
+                    $tax += ($cTax * $cartItem['total']) / 100;
+                }
             }
         }
 
@@ -308,10 +311,13 @@ if (!function_exists('posTax')) {
             $cart = session()->get('pos_cart');
             foreach ($cart as $key => $cartItem) {
                 $product = Product::find($cartItem['id']);
-                $category = $product->category;
-                $cTax = $category->tax;
-
-                $tax += ($cTax * $cartItem['total']) / 100;
+                
+                // Check if product exists and has a category
+                if ($product && $product->category) {
+                    $category = $product->category;
+                    $cTax = $category->tax ?? 0; // Use null coalescing operator to default to 0
+                    $tax += ($cTax * $cartItem['total']) / 100;
+                }
             }
         }
 

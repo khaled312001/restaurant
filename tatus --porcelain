@@ -1,0 +1,32 @@
+warning: in the working copy of 'resources/views/front/multipurpose/product/addons/panini.blade.php', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/resources/views/front/multipurpose/product/addons/panini.blade.php b/resources/views/front/multipurpose/product/addons/panini.blade.php[m
+[1mindex 79e64ef..8286d43 100644[m
+[1m--- a/resources/views/front/multipurpose/product/addons/panini.blade.php[m
+[1m+++ b/resources/views/front/multipurpose/product/addons/panini.blade.php[m
+[36m@@ -221,6 +221,18 @@[m [mwindow.addToCartWithAddons = function() {[m
+         const tokenValue = csrfToken ? csrfToken.getAttribute('content') : null;[m
+         console.log('CSRF token value:', tokenValue);[m
+         [m
+[32m+[m[32m        // Create customizations data[m
+[32m+[m[32m        const customizations = {[m
+[32m+[m[32m            productName: '{{ $product->name }}',[m
+[32m+[m[32m            type: productType,[m
+[32m+[m[32m            price: baseProductPrice + addonTotalPrice,[m
+[32m+[m[32m            quantity: 1,[m
+[32m+[m[32m            meatChoice: selectedAddons.meat ? Object.values(selectedAddons.meat).map(addon => addon.name).join(', ') : null,[m
+[32m+[m[32m            vegetables: selectedAddons.vegetables ? Object.values(selectedAddons.vegetables).map(addon => addon.name) : [],[m
+[32m+[m[32m            drinkChoice: selectedAddons.drinks ? Object.values(selectedAddons.drinks).map(addon => addon.name).join(', ') : null,[m
+[32m+[m[32m            sauces: selectedAddons.sauces ? Object.values(selectedAddons.sauces).map(addon => addon.name) : [][m
+[32m+[m[32m        };[m
+[32m+[m[41m        [m
+         // Create cart data[m
+         const cartData = {[m
+             product_id: {{ $product->id }},[m
+[36m@@ -228,6 +240,7 @@[m [mwindow.addToCartWithAddons = function() {[m
+             product_price: {{ $product->price }},[m
+             product_type: productType,[m
+             addons: selectedAddons,[m
+[32m+[m[32m            customizations: customizations,[m
+             total_price: baseProductPrice + addonTotalPrice,[m
+             _token: tokenValue[m
+         };[m

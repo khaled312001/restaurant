@@ -333,7 +333,6 @@ window.addToCartWithAddons = function() {
         alert('Erreur JavaScript: ' + error.message + '\nVeuillez recharger la page.');
     }
 };
-}
 
 // Initialize display
 document.addEventListener('DOMContentLoaded', function() {

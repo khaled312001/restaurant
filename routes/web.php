@@ -74,6 +74,7 @@ Route::middleware(['setlang'])->group(function () {
     Route::get('/cart/item/remove/{id}', 'Front\\ProductController@cartitemremove')->name('cart.item.remove');
     Route::get('/cart/clear', 'Front\\ProductController@clearCart')->name('cart.clear');
     Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');
+    Route::get('/checkout/confirm', 'Payment\Product\PaymentController@simpleCheckoutConfirm')->name('checkout.confirm');
     Route::get('/checkout/{slug}', 'Front\ProductController@Prdouctcheckout')->name('front.product.checkout');
     Route::get('/timeframes', 'Front\ProductController@timeframes')->name('front.timeframes');
     Route::post('/coupon', 'Front\ProductController@coupon')->name('front.coupon');
@@ -101,8 +102,6 @@ Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
 Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
 Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
 Route::get('/cart/item/remove/{id}', 'Front\\ProductController@cartitemremove')->name('cart.item.remove');
-Route::get('/checkout', 'Front\ProductController@checkout')->name('front.checkout');
-Route::get('/checkout/{slug}', 'Front\ProductController@Prdouctcheckout')->name('front.product.checkout');
 Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
 Route::match(['GET', 'POST'], '/add-to-cart/{id}', 'Front\ProductController@addToCart')->name('add.cart');
 Route::post('/cart/update', 'Front\ProductController@updatecart')->name('cart.update');
@@ -113,8 +112,7 @@ Route::get('/cart/item/remove/{id}', 'Front\ProductController@cartitemremove')->
 
 // CHECKOUT SECTION
 Route::get('/product/{orderNum}/payment/return', 'Payment\Product\PaymentController@payreturn')->name('product.payment.return');
-// Simple checkout confirmation page (renommé pour éviter le conflit de chemin)
-Route::get('/checkout/confirm', 'Payment\Product\PaymentController@simpleCheckoutConfirm')->name('checkout.confirm');
+// Simple checkout confirmation page moved inside setlang group
 Route::get('/product/payment/cancle', 'Payment\Product\PaymentController@paycancle')->name('product.payment.cancle');
 // paypal routes
 Route::post('/product/paypal/submit', 'Payment\Product\PaypalController@store')->name('product.paypal.submit');

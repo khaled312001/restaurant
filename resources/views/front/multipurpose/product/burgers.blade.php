@@ -43,69 +43,23 @@
                             <span style="color: #8e44ad; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">CHEESE BURGER</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">5,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
+                        @foreach($products as $product)
+                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; {{ !$loop->last ? 'border-bottom: 1px solid rgba(255,255,255,0.2);' : '' }}">
+                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">{{ strtoupper($product->title) }}</h4>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_seul, 2, ',', '') }}€</span>
+                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">{{ number_format($product->price_menu, 2, ',', '') }}€</span>
                             <div style="text-align: center;">
-                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
+                                <a href="{{ route('front.burgers.addons') }}?type=seul&product={{ $product->slug }}" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Seul
                                 </a>
-                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
+                                <a href="{{ route('front.burgers.addons') }}?type=menu&product={{ $product->slug }}" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
                                     <i class="fas fa-cog" style="margin-right: 5px;"></i>
                                     Menu
                                 </a>
                             </div>
                         </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">DOUBLE CHEESE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">7,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">10,50€</span>
-                            <div style="text-align: center;">
-                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </a>
-                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">TRIPLE CHEESE</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">12,50€</span>
-                            <div style="text-align: center;">
-                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </a>
-                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0;">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">BURGER SPECIAL</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">8,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">11,50€</span>
-                            <div style="text-align: center;">
-                                <a href="{{ route('front.burgers.addons') }}?type=seul" class="btn btn-warning btn-sm" style="background: #8e44ad; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </a>
-                                <a href="{{ route('front.burgers.addons') }}?type=menu" class="btn btn-warning btn-sm" style="background: #9b59b6; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 

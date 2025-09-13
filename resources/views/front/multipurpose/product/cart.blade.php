@@ -75,7 +75,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($cart as $key => $item)
+                                    @foreach($cart as $cartKey => $item)
                                     @php
                                         $id = $item["id"];
                                         $product = App\Models\Product::find($id);
@@ -98,7 +98,7 @@
                                             }
                                         }
                                     @endphp
-                                    <tr class="remove{{ $key }}">
+                                    <tr class="remove{{ $cartKey }}">
                                         <td>
                                             <div class="cart-product-info">
                                                 <h5 class="cart-product-title">{{ $item['name'] }}</h5>
@@ -365,7 +365,7 @@
                                         </td>
                                         <td>
                                             <div class="quantity-controls">
-                                                <input type="number" class="form-control qty-input" data-key="{{ $key }}" value="{{ $item['qty'] }}" min="1" max="10" style="width: 80px; text-align: center;">
+                                                <input type="number" class="form-control qty-input" data-key="{{ $cartKey }}" value="{{ $item['qty'] }}" min="1" max="10" style="width: 80px; text-align: center;">
                                             </div>
                                         </td>
                                         <td>
@@ -375,7 +375,7 @@
                                             <span class="item-total">{{$be->base_currency_symbol_position == 'left' ? $be->base_currency_symbol : ''}}{{number_format($item['total'], 2)}}{{$be->base_currency_symbol_position == 'right' ? $be->base_currency_symbol : ''}}</span>
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger btn-sm remove-item" data-key="{{ $key }}">
+                                            <button class="btn btn-danger btn-sm remove-item" data-key="{{ $cartKey }}">
                                                 <i class="fas fa-trash"></i> {{__('Remove')}}
                                             </button>
                                         </td>
@@ -451,8 +451,11 @@
     });
     
     function updateCartItem(key, qty) {
+        // Escape the key for CSS selector (in case it contains special characters)
+        let escapedKey = key.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+        
         // Update the cart item quantity locally first
-        let row = $(`.remove${key}`);
+        let row = $(`.remove${escapedKey}`);
         let unitPrice = parseFloat(row.find('.unit-price').text().replace(/[^\d.-]/g, ''));
         let newTotal = unitPrice * qty;
         row.find('.item-total').text('€' + newTotal.toFixed(2));
@@ -484,14 +487,21 @@
             console.error("Invalid cart key:", key);
             return;
         }
-        let button = $(`.remove${key} .remove-item`);
+        
+        // Escape the key for CSS selector (in case it contains special characters)
+        let escapedKey = key.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+        let button = $(`.remove${escapedKey} .remove-item`);
         button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Suppression...');
+        
+        console.log('Removing cart item with key:', key);
+        console.log('Escaped key for selector:', escapedKey);
         
         $.ajax({
             url: '{{ route("cart.item.remove", ":key") }}'.replace(':key', encodeURIComponent(key)),
             type: 'GET',
             dataType: 'json',
             success: function(response) {
+                console.log('Remove response:', response);
                 if (response && response.message) {
                     // Reload page after short delay
                     setTimeout(function() {
@@ -502,6 +512,7 @@
                 }
             },
             error: function(xhr, status, error) {
+                console.error('Remove error:', xhr, status, error);
                 button.prop('disabled', false).html('<i class="fas fa-trash"></i> Supprimer');
             }
         });

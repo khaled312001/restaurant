@@ -70,6 +70,7 @@ class ProductOrderController extends Controller
         })->when($deliveryDate, function ($query, $deliveryDate) {
             return $query->where('delivery_date', $deliveryDate);
         })
+            ->with('orderItems')
             ->orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.product.order.index', $data);

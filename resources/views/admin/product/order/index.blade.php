@@ -266,10 +266,12 @@
 
                               <td>
                                 @if($order->orderItems->where('customizations', '!=', null)->count() > 0)
-                                  <a class="dropdown-item" href="{{route('admin.customizations.order',$order->id)}}">
-                                    <i class="fas fa-cogs text-warning"></i> Customizations
-                                    <span class="badge badge-warning">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
+                                  <a class="btn btn-warning btn-sm" href="{{route('admin.customizations.order',$order->id)}}">
+                                    <i class="fas fa-cogs"></i> Customizations
+                                    <span class="badge badge-light">{{ $order->orderItems->where('customizations', '!=', null)->count() }}</span>
                                   </a>
+                                @else
+                                  <span class="text-muted">No customizations</span>
                                 @endif
                               </td>
                               <td>

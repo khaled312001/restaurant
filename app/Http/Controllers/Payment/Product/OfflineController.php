@@ -83,9 +83,15 @@ class OfflineController extends PaymentController
         $order->order_status = 'Pending';
         $order->save();
 
+        // Debug logging
+        \Log::info('Order created with ID: ' . $order->id);
+        \Log::info('Order number: ' . $order->order_number);
+
         Session::put('last_order_id', $order->id);
+        Session::put('guest_email', $order->billing_email);
         Session::forget('cart');
         
+        \Log::info('Redirecting to checkout confirm with order ID: ' . $order->id);
         return redirect()->route('checkout.confirm');
     }
 } 

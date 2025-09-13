@@ -43,22 +43,6 @@
                             <span style="color: #f39c12; font-weight: 600; font-size: 1.1rem; text-align: center;">Commander</span>
                         </div>
                         
-                        <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">PANINI 3 FROMAGES</h4>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">6,50€</span>
-                            <span style="color: white; font-weight: 600; font-size: 1.2rem; text-align: center;">9,50€</span>
-                            <div style="text-align: center;">
-                                <a href="{{ route('front.panini.addons') }}?type=seul&product=panini-3-fromages" class="btn btn-warning btn-sm" style="background: #f39c12; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; margin-bottom: 8px; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Seul
-                                </a>
-                                <a href="{{ route('front.panini.addons') }}?type=menu&product=panini-3-fromages" class="btn btn-warning btn-sm" style="background: #e67e22; border: none; color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; transition: all 0.3s ease; width: 100%; text-decoration: none; display: inline-block;">
-                                    <i class="fas fa-cog" style="margin-right: 5px;"></i>
-                                    Menu
-                                </a>
-                            </div>
-                        </div>
-                        
                         @foreach($products as $product)
                         <div class="menu-item" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; align-items: center; padding: 15px 0; {{ !$loop->last ? 'border-bottom: 1px solid rgba(255,255,255,0.2);' : '' }}">
                             <h4 style="color: white; font-weight: 600; margin: 0; font-size: 1.1rem;">{{ strtoupper($product->title) }}</h4>

@@ -135,6 +135,12 @@ class ProductController extends Controller
         // Get addons for sandwiches (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('sandwiches');
         $data['productType'] = 'sandwiches';
+        
+        // Get sandwiches products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'sandwiches')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.americain_kofte', $data);
     }
@@ -149,6 +155,12 @@ class ProductController extends Controller
         // Get addons for tacos (includes meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('tacos');
         $data['productType'] = 'tacos';
+        
+        // Get tacos products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'tacos')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.tacos', $data);
     }
@@ -164,6 +176,12 @@ class ProductController extends Controller
         // Get addons for burgers (no meat choices)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('burgers');
         $data['productType'] = 'burgers';
+        
+        // Get burgers products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'burgers')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.burgers', $data);
     }
@@ -200,6 +218,12 @@ class ProductController extends Controller
         // Get addons for assiettes (only sauces)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('assiettes');
         $data['productType'] = 'assiettes';
+        
+        // Get assiettes products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'assiettes')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.assiettes', $data);
     }
@@ -215,6 +239,12 @@ class ProductController extends Controller
         // Get addons for menus enfant (vegetables, sauces, drinks)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('menus_enfant');
         $data['productType'] = 'menus_enfant';
+        
+        // Get menus enfant products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'menus_enfant')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.menus_enfant', $data);
     }
@@ -240,6 +270,12 @@ class ProductController extends Controller
         // Get addons for salade (sauces required, vegetables optional)
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('salade');
         $data['productType'] = 'salade';
+        
+        // Get salade products with their prices from database
+        $data['products'] = \App\Models\Product::where('product_type', 'salade')
+            ->where('language_id', $currentLang->id)
+            ->where('status', 1)
+            ->get();
 
         return view('front.multipurpose.product.salade', $data);
     }
@@ -284,11 +320,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('tacos');
         $data['productType'] = 'tacos';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'tacos');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('tacos');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -353,11 +392,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('galettes');
         $data['productType'] = 'galettes';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'americain-kofte');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('galettes');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -386,11 +428,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('burgers');
         $data['productType'] = 'burgers';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'burger');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('burgers');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -455,11 +500,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('assiettes');
         $data['productType'] = 'assiettes';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'assiette');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('assiettes');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -488,11 +536,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('menus_enfant');
         $data['productType'] = 'menus_enfant';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'menu-enfant');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('menus_enfant');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -521,11 +572,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('salade');
         $data['productType'] = 'salade';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'salade');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('salade');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -554,11 +608,14 @@ class ProductController extends Controller
         $data['addons'] = \App\Models\Addon::getAddonsByProductType('nos_box');
         $data['productType'] = 'nos_box';
         
-        // Get type from URL parameter (seul or menu)
+        // Get type and product from URL parameters
         $type = $request->get('type', 'seul');
+        $productSlug = $request->get('product', 'nos-box');
         
-        // Get product from database
-        $product = \App\Models\Product::getByType('nos_box');
+        // Get specific product from database by slug
+        $product = \App\Models\Product::where('slug', $productSlug)
+                                    ->where('language_id', $currentLang->id)
+                                    ->first();
         
         if ($product) {
             $data['product'] = (object) [
@@ -1376,6 +1433,27 @@ class ProductController extends Controller
         if (!Auth::check()) {
             // إذا لم يكن المستخدم مسجل دخول، نعتبره ضيف
             $request->merge(['type' => 'guest']);
+        }
+        
+        // Validate customer information if form is submitted
+        if ($request->isMethod('post')) {
+            $validator = Validator::make($request->all(), [
+                'billing_fname' => 'required|string|max:255',
+                'billing_lname' => 'required|string|max:255',
+                'billing_email' => 'required|email|max:255',
+                'billing_number' => 'required|string|max:20',
+                'billing_address' => 'required|string|max:500',
+                'billing_city' => 'required|string|max:100',
+                'billing_zip' => 'required|string|max:20',
+                'billing_country' => 'required|string|max:100',
+                'serving_method' => 'required|string|in:pick_up,on_table,home_delivery',
+            ]);
+            
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
         $currentLang = $this->getCurrentLanguage();

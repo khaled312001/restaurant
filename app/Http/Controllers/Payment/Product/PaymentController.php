@@ -42,13 +42,35 @@ class PaymentController extends Controller
     public function simpleCheckoutConfirm(Request $request)
     {
         $orderId = session('last_order_id');
+        
+        // Debug logging
+        \Log::info('Checkout confirm - Order ID from session: ' . $orderId);
+        
         if (!$orderId) {
-            return redirect()->route('front.index');
+            \Log::warning('No order ID found in session, trying to get latest order');
+            
+            // Fallback: Get the latest order for the current session
+            $order = ProductOrder::where('user_id', auth()->id())
+                ->orWhere('billing_email', session('guest_email'))
+                ->orderBy('created_at', 'desc')
+                ->first();
+                
+            if (!$order) {
+                \Log::warning('No order found, redirecting to home');
+                return redirect()->route('front.index')->with('error', 'No order found. Please try again.');
+            }
+            
+            \Log::info('Using fallback order: ' . $order->order_number);
+            return view('front.multipurpose.product.success', ['order' => $order, 'orderNum' => $order->order_number]);
         }
+        
         $order = ProductOrder::find($orderId);
         if (!$order) {
-            return redirect()->route('front.index');
+            \Log::warning('Order not found with ID: ' . $orderId);
+            return redirect()->route('front.index')->with('error', 'Order not found. Please try again.');
         }
+        
+        \Log::info('Order found: ' . $order->order_number);
         return view('front.multipurpose.product.success', ['order' => $order, 'orderNum' => $order->order_number]);
     }
 
@@ -156,19 +178,30 @@ class PaymentController extends Controller
 
     protected function saveOrderItem($order_id)
     {
-        $cart = Session::get('cart');
+        $cart = Session::get('cart', []);
+        
+        if (empty($cart)) {
+            \Log::warning('Empty cart when trying to save order items');
+            return;
+        }
+        
         foreach ($cart as $key => $item) {
+            // Skip if item is not an array or is empty
+            if (!is_array($item) || empty($item)) {
+                \Log::warning('Invalid cart item: ' . json_encode($item));
+                continue;
+            }
             $orderItem = new OrderItem();
             $orderItem->product_order_id = $order_id;
-            $orderItem->product_id = $item['id'];
-            $orderItem->title = $item['name'];
-            $orderItem->qty = $item['qty'];
-            $orderItem->product_price = $item['product_price'];
-            $orderItem->total = $item['total'];
-            $orderItem->image = $item['photo'];
+            $orderItem->product_id = $item['id'] ?? 0;
+            $orderItem->title = $item['name'] ?? 'Unknown Product';
+            $orderItem->qty = $item['qty'] ?? 1;
+            $orderItem->product_price = $item['product_price'] ?? 0;
+            $orderItem->total = $item['total'] ?? 0;
+            $orderItem->image = $item['photo'] ?? '';
             
             // Handle variations
-            if (!empty($item['variations'])) {
+            if (!empty($item['variations']) && is_array($item['variations'])) {
                 $orderItem->variations = json_encode($item['variations']);
                 $varTotal = 0.00;
                 foreach ($item['variations'] as $variation) {
@@ -176,11 +209,11 @@ class PaymentController extends Controller
                         $varTotal += (float)$variation["price"];
                     }
                 }
-                $orderItem->variations_price = $varTotal * $item['qty'];
+                $orderItem->variations_price = $varTotal * ($item['qty'] ?? 1);
             }
             
             // Handle addons
-            if (!empty($item['addons'])) {
+            if (!empty($item['addons']) && is_array($item['addons'])) {
                 $orderItem->addons = json_encode($item['addons']);
                 $addonTotal = 0.00;
                 foreach ($item['addons'] as $addon) {
@@ -188,7 +221,7 @@ class PaymentController extends Controller
                         $addonTotal += (float)$addon["price"];
                     }
                 }
-                $orderItem->addons_price = $addonTotal * $item['qty'];
+                $orderItem->addons_price = $addonTotal * ($item['qty'] ?? 1);
             }
             
             // Handle customizations
@@ -204,17 +237,19 @@ class PaymentController extends Controller
                     $customizationData = is_string($item['customizations']) ? 
                         json_decode($item['customizations'], true) : $item['customizations'];
                     
-                    $customization = new \App\Models\Customization();
-                    $customization->order_item_id = $orderItem->id;
-                    $customization->product_name = $customizationData['productName'] ?? $item['name'];
-                    $customization->product_type = $customizationData['type'] ?? 'Product';
-                    $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? $item['product_price']);
-                    $customization->quantity = $customizationData['quantity'] ?? $item['qty'];
-                    $customization->meat_choice = $customizationData['meatChoice'] ?? null;
-                    $customization->vegetables = $customizationData['vegetables'] ?? [];
-                    $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
-                    $customization->sauces = $customizationData['sauces'] ?? [];
-                    $customization->save();
+                    if (is_array($customizationData)) {
+                        $customization = new \App\Models\Customization();
+                        $customization->order_item_id = $orderItem->id;
+                        $customization->product_name = $customizationData['productName'] ?? ($item['name'] ?? 'Unknown Product');
+                        $customization->product_type = $customizationData['type'] ?? 'Product';
+                        $customization->price = (float)str_replace(',', '.', $customizationData['price'] ?? ($item['product_price'] ?? 0));
+                        $customization->quantity = $customizationData['quantity'] ?? ($item['qty'] ?? 1);
+                        $customization->meat_choice = $customizationData['meatChoice'] ?? null;
+                        $customization->vegetables = $customizationData['vegetables'] ?? [];
+                        $customization->drink_choice = $customizationData['drinkChoice'] ?? null;
+                        $customization->sauces = $customizationData['sauces'] ?? [];
+                        $customization->save();
+                    }
                 } catch (\Exception $e) {
                     \Log::error('Failed to save customization for order item: ' . $e->getMessage());
                 }
